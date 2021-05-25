@@ -1,10 +1,12 @@
 import React from "react";
-import {View, Text} from "react-native-web";
+import {View, Text} from "react-native";
 
-function HomeScreen() {
-    return (
+const HomeScreen = () => {
+    return(
         <View>
-            <Text>LoginScreen</Text>
+            <Text>Home Screen</Text>
         </View>
-    );
-}
+    )
+};
+
+export default HomeScreen;
