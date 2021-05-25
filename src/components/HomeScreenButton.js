@@ -1,5 +1,5 @@
-import React,{useState} from "react";
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import React, {useState} from "react";
+import {StyleSheet, Text, View, Image, TouchableOpacity} from "react-native";
 
 export const HomeScreenButton = (props, {onPress}) => {
 
@@ -9,7 +9,7 @@ export const HomeScreenButton = (props, {onPress}) => {
     const school = require("../../assets/icons/school.png")
     let icon;
 
-    switch(props.icon){
+    switch (props.icon) {
         case("add"):
             icon = add;
             break;
@@ -28,7 +28,7 @@ export const HomeScreenButton = (props, {onPress}) => {
         <TouchableOpacity style={styles.container} onPress={onPress}>
             <View style={styles.button}>
                 <View style={styles.innerContainer}>
-                    <Image style={styles.icon}  source={icon}/>
+                    <Image style={styles.icon} source={icon}/>
                     <Text style={styles.title}>{props.title}</Text>
                 </View>
             </View>
@@ -38,33 +38,33 @@ export const HomeScreenButton = (props, {onPress}) => {
 
 const styles = StyleSheet.create({
 
-    container : {
-        width : '65%',
-        height : '13%',
+    container: {
+        width: '65%',
+        height: '13%',
     },
     button: {
-        width : '100%',
+        width: '100%',
         height: '100%',
-        display : 'flex',
-        justifyContent : 'center',
-        backgroundColor: "#B7D381",
-        borderRadius : 10
-    },
-    innerContainer:{
         display: 'flex',
-        flexDirection : 'row',
-        alignItems : 'center',
+        justifyContent: 'center',
+        backgroundColor: "#B7D381",
+        borderRadius: 10
+    },
+    innerContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
         justifyContent: 'space-between',
-        width : '40%',
-        marginLeft : '10%'
+        width: '40%',
+        marginLeft: '10%'
     },
-    title:{
-        fontSize : 30,
+    title: {
+        fontSize: 30,
         color: '#174A5B',
-        fontWeight : 'bold'
+        fontWeight: 'bold'
     },
-    icon : {
-        width : 50,
-        height : 50,
+    icon: {
+        width: 50,
+        height: 50,
     }
 });
