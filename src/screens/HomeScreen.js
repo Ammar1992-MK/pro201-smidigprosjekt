@@ -8,9 +8,9 @@ import {HomeScreenButton} from "../components/HomeScreenButton"
 import {BrightTitle} from "../components/BrightTitle";
 
 const HomeScreen = () => {
-    return(
+    return (
         <View style={HomeScreenStyles.container}>
-            <BrightTitle />
+            <BrightTitle/>
             <HomeScreenButton icon={"add"} title={"ADD NEW"}/>
             <HomeScreenButton icon={"search"} title={"SEARCH"}/>
             <HomeScreenButton icon={"upload"} title={"UPLOAD"}/>
