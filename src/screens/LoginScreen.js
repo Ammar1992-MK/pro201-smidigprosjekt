@@ -1,7 +1,7 @@
 import React from "react";
-import {View, Text} from "react-native-web";
+import {View, Text} from "react-native";
 
-function LoginScreen() {
+export default function LoginScreen() {
     return (
         <View>
             <Text>LoginScreen</Text>
