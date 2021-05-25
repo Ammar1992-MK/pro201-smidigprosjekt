@@ -25,7 +25,6 @@ export const HomeScreenButton = (props, {onPress}) => {
     }
 
     return (
-
         <TouchableOpacity style={HomeScreenButtonStyle.container} onPress={onPress}>
             <View style={HomeScreenButtonStyle.button}>
                 <View style={HomeScreenButtonStyle.innerContainer}>
@@ -42,6 +41,7 @@ const HomeScreenButtonStyle = StyleSheet.create({
     container: {
         width: '65%',
         height: '13%',
+        margin: 10
     },
     button: {
         width: '100%',
@@ -62,7 +62,7 @@ const HomeScreenButtonStyle = StyleSheet.create({
     title: {
         fontSize: 30,
         color: '#174A5B',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
     },
     icon: {
         width: 50,

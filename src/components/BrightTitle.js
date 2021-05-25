@@ -15,7 +15,7 @@ const BrightTitleStyles = StyleSheet.create({
         alignItems: "center",
         fontFamily: 'Arial',
         justifyContent: 'center',
-        marginVertical: 55,
+        marginBottom: 60,
     },
     headingText: {
         color: "#9FD18B",
