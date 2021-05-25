@@ -25,18 +25,18 @@ export const HomeScreenButton = (props, {onPress}) => {
     }
 
     return (
-        <TouchableOpacity style={styles.container} onPress={onPress}>
-            <View style={styles.button}>
-                <View style={styles.innerContainer}>
-                    <Image style={styles.icon}  source={icon}/>
-                    <Text style={styles.title}>{props.title}</Text>
+        <TouchableOpacity style={HomeScreenButtonStyle.container} onPress={onPress}>
+            <View style={HomeScreenButtonStyle.button}>
+                <View style={HomeScreenButtonStyle.innerContainer}>
+                    <Image style={HomeScreenButtonStyle.icon}  source={icon}/>
+                    <Text style={HomeScreenButtonStyle.title}>{props.title}</Text>
                 </View>
             </View>
         </TouchableOpacity>
     );
 };
 
-const styles = StyleSheet.create({
+const HomeScreenButtonStyle = StyleSheet.create({
 
     container : {
         width : '65%',
