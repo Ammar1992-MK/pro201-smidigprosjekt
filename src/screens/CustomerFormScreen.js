@@ -1,15 +1,24 @@
-import React from 'react';
-import {View, Text, StyleSheet, TextInput, Button, TouchableOpacity, Image} from "react-native";
+import React, {useState} from 'react';
+import {View, Text, StyleSheet, TextInput, ScrollView, TouchableOpacity, Image, KeyboardAvoidingView} from "react-native";
 import {NextButton} from "../components/NextButton";
 import {BackButton} from "../components/BackButton";
 import CardCarousel from "../components/CardCarousel";
 import {NavigationBar} from "../components/NavigationBar/NavigationBar";
 
+
 export default function CustomerFormScreen({navigation}) {
+
+    const [userData, setUserData] = useState({});
+
+    const [customerName, setCustomerName] = useState("");
+    const [phoneNumber, setPhoneNumber] = useState("");
+    //const [lamp, setLamp] = useState(undefined)
+    const [serialNumber, setSerialNumber] = useState("");
+
     return (
         <>
             <NavigationBar navigation={navigation}/>
-            <View style={styles.container}>
+            <ScrollView style={styles.container}>
                 <Text style={styles.inputHeaders}>Customer Name</Text>
                 <TextInput style={styles.input}/>
                 <Text style={styles.inputHeaders}>Customer Phone Number</Text>
@@ -31,9 +40,9 @@ export default function CustomerFormScreen({navigation}) {
                     <BackButton/>
                     <NextButton onPress={() => navigation.navigate('CustomerFormSummaryScreen')}/>
                 </View>
-            </View>
+            </ScrollView>
         </>
-            );
+    );
 };
 
 const styles = StyleSheet.create({
@@ -41,6 +50,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#F3F8E9',
         flex: 1,
         paddingLeft: '8%',
+        height: '100%',
     },
     serialInputContainer: {
         flexDirection: 'row',

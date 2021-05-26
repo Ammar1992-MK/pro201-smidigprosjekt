@@ -2,11 +2,11 @@ import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { NavigationBar } from "../components/NavigationBar/NavigationBar";
 import LongButton from "../components/LongButton";
-const StartRepairScreen = ({lamp, customer}) => {
+const StartRepairScreen = ({lamp, customer, navigation}) => {
 
   return (
     <View style={StartRepairScreenStyles.container}>
-      <NavigationBar />
+      <NavigationBar navigation={navigation}/>
       <View style={StartRepairScreenStyles.lampContainer}>
         <View style={StartRepairScreenStyles.lampImageContainer}>
           <Image
