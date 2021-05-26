@@ -9,7 +9,7 @@ export const NavigationHomeButton = ({ navigation}) => {
     }
 
     return (
-        <View style={{marginLeft: 40}}>
+        <View >
             <TouchableOpacity  onPress={() => navigation.navigate('LoginScreen')}>
                 <HomeImage  />
             </TouchableOpacity>

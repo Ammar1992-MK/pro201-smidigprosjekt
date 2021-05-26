@@ -7,7 +7,7 @@ import {NavigationHomeButton} from "./NavigationHomeButton";
 export const NavigationBar = ({navigation}) => {
     return (
         <View style={NavigationBarStyles.container}>
-            <NavigationHomeButton navigation={navigation} />
+            <NavigationHomeButton styles={NavigationBarStyles.button} navigation={navigation} />
             <Text style={NavigationBarStyles.title}>NEW REPAIR</Text>
         </View>
     );
@@ -25,12 +25,6 @@ const NavigationBarStyles = StyleSheet.create({
         fontSize: 40,
         fontWeight: 'bold',
         color: '#fff',
-        position: 'absolute',
-        top: 0,
-        bottom: 0,
-        left: 0,
-        right: 0,
-        textAlign: 'center',
-        textAlignVertical: 'center'
+        textAlign: 'center'
     },
 })
