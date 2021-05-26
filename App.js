@@ -20,39 +20,39 @@ import LongButton from "./src/components/LongButton";
 
 export default function App() {
     return (
-
-     <StartRepairScreen/>
-
-    );
+    <NavigationContainer>
+        <Stack.Navigator>
+            {/* LOGIN SCREEN */}
+            <Stack.Screen
+                name="LoginScreen"
+                component={LoginScreen}
+                options={{headerShown: false}}
+            />
+            {/* MENU/HOME SCREEN */}
+            <Stack.Screen
+                name="HomeScreen"
+                component={HomeScreen}
+                options={{headerShown: false}}
+            />
+            {/* CUSTOMER FORM SCREEN */}
+            <Stack.Screen
+                name="CustomerFormScreen"
+                component={CustomerFormScreen}
+                options={{headerShown: false}}
+            />
+            {/* CUSTOMER FORM SUMMARY SCREEN */}
+            <Stack.Screen
+                name="CustomerFormSummaryScreen"
+                component={CustomerFormSummaryScreen}
+                options={{headerShown: false}}
+            />
+            {/* START REPAIR SCREEN */}
+            <Stack.Screen
+                name="StartRepairScreen"
+                component={StartRepairScreen}
+                options={{headerShown: false}}
+            />
+        </Stack.Navigator>
+    </NavigationContainer>
+);
 }
-
-{/*
-   <NavigationContainer>
-            <Stack.Navigator>
-                {/* LOGIN SCREEN */}
-                <Stack.Screen
-                    name="LoginScreen"
-                    component={LoginScreen}
-                    options={{headerShown: false}}
-                />
-                {/* MENU/HOME SCREEN */}
-                <Stack.Screen
-                    name="HomeScreen"
-                    component={HomeScreen}
-                    options={{headerShown: false}}
-                />
-                {/* CUSTOMER FORM SCREEN */}
-                <Stack.Screen
-                    name="CustomerFormScreen"
-                    component={CustomerFormScreen}
-                    options={{headerShown: false}}
-                />
-                {/* CUSTOMER FORM SUMMARY SCREEN */}
-                <Stack.Screen
-                    name="CustomerFormSummaryScreen"
-                    component={CustomerFormSummaryScreen}
-                    options={{headerShown: false}}
-                />
-            </Stack.Navigator>
-        </NavigationContainer>
-        */}
