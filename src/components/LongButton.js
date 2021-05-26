@@ -61,7 +61,7 @@ const LongButton = (props) => {
   );
 };
 
-export default LongButton;
+
 
 const LongButtonStyles = StyleSheet.create({
   container: {
@@ -73,15 +73,22 @@ const LongButtonStyles = StyleSheet.create({
     borderRadius: 10,
     justifyContent: "space-between",
     backgroundColor: "#B7D381",
+    marginTop : 30,
   },
   imageContainer: {
     marginLeft: 30,
   },
   textContainer: {
-    width: "55%",
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    width: "40%",
+    marginRight : 190,
   },
   title: {
     fontSize: 20,
     fontWeight: "bold",
   },
 });
+
+export default LongButton;
