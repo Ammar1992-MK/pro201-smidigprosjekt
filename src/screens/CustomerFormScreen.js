@@ -3,39 +3,43 @@ import {View, Text, StyleSheet, TextInput, Button, TouchableOpacity, Image} from
 import {NextButton} from "../components/NextButton";
 import {BackButton} from "../components/BackButton";
 import CardCarousel from "../components/CardCarousel";
+import {NavigationBar} from "../components/NavigationBar/NavigationBar";
 
-export default function CustomerFormScreen() {
+export default function CustomerFormScreen({navigation}) {
+
     return (
-
-        <View style={styles.container}>
-            <Text style={styles.inputHeaders}>Customer Name</Text>
-            <TextInput style={styles.input} />
-            <Text style={styles.inputHeaders}>Customer Phone Number</Text>
-            <TextInput style={styles.input}/>
-            <Text style={styles.inputHeaders}>Choose Lamp</Text>
-            <View>
-                <CardCarousel/>
-            </View>
-            <Text style={styles.inputHeaders}>Enter Serial Number</Text>
-            <View style={styles.serialInputContainer}>
+        <>
+            <NavigationBar navigation={navigation}/>
+            <View style={styles.container}>
+                <Text style={styles.inputHeaders}>Customer Name</Text>
                 <TextInput style={styles.input}/>
-                <TouchableOpacity>
-                    <View style={styles.qrButton}>
-                        <Image source={require("../../assets/icons/qr_code_scanner.png")}/>
-                    </View>
-                </TouchableOpacity>
+                <Text style={styles.inputHeaders}>Customer Phone Number</Text>
+                <TextInput style={styles.input}/>
+                <Text style={styles.inputHeaders}>Choose Lamp</Text>
+                <View>
+                    <CardCarousel/>
+                </View>
+                <Text style={styles.inputHeaders}>Enter Serial Number</Text>
+                <View style={styles.serialInputContainer}>
+                    <TextInput style={styles.input}/>
+                    <TouchableOpacity>
+                        <View style={styles.qrButton}>
+                            <Image source={require("../../assets/icons/qr_code_scanner.png")}/>
+                        </View>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.navButtons}>
+                    <BackButton/>
+                    <NextButton/>
+                </View>
             </View>
-            <View style={styles.navButtons}>
-                <BackButton/>
-                <NextButton/>
-            </View>
-        </View>
-    );
+        </>
+            );
 };
 
 const styles = StyleSheet.create({
     container: {
-      backgroundColor: '#F3F8E9',
+        backgroundColor: '#F3F8E9',
         flex: 1,
         paddingLeft: '8%',
     },
