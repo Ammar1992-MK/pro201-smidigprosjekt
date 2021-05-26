@@ -14,9 +14,12 @@ import CustomerFormScreen from "./src/screens/CustomerFormScreen";
 //Components
 import {NextButton} from "./src/components/NextButton";
 import {BackButton} from "./src/components/BackButton";
+import StartRepairScreen from "./src/screens/StartRepairScreen";
+import LongButton from "./src/components/LongButton";
 
 export default function App() {
     return (
+
         <NavigationContainer>
             <Stack.Navigator>
                 <Stack.Screen name="LoginScreen" component={LoginScreen} options={{headerShown: false}}/>
@@ -28,5 +31,10 @@ export default function App() {
                 />
             </Stack.Navigator>
         </NavigationContainer>
+
     );
 }
+
+{/*
+
+        */}

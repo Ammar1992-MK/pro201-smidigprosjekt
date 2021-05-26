@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react";
 
-const CreateNewRepair = ({setCustomer, setSelectedLamp})=>{
-    return null
+const CreateNewRepair = ({ setCustomer, setSelectedLamp }) => {
+  return null;
 };
 
 export default CreateNewRepair;
