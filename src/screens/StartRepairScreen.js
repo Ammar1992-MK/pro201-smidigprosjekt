@@ -1,19 +1,75 @@
-import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  Modal,
+  TouchableOpacity,
+} from "react-native";
 import { NavigationBar } from "../components/NavigationBar/NavigationBar";
 import LongButton from "../components/LongButton";
-const StartRepairScreen = ({lamp, customer}) => {
+const StartRepairScreen = ({ lamp, customer, navigation }) => {
+  const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <View style={StartRepairScreenStyles.container}>
       <NavigationBar />
+      <Modal animation={"fade"} transparent={true} visible={modalVisible}>
+        <View style={StartRepairScreenStyles.centeredModal}>
+          <View style={StartRepairScreenStyles.modalHeader}>
+            <View style={StartRepairScreenStyles.modalTitleContainer}>
+              <Text style={StartRepairScreenStyles.modalTitle}>
+                Can not repair?
+              </Text>
+            </View>
+            <TouchableOpacity onPress={() => setModalVisible(false)}>
+              <View>
+                <Image
+                  style={StartRepairScreenStyles.modalCloseIcon}
+                  source={require("../../assets/icons/close.png")}
+                />
+              </View>
+            </TouchableOpacity>
+          </View>
+          <View style={StartRepairScreenStyles.modalBrokenLampContainer}>
+            <Image
+              style={StartRepairScreenStyles.brokenLamp}
+              source={require("../../assets/product-images/broken_sunbell.png")}
+            />
+            <Image
+              style={StartRepairScreenStyles.redWrench}
+              source={require("../../assets/icons/wrench_red_bg.png")}
+            />
+          </View>
+          <View style={StartRepairScreenStyles.modalButtonsContainer}>
+            <TouchableOpacity
+              style={StartRepairScreenStyles.modalBackButton}
+              onPress={() => setModalVisible(false)}
+            >
+              <View>
+                <Text style={StartRepairScreenStyles.modalBackText}>BACK</Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity style={StartRepairScreenStyles.modalTrashButton}>
+              <View>
+                <Text style={StartRepairScreenStyles.modalTrashText}>
+                  YES - TRASH
+                </Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
       <View style={StartRepairScreenStyles.lampContainer}>
+        {/* Image */}
         <View style={StartRepairScreenStyles.lampImageContainer}>
           <Image
             style={StartRepairScreenStyles.image}
             source={require("../../assets/product-images/sunbell-smart-1.png")}
           />
         </View>
+        {/* Lamp and user info */}
         <View style={StartRepairScreenStyles.lampInfoContainer}>
           <View style={StartRepairScreenStyles.lampInfo}>
             <Text style={StartRepairScreenStyles.text}>REPAIR ID</Text>
@@ -35,9 +91,25 @@ const StartRepairScreen = ({lamp, customer}) => {
           </View>
         </View>
       </View>
-        <LongButton  title={"REPAIR"} icon={"repair"} textColor={"primary_teal"} backgroundColor={"primary_green"}/>
-        <LongButton  title={"CAN NOT REPAIR"}  textColor={"white"} backgroundColor={"red"}/>
-        <LongButton  title={"TROUBLESHOOT GUIDE"} icon={"learn"} textColor={"white"} backgroundColor={"primary_teal"}/>
+      {/* Buttons */}
+      <LongButton
+        title={"REPAIR"}
+        icon={"repair"}
+        textColor={"primary_teal"}
+        backgroundColor={"primary_green"}
+      />
+      <LongButton
+        title={"CAN NOT REPAIR"}
+        textColor={"white"}
+        backgroundColor={"red"}
+        onPress={() => setModalVisible(true)}
+      />
+      <LongButton
+        title={"TROUBLESHOOT GUIDE"}
+        icon={"learn"}
+        textColor={"white"}
+        backgroundColor={"primary_teal"}
+      />
     </View>
   );
 };
@@ -51,6 +123,118 @@ const StartRepairScreenStyles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "center",
   },
+  centeredModal: {
+    width: "80%",
+    height: "50%",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    backgroundColor: "#fff",
+    marginTop: 255,
+    marginLeft: 77,
+    borderColor: "#7a7a7a",
+    borderWidth: 2,
+    borderRadius: 10,
+  },
+  modal: {
+    width: "80%",
+    height: "50%",
+    backgroundColor: "#fff",
+  },
+  modalHeader: {
+    width: "100%",
+    height: "10%",
+    display: "flex",
+    alignItems: "center",
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  modalCloseIcon: {
+    width: 45,
+    height: 45,
+  },
+  modalTitleContainer: {
+    width: "60%",
+    height: "100%",
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    marginLeft: 120,
+  },
+
+  modalTitle: {
+    color: "#000",
+    fontSize: 30,
+    fontWeight: "bold",
+  },
+
+  modalBrokenLampContainer: {
+    width: "50%",
+    height: "65%",
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    borderColor: "#174A5B",
+    borderWidth: 1,
+    borderRadius: 10,
+  },
+
+  brokenLamp: {
+    width: "60%",
+    height: "90%",
+  },
+
+  redWrench: {
+    width: "15%",
+    height: "15%",
+    marginTop: 200,
+  },
+
+  modalBackButton: {
+    width: "30%",
+    height: "70%",
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    borderColor: "#174A5B",
+    borderWidth: 3,
+    borderRadius: 10,
+  },
+
+  modalBackText: {
+    color: "#174A5B",
+    fontWeight: "bold",
+    fontSize: 30,
+  },
+  modalTrashButton: {
+    width: "50%",
+    height: "70%",
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#CB333B",
+    borderRadius: 10,
+  },
+
+  modalTrashText: {
+    color: "#fff",
+    fontWeight: "bold",
+    fontSize: 30,
+  },
+  modalButtonsContainer: {
+    width: "100%",
+    height: "20%",
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    marginTop: 15,
+  },
+
   lampContainer: {
     margin: 30,
     width: "90%",
@@ -106,13 +290,13 @@ const StartRepairScreenStyles = StyleSheet.create({
     width: "60%",
     height: "100%",
   },
-  buttonsContainer : {
-    display : 'flex',
-    flexDirection : "column",
-    alignItems : 'center',
-    justifyContent : "space-around",
-    width : '100%',
-    height : '30%',
-    backgroundColor : "blue"
+  buttonsContainer: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-around",
+    width: "100%",
+    height: "30%",
+    backgroundColor: "blue",
   },
 });

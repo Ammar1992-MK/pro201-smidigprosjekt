@@ -66,8 +66,6 @@ const LongButton = (props) => {
   );
 };
 
-
-
 const LongButtonStyles = StyleSheet.create({
   container: {
     width: "80%",
@@ -78,17 +76,17 @@ const LongButtonStyles = StyleSheet.create({
     borderRadius: 10,
     justifyContent: "space-between",
     backgroundColor: "#B7D381",
-    marginTop : 30,
+    marginTop: 30,
   },
   imageContainer: {
     marginLeft: 30,
   },
   textContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
     width: "40%",
-    marginRight : 190,
+    marginRight: 190,
   },
   title: {
     fontSize: 20,

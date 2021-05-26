@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from "react";
 import CreateNewRepair from "./CreateNewRepair";
 import SetRepairAction from "./SetRepairAction";
 import CompleteRepair from "./CompleteRepair";
@@ -36,25 +36,36 @@ customer: {
 chosen_action: liste med komponenter eller string 'DISCARD'.
 */
 
+const RepairFlowScreen = ({ selected_lamp, cust }) => {
+  const [step, setStep] = useState();
+  const [selected_lamp, setSelected_lamp] = useState(selected_lamp);
+  const [customer, setCustomer] = useState(cust);
+  const [chosen_action, setChosen_action] = useState();
 
+  //TODO Hente ut lampe og komponent data fra localstorage
 
-const RepairFlowScreen = ({selected_lamp, cust})=> {
-    const [step, setStep] = useState();
-    const [selected_lamp, setSelected_lamp] = useState(selected_lamp);
-    const [customer, setCustomer] = useState(cust);
-    const [chosen_action, setChosen_action] = useState();
-
-    //TODO Hente ut lampe og komponent data fra localstorage
-
-    if(step === "create"){
-        return <CreateNewRepair setCustomer={setCustomer} setSelectedLamp={setSelected_lamp}/>
-    }
-
-    else if(step === "set_action" && selected_lamp !== null){
-        return <SetRepairAction customer={customer} selected_lamp={selected_lamp} setChosenAction={setChosen_action}/>
-    }
-
-    else if(step === "complete_repair" && chosen_action !== null){
-        return <CompleteRepair customer={customer} selected_lamp={selected_lamp} chosen_action={chosen_action}/>
-    }
-}
+  if (step === "create") {
+    return (
+      <CreateNewRepair
+        setCustomer={setCustomer}
+        setSelectedLamp={setSelected_lamp}
+      />
+    );
+  } else if (step === "set_action" && selected_lamp !== null) {
+    return (
+      <SetRepairAction
+        customer={customer}
+        selected_lamp={selected_lamp}
+        setChosenAction={setChosen_action}
+      />
+    );
+  } else if (step === "complete_repair" && chosen_action !== null) {
+    return (
+      <CompleteRepair
+        customer={customer}
+        selected_lamp={selected_lamp}
+        chosen_action={chosen_action}
+      />
+    );
+  }
+};
