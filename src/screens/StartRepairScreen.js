@@ -52,7 +52,10 @@ const StartRepairScreen = ({ lamp, customer, navigation }) => {
               </View>
             </TouchableOpacity>
             <TouchableOpacity style={StartRepairScreenStyles.modalTrashButton}>
-              <View>
+              <View style={StartRepairScreenStyles.trashButtonContainer}>
+                <View style={StartRepairScreenStyles.trashIconContainer}>
+                  <Image style={StartRepairScreenStyles.trashIcon} source={require('../../assets/icons/trash_red_bg.png')}/>
+                </View>
                 <Text style={StartRepairScreenStyles.modalTrashText}>
                   YES - TRASH
                 </Text>
@@ -220,10 +223,31 @@ const StartRepairScreenStyles = StyleSheet.create({
     borderRadius: 10,
   },
 
+  trashButtonContainer : {
+    width :'100%',
+    height : '100%',
+    display : 'flex',
+    flexDirection : 'row',
+    alignItems : 'center',
+    justifyContent : 'space-evenly',
+  },
+
   modalTrashText: {
     color: "#fff",
     fontWeight: "bold",
     fontSize: 30,
+  },
+
+  trashIcon : {
+    width : '80%',
+    height : '80%',
+  },
+  trashIconContainer : {
+    width :'10%',
+    height : '100%',
+    display : 'flex',
+    flexDirection :'row',
+    alignItems :'center',
   },
   modalButtonsContainer: {
     width: "100%",
