@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import {StyleSheet, Text, View, Image, TouchableOpacity, } from "react-native";
+import React from "react";
+import {StyleSheet, Text, View, Image, TouchableOpacity,} from "react-native";
 
 export const HomeScreenButton = (props) => {
 
@@ -28,7 +28,7 @@ export const HomeScreenButton = (props) => {
         <TouchableOpacity style={HomeScreenButtonStyle.container} onPress={props.onPress}>
             <View style={HomeScreenButtonStyle.button}>
                 <View style={HomeScreenButtonStyle.innerContainer}>
-                    <Image style={HomeScreenButtonStyle.icon}  source={icon}/>
+                    <Image style={HomeScreenButtonStyle.icon} source={icon}/>
                     <Text style={HomeScreenButtonStyle.title}>{props.title}</Text>
                 </View>
             </View>

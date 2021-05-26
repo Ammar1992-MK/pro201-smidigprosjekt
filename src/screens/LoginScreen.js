@@ -54,6 +54,7 @@ const LoginScreenStyles = StyleSheet.create({
         flex: 0.75,
         justifyContent: 'center',
         alignItems: 'center',
+        marginTop: -100
     },
     inputFields: {
         justifyContent: 'center',
