@@ -7,11 +7,11 @@ import CardSmall from "../components/CardSmall";
 import {HomeScreenButton} from "../components/HomeScreenButton"
 import {BrightTitle} from "../components/BrightTitle";
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
     return (
         <View style={HomeScreenStyles.container}>
             <BrightTitle/>
-            <HomeScreenButton icon={"add"} title={"ADD NEW"}/>
+            <HomeScreenButton icon={"add"} title={"ADD NEW"} onPress={() => navigation.navigate('CustomerFormScreen')}/>
             <HomeScreenButton icon={"search"} title={"SEARCH"}/>
             <HomeScreenButton icon={"upload"} title={"UPLOAD"}/>
             <HomeScreenButton icon={"school"} title={"LEARN"}/>
