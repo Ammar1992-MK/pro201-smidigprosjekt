@@ -1,6 +1,5 @@
-import react, {useState} from 'react'
+import React, {useState} from 'react'
 import CreateNewRepair from "./CreateNewRepair";
-import React from "react";
 import SetRepairAction from "./SetRepairAction";
 import CompleteRepair from "./CompleteRepair";
 /*
