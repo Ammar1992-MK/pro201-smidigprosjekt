@@ -1,8 +1,8 @@
-import * as React from 'react';
-import {StyleSheet, Text, View, Button} from "react-native";
+import * as React from "react";
+import { StyleSheet, Text, View, Button } from "react-native";
 
 //Components
-import {NavigationHomeButton} from "./NavigationHomeButton";
+import { NavigationHomeButton } from "./NavigationHomeButton";
 
 export const NavigationBar = ({navigation}) => {
     return (

@@ -15,9 +15,12 @@ import CustomerFormSummaryScreen from "./src/screens/CustomerFormSummaryScreen";
 //Components
 import {NextButton} from "./src/components/NextButton";
 import {BackButton} from "./src/components/BackButton";
+import StartRepairScreen from "./src/screens/StartRepairScreen";
+import LongButton from "./src/components/LongButton";
 
 export default function App() {
     return (
+
         <NavigationContainer>
             <Stack.Navigator>
                 {/* LOGIN SCREEN */}
@@ -46,5 +49,10 @@ export default function App() {
                 />
             </Stack.Navigator>
         </NavigationContainer>
+
     );
 }
+
+{/*
+
+        */}

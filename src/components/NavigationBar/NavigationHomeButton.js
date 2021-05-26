@@ -1,19 +1,25 @@
-import * as React from 'react';
+import * as React from "react";
 import {View, TouchableOpacity, Image} from "react-native";
 
-export const NavigationHomeButton = ({navigation, style}) => {
+
+export const NavigationHomeButton = ({navigation}) => {
     const HomeImage = () => {
         return (
-            <Image source={require('../../../assets/icons/house_with_text.png')}/>
-        )
-    }
+            <View >
+                <TouchableOpacity onPress={() => navigation.navigate('HomeScreen')}>
+                    <Image source={require("../../../assets/icons/house_with_text.png")}/>
+                </TouchableOpacity>
+
+            </View>
+    )
+        ;
+    };
 
     return (
-        <View style={style}>
-            <TouchableOpacity onPress={() => navigation.navigate('HomeScreen')}>
-                <HomeImage />
+        <View>
+            <TouchableOpacity onPress={() => navigation.navigate("LoginScreen")}>
+                <HomeImage/>
             </TouchableOpacity>
         </View>
     );
-}
-
+};
