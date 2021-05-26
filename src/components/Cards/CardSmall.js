@@ -18,7 +18,7 @@ const CardSmall = ({lampName, image}) => {
 const CardSmallStyles = StyleSheet.create({
     container: {
         backgroundColor: '#fff',
-        marginTop: 100,
+        marginTop: 30,
         alignItems: 'center',
         borderWidth: 1,
         borderColor: '#fff',

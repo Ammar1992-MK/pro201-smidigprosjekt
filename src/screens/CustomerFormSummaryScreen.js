@@ -5,15 +5,16 @@ import {NavigationBar} from "../components/NavigationBar/NavigationBar";
 import CardSmall from "../components/Cards/CardSmall";
 import LongButton from "../components/LongButton";
 
-const InputField = ({title, textInput}) => {
+const FilledInputField = ({title, textInput}) => {
     const styles = StyleSheet.create({
         input: {
             backgroundColor: '#ffffff',
             fontSize: 30,
             borderWidth: 3,
-            borderColor: '#828384',
+            borderColor: '#00966C',
             borderRadius: 10,
-            color: "grey"
+            color: "#2C2A29",
+            paddingLeft: 10
         },
         inputHeaders: {
             color: '#174A5B',
@@ -29,7 +30,7 @@ const InputField = ({title, textInput}) => {
     );
 }
 //textInput er "objektet" med all informasjonen som brukeren fylte inn i formen på forrige skjerm
-//Tenkte at vi kan gi disse verdiene til <InputField />, også gjøre det umulige å redigere på de
+//Tenkte at vi kan gi disse verdiene til <FilledInputField />, også gjøre det umulige å redigere på de
 //Vi må vel sjekke etter internett her
 // Hvis bruker velger å trykke på start repair må de sendes videre til neste skjerm, hvis de trykker save må vi lagre informasjonen lokalt
 
@@ -42,15 +43,15 @@ const CustomerFormSummaryScreen = ({navigation}) => {
         },
         summaryContainer: {
             flexDirection: 'row',
-            marginBottom: 100
+            marginBottom: 30
         },
         inputFields: {
             flexDirection: 'column',
             width: "50%",
         },
         buttonContainer: {
-            height: "60%",
-            alignItems: 'center'
+            height: "100%",
+            alignItems: 'center',
         }
     });
 
@@ -59,11 +60,11 @@ const CustomerFormSummaryScreen = ({navigation}) => {
             <NavigationBar navigation={navigation}/>
             <View styles={styles.container}>
                 <View style={styles.summaryContainer}>
-                    <CardSmall/>
+                    <CardSmall lampName="SUNBELL SMART"/>
                     <View style={styles.inputFields}>
-                        <InputField textInput={"123 456 789"} title={"Phone Number"}/>
-                        <InputField textInput={"1223-4442-12"}  title={"Serial Number"}/>
-                        <InputField textInput={"Janky Johanski"} title={"Name"}/>
+                        <FilledInputField textInput={"123 456 789"} title={"Phone Number"}/>
+                        <FilledInputField textInput={"1223-4442-12"}  title={"Serial Number"}/>
+                        <FilledInputField textInput={"Janky Johanski"} title={"Name"}/>
                     </View>
                 </View>
                 <View style={styles.buttonContainer}>

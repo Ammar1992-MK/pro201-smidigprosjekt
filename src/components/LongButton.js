@@ -6,6 +6,8 @@ const LongButton = (props) => {
   const learn = require("../../assets/icons/learn_white.png");
   const save = require("../../assets/icons/save.png");
   const repair = require("../../assets/icons/wrench_grren_bg.png");
+  const whiteRepair = require("../../assets/icons/wrench_white.png");
+
   let icon;
   let textColor;
   let backgroundColor;
@@ -22,6 +24,9 @@ const LongButton = (props) => {
       break;
     case "repair":
       icon = repair;
+      break;
+    case "whiteRepair":
+      icon = whiteRepair;
       break;
   }
   switch (props.textColor) {
