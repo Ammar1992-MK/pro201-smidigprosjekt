@@ -20,16 +20,27 @@ export default function CustomerFormScreen({navigation}) {
             <NavigationBar navigation={navigation}/>
             <ScrollView style={styles.container}>
                 <Text style={styles.inputHeaders}>Customer Name</Text>
-                <TextInput style={styles.input}/>
+                <TextInput
+                    style={styles.input}
+                    onChangeText={text => setCustomerName(text)}
+                />
+
                 <Text style={styles.inputHeaders}>Customer Phone Number</Text>
-                <TextInput style={styles.input}/>
+                <TextInput
+                    style={styles.input}
+                    onChangeText={text => setPhoneNumber(text)}
+                />
+
                 <Text style={styles.inputHeaders}>Choose Lamp</Text>
                 <View>
                     <CardCarousel/>
                 </View>
                 <Text style={styles.inputHeaders}>Enter Serial Number</Text>
                 <View style={styles.serialInputContainer}>
-                    <TextInput style={styles.input}/>
+                    <TextInput
+                        style={styles.input}
+                        onChangeText={text => setSerialNumber(text)}
+                    />
                     <TouchableOpacity>
                         <View style={styles.qrButton}>
                             <Image source={require("../../assets/icons/qr_code_scanner.png")}/>
@@ -38,7 +49,14 @@ export default function CustomerFormScreen({navigation}) {
                 </View>
                 <View style={styles.navButtons}>
                     <BackButton/>
-                    <NextButton onPress={() => navigation.navigate('CustomerFormSummaryScreen')}/>
+                    <NextButton onPress={() => {
+
+                        navigation.navigate('CustomerFormSummaryScreen', {
+                            customerName: customerName,
+                            phoneNumber: phoneNumber,
+                            serialNumber: serialNumber
+                        })
+                    }}/>
                 </View>
             </ScrollView>
         </>

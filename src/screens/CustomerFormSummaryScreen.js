@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 
-import {View, Text, StyleSheet, TextInput} from "react-native";
+import {View, Text, StyleSheet, TextInput, Alert} from "react-native";
 import {NavigationBar} from "../components/NavigationBar/NavigationBar";
 import CardSmall from "../components/Cards/CardSmall";
 import LongButton from "../components/LongButton";
@@ -34,7 +34,16 @@ const FilledInputField = ({title, textInput}) => {
 //Vi må vel sjekke etter internett her
 // Hvis bruker velger å trykke på start repair må de sendes videre til neste skjerm, hvis de trykker save må vi lagre informasjonen lokalt
 
-const CustomerFormSummaryScreen = ({navigation}) => {
+const CustomerFormSummaryScreen = ({navigation, route}) => {
+    //Userdata will contain what the user input  in an object
+    const [userData, setUserData] = useState({});
+
+    const {customerName, phoneNumber, serialNumber} = route.params;
+
+    useEffect(() => {
+        setUserData({customerName, phoneNumber, serialNumber})
+    }, [])
+
     const styles = StyleSheet.create({
         container: {
             flex: 1,
@@ -62,9 +71,9 @@ const CustomerFormSummaryScreen = ({navigation}) => {
                 <View style={styles.summaryContainer}>
                     <CardSmall lampName="SUNBELL SMART"/>
                     <View style={styles.inputFields}>
-                        <FilledInputField textInput={"123 456 789"} title={"Phone Number"}/>
-                        <FilledInputField textInput={"1223-4442-12"}  title={"Serial Number"}/>
-                        <FilledInputField textInput={"Janky Johanski"} title={"Name"}/>
+                        <FilledInputField textInput={userData.customerName} title={"Phone Number"}/>
+                        <FilledInputField textInput={userData.phoneNumber}  title={"Serial Number"}/>
+                        <FilledInputField textInput={userData.serialNumber} title={"Name"}/>
                     </View>
                 </View>
                 <View style={styles.buttonContainer}>
