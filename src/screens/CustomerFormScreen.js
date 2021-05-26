@@ -29,7 +29,7 @@ export default function CustomerFormScreen({navigation}) {
                 </View>
                 <View style={styles.navButtons}>
                     <BackButton/>
-                    <NextButton/>
+                    <NextButton onPress={() => navigation.navigate('CustomerFormSummaryScreen')}/>
                 </View>
             </View>
         </>

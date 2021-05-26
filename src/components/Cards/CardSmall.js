@@ -29,7 +29,7 @@ const CardSmallStyles = StyleSheet.create({
         shadowOpacity: 0.8,
         shadowRadius: 2,
         elevation: 10,
-        margin: 50,
+        margin: 20
     },
     text: {
         backgroundColor: '#174A5B',
