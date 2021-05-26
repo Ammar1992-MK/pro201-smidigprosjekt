@@ -13,7 +13,6 @@ export default function LoginScreen({navigation}) {
     return (
         <View style={LoginScreenStyles.container}>
             <BrightTitle />
-
             <View style={LoginScreenStyles.inputContainer}>
             <Text style={LoginScreenStyles.title}>User ID</Text>
                 <TextInput

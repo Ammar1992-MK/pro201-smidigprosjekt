@@ -6,7 +6,6 @@ import CardCarousel from "../components/CardCarousel";
 import {NavigationBar} from "../components/NavigationBar/NavigationBar";
 
 export default function CustomerFormScreen({navigation}) {
-
     return (
         <>
             <NavigationBar navigation={navigation}/>

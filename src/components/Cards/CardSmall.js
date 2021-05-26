@@ -9,7 +9,7 @@ const CardSmall = ({lampName, image}) => {
             <Text style={CardSmallStyles.text}>{lampName || "LAMP NAME"}</Text>
             <Image
                 style={CardSmallStyles.image}
-                source={require('../../assets/product-images/sunbell-smart-1.png')}/>
+                source={require('../../../assets/product-images/sunbell-smart-1.png')}/>
             {/* We need to dynamically change the pictures here? */}
         </View>
     )

@@ -2,7 +2,7 @@ import React from 'react';
 import {Alert, StyleSheet, Text, View, Image, TouchableOpacity} from "react-native";
 
 
-//Image in the top left corner
+//Clickable icon in the top left corner
 const CloseImage = ({setShowUserMenu}) => {
     return (
         <View>
@@ -13,6 +13,7 @@ const CloseImage = ({setShowUserMenu}) => {
     )
 }
 
+//User image in the top right corner
 const UserImage = () => {
     return (
         <View>
@@ -23,6 +24,7 @@ const UserImage = () => {
     )
 }
 
+//Signout button
 const SignOutButton = ({navigation}) => {
     const styles = StyleSheet.create({
         container: {
@@ -52,6 +54,7 @@ const SignOutButton = ({navigation}) => {
     )
 }
 
+//Usermenu
 export const UserMenu = ({setShowUserMenu, navigation}) => {
     return (
         <View style={{

@@ -2,7 +2,7 @@ import * as React from "react";
 import {StyleSheet, ScrollView} from "react-native";
 
 import CarouselCard from './CarouselCard';
-import CardSmall from "./CardSmall";
+import CardSmall from "./Cards/CardSmall";
 
 const CardCarousel = () => {
     return (

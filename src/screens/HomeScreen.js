@@ -9,7 +9,6 @@ import {BrightTitle} from "../components/BrightTitle";
 import {UserMenu} from "../components/UserMenu/UserMenu";
 import {UserButton} from "../components/UserMenu/UserButton";
 
-
 const HomeScreen = ({navigation}) => {
 
     //Boolean to toggle the view which contains the user
