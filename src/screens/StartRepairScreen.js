@@ -1,7 +1,9 @@
 import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { NavigationBar } from "../components/NavigationBar/NavigationBar";
-const StartRepairScreen = () => {
+import LongButton from "../components/LongButton";
+const StartRepairScreen = ({lamp, customer}) => {
+
   return (
     <View style={StartRepairScreenStyles.container}>
       <NavigationBar />
@@ -33,6 +35,9 @@ const StartRepairScreen = () => {
           </View>
         </View>
       </View>
+        <LongButton  title={"REPAIR"} icon={"repair"} textColor={"primary_teal"} backgroundColor={"primary_green"}/>
+        <LongButton  title={"CAN NOT REPAIR"}  textColor={"white"} backgroundColor={"red"}/>
+        <LongButton  title={"TROUBLESHOOT GUIDE"} icon={"learn"} textColor={"white"} backgroundColor={"primary_teal"}/>
     </View>
   );
 };
@@ -100,5 +105,14 @@ const StartRepairScreenStyles = StyleSheet.create({
   image: {
     width: "60%",
     height: "100%",
+  },
+  buttonsContainer : {
+    display : 'flex',
+    flexDirection : "column",
+    alignItems : 'center',
+    justifyContent : "space-around",
+    width : '100%',
+    height : '30%',
+    backgroundColor : "blue"
   },
 });

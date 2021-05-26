@@ -21,7 +21,13 @@ import LongButton from "./src/components/LongButton";
 export default function App() {
     return (
 
-        <NavigationContainer>
+     <StartRepairScreen/>
+
+    );
+}
+
+{/*
+   <NavigationContainer>
             <Stack.Navigator>
                 {/* LOGIN SCREEN */}
                 <Stack.Screen
@@ -49,10 +55,4 @@ export default function App() {
                 />
             </Stack.Navigator>
         </NavigationContainer>
-
-    );
-}
-
-{/*
-
         */}
