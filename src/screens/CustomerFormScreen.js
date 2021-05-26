@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
     navButtons: {
         flex: 1,
         flexDirection: 'row',
+        justifyContent: 'space-evenly',
         alignContent: 'center'
     },
 });

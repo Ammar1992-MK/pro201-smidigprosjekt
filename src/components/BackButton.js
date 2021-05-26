@@ -25,11 +25,13 @@ export const BackButton = ({ onPress }) => {
 const BackButtonStyles = StyleSheet.create({
   container: {
     width: "30%",
-    height: "10%",
+    height: "60%",
     borderRadius: 10,
+    marginTop: 25,
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
+    marginRight: "auto",
     backgroundColor: "#174A5B",
   },
   innerContainer: {
