@@ -38,9 +38,7 @@ const FilledInputField = ({title, textInput}) => {
 // Hvis bruker velger å trykke på start repair må de sendes videre til neste skjerm, hvis de trykker save må vi lagre informasjonen lokalt
 
 const CustomerFormSummaryScreen = ({navigation, route}) => {
-    //Userdata will contain what the user input  in an object
     const [userData, setUserData] = useState({});
-
     const {customerName, phoneNumber, serialNumber} = route.params;
 
     useEffect(() => {
@@ -66,7 +64,6 @@ const CustomerFormSummaryScreen = ({navigation, route}) => {
             alignItems: 'center',
         }
     });
-
 
     return (
         <>
