@@ -100,6 +100,7 @@ const StartRepairScreen = ({ lamp, customer, navigation }) => {
         icon={"repair"}
         textColor={"primary_teal"}
         backgroundColor={"primary_green"}
+        onPress={()=> navigation.navigate('SelectPartsScreen')}
       />
       <LongButton
         title={"CAN NOT REPAIR"}

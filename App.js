@@ -17,6 +17,7 @@ import {NextButton} from "./src/components/NextButton";
 import {BackButton} from "./src/components/BackButton";
 import StartRepairScreen from "./src/screens/StartRepairScreen";
 import LongButton from "./src/components/LongButton";
+import SelectPartsScreen from "./src/screens/SelectPartsScreen";
 
 export default function App() {
     return (
@@ -51,6 +52,10 @@ export default function App() {
                 name="StartRepairScreen"
                 component={StartRepairScreen}
                 options={{headerShown: false}}
+            />
+            <Stack.Screen
+                name="SelectPartsScreen"
+                component={SelectPartsScreen}
             />
         </Stack.Navigator>
     </NavigationContainer>
