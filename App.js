@@ -9,7 +9,9 @@ import LoginScreen from './src/screens/LoginScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import CustomerFormScreen from "./src/screens/CustomerFormScreen";
 import CustomerFormSummaryScreen from "./src/screens/CustomerFormSummaryScreen";
+
 import StartRepairScreen from "./src/screens/StartRepairScreen";
+import SelectPartsScreen from "./src/screens/SelectPartsScreen";
 import StartRepairSummaryScreen from "./src/screens/StartRepairSummaryScreen";
 
 
@@ -51,6 +53,12 @@ export default function App() {
                 <Stack.Screen
                     name="StartRepairSummaryScreen"
                     component={StartRepairSummaryScreen}
+                    options={{headerShown: false}}
+                />
+                {/* SELECT PARTS SCREEN (WHERE YOU HAVE A LIST OF SPARE PARTS) */}
+                <Stack.Screen
+                    name="SelectPartsScreen"
+                    component={SelectPartsScreen}
                     options={{headerShown: false}}
                 />
             </Stack.Navigator>

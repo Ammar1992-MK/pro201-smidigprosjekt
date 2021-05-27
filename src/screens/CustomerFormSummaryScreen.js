@@ -39,6 +39,7 @@ const FilledInputField = ({title, textInput}) => {
 
 const CustomerFormSummaryScreen = ({navigation, route}) => {
     const [userData, setUserData] = useState({});
+
     const {customerName, phoneNumber, serialNumber} = route.params;
 
     useEffect(() => {
