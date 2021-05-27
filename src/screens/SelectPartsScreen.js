@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from 'react';
 
-import {Text,View, StyleSheet,ScrollView,Image} from "react-native";
+import {Text,View, StyleSheet,ScrollView,Image,TouchableOpacity} from "react-native";
 
 //COMPONENTS
 import SelectedLampSummary from "../components/SelectedLampSummary";
@@ -10,8 +10,37 @@ import LongButton from "../components/LongButton";
 
 const SelectPartsScreen = ({navigation, route}) => {
     const [userData, setUserData] = useState({});
+    const [addedIcon, setAddedIcon] = useState();
 
     const {data} = route.params;
+
+    const imageArray = [
+        require('../../assets/product-images/battery.png'),
+        require('../../assets/product-images/circuit_card.png'),
+        require('../../assets/product-images/cogs.png'),
+        require('../../assets/product-images/light_bulb.png')
+    ]
+
+    const handleSelectParts = (e) => {
+        if(addedIcon){
+            setAddedIcon(false)
+        }else {
+            setAddedIcon(true);
+        }
+    }
+
+    const renderImageIntoScrollView = (image,index) => {
+
+        return(
+            <TouchableOpacity key={index} style={styles.partImageContainer} onPress={e => handleSelectParts(e)}>
+                <Image style={styles.partImage} source={image}/>
+                <View style={styles.addIconContainer}>
+                    <Image style={addedIcon ? {display :'flex'} : {display: 'none'}} source={require('../../assets/icons/done_teal.png')}/>
+                </View>
+            </TouchableOpacity>
+        )
+    }
+
 
     useEffect(() => {
         setUserData(data);
@@ -29,22 +58,9 @@ const SelectPartsScreen = ({navigation, route}) => {
                     <Text style={styles.scrollHeaderTitle}>SELECT PART</Text>
                     <Image style={styles.repairIcon} source={require('../../assets/icons/wrench_grren_bg.png')}/>
                 </View>
-                <View style={styles.firstRow}>
-                    <Image style={styles.partImage} source={require('../../assets/product-images/battery.png')}/>
-                    <Image style={styles.partImage} source={require('../../assets/product-images/circuit_card.png')}/>
-                </View>
-                <View style={styles.secondRow}>
-                    <Image style={styles.partImage} source={require('../../assets/product-images/cogs.png')}/>
-                    <Image style={styles.partImage} source={require('../../assets/product-images/light_bulb.png')}/>
-                </View>
-                <View style={styles.firstRow}>
-                    <Image style={styles.partImage} source={require('../../assets/product-images/battery.png')}/>
-                    <Image style={styles.partImage} source={require('../../assets/product-images/circuit_card.png')}/>
-                </View>
-                <View style={styles.secondRow}>
-                    <Image style={styles.partImage} source={require('../../assets/product-images/cogs.png')}/>
-                    <Image style={styles.partImage} source={require('../../assets/product-images/light_bulb.png')}/>
-                </View>
+                {imageArray.map((image, index) =>
+                    renderImageIntoScrollView(image,index)
+                )}
             </ScrollView>
         </View>
     )
@@ -61,26 +77,10 @@ const styles = StyleSheet.create({
    },
     scrollContainer:{
         width : '80%',
+        height : '50%',
         display : 'flex',
         flexDirection: 'column',
         backgroundColor: '#fff',
-    },
-
-    firstRow: {
-
-       display:'flex',
-        flexDirection :'row',
-        width : '100%',
-        alignItems: 'center',
-        justifyContent : 'center',
-    },
-
-    secondRow : {
-        display:'flex',
-        flexDirection :'row',
-        width : '100%',
-        alignItems: 'center',
-        justifyContent : 'center',
     },
 
     partImage : {
@@ -118,4 +118,15 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 30,
     },
+    partImageContainer:{
+       display : 'flex',
+        flexDirection:'row',
+       width : '100%',
+        alignItems : 'center',
+    },
+    addIconContainer:{
+       width : '100%',
+      marginRight: 200,
+    },
+
 });
