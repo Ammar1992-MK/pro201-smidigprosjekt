@@ -1,28 +1,48 @@
-import React from 'react';
-import {Text, View, Image, StyleSheet} from "react-native";
+import React,{useState,useEffect} from 'react';
+import {Text, View,Image, StyleSheet} from "react-native";
 
-const SelectedLampSummary = () => {
+const SelectedLampSummary = ({lamp,wrench,index,data}) => {
+    const [lampImageVisible, setLampImageVisible] = useState(false);
+    const [partImageVisible, setPartImageVisible] = useState(false);
+    const [wrenchImageVisible, setWrenchImageVisible] = useState(false);
+
+
+ const handleImage = () => {
+
+     if(wrench){
+         setPartImageVisible(true);
+         setWrenchImageVisible(true);
+     } else {
+
+         setLampImageVisible(true)
+     }
+ }
+
+ useEffect(handleImage,[])
+
+
     return (
         <>
             <View style={SelectedLampSummaryStyles.container}>
                 <View style={SelectedLampSummaryStyles.indexContainer}>
-                    <Text style={SelectedLampSummaryStyles.indexText}>1</Text>
+                    <Text style={SelectedLampSummaryStyles.indexText}>{index}</Text>
                 </View>
                 <View style={SelectedLampSummaryStyles.lampImageContainer}>
-                    <Image style={SelectedLampSummaryStyles.selectedLampImage}
-                           source={require('../../assets/product-images/sunbell-smart-1.png')}/>
+                    <Image style={[SelectedLampSummaryStyles.selectedLampImage, lampImageVisible ? {display : 'flex'} : {display: 'none'}]} source={require('../../assets/product-images/sunbell-smart-1.png')}/>
+                    <Image style={[SelectedLampSummaryStyles.selectedPartImage, partImageVisible ? {display : 'flex'} : {display: 'none'}]} source={require('../../assets/product-images/battery.png')}/>
+                    <Image style={[SelectedLampSummaryStyles.greenWrench, wrenchImageVisible ? {display : 'flex'} : {display : 'none'}]} source={require('../../assets/icons/wrench_grren_bg.png')}/>
                 </View>
                 <View style={SelectedLampSummaryStyles.selectedLampInfoContainer}>
-                    <View style={SelectedLampSummaryStyles.selectedLampNameContainer}>
+                    <View>
                         <Text style={SelectedLampSummaryStyles.selectedLampName}>Sunbell Smart</Text>
                     </View>
-                    <View style={SelectedLampSummaryStyles.selectedLampRepairIdContainer}>
+                    <View>
                         <Text style={SelectedLampSummaryStyles.selectedLampRepairId}>REPAIR ID</Text>
                         <Text style={SelectedLampSummaryStyles.selectedLampRepairIdText}>FR2324</Text>
                     </View>
-                    <View style={SelectedLampSummaryStyles.selectedLampSerialNoContainer}>
+                    <View>
                         <Text style={SelectedLampSummaryStyles.selectedLampSerialNo}>SNR</Text>
-                        <Text style={SelectedLampSummaryStyles.selectedLampSerialNoText}>333-567-812</Text>
+                        <Text style={SelectedLampSummaryStyles.selectedLampSerialNoText}>{data.serialNumber}</Text>
                     </View>
                 </View>
             </View>
@@ -32,83 +52,94 @@ const SelectedLampSummary = () => {
 export default SelectedLampSummary;
 
 const SelectedLampSummaryStyles = StyleSheet.create({
-    container: {
-        width: '90%',
-        height: 200,
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        marginLeft: 40,
-        marginTop: 35,
-        borderColor: '#C3DC93',
-        borderWidth: 2,
-        borderRadius: 10,
-        backgroundColor: '#F3F8E9',
+
+    container : {
+        width : '90%',
+        height : '20%',
+        display : 'flex',
+        flexDirection :'row',
+        alignItems : 'center',
+        justifyContent : 'space-between',
+        marginTop : 30,
+        borderColor : '#C3DC93',
+        borderWidth : 2,
+        borderRadius : 10,
+        backgroundColor : '#F3F8E9',
     },
 
-    indexContainer: {
-        width: 40,
-        height: 40,
-        display: 'flex',
+    indexContainer : {
+        width : 40,
+        height : 40,
+        display : 'flex',
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#C3DC93',
-        borderRadius: 40 / 2,
+        backgroundColor : '#C3DC93',
+        borderRadius: 40/2,
         marginLeft: 30
     },
 
-    indexText: {
-        color: '#174A5B',
-        fontSize: 30,
+    indexText : {
+        color : '#174A5B',
+        fontSize : 30,
     },
 
-    lampImageContainer: {
-        width: '30%',
-        height: '90%',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
+    lampImageContainer : {
+        width : '30%',
+        height : '90%',
+        display : 'flex',
+        flexDirection: 'row',
+        alignItems : 'center',
+        justifyContent : 'space-between',
         backgroundColor: '#fff',
-        borderRadius: 10,
+        borderRadius : 10,
     },
 
-    selectedLampImage: {
-        width: '40%',
-        height: '100%',
+    selectedLampImage : {
+      width : '50%',
+        height : '100%',
+        marginLeft :50,
     },
 
-    selectedLampInfoContainer: {
-        width: '50%',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center'
+    selectedLampInfoContainer : {
+        width  :'50%',
+        display : 'flex',
+        flexDirection : 'column',
+        justifyContent :'center'
     },
 
-    selectedLampName: {
-        color: '#174A5B',
+    selectedLampName : {
+        color :'#174A5B',
         fontSize: 30,
-        fontWeight: 'bold'
+        fontWeight : 'bold'
 
     },
-    selectedLampRepairId: {
-        color: '#174A5B',
+    selectedLampRepairId : {
+        color :'#174A5B',
         fontSize: 20,
     },
-    selectedLampRepairIdText: {
-        color: '#174A5B',
+    selectedLampRepairIdText:{
+        color :'#174A5B',
         fontSize: 30,
-        fontWeight: 'bold'
+        fontWeight : 'bold'
     },
     selectedLampSerialNo: {
-        color: '#174A5B',
+        color :'#174A5B',
         fontSize: 20,
     },
-    selectedLampSerialNoText: {
-        color: '#174A5B',
+    selectedLampSerialNoText : {
+        color :'#174A5B',
         fontSize: 30,
-        fontWeight: 'bold'
+        fontWeight : 'bold'
+    },
+    greenWrench : {
+      width : '15%',
+      height : '20%',
+        marginTop: 80,
+        marginRight : 20,
+    },
+    selectedPartImage : {
+      width : '70%',
+      height : '70%'
     },
 });

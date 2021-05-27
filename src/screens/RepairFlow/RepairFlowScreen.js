@@ -36,7 +36,6 @@ customer: {
 chosen_action: liste med komponenter eller string 'DISCARD'.
 */
 
-<<<<<<< HEAD
 const RepairFlowScreen = ({selected_lamp, cust})=> {
     const [step, setStep] = useState("");
     const [selected_lamp, setSelected_lamp] = useState(selected_lamp);
@@ -57,7 +56,7 @@ const RepairFlowScreen = ({selected_lamp, cust})=> {
         return <CompleteRepair customer={customer} selected_lamp={selected_lamp} chosen_action={chosen_action}/>
     }
 }
-=======
+
 const RepairFlowScreen = ({ selected_lamp, cust }) => {
   const [step, setStep] = useState();
   const [selected_lamp, setSelected_lamp] = useState(selected_lamp);
@@ -91,4 +90,4 @@ const RepairFlowScreen = ({ selected_lamp, cust }) => {
     );
   }
 };
->>>>>>> c0c06eeb7aa209a3936b0cf072878d67275b1b81
+
