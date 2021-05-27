@@ -79,7 +79,7 @@ const CustomerFormSummaryScreen = ({navigation, route}) => {
                 <View style={styles.buttonContainer}>
                     <LongButton icon="save" textColor="primary_teal" backgroundColor="primary_green" title="SAVE" onPress={() => navigation.navigate('HomeScreen')}/>
                     {/* We need to supply the information received into this component, so it will show on the next screen*/}
-                    <LongButton icon="whiteRepair" textColor="white" backgroundColor="primary_teal" title="START REPAIR" onPress={() => navigation.navigate('StartRepairScreen')}/>
+                    <LongButton icon="whiteRepair" textColor="white" backgroundColor="primary_teal" title="START REPAIR" onPress={() => navigation.navigate('StartRepairScreen', {data: userData})}/>
                 </View>
             </View>
         </>

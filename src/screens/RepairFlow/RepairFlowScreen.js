@@ -2,11 +2,11 @@ import React, {useState} from 'react'
 import CreateNewRepair from "./CreateNewRepair";
 import SetRepairAction from "./SetRepairAction";
 import CompleteRepair from "./CompleteRepair";
+
 /*
 Steg:
     1. Inndata fra bruker -> Kunde, telefonnr, lampe (serienr eller klikke på bilde)
     2.
-
 
 States:
     - Hvor i prossesenn man er
@@ -36,10 +36,8 @@ customer: {
 chosen_action: liste med komponenter eller string 'DISCARD'.
 */
 
-
-
 const RepairFlowScreen = ({selected_lamp, cust})=> {
-    const [step, setStep] = useState();
+    const [step, setStep] = useState("");
     const [selected_lamp, setSelected_lamp] = useState(selected_lamp);
     const [customer, setCustomer] = useState(cust);
     const [chosen_action, setChosen_action] = useState();

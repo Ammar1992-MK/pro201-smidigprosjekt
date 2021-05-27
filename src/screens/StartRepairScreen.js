@@ -1,8 +1,15 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { NavigationBar } from "../components/NavigationBar/NavigationBar";
 import LongButton from "../components/LongButton";
-const StartRepairScreen = ({lamp, customer, navigation}) => {
+const StartRepairScreen = ({lamp, customer, navigation, route}) => {
+
+  const [userData, setUserData] = useState({});
+  const {data} = route.params;
+
+  useEffect(() => {
+    setUserData(data);
+  }, [])
 
   return (
     <View style={StartRepairScreenStyles.container}>
@@ -20,17 +27,17 @@ const StartRepairScreen = ({lamp, customer, navigation}) => {
             <Text style={StartRepairScreenStyles.data}>FR2324</Text>
 
             <Text style={StartRepairScreenStyles.text}>SNR</Text>
-            <Text style={StartRepairScreenStyles.data}>333-567-812</Text>
+            <Text style={StartRepairScreenStyles.data}>{userData.serialNumber}</Text>
           </View>
 
           <View style={StartRepairScreenStyles.userData}>
             <View>
               <Text style={StartRepairScreenStyles.text}>PHONE</Text>
-              <Text style={StartRepairScreenStyles.data}>+123 455 677 899</Text>
+              <Text style={StartRepairScreenStyles.data}>{userData.phoneNumber}</Text>
             </View>
             <View>
               <Text style={StartRepairScreenStyles.text}>NAME</Text>
-              <Text style={StartRepairScreenStyles.data}>Billy Jean</Text>
+              <Text style={StartRepairScreenStyles.data}>{userData.customerName}</Text>
             </View>
           </View>
         </View>

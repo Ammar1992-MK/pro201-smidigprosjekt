@@ -50,12 +50,11 @@ export default function CustomerFormScreen({navigation}) {
                 <View style={styles.navButtons}>
                     <BackButton/>
                     <NextButton onPress={() => {
-
                         navigation.navigate('CustomerFormSummaryScreen', {
                             customerName: customerName,
                             phoneNumber: phoneNumber,
                             serialNumber: serialNumber
-                        })
+                        });
                     }}/>
                 </View>
             </ScrollView>
