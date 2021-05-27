@@ -7,7 +7,7 @@ const SelectPartsScreen = () => {
     return(
         <>
             <SelectedLampSummary/>
-            </>
+        </>
     )
 }
 
