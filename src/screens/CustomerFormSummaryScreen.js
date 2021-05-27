@@ -5,6 +5,9 @@ import {NavigationBar} from "../components/NavigationBar/NavigationBar";
 import CardSmall from "../components/Cards/CardSmall";
 import LongButton from "../components/LongButton";
 
+//Async Storage
+import {addNewRepair} from "../utils/helpers";
+
 const FilledInputField = ({title, textInput}) => {
     const styles = StyleSheet.create({
         input: {
@@ -25,7 +28,7 @@ const FilledInputField = ({title, textInput}) => {
     return (
         <View>
             <Text style={styles.inputHeaders}>{title}</Text>
-            <TextInput style={styles.input} value={textInput}/>
+            <TextInput style={styles.input} value={textInput} editable={false}/>
         </View>
     );
 }
@@ -34,7 +37,7 @@ const FilledInputField = ({title, textInput}) => {
 //Vi må vel sjekke etter internett her
 // Hvis bruker velger å trykke på start repair må de sendes videre til neste skjerm, hvis de trykker save må vi lagre informasjonen lokalt
 
-const CustomerFormSummaryScreen = ({navigation, route}) => {
+const CustomerFormSummaryScreen =  ({navigation, route}) => {
     //Userdata will contain what the user input  in an object
     const [userData, setUserData] = useState({});
 
@@ -77,7 +80,11 @@ const CustomerFormSummaryScreen = ({navigation, route}) => {
                     </View>
                 </View>
                 <View style={styles.buttonContainer}>
-                    <LongButton icon="save" textColor="primary_teal" backgroundColor="primary_green" title="SAVE" onPress={() => navigation.navigate('HomeScreen')}/>
+                    <LongButton icon="save" textColor="primary_teal" backgroundColor="primary_green" title="SAVE" onPress={async () => {
+
+                        await addNewRepair(userData) //add the form values to async storage
+                        navigation.navigate('HomeScreen') // navigate to home screen
+                    }}/>
                     {/* We need to supply the information received into this component, so it will show on the next screen*/}
                     <LongButton icon="whiteRepair" textColor="white" backgroundColor="primary_teal" title="START REPAIR" onPress={() => navigation.navigate('StartRepairScreen', {data: userData})}/>
                 </View>

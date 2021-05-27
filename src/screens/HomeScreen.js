@@ -1,18 +1,21 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {View, TouchableOpacity, Button, StyleSheet, Image} from "react-native";
 
 //Components
-
 import {HomeScreenButton} from "../components/HomeScreenButton"
 import {BrightTitle} from "../components/BrightTitle";
-
 import {UserMenu} from "../components/UserMenu/UserMenu";
 import {UserButton} from "../components/UserMenu/UserButton";
+
+//Helpers
+import {getData} from "../utils/helpers";
 
 const HomeScreen = ({navigation}) => {
 
     //Boolean to toggle the view which contains the user
     const [showUserMenu, setShowUserMenu] = useState(false);
+
+    getData().then(data => console.log(data));
 
     return (
         <View style={HomeScreenStyles.container}>

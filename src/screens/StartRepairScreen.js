@@ -2,13 +2,14 @@ import React, {useState, useEffect} from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { NavigationBar } from "../components/NavigationBar/NavigationBar";
 import LongButton from "../components/LongButton";
-const StartRepairScreen = ({lamp, customer, navigation, route}) => {
+const StartRepairScreen = ({lamp, customer, navigation, route, getData}) => {
 
   const [userData, setUserData] = useState({});
   const {data} = route.params;
 
   useEffect(() => {
     setUserData(data);
+    getData();
   }, [])
 
   return (
@@ -43,7 +44,7 @@ const StartRepairScreen = ({lamp, customer, navigation, route}) => {
         </View>
       </View>
         <LongButton  title={"REPAIR"} icon={"repair"} textColor={"primary_teal"} backgroundColor={"primary_green"}/>
-        <LongButton  title={"CAN NOT REPAIR"}  textColor={"white"} backgroundColor={"red"}/>
+        <LongButton  title={"CAN NOT REPAIR"}  textColor={"white"} backgroundColor={"red"} onPress={ () => navigation.navigate("StartRepairSummaryScreen")}/>
         <LongButton  title={"TROUBLESHOOT GUIDE"} icon={"learn"} textColor={"white"} backgroundColor={"primary_teal"}/>
     </View>
   );

@@ -9,7 +9,6 @@ import {NavigationBar} from "../components/NavigationBar/NavigationBar";
 export default function CustomerFormScreen({navigation}) {
 
     const [userData, setUserData] = useState({});
-
     const [customerName, setCustomerName] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
     //const [lamp, setLamp] = useState(undefined)
@@ -50,6 +49,7 @@ export default function CustomerFormScreen({navigation}) {
                 <View style={styles.navButtons}>
                     <BackButton/>
                     <NextButton onPress={() => {
+
                         navigation.navigate('CustomerFormSummaryScreen', {
                             customerName: customerName,
                             phoneNumber: phoneNumber,
