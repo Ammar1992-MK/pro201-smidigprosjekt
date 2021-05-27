@@ -37,7 +37,7 @@ const FilledInputField = ({title, textInput}) => {
 //Vi må vel sjekke etter internett her
 // Hvis bruker velger å trykke på start repair må de sendes videre til neste skjerm, hvis de trykker save må vi lagre informasjonen lokalt
 
-const CustomerFormSummaryScreen =  ({navigation, route}) => {
+const CustomerFormSummaryScreen = ({navigation, route}) => {
     //Userdata will contain what the user input  in an object
     const [userData, setUserData] = useState({});
 
@@ -67,6 +67,7 @@ const CustomerFormSummaryScreen =  ({navigation, route}) => {
         }
     });
 
+
     return (
         <>
             <NavigationBar navigation={navigation}/>
@@ -75,18 +76,22 @@ const CustomerFormSummaryScreen =  ({navigation, route}) => {
                     <CardSmall lampName="SUNBELL SMART"/>
                     <View style={styles.inputFields}>
                         <FilledInputField textInput={userData.customerName} title={"Phone Number"}/>
-                        <FilledInputField textInput={userData.phoneNumber}  title={"Serial Number"}/>
+                        <FilledInputField textInput={userData.phoneNumber} title={"Serial Number"}/>
                         <FilledInputField textInput={userData.serialNumber} title={"Name"}/>
                     </View>
                 </View>
                 <View style={styles.buttonContainer}>
-                    <LongButton icon="save" textColor="primary_teal" backgroundColor="primary_green" title="SAVE" onPress={async () => {
-
-                        await addNewRepair(userData) //add the form values to async storage
-                        navigation.navigate('HomeScreen') // navigate to home screen
-                    }}/>
+                    <LongButton icon="save" textColor="primary_teal" backgroundColor="primary_green" title="SAVE"
+                                onPress={async () => {
+                                    await addNewRepair(userData) //add the form values to async storage
+                                    navigation.navigate('HomeScreen') // navigate to home screen
+                                }}/>
                     {/* We need to supply the information received into this component, so it will show on the next screen*/}
-                    <LongButton icon="whiteRepair" textColor="white" backgroundColor="primary_teal" title="START REPAIR" onPress={() => navigation.navigate('StartRepairScreen', {data: userData})}/>
+                    <LongButton icon="whiteRepair" textColor="white" backgroundColor="primary_teal" title="START REPAIR"
+                                onPress={async () => {
+                                    await addNewRepair(userData);
+                                    navigation.navigate('StartRepairScreen', {data: userData});
+                                }}/>
                 </View>
             </View>
         </>

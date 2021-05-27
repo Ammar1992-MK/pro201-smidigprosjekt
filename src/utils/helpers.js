@@ -1,6 +1,5 @@
 import {AsyncStorage} from "react-native";
 
-
 /*
 *
 * Repair: [{customerName, phoneNumber, lamp, serialNumber, solution: [] || "DISCARD"}, {}]

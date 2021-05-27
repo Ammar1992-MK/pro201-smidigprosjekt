@@ -2,14 +2,13 @@ import React, {useState, useEffect} from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { NavigationBar } from "../components/NavigationBar/NavigationBar";
 import LongButton from "../components/LongButton";
-const StartRepairScreen = ({lamp, customer, navigation, route, getData}) => {
+const StartRepairScreen = ({lamp, customer, navigation, route}) => {
 
   const [userData, setUserData] = useState({});
   const {data} = route.params;
 
   useEffect(() => {
     setUserData(data);
-    getData();
   }, [])
 
   return (
