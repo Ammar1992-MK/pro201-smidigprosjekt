@@ -32,10 +32,9 @@ const SelectedLampSummary = () => {
 export default SelectedLampSummary;
 
 const SelectedLampSummaryStyles = StyleSheet.create({
-
     container: {
         width: '90%',
-        height: '20%',
+        height: 200,
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',

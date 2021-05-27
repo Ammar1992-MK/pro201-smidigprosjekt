@@ -1,6 +1,7 @@
 import React, {useEffect} from "react";
 import {NavigationContainer} from "@react-navigation/native";
 import {createStackNavigator} from "@react-navigation/stack";
+import {Dimensions} from "react-native";
 
 const Stack = createStackNavigator();
 
@@ -17,7 +18,7 @@ import StartRepairSummaryScreen from "./src/screens/StartRepairSummaryScreen";
 
 export default function App() {
     return (
-        <NavigationContainer>
+        <NavigationContainer style={{width: Dimensions.get('window').width, height: Dimensions.get('window').height}}>
             <Stack.Navigator>
                 {/* LOGIN SCREEN */}
                 <Stack.Screen
@@ -49,16 +50,16 @@ export default function App() {
                     component={StartRepairScreen}
                     options={{headerShown: false}}
                 />
-                {/* START REPAIR SUMMARY SCREEN (FINAL PAGE) */}
-                <Stack.Screen
-                    name="StartRepairSummaryScreen"
-                    component={StartRepairSummaryScreen}
-                    options={{headerShown: false}}
-                />
                 {/* SELECT PARTS SCREEN (WHERE YOU HAVE A LIST OF SPARE PARTS) */}
                 <Stack.Screen
                     name="SelectPartsScreen"
                     component={SelectPartsScreen}
+                    options={{headerShown: false}}
+                />
+                {/* START REPAIR SUMMARY SCREEN (FINAL PAGE) */}
+                <Stack.Screen
+                    name="StartRepairSummaryScreen"
+                    component={StartRepairSummaryScreen}
                     options={{headerShown: false}}
                 />
             </Stack.Navigator>

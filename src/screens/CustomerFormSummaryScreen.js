@@ -25,6 +25,7 @@ const FilledInputField = ({title, textInput}) => {
             fontSize: 34,
         },
     });
+
     return (
         <View>
             <Text style={styles.inputHeaders}>{title}</Text>

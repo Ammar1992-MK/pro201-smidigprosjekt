@@ -69,14 +69,14 @@ const LongButton = (props) => {
 const LongButtonStyles = StyleSheet.create({
   container: {
     width: "80%",
-    height: "8%",
+    height: 70,
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
     borderRadius: 10,
     justifyContent: "space-between",
     backgroundColor: "#B7D381",
-    marginTop: 30,
+    marginTop: 20,
   },
   imageContainer: {
     marginLeft: 30,
