@@ -7,66 +7,42 @@ import SelectedLampSummary from "../components/SelectedLampSummary";
 import {NavigationBar} from '../components/NavigationBar/NavigationBar'
 import LongButton from "../components/LongButton";
 import {NextButton} from "../components/NextButton";
+import {spareParts} from "../utils/fakeDb";
 
 
 const SelectPartsScreen = ({navigation, route}) => {
     const [userData, setUserData] = useState({});
-    const [activeButton, setActiveButton] = useState();
-    const[selectedPart, setSelectedPart] = useState({});
+    const[selectedPartId, setSelectedPartId] = useState([]);
 
     const {data} = route.params;
-    const imageArray = [
-        {
-            id: 1,
-            image: require('../../assets/product-images/battery.png'),
-        },
-        {
-            id: 2,
-            image: require('../../assets/product-images/circuit_card.png')
-        },
-        {
-            id: 3,
-            image: require('../../assets/product-images/cogs.png')
-        },
-        {
-            id: 4,
-            image: require('../../assets/product-images/light_bulb.png')
-        }
-    ]
-
-    const handleSelectParts = (id,index) => {
-        imageArray.map((image) => {
-            if(index === image.id -1) {
-                setActiveButton(image.id)
-                setSelectedPart(image);
-                console.log(imageArray[index])
-            }
-        })
-    }
-
-
-    const renderImageIntoScrollView = (index,image,id) => {
-
-        return (
-            <TouchableOpacity key={index} style={styles.partImageContainer} onPress={() => handleSelectParts(id,index)}>
-                {activeButton === id ?
-                   <View style={styles.partImageView}>
-                       <Image style={styles.partImage} source={image}/>
-                       <Image source={require('../../assets/icons/done_teal.png')}/>
-                   </View>
-                    :
-                    <View>
-                        <Image style={styles.partImage} source={image}/>
-                    </View>
-                }
-            </TouchableOpacity>
-        )
-    }
-
 
     useEffect(() => {
         setUserData(data);
     }, [])
+
+    const toggle_selected = (el_id) => {
+        if(selectedPartId.includes(el_id)){
+            let prev_selected = selectedPartId.slice()
+            prev_selected.splice(prev_selected.indexOf(el_id), 1)
+            setSelectedPartId(prev_selected)
+        } else {
+            setSelectedPartId([...selectedPartId, el_id])
+        }
+    }
+    console.log("Selected part ", selectedPartId)
+    const spare_parts_div = spareParts.map((el) => {
+        const {id, image} = el;
+        const is_selected = selectedPartId.includes(id) ? 'Valgt' : 'Ikke valgt'
+        return (
+            <TouchableOpacity key={id} style={styles.partImageContainer} onPress={() => toggle_selected(id)}>
+                <Text>{is_selected}</Text>
+                <View style={styles.partImageView}>
+                    <Image style={styles.partImage} source={image}/>
+                </View>
+            </TouchableOpacity>
+        )
+    })
+
 
     return (
         <View style={styles.container}>
@@ -82,11 +58,9 @@ const SelectPartsScreen = ({navigation, route}) => {
                     <Text style={styles.scrollHeaderTitle}>SELECT PART</Text>
                     <Image style={styles.repairIcon} source={require('../../assets/icons/wrench_grren_bg.png')}/>
                 </View>
-                {imageArray.map((image, index) =>
-                    renderImageIntoScrollView(index, image.image,image.id)
-                )}
+                {spare_parts_div}
             </ScrollView>
-            <NextButton onPress={ () => navigation.navigate('StartRepairSummaryScreen', {data : selectedPart})}/>
+            <NextButton onPress={ () => navigation.navigate('StartRepairSummaryScreen', {data : selectedPartId})}/>
         </View>
     )
 

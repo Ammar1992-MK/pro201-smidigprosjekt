@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, TextInput, ScrollView, TouchableOpacity, Image} from "react-native";
+import {View, Text, StyleSheet, TextInput, ScrollView, TouchableOpacity, Image, KeyboardAvoidingView} from "react-native";
 import {NextButton} from "../components/NextButton";
 import {BackButton} from "../components/BackButton";
 import {NavigationBar} from "../components/NavigationBar/NavigationBar";
 import CarouselCard from "../components/CarouselCard";
+import {lamps} from "../utils/fakeDb";
 
 
 export default function CustomerFormScreen({navigation}) {
@@ -11,13 +12,8 @@ export default function CustomerFormScreen({navigation}) {
     const [userData, setUserData] = useState({});
     const [customerName, setCustomerName] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
-    const [lamp, setLamp] = useState("")
     const [serialNumber, setSerialNumber] = useState("");
-
-    const lampType = (id) => {
-        setLamp(id)
-        console.log(lamp)
-    }
+    const [lampName, setLampName] = useState();
 
     //CSS STATES FOR INPUT FIELDS
     const phoneNumberInputField = () => {
@@ -41,6 +37,7 @@ export default function CustomerFormScreen({navigation}) {
             )
         }
     }
+
     const customerInputField = () => {
         if (customerName.length == 0) {
             return (
@@ -63,6 +60,15 @@ export default function CustomerFormScreen({navigation}) {
         }
     }
 
+    const lamps_div = lamps.map((el, i) => {
+        const {name, image} = el;
+        return (
+            <TouchableOpacity onPress={() => setLampName(name)} key={i}>
+                <CarouselCard img={image} />
+            </TouchableOpacity>
+        )
+    })
+
     return (
         <>
             <NavigationBar navigation={navigation}/>
@@ -73,24 +79,10 @@ export default function CustomerFormScreen({navigation}) {
                 <Text style={styles.inputHeaders}>Customer Phone Number</Text>
                 {phoneNumberInputField()}
 
-
                 <Text style={styles.inputHeaders}>Choose Lamp</Text>
-                <View>
-                    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                        <TouchableOpacity onPress={() => lampType("smartPlus")}>
-                            <CarouselCard lamp={"smartPlus"}/>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={() => lampType("sunbellSmart")}>
-                            <CarouselCard lamp={"sunbellSmart"}/>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={() => lampType("smartPlus")}>
-                            <CarouselCard lamp={"lamp3"}/>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={() => lampType("sunTurtle")}>
-                            <CarouselCard lamp={"sunTurtle"}/>
-                        </TouchableOpacity>
-                    </ScrollView>
-                </View>
+                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                    {lamps_div}
+                </ScrollView>
                 <Text style={styles.inputHeaders}>Enter Serial Number</Text>
                 <View style={styles.serialInputContainer}>
                     <TextInput
@@ -111,7 +103,7 @@ export default function CustomerFormScreen({navigation}) {
                             customerName: customerName,
                             phoneNumber: phoneNumber,
                             serialNumber: serialNumber,
-                            lamp: lamp
+                            lamp: lampName
                         });
                     }}/>
                 </View>
