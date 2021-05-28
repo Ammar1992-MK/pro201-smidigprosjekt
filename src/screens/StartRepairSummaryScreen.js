@@ -6,7 +6,11 @@ import SelectedLampSummary from "../components/SelectedLampSummary";
 import LongButton from "../components/LongButton";
 
 
-const StartRepairSummaryScreen = ({navigation}) => {
+const StartRepairSummaryScreen = ({navigation, route}) => {
+
+    //SELECTED PART
+    const [selectedPart, setSelectedPart] = useState({});
+    const {data} =  route.params;
 
     //WIFI ICONS
     const noWifiIcon = require("../../assets/icons/no_wifi.png");
@@ -21,14 +25,17 @@ const StartRepairSummaryScreen = ({navigation}) => {
             //If the device has internet, we set the networkStatus to true. If not, it will be false.
             setNetworkStatus(networkState.isWifiEnabled);
         })
+
+        setSelectedPart(data)
+        console.log(data)
     }, []);
 
     return (
         <>
             <NavigationBar navigation={navigation}/>
             <View style={styles.container}>
-                <SelectedLampSummary/>
-                <SelectedLampSummary/>
+                <SelectedLampSummary lamp={true} wrench={false} index={1} data={selectedPart}/>
+                <SelectedLampSummary wrench={true} lamp={false} index={2} data={selectedPart}/>
                 <View style={styles.saveContainer}>
                     <Text style={styles.saveContainerTitle}>SAVE REPAIR</Text>
                     {networkStatus ? <Image source={wifiIcon} style={styles.wifiIcon} /> : <Image source={noWifiIcon} style={styles.wifiIcon} />}
