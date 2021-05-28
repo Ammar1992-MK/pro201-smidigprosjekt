@@ -41,10 +41,10 @@ const FilledInputField = ({title, textInput}) => {
 const CustomerFormSummaryScreen = ({navigation, route}) => {
     const [userData, setUserData] = useState({});
 
-    const {customerName, phoneNumber, serialNumber} = route.params;
+    const {customerName, phoneNumber, serialNumber, lamp} = route.params;
 
     useEffect(() => {
-        setUserData({customerName, phoneNumber, serialNumber})
+        setUserData({customerName, phoneNumber, serialNumber, lamp})
     }, [])
 
     const styles = StyleSheet.create({
@@ -72,7 +72,7 @@ const CustomerFormSummaryScreen = ({navigation, route}) => {
             <NavigationBar navigation={navigation}/>
             <View styles={styles.container}>
                 <View style={styles.summaryContainer}>
-                    <CardSmall lampName="SUNBELL SMART"/>
+                    <CardSmall lampName={lamp}/>
                     <View style={styles.inputFields}>
                         <FilledInputField textInput={userData.customerName} title={"Phone Number"}/>
                         <FilledInputField textInput={userData.phoneNumber} title={"Serial Number"}/>

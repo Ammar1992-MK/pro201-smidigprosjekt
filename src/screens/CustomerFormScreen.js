@@ -4,6 +4,7 @@ import {NextButton} from "../components/NextButton";
 import {BackButton} from "../components/BackButton";
 import CardCarousel from "../components/CardCarousel";
 import {NavigationBar} from "../components/NavigationBar/NavigationBar";
+import CarouselCard from "../components/CarouselCard";
 
 
 export default function CustomerFormScreen({navigation}) {
@@ -11,9 +12,15 @@ export default function CustomerFormScreen({navigation}) {
     const [userData, setUserData] = useState({});
     const [customerName, setCustomerName] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
-    //const [lamp, setLamp] = useState(undefined)
+    const [lamp, setLamp] = useState("")
     const [serialNumber, setSerialNumber] = useState("");
 
+
+    const lampType = (id) => {
+        setLamp(id)
+        console.log(lamp)
+
+    }
     return (
         <>
             <NavigationBar navigation={navigation}/>
@@ -32,7 +39,20 @@ export default function CustomerFormScreen({navigation}) {
 
                 <Text style={styles.inputHeaders}>Choose Lamp</Text>
                 <View>
-                    <CardCarousel/>
+                    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                        <TouchableOpacity onPress={() => lampType("smartPlus")} >
+                            <CarouselCard lamp={"smartPlus"} />
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => lampType("sunbellSmart")} >
+                            <CarouselCard lamp={"sunbellSmart"} />
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => lampType("smartPlus")} >
+                            <CarouselCard lamp={"lamp3"} />
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => lampType("sunTurtle")} >
+                            <CarouselCard lamp={"sunTurtle"} />
+                        </TouchableOpacity>
+                    </ScrollView>
                 </View>
                 <Text style={styles.inputHeaders}>Enter Serial Number</Text>
                 <View style={styles.serialInputContainer}>
@@ -53,7 +73,8 @@ export default function CustomerFormScreen({navigation}) {
                         navigation.navigate('CustomerFormSummaryScreen', {
                             customerName: customerName,
                             phoneNumber: phoneNumber,
-                            serialNumber: serialNumber
+                            serialNumber: serialNumber,
+                            lamp: lamp
                         });
                     }}/>
                 </View>
@@ -99,4 +120,5 @@ const styles = StyleSheet.create({
         justifyContent: 'space-evenly',
         alignContent: 'center'
     },
+
 });
