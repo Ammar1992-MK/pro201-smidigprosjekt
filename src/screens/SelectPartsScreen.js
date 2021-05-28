@@ -14,10 +14,11 @@ const SelectPartsScreen = ({navigation, route}) => {
     const [userData, setUserData] = useState({});
     const[selectedPartId, setSelectedPartId] = useState([]);
 
-    const {data} = route.params;
+   const {lampName, serialNumber, selectedLamp} = route.params;
 
     useEffect(() => {
-        setUserData(data);
+    setUserData({lampName, serialNumber, selectedLamp})
+        console.log(userData.lamp)
     }, [])
 
     const toggle_selected = (el_id) => {
@@ -47,7 +48,7 @@ const SelectPartsScreen = ({navigation, route}) => {
     return (
         <View style={styles.container}>
             <NavigationBar navigation={navigation}/>
-            <SelectedLampSummary wrench={true} data={userData} index={"1"}/>
+            <SelectedLampSummary  index={"1"} lamp={selectedLamp}/>
             {/*Missing onPress to navigate to LEARN*/}
             <LongButton title={"CHANGE PART GUIDE"} backgroundColor={'primary_teal'} icon={'learn'}
                         textColor={'white'}/>
