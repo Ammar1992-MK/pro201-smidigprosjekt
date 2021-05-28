@@ -6,37 +6,59 @@ import {Text,View, StyleSheet,ScrollView,Image,TouchableOpacity} from "react-nat
 import SelectedLampSummary from "../components/SelectedLampSummary";
 import {NavigationBar} from '../components/NavigationBar/NavigationBar'
 import LongButton from "../components/LongButton";
+import {NextButton} from "../components/NextButton";
 
 
 const SelectPartsScreen = ({navigation, route}) => {
     const [userData, setUserData] = useState({});
-    const [addedIcon, setAddedIcon] = useState();
+    const [activeButton, setActiveButton] = useState();
+    const[selectedPart, setSelectedPart] = useState({});
 
     const {data} = route.params;
-
     const imageArray = [
-        require('../../assets/product-images/battery.png'),
-        require('../../assets/product-images/circuit_card.png'),
-        require('../../assets/product-images/cogs.png'),
-        require('../../assets/product-images/light_bulb.png')
+        {
+            id: 1,
+            image: require('../../assets/product-images/battery.png'),
+        },
+        {
+            id: 2,
+            image: require('../../assets/product-images/circuit_card.png')
+        },
+        {
+            id: 3,
+            image: require('../../assets/product-images/cogs.png')
+        },
+        {
+            id: 4,
+            image: require('../../assets/product-images/light_bulb.png')
+        }
     ]
 
-    const handleSelectParts = (e) => {
-        if(addedIcon){
-            setAddedIcon(false)
-        }else {
-            setAddedIcon(true);
-        }
+    const handleSelectParts = (id,index) => {
+        imageArray.map((image) => {
+            if(index === image.id -1) {
+                setActiveButton(image.id)
+                setSelectedPart(image);
+                console.log(imageArray[index])
+            }
+        })
     }
 
-    const renderImageIntoScrollView = (image,index) => {
 
-        return(
-            <TouchableOpacity key={index} style={styles.partImageContainer} onPress={e => handleSelectParts(e)}>
-                <Image style={styles.partImage} source={image}/>
-                <View style={styles.addIconContainer}>
-                    <Image style={addedIcon ? {display :'flex'} : {display: 'none'}} source={require('../../assets/icons/done_teal.png')}/>
-                </View>
+    const renderImageIntoScrollView = (index,image,id) => {
+
+        return (
+            <TouchableOpacity key={index} style={styles.partImageContainer} onPress={() => handleSelectParts(id,index)}>
+                {activeButton === id ?
+                   <View style={styles.partImageView}>
+                       <Image style={styles.partImage} source={image}/>
+                       <Image source={require('../../assets/icons/done_teal.png')}/>
+                   </View>
+                    :
+                    <View>
+                        <Image style={styles.partImage} source={image}/>
+                    </View>
+                }
             </TouchableOpacity>
         )
     }
@@ -44,29 +66,39 @@ const SelectPartsScreen = ({navigation, route}) => {
 
     useEffect(() => {
         setUserData(data);
-    },[])
+    }, [])
 
-    return(
+    return (
         <View style={styles.container}>
             <NavigationBar navigation={navigation}/>
             <SelectedLampSummary wrench={true} data={userData} index={"1"}/>
             {/*Missing onPress to navigate to LEARN*/}
-            <LongButton title={"CHANGE PART GUIDE"} backgroundColor={'primary_teal'} icon={'learn'} textColor={'white'}/>
-            <ScrollView style={styles.scrollContainer} contentContainerStyle={{justifyContent: 'center', alignItems: 'center' }}>
+            <LongButton title={"CHANGE PART GUIDE"} backgroundColor={'primary_teal'} icon={'learn'}
+                        textColor={'white'}/>
+            <ScrollView style={styles.scrollContainer}
+                        contentContainerStyle={{justifyContent: 'center', alignItems: 'center'}}>
                 <View style={styles.scrollHeader}>
                     <View style={styles.stepIndex}><Text style={styles.stepIndexTitle}>2</Text></View>
                     <Text style={styles.scrollHeaderTitle}>SELECT PART</Text>
                     <Image style={styles.repairIcon} source={require('../../assets/icons/wrench_grren_bg.png')}/>
                 </View>
                 {imageArray.map((image, index) =>
-                    renderImageIntoScrollView(image,index)
+                    renderImageIntoScrollView(index, image.image,image.id)
                 )}
             </ScrollView>
+            <NextButton onPress={ () => navigation.navigate('StartRepairSummaryScreen', {data : selectedPart})}/>
         </View>
     )
+
 }
 
+
 export default SelectPartsScreen;
+
+{/*
+<Image style={styles.partImage} source={image}/>
+                    <Image style={addedIcon ? {display : 'flex'} : {display: 'none'}} source={require('../../assets/icons/done_teal.png')}/>
+*/}
 
 const styles = StyleSheet.create({
    container : {
@@ -84,9 +116,7 @@ const styles = StyleSheet.create({
     },
 
     partImage : {
-
-        margin: 10,
-        width: '40%',
+        width: '100%',
     },
     scrollHeader:{
         display : 'flex',
@@ -120,13 +150,14 @@ const styles = StyleSheet.create({
     },
     partImageContainer:{
        display : 'flex',
-        flexDirection:'row',
+        flexDirection:'column',
        width : '100%',
         alignItems : 'center',
     },
-    addIconContainer:{
-       width : '100%',
-      marginRight: 200,
+
+    partImageView:{
+      width : '100%',
+        backgroundColor :'blue',
     },
 
 });

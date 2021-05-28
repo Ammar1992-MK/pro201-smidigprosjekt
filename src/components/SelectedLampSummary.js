@@ -5,8 +5,10 @@ const SelectedLampSummary = ({lamp, wrench, index, data}) => {
     const [lampImageVisible, setLampImageVisible] = useState(false);
     const [partImageVisible, setPartImageVisible] = useState(false);
     const [wrenchImageVisible, setWrenchImageVisible] = useState(false);
+    const[partImage, setPartImage] = useState();
 
 
+<<<<<<< HEAD
     const handleImage = () => {
 
         if (wrench) {
@@ -19,6 +21,20 @@ const SelectedLampSummary = ({lamp, wrench, index, data}) => {
 
     //DATA: {serialNumber, customerPhone, serialNumber || undefined, lamp, (chosenPart || "DISCARD") }
     const {serialNumber} = data; //destructure data object with user data
+=======
+ const handleImage = () => {
+     if(wrench){
+         setPartImageVisible(true);
+         setWrenchImageVisible(true);
+     } else {
+         setLampImageVisible(true)
+     }
+
+     setPartImage(data.image)
+ }
+
+ useEffect(handleImage,[])
+>>>>>>> 231729bb4af8dc9a6452177bb87b52f549528267
 
     useEffect(handleImage, [])
 
@@ -29,6 +45,7 @@ const SelectedLampSummary = ({lamp, wrench, index, data}) => {
                     <Text style={SelectedLampSummaryStyles.indexText}>{index}</Text>
                 </View>
                 <View style={SelectedLampSummaryStyles.lampImageContainer}>
+<<<<<<< HEAD
                     <Image
                         style={[SelectedLampSummaryStyles.selectedLampImage, lampImageVisible ? {display: 'flex'} : {display: 'none'}]}
                         source={require('../../assets/product-images/sunbell-smart-1.png')}/>
@@ -38,6 +55,11 @@ const SelectedLampSummary = ({lamp, wrench, index, data}) => {
                     <Image
                         style={[SelectedLampSummaryStyles.greenWrench, wrenchImageVisible ? {display: 'flex'} : {display: 'none'}]}
                         source={require('../../assets/icons/wrench_grren_bg.png')}/>
+=======
+                    <Image style={[SelectedLampSummaryStyles.selectedLampImage, lampImageVisible ? {display : 'flex'} : {display: 'none'}]} source={require('../../assets/product-images/sunbell-smart-1.png')}/>
+                    {data && <Image style={[SelectedLampSummaryStyles.selectedPartImage, partImageVisible ? {display : 'flex'} : {display: 'none'}]} source={partImage}/>}
+                    <Image style={[SelectedLampSummaryStyles.greenWrench, wrenchImageVisible ? {display : 'flex'} : {display : 'none'}]} source={require('../../assets/icons/wrench_grren_bg.png')}/>
+>>>>>>> 231729bb4af8dc9a6452177bb87b52f549528267
                 </View>
                 <View style={SelectedLampSummaryStyles.selectedLampInfoContainer}>
                     <View>
@@ -49,7 +71,11 @@ const SelectedLampSummary = ({lamp, wrench, index, data}) => {
                     </View>
                     <View>
                         <Text style={SelectedLampSummaryStyles.selectedLampSerialNo}>SNR</Text>
+<<<<<<< HEAD
                         <Text style={SelectedLampSummaryStyles.selectedLampSerialNoText}>{serialNumber}</Text>
+=======
+                        <Text style={SelectedLampSummaryStyles.selectedLampSerialNoText}>333-333-333</Text>
+>>>>>>> 231729bb4af8dc9a6452177bb87b52f549528267
                     </View>
                 </View>
             </View>
