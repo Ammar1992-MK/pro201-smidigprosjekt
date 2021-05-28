@@ -1,31 +1,10 @@
 import React from "react";
 import { View, StyleSheet, Image } from "react-native";
 
-const CarouselCard = (props) => {
-  const SmartPlus = require("../../assets/product-images/smart-plus-1.png");
-  const SunbellSmart = require("../../assets/product-images/sunbell-smart-1.png");
-  const Lamp3 = require("../../assets/product-images/smart-plus-1.png");
-  const SunTurtle = require("../../assets/product-images/sunturtle.png");
-  let lamp;
-
-  switch (props.lamp) {
-    case "smartPlus":
-      lamp = SmartPlus;
-      break;
-    case "sunbellSmart":
-      lamp = SunbellSmart;
-      break;
-    case "lamp3":
-      lamp = Lamp3;
-      break;
-    case "sunTurtle":
-      lamp = SunTurtle;
-      break;
-  }
-
+const CarouselCard = ({img}) => {
   return (
     <View style={CarouselCardStyles.container}>
-      <Image style={CarouselCardStyles.image} source={lamp} />
+      <Image style={CarouselCardStyles.image} source={img} />
     </View>
   );
 };

@@ -7,6 +7,7 @@ import SelectedLampSummary from "../components/SelectedLampSummary";
 import {NavigationBar} from '../components/NavigationBar/NavigationBar'
 import LongButton from "../components/LongButton";
 import {NextButton} from "../components/NextButton";
+import {spareParts} from "../utils/fakeDb";
 
 
 const SelectPartsScreen = ({navigation, route}) => {
@@ -15,31 +16,13 @@ const SelectPartsScreen = ({navigation, route}) => {
     const[selectedPart, setSelectedPart] = useState({});
 
     const {data} = route.params;
-    const imageArray = [
-        {
-            id: 1,
-            image: require('../../assets/product-images/battery.png'),
-        },
-        {
-            id: 2,
-            image: require('../../assets/product-images/circuit_card.png')
-        },
-        {
-            id: 3,
-            image: require('../../assets/product-images/cogs.png')
-        },
-        {
-            id: 4,
-            image: require('../../assets/product-images/light_bulb.png')
-        }
-    ]
 
     const handleSelectParts = (id,index) => {
-        imageArray.map((image) => {
+        spareParts.map((image) => {
             if(index === image.id -1) {
                 setActiveButton(image.id)
                 setSelectedPart(image);
-                console.log(imageArray[index])
+                console.log(spareParts[index])
             }
         })
     }
@@ -82,7 +65,7 @@ const SelectPartsScreen = ({navigation, route}) => {
                     <Text style={styles.scrollHeaderTitle}>SELECT PART</Text>
                     <Image style={styles.repairIcon} source={require('../../assets/icons/wrench_grren_bg.png')}/>
                 </View>
-                {imageArray.map((image, index) =>
+                {spareParts.map((image, index) =>
                     renderImageIntoScrollView(index, image.image,image.id)
                 )}
             </ScrollView>
