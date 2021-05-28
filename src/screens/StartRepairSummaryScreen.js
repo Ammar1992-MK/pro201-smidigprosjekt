@@ -1,13 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, StyleSheet, Image, Alert} from "react-native";
-import {NavigationBar} from "../components/NavigationBar/NavigationBar";
 import * as NetInfo from "@react-native-community/netinfo";
+
+//COMPONENTS
+import {NavigationBar} from "../components/NavigationBar/NavigationBar";
 import SelectedLampSummary from "../components/SelectedLampSummary";
 import LongButton from "../components/LongButton";
 import {addNewRepair} from "../utils/helpers";
+import {spareParts} from "../utils/fakeDb";
 
 
-const StartRepairSummaryScreen = ({navigation}) => {
+const StartRepairSummaryScreen = ({navigation,route}) => {
 
     //WIFI ICONS
     const noWifiIcon = require("../../assets/icons/no_wifi.png");
@@ -16,12 +19,24 @@ const StartRepairSummaryScreen = ({navigation}) => {
     //NETWORK STATUS
     const [networkStatus, setNetworkStatus] = useState(false)
 
+    //SELECTED PARTS
+    const[userData, setUserData] = useState({});
+    const {data} = route.params;
+    console.log(userData.selectedPartId);
+
+    //TODO RENDER CHOOSEN SPARE PARTS
+    const renderSparePartCards = () => {
+    }
+
+
     useEffect(() => {
         //This package allows us to check the network state of the device we are using
         NetInfo.addEventListener(networkState => {
             //If the device has internet, we set the networkStatus to true. If not, it will be false.
             setNetworkStatus(networkState.isWifiEnabled);
         })
+        setUserData(data)
+
     }, []);
 
     const testData = {
@@ -32,8 +47,8 @@ const StartRepairSummaryScreen = ({navigation}) => {
         <>
             <NavigationBar navigation={navigation}/>
             <View style={styles.container}>
-                <SelectedLampSummary data={testData}/>
-                <SelectedLampSummary data={testData}/>
+                <SelectedLampSummary index={'1'} lamp={userData.selectedLamp} data={userData}/>
+
                 <View style={styles.saveContainer}>
                     <Text style={styles.saveContainerTitle}>SAVE REPAIR</Text>
                     {networkStatus ? <Image source={wifiIcon} style={styles.wifiIcon}/> :

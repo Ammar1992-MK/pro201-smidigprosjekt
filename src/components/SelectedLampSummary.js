@@ -14,6 +14,7 @@ const SelectedLampSummary = ({lamp,wrench,index,data}) => {
      if(wrench){
          setPartImageVisible(true);
          setWrenchImageVisible(true);
+         setPartImage(wrench)
      } else {
          setLampImageVisible(true)
      }
@@ -31,12 +32,12 @@ const SelectedLampSummary = ({lamp,wrench,index,data}) => {
                 </View>
                 <View style={SelectedLampSummaryStyles.lampImageContainer}>
                     <Image style={[SelectedLampSummaryStyles.selectedLampImage, lampImageVisible ? {display : 'flex'} : {display: 'none'}]} source={lamp}/>
-                    {data && <Image style={[SelectedLampSummaryStyles.selectedPartImage, partImageVisible ? {display : 'flex'} : {display: 'none'}]} source={partImage}/>}
-                    <Image style={[SelectedLampSummaryStyles.greenWrench, wrenchImageVisible ? {display : 'flex'} : {display : 'none'}]} source={require('../../assets/icons/wrench_grren_bg.png')}/>
+                     <Image style={[SelectedLampSummaryStyles.selectedPartImage, partImageVisible ? {display : 'flex'} : {display: 'none'}]} source={partImage}/>
+                    {wrench && <Image style={[SelectedLampSummaryStyles.greenWrench, wrenchImageVisible ? {display : 'flex'} : {display : 'none'}]} source={require('../../assets/icons/wrench_grren_bg.png')}/>}
                 </View>
                 <View style={SelectedLampSummaryStyles.selectedLampInfoContainer}>
                     <View>
-                        <Text style={SelectedLampSummaryStyles.selectedLampName}>Sunbell Smart</Text>
+                        <Text style={SelectedLampSummaryStyles.selectedLampName}>{data.lampName}</Text>
                     </View>
                     <View>
                         <Text style={SelectedLampSummaryStyles.selectedLampRepairId}>REPAIR ID</Text>
@@ -44,7 +45,7 @@ const SelectedLampSummary = ({lamp,wrench,index,data}) => {
                     </View>
                     <View>
                         <Text style={SelectedLampSummaryStyles.selectedLampSerialNo}>SNR</Text>
-                        <Text style={SelectedLampSummaryStyles.selectedLampSerialNoText}>333-333-333</Text>
+                        <Text style={SelectedLampSummaryStyles.selectedLampSerialNoText}>{data.serialNumber}</Text>
                     </View>
                 </View>
             </View>

@@ -18,7 +18,6 @@ const SelectPartsScreen = ({navigation, route}) => {
 
     useEffect(() => {
     setUserData({lampName, serialNumber, selectedLamp})
-        console.log(userData.lamp)
     }, [])
 
     const toggle_selected = (el_id) => {
@@ -30,7 +29,6 @@ const SelectPartsScreen = ({navigation, route}) => {
             setSelectedPartId([...selectedPartId, el_id])
         }
     }
-    console.log("Selected part ", selectedPartId)
     const spare_parts_div = spareParts.map((el) => {
         const {id, image} = el;
         const is_selected = selectedPartId.includes(id) ? 'Valgt' : 'Ikke valgt'
@@ -48,7 +46,7 @@ const SelectPartsScreen = ({navigation, route}) => {
     return (
         <View style={styles.container}>
             <NavigationBar navigation={navigation}/>
-            <SelectedLampSummary  index={"1"} lamp={selectedLamp}/>
+            <SelectedLampSummary  index={"1"} lamp={selectedLamp} data={userData}/>
             {/*Missing onPress to navigate to LEARN*/}
             <LongButton title={"CHANGE PART GUIDE"} backgroundColor={'primary_teal'} icon={'learn'}
                         textColor={'white'}/>
@@ -61,7 +59,7 @@ const SelectPartsScreen = ({navigation, route}) => {
                 </View>
                 {spare_parts_div}
             </ScrollView>
-            <NextButton onPress={ () => navigation.navigate('StartRepairSummaryScreen', {data: {...data, selectedPartId}})}/>
+            <NextButton onPress={ () => navigation.navigate('StartRepairSummaryScreen', {data: {...userData, selectedPartId}})}/>
         </View>
     )
 
