@@ -1,7 +1,8 @@
-import React, {useEffect} from "react";
+import * as React from 'react';
 import {NavigationContainer} from "@react-navigation/native";
 import {createStackNavigator} from "@react-navigation/stack";
 import {Dimensions} from "react-native";
+import * as Font from 'expo-font';
 
 const Stack = createStackNavigator();
 
@@ -16,7 +17,32 @@ import SelectPartsScreen from "./src/screens/SelectPartsScreen";
 import StartRepairSummaryScreen from "./src/screens/StartRepairSummaryScreen";
 
 
-export default function App() {
+export default class App extends React.Component {
+
+//Loading fonts
+  state = {
+    fontsLoaded: false,
+  };
+
+  async loadFonts() {
+    await Font.loadAsync({
+      // Load a font `Montserrat` from a static resource
+      Arial: require('./assets/fonts/arial.ttf'),
+      ArialBold: require('./assets/fonts/arialbold.ttf'),
+      Montserrat: require('./assets/fonts/montserrat.ttf'),
+      MontserratMedium: require('./assets/fonts/montserratmedium.ttf')
+    });
+    this.setState({ fontsLoaded: true });
+  }
+
+  componentDidMount() {
+    this.loadFonts();
+  }
+
+  render() {
+    if (this.state.fontsLoaded) {
+
+    //Rendering app
     return (
         <NavigationContainer style={{width: Dimensions.get('window').width, height: Dimensions.get('window').height}}>
             <Stack.Navigator>
@@ -65,4 +91,8 @@ export default function App() {
             </Stack.Navigator>
         </NavigationContainer>
     );
+    } else {
+      return null;
+    }
+  }
 }

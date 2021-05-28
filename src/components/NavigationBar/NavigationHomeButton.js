@@ -1,14 +1,15 @@
 import * as React from "react";
-import { View, TouchableOpacity, Image } from "react-native";
+import { StyleSheet, View, TouchableOpacity, Image, Text } from "react-native";
 
 export const NavigationHomeButton = ({ navigation }) => {
   const HomeImage = () => {
     return (
       <View>
         <TouchableOpacity onPress={() => navigation.navigate("HomeScreen")}>
-          <Image
-            source={require("../../../assets/icons/house_with_text.png")}
+          <Image style={NavigationHomeButtonStyles.icon}
+            source={require("../../../assets/icons/house.png")}
           />
+        <Text style={NavigationHomeButtonStyles.title}>Home</Text>
         </TouchableOpacity>
       </View>
     );
@@ -20,5 +21,21 @@ export const NavigationHomeButton = ({ navigation }) => {
         <HomeImage />
       </TouchableOpacity>
     </View>
-  );
-};
+  )
+}
+
+  const NavigationHomeButtonStyles = StyleSheet.create({
+    icon: {
+      width: 64,
+      height: 64
+    },
+    title: {
+      fontFamily: 'ArialBold',
+      textTransform: 'uppercase',
+      letterSpacing: 0.5,
+      color: '#fff',
+      fontSize: 18,
+      textAlign: 'center'
+    }
+})
+

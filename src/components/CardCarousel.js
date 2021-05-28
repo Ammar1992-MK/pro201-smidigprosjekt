@@ -1,3 +1,4 @@
+//Hvor er denne hen i prototypen hilsen sandra
 import * as React from "react";
 import { StyleSheet, ScrollView } from "react-native";
 

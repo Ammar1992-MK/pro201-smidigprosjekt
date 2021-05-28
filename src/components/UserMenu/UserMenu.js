@@ -10,10 +10,28 @@ import {
 
 //Clickable icon in the top left corner
 const CloseImage = ({ setShowUserMenu }) => {
+    const styles = StyleSheet.create({
+    container: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      marginVertical: 40,
+      marginHorizontal: 24,
+      paddingVertical: 12
+    },
+    icon: {
+      width: 56,
+      height: 56
+    }
+  })
   return (
-    <View>
+    <View
+        style={styles.container}
+    >
       <TouchableOpacity onPress={() => setShowUserMenu(false)}>
-        <Image source={require("../../../assets/icons/close.png")} />
+        <Image source={require("../../../assets/icons/close.png")} 
+        style={styles.icon}
+        />
       </TouchableOpacity>
     </View>
   );
@@ -21,16 +39,42 @@ const CloseImage = ({ setShowUserMenu }) => {
 
 //User image in the top right corner
 const UserImage = () => {
+  const styles = StyleSheet.create({
+    container: {
+      position: 'absolute',
+      top: 0,
+      right: 0,
+      marginVertical: 40,
+      marginHorizontal: 24
+    },
+    iconContainer: {
+      alignItems: 'center'
+    },
+    icon: {
+      width: 64,
+      height: 64,
+      marginBottom: 8
+    },
+    title: {
+      textTransform: 'uppercase',
+      color: '#174A5B',
+      fontSize: 18,
+      fontFamily: 'ArialBold',
+      textAlign: 'center'
+    }
+  })
+
   return (
-    <View>
+    <View style={styles.container}>
       <TouchableOpacity
-        onPress={() =>
-          Alert.alert("Hey user!", "This is your user page, enjoy it")
-        }
-      >
+        onPress={() => Alert.alert("Hey user!", "This is your user page, enjoy it")}
+        style={styles.iconContainer}
+        >
         <Image
           source={require("../../../assets/icons/avatar_dark_version.png")}
+          style={styles.icon}
         />
+        <Text style={styles.title}>ID: BR2234</Text>
       </TouchableOpacity>
     </View>
   );
@@ -40,20 +84,20 @@ const UserImage = () => {
 const SignOutButton = ({ navigation }) => {
   const styles = StyleSheet.create({
     container: {
-      flexDirection: "column",
       backgroundColor: "#174A5B",
-      borderRadius: 10,
+      borderRadius: 12,
       marginTop: "auto",
-      marginBottom: 100,
-      width: "70%",
+      marginBottom: 60,
+      width: "80%",
       alignSelf: "center",
       alignItems: "center",
-      padding: 20,
+      padding: 22
     },
     text: {
-      fontSize: 30,
-      fontWeight: "bold",
-      color: "#fff",
+      fontFamily: 'ArialBold',
+      fontSize: 22,
+      letterSpacing: 2,
+      color: "#fff"
     },
   });
 

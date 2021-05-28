@@ -69,28 +69,31 @@ const LongButton = (props) => {
 const LongButtonStyles = StyleSheet.create({
   container: {
     width: "80%",
-    height: 70,
-    display: "flex",
+    height: 90,
     flexDirection: "row",
     alignItems: "center",
-    borderRadius: 10,
-    justifyContent: "space-between",
+    borderRadius: 8,
+    position: 'relative',
     backgroundColor: "#B7D381",
-    marginTop: 20,
+    marginTop: 24,
   },
   imageContainer: {
     marginLeft: 30,
+    position: 'absolute'
+  },
+  icon: {
+    width: 56,
+    height: 56
   },
   textContainer: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "center",
-    width: "40%",
-    marginRight: 190,
+    width: "100%",
   },
   title: {
-    fontSize: 20,
-    fontWeight: "bold",
+    width: "100%",
+    textAlign: 'center',
+    fontFamily: 'ArialBold',
+    fontSize: 24,
+    letterSpacing: 1,
   },
 });
 

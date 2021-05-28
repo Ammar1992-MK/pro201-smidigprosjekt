@@ -24,32 +24,30 @@ export const BackButton = ({ onPress }) => {
 
 const BackButtonStyles = StyleSheet.create({
   container: {
-    width: "30%",
-    height: "60%",
-    borderRadius: 10,
-    marginTop: 25,
-    display: "flex",
-    flexDirection: "row",
+    width: "33%",
+    height: 90,
+    borderRadius: 14,
     justifyContent: "center",
-    marginRight: "auto",
+    alignItems: 'flex-start',
     backgroundColor: "#174A5B",
+    marginRight: "auto",
+    marginTop: 24
   },
   innerContainer: {
-    display: "flex",
     width: "70%",
     flexDirection: "row",
     alignItems: "center",
-    marginRight: 60,
-    justifyContent: "space-between",
+    justifyContent: "space-evenly",
+    marginLeft: 8
   },
   title: {
     color: "#fff",
-    fontSize: 32,
-    fontWeight: "bold",
+    fontSize: 28,
+    fontFamily: 'ArialBold',
+    letterSpacing: 0.5
   },
-
   image: {
-    width: 63,
-    height: 63,
+    width: 56,
+    height: 56,
   },
 });
