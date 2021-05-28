@@ -17,8 +17,8 @@ export const NavigationBar = ({ navigation }) => {
         <Text style={NavigationBarStyles.title}>NEW REPAIR</Text>
       </View>
     </View>
-  );
-};
+  )
+}
 
 const NavigationBarStyles = StyleSheet.create({
     container: {
@@ -30,18 +30,23 @@ const NavigationBarStyles = StyleSheet.create({
         zIndex: 99,
     },
     title: {
-        fontSize: 40,
-        fontWeight: 'bold',
+        fontSize: 32,
+        fontFamily: 'ArialBold',
+        letterSpacing: 2,
         color: '#fff',
+        letterSpacing: 1.75,
+        textTransform: "uppercase"
     },
     button: {},
     iconContainer: {
-        flex: 2,
-        alignItems: 'flex-start',
+        flex: 1,
+        alignItems: 'center',
         justifyContent: 'center',
+        paddingLeft: '5%'
     },
     titleContainer: {
-        flex: 3.5,
-        alignItems: 'flex-start'
+        flex: 7,
+        alignItems: 'center',
+        paddingRight: '13%'
     }
 })

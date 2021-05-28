@@ -40,33 +40,32 @@ export const HomeScreenButton = (props) => {
 
 const HomeScreenButtonStyle = StyleSheet.create({
   container: {
-    width: "65%",
-    height: "13%",
-    margin: 10,
+    width: "73%",
+    height: "13.5%",
+    margin: 20,
   },
   button: {
     width: "100%",
     height: "100%",
-    display: "flex",
     justifyContent: "center",
     backgroundColor: "#B7D381",
-    borderRadius: 10,
+    borderRadius: 8,
+    elevation: 6
   },
   innerContainer: {
-    display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
     width: "40%",
     marginLeft: "10%",
   },
   title: {
-    fontSize: 30,
+    fontFamily: 'ArialBold',
+    fontSize: 27,
     color: "#174A5B",
-    fontWeight: "bold",
+    marginLeft: 40
   },
   icon: {
-    width: 50,
-    height: 50,
+    width: 64,
+    height: 64,
   },
 });

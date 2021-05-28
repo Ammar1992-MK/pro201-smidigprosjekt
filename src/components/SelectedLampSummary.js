@@ -52,85 +52,90 @@ const SelectedLampSummary = ({lamp,wrench,index,data}) => {
 export default SelectedLampSummary;
 
 const SelectedLampSummaryStyles = StyleSheet.create({
-
-    container : {
-        width : '90%',
-        height : '20%',
-        display : 'flex',
-        flexDirection :'row',
-        alignItems : 'center',
-        justifyContent : 'space-between',
-        marginTop : 30,
-        borderColor : '#C3DC93',
-        borderWidth : 2,
-        borderRadius : 10,
-        backgroundColor : '#F3F8E9',
-    },
-
-    indexContainer : {
-        width : 40,
-        height : 40,
-        display : 'flex',
+    container: {
+        width: '90%',
+        height: 210,
         flexDirection: 'row',
         alignItems: 'center',
+        justifyContent: 'space-between',
+        marginLeft: 40,
+        marginTop: 40,
+        borderColor: 'rgba(195, 220, 147, 0.35)',
+        borderWidth: 4,
+        borderRadius: 18,
+        backgroundColor: '#F3F8E9'
+    },
+
+    indexContainer: {
+        width: 42,
+        height: 42,
+        alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor : '#C3DC93',
-        borderRadius: 40/2,
+        lineHeight: 1,
+        backgroundColor: '#C3DC93',
+        borderRadius: 40 / 2,
         marginLeft: 30
     },
 
-    indexText : {
-        color : '#174A5B',
-        fontSize : 30,
+    indexText: {
+        color: '#174A5B',
+        fontSize: 28,
+        fontFamily: 'Arial',
+        fontWeight: '700'
     },
 
-    lampImageContainer : {
-        width : '30%',
-        height : '90%',
-        display : 'flex',
-        flexDirection: 'row',
-        alignItems : 'center',
-        justifyContent : 'space-between',
+    lampImageContainer: {
+        width: '28%',
+        height: '84%',
+        alignItems: 'center',
+        justifyContent: 'center',
         backgroundColor: '#fff',
-        borderRadius : 10,
+        borderRadius: 28,
+        borderColor: 'rgba(195, 220, 147, 0.15)',
+        borderWidth: 3,
+        borderStyle: 'solid'
     },
 
-    selectedLampImage : {
-      width : '50%',
-        height : '100%',
-        marginLeft :50,
+    selectedLampImage: {
+        width: '40%',
+        height: '100%',
     },
 
-    selectedLampInfoContainer : {
-        width  :'50%',
-        display : 'flex',
-        flexDirection : 'column',
-        justifyContent :'center'
+    selectedLampInfoContainer: {
+        width: '47%',
+        height: '84%'
     },
 
-    selectedLampName : {
-        color :'#174A5B',
-        fontSize: 30,
-        fontWeight : 'bold'
+    selectedLampName: {
+        color: '#174A5B',
+        fontSize: 24,
+        fontFamily: 'ArialBold'
 
     },
-    selectedLampRepairId : {
-        color :'#174A5B',
+    selectedLampRepairId: {
+        color: '#174A5B',
         fontSize: 20,
+        fontFamily: 'Arial',
+        lineHeight: 30
     },
-    selectedLampRepairIdText:{
-        color :'#174A5B',
+    selectedLampRepairIdText: {
+        color: '#174A5B',
         fontSize: 30,
-        fontWeight : 'bold'
+        fontFamily: 'ArialBold',
+        lineHeight: 38
     },
     selectedLampSerialNo: {
-        color :'#174A5B',
+        color: '#174A5B',
         fontSize: 20,
+        fontFamily: 'Arial',
+        lineHeight: 28
     },
-    selectedLampSerialNoText : {
-        color :'#174A5B',
+    selectedLampSerialNoText: {
+        color: '#174A5B',
         fontSize: 30,
-        fontWeight : 'bold'
+        fontFamily: 'ArialBold',
+        lineHeight: 38
+
     },
     greenWrench : {
       width : '15%',

@@ -33,25 +33,16 @@ const CarouselCard = (props) => {
 const CarouselCardStyles = StyleSheet.create({
   container: {
     backgroundColor: "#ffffff",
-    borderRadius: 20,
-    flex: 1,
-    height: 145,
-    width: 145,
-    margin: 20,
+    borderRadius: 12,
+    height: 160,
+    width: 160,
+    margin: 16,
     justifyContent: "center",
-    alignContent: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 3,
-    },
-    shadowOpacity: 0.27,
-    shadowRadius: 4.65,
-
-    elevation: 6,
+    alignItems: "center",
+    elevation: 9
   },
   image: {
-    transform: [{ scale: 0.5 }],
+    transform: [{ scale: 0.6 }],
   },
 });
 

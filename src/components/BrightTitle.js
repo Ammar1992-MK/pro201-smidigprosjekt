@@ -15,15 +15,17 @@ const BrightTitleStyles = StyleSheet.create({
     alignItems: "center",
     fontFamily: "Arial",
     justifyContent: "center",
-    marginBottom: 60,
+    marginBottom: 30,
   },
   headingText: {
     color: "#9FD18B",
-    fontSize: 60,
-    fontWeight: "bold",
+    fontSize: 72,
+    fontFamily: "Montserrat",
+    marginBottom: -4
   },
   lowerText: {
+    fontFamily: "MontserratMedium",
     color: "#9FD18B",
-    fontSize: 40,
-  },
+    fontSize: 32,
+  }
 });

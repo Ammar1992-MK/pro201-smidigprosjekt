@@ -22,14 +22,21 @@ const LoginButtonStyles = StyleSheet.create({
   button: {
     backgroundColor: "#C3DC93",
     color: "#174A5B",
-    borderRadius: 10,
+    textTransform: "uppercase",
+    borderRadius: 12,
     width: 500,
-    height: 50,
-    marginVertical: 50,
+    height: 78,
+    marginVertical: 48,
     justifyContent: "center",
     alignItems: "center",
+    borderColor: '#B7D381',
+    borderWidth: 4,
+    borderStyle: 'solid'
   },
   text: {
-    fontSize: 20,
+    fontSize: 24,
+    color: "#174A5B",
+    fontFamily: 'ArialBold',
+    letterSpacing: 1,
   },
 });

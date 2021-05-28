@@ -24,33 +24,35 @@ export const NextButton = ({ onPress }) => {
 
 const NextButtonStyles = StyleSheet.create({
   container: {
-    width: "30%",
-    height: "60%",
-    marginTop: 25,
-    borderRadius: 10,
-    display: "flex",
-    flexDirection: "row",
+    width: "33%",
+    height: 90,
+    marginTop: 24,
+    borderRadius: 14,
     justifyContent: "center",
+    alignItems: 'flex-end',
     backgroundColor: "#B7D381",
     marginLeft: "auto",
     marginRight: 50,
+    borderColor: '#B7D381',
+    borderWidth: 3,
+    borderStyle: 'solid'
   },
   innerContainer: {
-    display: "flex",
     width: "70%",
     flexDirection: "row",
     alignItems: "center",
-    marginLeft: 60,
-    justifyContent: "space-between",
+    marginRight: 8,
+    justifyContent: "space-evenly",
   },
   title: {
     color: "#174A5B",
-    fontSize: 32,
-    fontWeight: "bold",
+    fontSize: 28,
+    fontFamily: 'ArialBold',
+    letterSpacing: 0.5
   },
 
   image: {
-    width: 63,
-    height: 63,
+    width: 56,
+    height: 56,
   },
 });
