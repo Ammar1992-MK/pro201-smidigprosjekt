@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {View, Text, StyleSheet, TextInput, ScrollView, TouchableOpacity, Image} from "react-native";
 import {NextButton} from "../components/NextButton";
 import {BackButton} from "../components/BackButton";
-import CardCarousel from "../components/CardCarousel";
 import {NavigationBar} from "../components/NavigationBar/NavigationBar";
 import CarouselCard from "../components/CarouselCard";
 
@@ -15,10 +14,53 @@ export default function CustomerFormScreen({navigation}) {
     const [lamp, setLamp] = useState("")
     const [serialNumber, setSerialNumber] = useState("");
 
-
     const lampType = (id) => {
         setLamp(id)
         console.log(lamp)
+    }
+
+    //CSS STATES FOR INPUT FIELDS
+    const phoneNumberInputField = () => {
+        if (phoneNumber.length == 0) {
+            return (
+                <TextInput
+                    style={styles.input}
+                    onChangeText={text => setPhoneNumber(text)}/>
+            )
+        } else if (phoneNumber.length <= 7) {
+            return (
+                <TextInput
+                    style={styles.inputError}
+                    onChangeText={text => setPhoneNumber(text)}/>
+            )
+        } else {
+            return (
+                <TextInput
+                    style={styles.inputSuccess}
+                    onChangeText={text => setPhoneNumber(text)}/>
+            )
+        }
+    }
+    const customerInputField = () => {
+        if (customerName.length == 0) {
+            return (
+                <TextInput
+                    style={styles.input}
+                    onChangeText={text => setCustomerName(text)}/>
+            )
+        } else if (customerName.length <= 2) {
+            return (
+                <TextInput
+                    style={styles.inputError}
+                    onChangeText={text => setCustomerName(text)}/>
+            )
+        } else {
+            return (
+                <TextInput
+                    style={styles.inputSuccess}
+                    onChangeText={text => setCustomerName(text)}/>
+            )
+        }
     }
 
     return (
@@ -26,31 +68,26 @@ export default function CustomerFormScreen({navigation}) {
             <NavigationBar navigation={navigation}/>
             <ScrollView style={styles.container}>
                 <Text style={styles.inputHeaders}>Customer Name</Text>
-                <TextInput
-                    style={styles.input}
-                    onChangeText={text => setCustomerName(text)}
-                />
+                {customerInputField()}
 
                 <Text style={styles.inputHeaders}>Customer Phone Number</Text>
-                <TextInput
-                    style={styles.input}
-                    onChangeText={text => setPhoneNumber(text)}
-                />
+                {phoneNumberInputField()}
+
 
                 <Text style={styles.inputHeaders}>Choose Lamp</Text>
                 <View>
                     <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                        <TouchableOpacity onPress={() => lampType("smartPlus")} >
-                            <CarouselCard lamp={"smartPlus"} />
+                        <TouchableOpacity onPress={() => lampType("smartPlus")}>
+                            <CarouselCard lamp={"smartPlus"}/>
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={() => lampType("sunbellSmart")} >
-                            <CarouselCard lamp={"sunbellSmart"} />
+                        <TouchableOpacity onPress={() => lampType("sunbellSmart")}>
+                            <CarouselCard lamp={"sunbellSmart"}/>
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={() => lampType("smartPlus")} >
-                            <CarouselCard lamp={"lamp3"} />
+                        <TouchableOpacity onPress={() => lampType("smartPlus")}>
+                            <CarouselCard lamp={"lamp3"}/>
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={() => lampType("sunTurtle")} >
-                            <CarouselCard lamp={"sunTurtle"} />
+                        <TouchableOpacity onPress={() => lampType("sunTurtle")}>
+                            <CarouselCard lamp={"sunTurtle"}/>
                         </TouchableOpacity>
                     </ScrollView>
                 </View>
@@ -119,5 +156,21 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-evenly',
         alignContent: 'center'
+    },
+    inputSuccess: {
+        width: '65%',
+        backgroundColor: '#ffffff',
+        borderColor: '#00966C',
+        fontSize: 43,
+        borderWidth: 3,
+        borderRadius: 10,
+    },
+    inputError: {
+        width: '65%',
+        backgroundColor: '#ffffff',
+        fontSize: 43,
+        borderWidth: 3,
+        borderColor: '#CB333B',
+        borderRadius: 10,
     },
 });
