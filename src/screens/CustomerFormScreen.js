@@ -108,61 +108,61 @@ export default function CustomerFormScreen({navigation}) {
                     }}/>
                 </View>
             </ScrollView>
-        </>
+            </>
     );
 };
 
 const styles = StyleSheet.create({
-    container: {
-        backgroundColor: '#F3F8E9',
-        flex: 1,
-        paddingLeft: '8%',
-        height: '100%',
-    },
-    serialInputContainer: {
-        flexDirection: 'row',
-    },
-    input: {
-        width: '65%',
-        backgroundColor: '#ffffff',
-        fontSize: 43,
-        borderWidth: 3,
-        borderColor: '#828384',
-        borderRadius: 10,
-    },
-    inputHeaders: {
-        color: '#174A5B',
-        marginTop: '5%',
-        fontSize: 34,
-    },
-    qrButton: {
-        width: 60,
-        height: 60,
-        backgroundColor: '#174A5B',
-        justifyContent: 'center',
-        alignContent: 'center',
-        borderRadius: 7,
-    },
-    navButtons: {
-        flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
-        alignContent: 'center'
-    },
-    inputSuccess: {
-        width: '65%',
-        backgroundColor: '#ffffff',
-        borderColor: '#00966C',
-        fontSize: 43,
-        borderWidth: 3,
-        borderRadius: 10,
-    },
-    inputError: {
-        width: '65%',
-        backgroundColor: '#ffffff',
-        fontSize: 43,
-        borderWidth: 3,
-        borderColor: '#CB333B',
-        borderRadius: 10,
-    },
-});
+            container: {
+            backgroundColor: '#F3F8E9',
+            flex: 1,
+            paddingLeft: '8%',
+            height: '100%',
+        },
+            serialInputContainer: {
+            flexDirection: 'row',
+        },
+            input: {
+            width: '65%',
+            backgroundColor: '#ffffff',
+            fontSize: 43,
+            borderWidth: 3,
+            borderColor: '#828384',
+            borderRadius: 10,
+        },
+            inputHeaders: {
+            color: '#174A5B',
+            marginTop: '5%',
+            fontSize: 34,
+        },
+            qrButton: {
+            width: 60,
+            height: 60,
+            backgroundColor: '#174A5B',
+            justifyContent: 'center',
+            alignContent: 'center',
+            borderRadius: 7,
+        },
+            navButtons: {
+            flex: 1,
+            flexDirection: 'row',
+            justifyContent: 'space-evenly',
+            alignContent: 'center'
+        },
+            inputSuccess: {
+            width: '65%',
+            backgroundColor: '#ffffff',
+            borderColor: '#00966C',
+            fontSize: 43,
+            borderWidth: 3,
+            borderRadius: 10,
+        },
+            inputError: {
+            width: '65%',
+            backgroundColor: '#ffffff',
+            fontSize: 43,
+            borderWidth: 3,
+            borderColor: '#CB333B',
+            borderRadius: 10,
+        },
+        })
