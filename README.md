@@ -1,5 +1,4 @@
 ### Run guid
-* Når du har clonet repoet, kan du kjøre `npm/yarn install` i terminal, dette vil installere de nødvendige dependencies  for å kjøre appen.
 * Når instllasjonen er ferdig, vil følgende kommandoer starte appen :
   1. `expo start --android` vil starte android emulator.
     2. `expo start --ios` vil starte IOS simulator.
