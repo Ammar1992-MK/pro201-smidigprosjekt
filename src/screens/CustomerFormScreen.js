@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, TextInput, ScrollView, TouchableOpacity, Image, KeyboardAvoidingView} from "react-native";
+import {View, Text, StyleSheet, TextInput, ScrollView, TouchableOpacity, Image} from "react-native";
 import {NextButton} from "../components/NextButton";
 import {BackButton} from "../components/BackButton";
 import CardCarousel from "../components/CardCarousel";
@@ -19,8 +19,8 @@ export default function CustomerFormScreen({navigation}) {
     const lampType = (id) => {
         setLamp(id)
         console.log(lamp)
-
     }
+
     return (
         <>
             <NavigationBar navigation={navigation}/>
@@ -120,5 +120,4 @@ const styles = StyleSheet.create({
         justifyContent: 'space-evenly',
         alignContent: 'center'
     },
-
 });
