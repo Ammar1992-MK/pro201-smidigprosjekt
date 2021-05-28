@@ -1,8 +1,8 @@
-import * as React from 'react';
+import React, {useState, useEffect} from 'react';
 import {NavigationContainer} from "@react-navigation/native";
 import {createStackNavigator} from "@react-navigation/stack";
-import {Dimensions} from "react-native";
-import * as Font from 'expo-font';
+import {Dimensions, View, Text} from "react-native";
+import {useFonts} from 'expo-font';
 
 const Stack = createStackNavigator();
 
@@ -16,35 +16,24 @@ import StartRepairScreen from "./src/screens/StartRepairScreen";
 import SelectPartsScreen from "./src/screens/SelectPartsScreen";
 import StartRepairSummaryScreen from "./src/screens/StartRepairSummaryScreen";
 
+const App = () => {
 
-export default class App extends React.Component {
-
-//Loading fonts
-  state = {
-    fontsLoaded: false,
-  };
-
-  async loadFonts() {
-    await Font.loadAsync({
-      // Load a font `Montserrat` from a static resource
-      Arial: require('./assets/fonts/arial.ttf'),
-      ArialBold: require('./assets/fonts/arialbold.ttf'),
-      Montserrat: require('./assets/fonts/montserrat.ttf'),
-      MontserratMedium: require('./assets/fonts/montserratmedium.ttf')
+    //Use fonts hook
+    const [loaded] = useFonts({
+        Arial: require('./assets/fonts/arial.ttf'),
+        ArialBold: require('./assets/fonts/arialbold.ttf'),
+        Montserrat: require('./assets/fonts/montserrat.ttf'),
+        MontserratMedium: require('./assets/fonts/montserratmedium.ttf')
     });
-    this.setState({ fontsLoaded: true });
-  }
 
-  componentDidMount() {
-    this.loadFonts();
-  }
-
-  render() {
-    if (this.state.fontsLoaded) {
+    if(!loaded){
+        return null;
+    }
 
     //Rendering app
     return (
-        <NavigationContainer style={{width: Dimensions.get('window').width, height: Dimensions.get('window').height}}>
+        <NavigationContainer
+            style={{width: Dimensions.get('window').width, height: Dimensions.get('window').height}}>
             <Stack.Navigator>
                 {/* LOGIN SCREEN */}
                 <Stack.Screen
@@ -91,8 +80,6 @@ export default class App extends React.Component {
             </Stack.Navigator>
         </NavigationContainer>
     );
-    } else {
-      return null;
-    }
-  }
 }
+
+export default App;
