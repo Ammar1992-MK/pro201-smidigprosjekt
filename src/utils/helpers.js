@@ -1,5 +1,4 @@
 import {AsyncStorage} from "react-native";
-
 /*
 *
 * Repair: [{customerName, phoneNumber, lamp, serialNumber, chosenPart: [] || "DISCARD"}, {}]
@@ -21,8 +20,11 @@ export const addNewRepair = async (valueObject) => {
         if(!customerName || !phoneNumber){
             throw new Error("Missing vital information");
         }
-
-        savedRepairs.push(valueObject);
+        let local_id = savedRepairs.length
+        while(savedRepairs.map(e => e.local_id).includes(local_id)){
+            local_id ++;
+        }
+        savedRepairs.push({...valueObject, local_id: local_id});
 
         const jsonValue = JSON.stringify(savedRepairs)
         await AsyncStorage.setItem('repair', jsonValue)

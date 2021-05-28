@@ -5,7 +5,7 @@ const CarouselCard = (props) => {
   const SmartPlus = require("../../assets/product-images/smart-plus-1.png");
   const SunbellSmart = require("../../assets/product-images/sunbell-smart-1.png");
   const Lamp3 = require("../../assets/product-images/smart-plus-1.png");
-  const Lamp4 = require("../../assets/product-images/sunbell-smart-1.png");
+  const SunTurtle = require("../../assets/product-images/sunturtle.png");
   let lamp;
 
   switch (props.lamp) {
@@ -18,8 +18,8 @@ const CarouselCard = (props) => {
     case "lamp3":
       lamp = Lamp3;
       break;
-    case "lamp4":
-      lamp = Lamp4;
+    case "sunTurtle":
+      lamp = SunTurtle;
       break;
   }
 
