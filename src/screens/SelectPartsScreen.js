@@ -60,7 +60,7 @@ const SelectPartsScreen = ({navigation, route}) => {
                 </View>
                 {spare_parts_div}
             </ScrollView>
-            <NextButton onPress={ () => navigation.navigate('StartRepairSummaryScreen', {data : selectedPartId})}/>
+            <NextButton onPress={ () => navigation.navigate('StartRepairSummaryScreen', {data: {...data, selectedPartId}})}/>
         </View>
     )
 
