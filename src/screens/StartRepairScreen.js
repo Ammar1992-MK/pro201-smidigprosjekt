@@ -1,14 +1,27 @@
 import React, {useState, useEffect} from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
+
+import {lamps} from '../utils/fakeDb'
 import { NavigationBar } from "../components/NavigationBar/NavigationBar";
 import LongButton from "../components/LongButton";
 
 const StartRepairScreen = ({ navigation, route}) => {
   const [userData, setUserData] = useState({});
+  const [selectedLamp, setSelectedLamp] = useState();
   const {data} = route.params;
+
+  const handleSelectedLamp = () => {
+    lamps.map((el) => {
+      const{name, image} = el;
+      if(name === data.lamp){
+        setSelectedLamp(image)
+      }
+    })
+  }
 
   useEffect(() => {
     setUserData(data);
+    handleSelectedLamp();
   }, [])
 
   return (
@@ -19,7 +32,7 @@ const StartRepairScreen = ({ navigation, route}) => {
         <View style={StartRepairScreenStyles.lampImageContainer}>
           <Image
             style={StartRepairScreenStyles.image}
-            source={require("../../assets/product-images/sunbell-smart-1.png")}
+            source={selectedLamp}
           />
         </View>
         <View style={StartRepairScreenStyles.lampInfoContainer}>
@@ -43,7 +56,7 @@ const StartRepairScreen = ({ navigation, route}) => {
           </View>
         </View>
       </View>
-        <LongButton  title={"REPAIR"} icon={"repair"} textColor={"primary_teal"} backgroundColor={"primary_green"} onPress={() => navigation.navigate("SelectPartsScreen",{data : userData})}/>
+        <LongButton  title={"REPAIR"} icon={"repair"} textColor={"primary_teal"} backgroundColor={"primary_green"} onPress={() => navigation.navigate("SelectPartsScreen")}/>
         <LongButton  title={"CAN NOT REPAIR"}  textColor={"white"} backgroundColor={"red"} onPress={ () => navigation.navigate("StartRepairSummaryScreen")}/>
         <LongButton  title={"TROUBLESHOOT GUIDE"} icon={"learn"} textColor={"white"} backgroundColor={"primary_teal"}/>
     </View>
