@@ -4,6 +4,7 @@ import {NavigationBar} from "../components/NavigationBar/NavigationBar";
 import * as NetInfo from "@react-native-community/netinfo";
 import SelectedLampSummary from "../components/SelectedLampSummary";
 import LongButton from "../components/LongButton";
+import {addNewRepair} from "../utils/helpers";
 
 
 const StartRepairSummaryScreen = ({navigation}) => {
@@ -23,17 +24,32 @@ const StartRepairSummaryScreen = ({navigation}) => {
         })
     }, []);
 
+    const testData = {
+        serialNumber: '69 69 69'
+    }
+
     return (
         <>
             <NavigationBar navigation={navigation}/>
             <View style={styles.container}>
-                <SelectedLampSummary/>
-                <SelectedLampSummary/>
+                <SelectedLampSummary data={testData}/>
+                <SelectedLampSummary data={testData}/>
                 <View style={styles.saveContainer}>
                     <Text style={styles.saveContainerTitle}>SAVE REPAIR</Text>
-                    {networkStatus ? <Image source={wifiIcon} style={styles.wifiIcon} /> : <Image source={noWifiIcon} style={styles.wifiIcon} />}
-                    <LongButton icon="save" textColor="primary_teal" backgroundColor="primary_green" title="SAVE" />
-                    <LongButton icon="save" textColor="primary_teal" backgroundColor="primary_green" title="SAVE + UPLOAD"/>
+                    {networkStatus ? <Image source={wifiIcon} style={styles.wifiIcon}/> :
+                        <Image source={noWifiIcon} style={styles.wifiIcon}/>}
+                    <LongButton icon="save" textColor="primary_teal" backgroundColor="primary_green" title="SAVE"
+                                onPress={async () => {
+                                    await addNewRepair(testData);
+                                    navigation.navigate('HomeScreen');
+                                }}/>
+                    <LongButton icon="save" textColor="primary_teal" backgroundColor="primary_green"
+                                title="SAVE + UPLOAD"
+                                onPress={async () => {
+                                    //WE NEED TO ADD THE UPLOAD FUNCTIONALITY HERE
+                                    await addNewRepair(testData);
+                                    navigation.navigate('HomeScreen');
+                                }}/>
                 </View>
             </View>
         </>

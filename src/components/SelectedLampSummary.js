@@ -1,25 +1,26 @@
-import React,{useState,useEffect} from 'react';
-import {Text, View,Image, StyleSheet} from "react-native";
+import React, {useState, useEffect} from 'react';
+import {Text, View, Image, StyleSheet} from "react-native";
 
-const SelectedLampSummary = ({lamp,wrench,index,data}) => {
+const SelectedLampSummary = ({lamp, wrench, index, data}) => {
     const [lampImageVisible, setLampImageVisible] = useState(false);
     const [partImageVisible, setPartImageVisible] = useState(false);
     const [wrenchImageVisible, setWrenchImageVisible] = useState(false);
 
 
- const handleImage = () => {
+    const handleImage = () => {
 
-     if(wrench){
-         setPartImageVisible(true);
-         setWrenchImageVisible(true);
-     } else {
+        if (wrench) {
+            setPartImageVisible(true);
+            setWrenchImageVisible(true);
+        } else {
+            setLampImageVisible(true)
+        }
+    }
 
-         setLampImageVisible(true)
-     }
- }
+    //DATA: {serialNumber, customerPhone, serialNumber || undefined, lamp, (chosenPart || "DISCARD") }
+    const {serialNumber} = data; //destructure data object with user data
 
- useEffect(handleImage,[])
-
+    useEffect(handleImage, [])
 
     return (
         <>
@@ -28,9 +29,15 @@ const SelectedLampSummary = ({lamp,wrench,index,data}) => {
                     <Text style={SelectedLampSummaryStyles.indexText}>{index}</Text>
                 </View>
                 <View style={SelectedLampSummaryStyles.lampImageContainer}>
-                    <Image style={[SelectedLampSummaryStyles.selectedLampImage, lampImageVisible ? {display : 'flex'} : {display: 'none'}]} source={require('../../assets/product-images/sunbell-smart-1.png')}/>
-                    <Image style={[SelectedLampSummaryStyles.selectedPartImage, partImageVisible ? {display : 'flex'} : {display: 'none'}]} source={require('../../assets/product-images/battery.png')}/>
-                    <Image style={[SelectedLampSummaryStyles.greenWrench, wrenchImageVisible ? {display : 'flex'} : {display : 'none'}]} source={require('../../assets/icons/wrench_grren_bg.png')}/>
+                    <Image
+                        style={[SelectedLampSummaryStyles.selectedLampImage, lampImageVisible ? {display: 'flex'} : {display: 'none'}]}
+                        source={require('../../assets/product-images/sunbell-smart-1.png')}/>
+                    <Image
+                        style={[SelectedLampSummaryStyles.selectedPartImage, partImageVisible ? {display: 'flex'} : {display: 'none'}]}
+                        source={require('../../assets/product-images/battery.png')}/>
+                    <Image
+                        style={[SelectedLampSummaryStyles.greenWrench, wrenchImageVisible ? {display: 'flex'} : {display: 'none'}]}
+                        source={require('../../assets/icons/wrench_grren_bg.png')}/>
                 </View>
                 <View style={SelectedLampSummaryStyles.selectedLampInfoContainer}>
                     <View>
@@ -42,7 +49,7 @@ const SelectedLampSummary = ({lamp,wrench,index,data}) => {
                     </View>
                     <View>
                         <Text style={SelectedLampSummaryStyles.selectedLampSerialNo}>SNR</Text>
-                        <Text style={SelectedLampSummaryStyles.selectedLampSerialNoText}>{data.serialNumber}</Text>
+                        <Text style={SelectedLampSummaryStyles.selectedLampSerialNoText}>{serialNumber}</Text>
                     </View>
                 </View>
             </View>
@@ -137,14 +144,14 @@ const SelectedLampSummaryStyles = StyleSheet.create({
         lineHeight: 38
 
     },
-    greenWrench : {
-      width : '15%',
-      height : '20%',
+    greenWrench: {
+        width: '15%',
+        height: '20%',
         marginTop: 80,
-        marginRight : 20,
+        marginRight: 20,
     },
-    selectedPartImage : {
-      width : '70%',
-      height : '70%'
+    selectedPartImage: {
+        width: '70%',
+        height: '70%'
     },
 });

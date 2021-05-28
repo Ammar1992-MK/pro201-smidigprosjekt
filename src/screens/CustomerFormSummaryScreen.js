@@ -74,9 +74,9 @@ const CustomerFormSummaryScreen = ({navigation, route}) => {
                 <View style={styles.summaryContainer}>
                     <CardSmall lampName="SUNBELL SMART"/>
                     <View style={styles.inputFields}>
-                        <FilledInputField textInput={userData.customerName} title={"Phone Number"}/>
-                        <FilledInputField textInput={userData.phoneNumber} title={"Serial Number"}/>
-                        <FilledInputField textInput={userData.serialNumber} title={"Name"}/>
+                        <FilledInputField textInput={userData.phoneNumber} title={"Phone Number"}/>
+                        <FilledInputField textInput={userData.serialNumber} title={"Serial Number"}/>
+                        <FilledInputField textInput={userData.customerName} title={"Name"}/>
                     </View>
                 </View>
                 <View style={styles.buttonContainer}>
