@@ -1,24 +1,21 @@
 import React,{useState,useEffect} from 'react';
 import {Text, View,Image, StyleSheet} from "react-native";
 
-const SelectedLampSummary = ({lamp,wrench,index,data}) => {
-    const [lampImageVisible, setLampImageVisible] = useState(false);
-    const [partImageVisible, setPartImageVisible] = useState(false);
-    const [wrenchImageVisible, setWrenchImageVisible] = useState(false);
-    const[partImage, setPartImage] = useState();
-    const[lampImage, setLampImage] = useState();
+const SelectedLampSummary = ({lamp,sparePart,index,data}) => {
+    const [lampImageVisible, setLampImageVisible] = useState();
+    const [partImageVisible, setPartImageVisible] = useState();
+    const [wrenchImageVisible, setWrenchImageVisible] = useState();
+
 
 
 
  const handleImage = () => {
-     if(wrench){
+     if(sparePart){
          setPartImageVisible(true);
          setWrenchImageVisible(true);
-         setPartImage(wrench)
      } else {
          setLampImageVisible(true)
      }
-     setLampImage(lamp)
  }
 
  useEffect(handleImage,[])
@@ -32,8 +29,8 @@ const SelectedLampSummary = ({lamp,wrench,index,data}) => {
                 </View>
                 <View style={SelectedLampSummaryStyles.lampImageContainer}>
                     <Image style={[SelectedLampSummaryStyles.selectedLampImage, lampImageVisible ? {display : 'flex'} : {display: 'none'}]} source={lamp}/>
-                     <Image style={[SelectedLampSummaryStyles.selectedPartImage, partImageVisible ? {display : 'flex'} : {display: 'none'}]} source={partImage}/>
-                    {wrench && <Image style={[SelectedLampSummaryStyles.greenWrench, wrenchImageVisible ? {display : 'flex'} : {display : 'none'}]} source={require('../../assets/icons/wrench_grren_bg.png')}/>}
+                     <Image style={[SelectedLampSummaryStyles.selectedPartImage, partImageVisible ? {display : 'flex'} : {display: 'none'}]} source={sparePart}/>
+                     <Image style={[SelectedLampSummaryStyles.greenWrench, wrenchImageVisible ? {display : 'flex'} : {display : 'none'}]} source={require('../../assets/icons/wrench_grren_bg.png')}/>
                 </View>
                 <View style={SelectedLampSummaryStyles.selectedLampInfoContainer}>
                     <View>

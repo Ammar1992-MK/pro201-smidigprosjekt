@@ -21,13 +21,30 @@ const StartRepairSummaryScreen = ({navigation,route}) => {
 
     //SELECTED PARTS
     const[userData, setUserData] = useState({});
+    const[index, setIndex] = useState();
+    const[image, setImage] = useState();
     const {data} = route.params;
-    console.log(userData.selectedPartId);
 
-    //TODO RENDER CHOOSEN SPARE PARTS
-    const renderSparePartCards = () => {
+    const render = (image, index) => {
+
+        return<SelectedLampSummary index={index +1} sparePart={image} data={""}/>
     }
 
+    const  getParts = () => {
+        if (userData.selectedPartId) {
+            spareParts.map((el, index,) => {
+                userData.selectedPartId.map((id) => {
+                    if (el.id === id) {
+                        setImage(el.image);
+                        setIndex(index)
+
+                    }
+                })
+
+            })
+
+        }
+    }
 
     useEffect(() => {
         //This package allows us to check the network state of the device we are using
@@ -36,7 +53,7 @@ const StartRepairSummaryScreen = ({navigation,route}) => {
             setNetworkStatus(networkState.isWifiEnabled);
         })
         setUserData(data)
-
+        getParts()
     }, []);
 
     const testData = {
@@ -48,7 +65,7 @@ const StartRepairSummaryScreen = ({navigation,route}) => {
             <NavigationBar navigation={navigation}/>
             <View style={styles.container}>
                 <SelectedLampSummary index={'1'} lamp={userData.selectedLamp} data={userData}/>
-
+                {render(image, index)}
                 <View style={styles.saveContainer}>
                     <Text style={styles.saveContainerTitle}>SAVE REPAIR</Text>
                     {networkStatus ? <Image source={wifiIcon} style={styles.wifiIcon}/> :
