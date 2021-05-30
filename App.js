@@ -19,6 +19,7 @@ import StartRepairSummaryScreen from "./src/screens/StartRepairSummaryScreen";
 //LEARN
 import LearnHomeScreen from "./src/screens/LearnHomeScreen";
 import TroubleshootScreen from "./src/screens/TroubleshootScreen";
+import LearnVideoPlayerScreen from "./src/screens/LearnVideoPlayerScreen";
 
 const App = () => {
 
@@ -81,11 +82,20 @@ const App = () => {
                     component={StartRepairSummaryScreen}
                     options={{headerShown: false}}
                 />
+                {/* LEARN HOME SCREEN */}
                 <Stack.Screen
                     name="LearnHomeScreen"
                     component={LearnHomeScreen}
                     options={{headerShown: false}}
                 />
+                {/* LEARN HOME SCREEN */}
+                <Stack.Screen
+                    name="LearnVideoPlayerScreen"
+                    component={LearnVideoPlayerScreen}
+                    options={{headerShown: false}}
+                />
+
+                {/* TROUBLESHOOT SCREEN */}
                 <Stack.Screen
                     name="TroubleshootScreen"
                     component={TroubleshootScreen}
