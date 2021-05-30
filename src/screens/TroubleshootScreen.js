@@ -1,47 +1,27 @@
 import React from 'react';
-import {View, Text, Dimensions} from "react-native";
-import Pdf from 'react-native-pdf';
+import {View, Image, Dimensions, StyleSheet, ScrollView} from "react-native";
+import {NavigationBar} from "../components/NavigationBar/NavigationBar";
+import PdfReader from "rn-pdf-reader-js";
 
-
-const TroubleshootScreen = () => {
-
-    const source = require('../../assets/pdf/troubleshootguide.pdf');
-
+const TroubleshootScreen = ({navigation}) => {
     return (
-        <View>
-            <Pdf
-                source={source}
-                onLoadComplete={(numberOfPages, filePath) => {
-                    console.log(`number of pages: ${numberOfPages}`);
-                }}
-                onPageChanged={(page, numberOfPages) => {
-                    console.log(`current page: ${page}`);
-                }}
-                onError={(error) => {
-                    console.log(error);
-                }}
-                onPressLink={(uri) => {
-                    console.log(`Link presse: ${uri}`)
-                }}
-                style={styles.pdf}
-            />
-        </View>
+        <PdfReader
+            source={{
+                uri: 'http://www.africau.edu/images/default/sample.pdf',
+            }}
+        />
     )
-};
+}
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-        marginTop: 25
-    },
-    pdf: {
-        flex: 1,
+        height: Dimensions.get('window').height,
         width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height
+    },
+    image: {
+        height: '100%',
+        width: '100%'
     }
 })
-
 
 export default TroubleshootScreen;
