@@ -16,6 +16,8 @@ import StartRepairScreen from "./src/screens/StartRepairScreen";
 import SelectPartsScreen from "./src/screens/SelectPartsScreen";
 import StartRepairSummaryScreen from "./src/screens/StartRepairSummaryScreen";
 
+import LearnHomeScreen from "./src/screens/LearnHomeScreen";
+
 const App = () => {
 
     //Use fonts hook
@@ -75,6 +77,11 @@ const App = () => {
                 <Stack.Screen
                     name="StartRepairSummaryScreen"
                     component={StartRepairSummaryScreen}
+                    options={{headerShown: false}}
+                />
+                <Stack.Screen
+                    name="LearnHomeScreen"
+                    component={LearnHomeScreen}
                     options={{headerShown: false}}
                 />
             </Stack.Navigator>

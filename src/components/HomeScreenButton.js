@@ -55,7 +55,7 @@ const HomeScreenButtonStyle = StyleSheet.create({
   innerContainer: {
     flexDirection: "row",
     alignItems: "center",
-    width: "40%",
+    width: "80%",
     marginLeft: "10%",
   },
   title: {
