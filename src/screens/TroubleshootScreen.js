@@ -5,11 +5,14 @@ import PdfReader from "rn-pdf-reader-js";
 
 const TroubleshootScreen = ({navigation}) => {
     return (
-        <PdfReader
-            source={{
-                uri: 'http://www.africau.edu/images/default/sample.pdf',
-            }}
-        />
+        <>
+            <NavigationBar navigation={navigation} />
+            <PdfReader
+                source={{
+                    uri: 'http://www.africau.edu/images/default/sample.pdf',
+                }}
+            />
+        </>
     )
 }
 
