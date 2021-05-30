@@ -2,22 +2,22 @@ import React,{useState,useEffect} from 'react';
 import {Text, View,Image, StyleSheet} from "react-native";
 
 const SelectedLampSummary = ({lamp,sparePart,index,data}) => {
-    const [lampImageVisible, setLampImageVisible] = useState();
-    const [partImageVisible, setPartImageVisible] = useState();
-    const [wrenchImageVisible, setWrenchImageVisible] = useState();
+    const [lampImageVisible, setLampImageVisible] = useState(false);
+    const [partImageVisible, setPartImageVisible] = useState(false);
+    const [wrenchImageVisible, setWrenchImageVisible] = useState(false);
 
 
 
+const handleImage = () => {
 
- const handleImage = () => {
-     if(sparePart){
-         setPartImageVisible(true);
-         setWrenchImageVisible(true);
-     } else {
-         setLampImageVisible(true)
-     }
- }
+    if (lamp && !sparePart){
+        setLampImageVisible(true)
+    }else if(sparePart && !lamp) {
 
+        setPartImageVisible(true);
+        setWrenchImageVisible(true);
+    }
+}
  useEffect(handleImage,[])
 
 
@@ -28,22 +28,23 @@ const SelectedLampSummary = ({lamp,sparePart,index,data}) => {
                     <Text style={SelectedLampSummaryStyles.indexText}>{index}</Text>
                 </View>
                 <View style={SelectedLampSummaryStyles.lampImageContainer}>
-                    <Image style={[SelectedLampSummaryStyles.selectedLampImage, lampImageVisible ? {display : 'flex'} : {display: 'none'}]} source={lamp}/>
-                     <Image style={[SelectedLampSummaryStyles.selectedPartImage, partImageVisible ? {display : 'flex'} : {display: 'none'}]} source={sparePart}/>
-                     <Image style={[SelectedLampSummaryStyles.greenWrench, wrenchImageVisible ? {display : 'flex'} : {display : 'none'}]} source={require('../../assets/icons/wrench_grren_bg.png')}/>
+                    {lamp && <Image style={SelectedLampSummaryStyles.selectedLampImage} source={lamp}/>}
+                    {sparePart && <Image style={SelectedLampSummaryStyles.selectedPartImage} source={sparePart}/>}
+                    {sparePart && <Image style={SelectedLampSummaryStyles.greenWrench} source={require('../../assets/icons/wrench_grren_bg.png')}/>}
                 </View>
                 <View style={SelectedLampSummaryStyles.selectedLampInfoContainer}>
                     <View>
-                        <Text style={SelectedLampSummaryStyles.selectedLampName}>{data.lampName}</Text>
+                        <Text style={SelectedLampSummaryStyles.selectedLampName}>{ data.lampName}</Text>
                     </View>
                     <View>
                         <Text style={SelectedLampSummaryStyles.selectedLampRepairId}>REPAIR ID</Text>
                         <Text style={SelectedLampSummaryStyles.selectedLampRepairIdText}>FR2324</Text>
                     </View>
-                    <View>
+                        <View>
                         <Text style={SelectedLampSummaryStyles.selectedLampSerialNo}>SNR</Text>
                         <Text style={SelectedLampSummaryStyles.selectedLampSerialNoText}>{data.serialNumber}</Text>
-                    </View>
+                        </View>
+
                 </View>
             </View>
         </>
@@ -87,6 +88,7 @@ const SelectedLampSummaryStyles = StyleSheet.create({
     lampImageContainer: {
         width: '28%',
         height: '84%',
+        display : 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#fff',
@@ -145,6 +147,7 @@ const SelectedLampSummaryStyles = StyleSheet.create({
     },
     selectedPartImage : {
       width : '70%',
-      height : '70%'
+      height : '70%',
+        zIndex : 4,
     },
 });

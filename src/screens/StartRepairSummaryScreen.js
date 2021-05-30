@@ -26,8 +26,7 @@ const StartRepairSummaryScreen = ({navigation,route}) => {
     const {data} = route.params;
 
     const render = (image, index) => {
-
-        return<SelectedLampSummary index={index +1} sparePart={image} data={""}/>
+        return<SelectedLampSummary index={index} sparePart={image} data={""} lamp={false}/>
     }
 
     const  getParts = () => {
@@ -37,12 +36,9 @@ const StartRepairSummaryScreen = ({navigation,route}) => {
                     if (el.id === id) {
                         setImage(el.image);
                         setIndex(index)
-
                     }
                 })
-
             })
-
         }
     }
 
@@ -64,7 +60,7 @@ const StartRepairSummaryScreen = ({navigation,route}) => {
         <>
             <NavigationBar navigation={navigation}/>
             <View style={styles.container}>
-                <SelectedLampSummary index={'1'} lamp={userData.selectedLamp} data={userData}/>
+                <SelectedLampSummary index={'1'} lamp={userData.selectedLamp} sparePart={false} data={userData}/>
                 {render(image, index)}
                 <View style={styles.saveContainer}>
                     <Text style={styles.saveContainerTitle}>SAVE REPAIR</Text>
