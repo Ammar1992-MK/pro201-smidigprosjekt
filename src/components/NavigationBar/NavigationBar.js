@@ -34,7 +34,6 @@ const NavigationBarStyles = StyleSheet.create({
         fontFamily: 'ArialBold',
         letterSpacing: 2,
         color: '#fff',
-        letterSpacing: 1.75,
         textTransform: "uppercase"
     },
     button: {},

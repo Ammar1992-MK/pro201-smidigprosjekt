@@ -9,7 +9,7 @@ const LearnHomeScreen = ({navigation}) => {
         <>
             <NavigationBar navigation={navigation}/>
             <View style={LearnHomeScreenStyles.container}>
-                <HomeScreenButton  icon={'search'} title={'TROUBLESHOOT GUIDE'} />
+                <HomeScreenButton  icon={'search'} title={'TROUBLESHOOT GUIDE'} onPress={() => navigation.navigate('TroubleshootScreen')} />
                 <HomeScreenButton icon={'search'} title={'CHANGE PART VIDEOS'} />
             </View>
         </>
