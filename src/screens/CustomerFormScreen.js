@@ -88,6 +88,7 @@ export default function CustomerFormScreen({navigation}) {
                     <TextInput
                         style={styles.input}
                         onChangeText={text => setSerialNumber(text)}
+
                     />
                     <TouchableOpacity>
                         <View style={styles.qrButton}>

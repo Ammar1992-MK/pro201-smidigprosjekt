@@ -37,7 +37,10 @@ const HomeScreen = ({ navigation }) => {
 			/>
 			<HomeScreenButton icon={'search'} title={'SEARCH'} />
 			<HomeScreenButton icon={'upload'} title={'UPLOAD'} />
-			<HomeScreenButton icon={'school'} title={'LEARN'} />
+			<HomeScreenButton
+				icon={'school'}
+				title={'LEARN'}
+				onPress={() => navigation.navigate('LearnHomeScreen')} />
 		</View>
 	);
 };
