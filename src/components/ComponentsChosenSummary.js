@@ -12,10 +12,9 @@ const ComponentsChosenSummary = ({selectedComponentsId}) => {
     }
     else if(selectedComponentsId === "DISCARD"){
         //TODO Legge til bilde av en søppelkasse eller noe, for å vise at den skal kastes.
-        parts_images = <Text>TODO</Text>
+        parts_images = <Text>Ikke lagt opp til kasteikon enda</Text>
     }else {
         parts_images = selectedComponentsId.map((compId, index) => {
-            console.log(compId)
             let component = get_spare_part_by_id(compId)
             const {image} = component
             if(!image){
@@ -27,6 +26,9 @@ const ComponentsChosenSummary = ({selectedComponentsId}) => {
 
     return (
         <View style={style.container}>
+            <View style={style.indexCont}>
+                <Text style={style.indexText}>2</Text>
+            </View>
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                 {parts_images}
             </ScrollView>
@@ -35,7 +37,20 @@ const ComponentsChosenSummary = ({selectedComponentsId}) => {
 }
 
 const style = StyleSheet.create({
+    indexCont: {
+        width: 100,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    indexText: {
+        color: '#174A5B',
+        fontSize: 28,
+        fontFamily: 'Arial',
+        fontWeight: '700'
+    },
     container: {
+        display: 'flex',
+        flexDirection: 'row',
         width: '90%',
         height: 210,
         padding: 25,
