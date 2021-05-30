@@ -8,9 +8,10 @@ import SelectedLampSummary from "../components/SelectedLampSummary";
 import LongButton from "../components/LongButton";
 import {addNewRepair} from "../utils/helpers";
 import {spareParts} from "../utils/fakeDb";
+import ComponentsChosenSummary from "../components/ComponentsChosenSummary";
 
 
-const StartRepairSummaryScreen = ({navigation,route}) => {
+const StartRepairSummaryScreen = ({navigation, route}) => {
 
     //WIFI ICONS
     const noWifiIcon = require("../../assets/icons/no_wifi.png");
@@ -20,14 +21,13 @@ const StartRepairSummaryScreen = ({navigation,route}) => {
     const [networkStatus, setNetworkStatus] = useState(false)
 
     //SELECTED PARTS
+    const {data} = route.params;
+    const {selectedPartId} = data;
     const[userData, setUserData] = useState({});
     const[index, setIndex] = useState();
     const[image, setImage] = useState();
-    const {data} = route.params;
 
-    const render = (image, index) => {
-        return<SelectedLampSummary index={index} sparePart={image} data={""} lamp={false}/>
-    }
+    console.log(selectedPartId)
 
     const  getParts = () => {
         if (userData.selectedPartId) {
@@ -61,7 +61,7 @@ const StartRepairSummaryScreen = ({navigation,route}) => {
             <NavigationBar navigation={navigation}/>
             <View style={styles.container}>
                 <SelectedLampSummary index={'1'} lamp={userData.selectedLamp} sparePart={false} data={userData}/>
-                {render(image, index)}
+                <ComponentsChosenSummary selectedComponentsId={selectedPartId} />
                 <View style={styles.saveContainer}>
                     <Text style={styles.saveContainerTitle}>SAVE REPAIR</Text>
                     {networkStatus ? <Image source={wifiIcon} style={styles.wifiIcon}/> :

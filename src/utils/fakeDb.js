@@ -26,15 +26,23 @@ export const spareParts = [
 
 export const lamps = [
     {
-        name: "smartPlus",
+        name: "Smart Plus",
         image: require("../../assets/product-images/smart-plus-1.png")
     },
     {
-        name: "sunbellSmart",
+        name: "Sunbell Smart",
         image: require("../../assets/product-images/sunbell-smart-1.png")
     },
     {
-        name: "sunTurtle",
+        name: "Sun Turtle",
         image: require("../../assets/product-images/sunturtle.png")
     }
 ]
+
+export const get_spare_part_by_id = (id) => {
+    for(let el of spareParts){
+        if(el.id === id){
+            return el
+        }
+    }
+}

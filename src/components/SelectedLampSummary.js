@@ -2,25 +2,6 @@ import React,{useState,useEffect} from 'react';
 import {Text, View,Image, StyleSheet} from "react-native";
 
 const SelectedLampSummary = ({lamp,sparePart,index,data}) => {
-    const [lampImageVisible, setLampImageVisible] = useState(false);
-    const [partImageVisible, setPartImageVisible] = useState(false);
-    const [wrenchImageVisible, setWrenchImageVisible] = useState(false);
-
-
-
-const handleImage = () => {
-
-    if (lamp && !sparePart){
-        setLampImageVisible(true)
-    }else if(sparePart && !lamp) {
-
-        setPartImageVisible(true);
-        setWrenchImageVisible(true);
-    }
-}
- useEffect(handleImage,[])
-
-
     return (
         <>
             <View style={SelectedLampSummaryStyles.container}>
@@ -34,7 +15,7 @@ const handleImage = () => {
                 </View>
                 <View style={SelectedLampSummaryStyles.selectedLampInfoContainer}>
                     <View>
-                        <Text style={SelectedLampSummaryStyles.selectedLampName}>{ data.lampName}</Text>
+                        <Text style={SelectedLampSummaryStyles.selectedLampName}>{data.lampName}</Text>
                     </View>
                     <View>
                         <Text style={SelectedLampSummaryStyles.selectedLampRepairId}>REPAIR ID</Text>
@@ -43,8 +24,7 @@ const handleImage = () => {
                         <View>
                         <Text style={SelectedLampSummaryStyles.selectedLampSerialNo}>SNR</Text>
                         <Text style={SelectedLampSummaryStyles.selectedLampSerialNoText}>{data.serialNumber}</Text>
-                        </View>
-
+                    </View>
                 </View>
             </View>
         </>
