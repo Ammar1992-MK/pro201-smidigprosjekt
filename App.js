@@ -89,6 +89,12 @@ const App = () => {
                     component={StartRepairSummaryScreen}
                     options={{headerShown: false}}
                 />
+                {/* SEARCH SCREEN */}
+                <Stack.Screen
+                    name="SearchRepairScreen"
+                    component={SearchRepairScreen}
+                    options={{headerShown: false}}
+                />
                 {/* UPLOAD SCREEN */}
                 <Stack.Screen
                     name="UploadScreen"
