@@ -1,8 +1,46 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import {View,Text,TextInput,StyleSheet,Image,TouchableOpacity} from "react-native";
 import {NavigationBar} from "../components/NavigationBar/NavigationBar";
 
+//firebase db
+import db from "../firebase/firebaseDb";
+import ScrollViewSearchList from "../components/ScrollViewSearchList";
+import {getData} from "../utils/helpers";
+
 const SearchRepairScreen = ({navigation}) => {
+
+    const [readyData, setReadyData] = useState([]);
+    const [finishedData, setFinishedData] = useState([]);
+    const [data, setData] = useState([]);
+    const [searchTerm, setSearchTerm] = useState("");
+    const[searchDisable, setSearchDisable] = useState(true);
+
+    const searchButton = () => {
+        if(searchTerm.length >= 1 ){
+            console.log('disabled')
+          return  <TouchableOpacity style={[Styles.searchButton,{backgroundColor: '#C3DC93'}]} disabled={false}>
+                <Text style={Styles.searchText}>SEARCH</Text>
+            </TouchableOpacity>
+        } else if(searchTerm.length < 4){
+            console.log('enabled')
+            return <TouchableOpacity style={[Styles.searchButton, {backgroundColor: 'lightgrey'}]} disabled={true}>
+                <Text style={Styles.searchText}>SEARCH</Text>
+            </TouchableOpacity>
+        }
+    }
+
+    const fetchReadyRepairs = () =>{
+        data.map((el) => {
+            if(el.status === 'NEW'){
+
+                setReadyData((readyData) => [...readyData, el]);
+            }
+        })
+    }
+
+    useEffect(() => {
+        getData().then(data => setData(data))
+    },[]);
 
     return (
         <View style={Styles.container}>
@@ -12,7 +50,7 @@ const SearchRepairScreen = ({navigation}) => {
                     <Text style={Styles.searchTitle}>Search repair</Text>
                 </View>
                 <View style={Styles.searchInputContainer}>
-                    <TextInput style={Styles.input}/>
+                    <TextInput style={Styles.input} onChangeText={searchTerm => setSearchTerm(searchTerm)}/>
                     <Image style={Styles.searchIcon} source={require('../../assets/icons/search.png')}/>
                 </View>
             </View>
@@ -21,10 +59,18 @@ const SearchRepairScreen = ({navigation}) => {
                     <Text style={Styles.scanText}>SCAN</Text>
                     <Image style={Styles.scanIcon} source={require('../../assets/icons/qr_code_scanner.png')}/>
                 </TouchableOpacity>
-                <TouchableOpacity style={Styles.searchButton}>
-                    <Text style={Styles.searchText}>SEARCH</Text>
+                {searchButton()}
+            </View>
+
+            <View style={Styles.fetchButtonsContainer}>
+                <TouchableOpacity style={Styles.readyButton}onPress={() => fetchReadyRepairs()} >
+                    <Text style={Styles.readyText}>READY</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={Styles.finishedButton} >
+                    <Text style={Styles.finishedText}>FINISHED</Text>
                 </TouchableOpacity>
             </View>
+             <ScrollViewSearchList data={readyData}/>
         </View>
     )
 }
@@ -93,7 +139,6 @@ export default SearchRepairScreen;
             marginLeft : 20,
         },
         searchButton:{
-            backgroundColor : '#C3DC93',
             width : '50%',
             height : '35%',
             display : 'flex',
@@ -125,6 +170,46 @@ export default SearchRepairScreen;
         scanIcon:{
             width : '30%',
             height :'70%',
-        }
+        },
+        fetchButtonsContainer:{
+            width : '100%',
+            height :'7%',
+            display : 'flex',
+            flexDirection : 'row',
+            alignItems :'center',
+            justifyContent : 'space-evenly',
+            borderBottomWidth : 3,
+            borderBottomColor : '#174A5B',
+        },
+        readyButton : {
+            width : '50%',
+            height : '100%',
+            display : 'flex',
+            flexDirection : 'row',
+            alignItems :'center',
+            justifyContent : 'center',
+            backgroundColor : '#fff'
+        },
+        finishedButton:{
+            width : '50%',
+            height : '100%',
+            display : 'flex',
+            flexDirection : 'row',
+            alignItems :'center',
+            justifyContent : 'center',
+            backgroundColor : '#fff',
+        },
+
+        readyText:{
+            fontFamily : 'ArialBold',
+            color : '#174A5B',
+            fontSize : 30,
+        },
+
+        finishedText:{
+            fontFamily : 'ArialBold',
+            color : '#174A5B',
+            fontSize : 30,
+        },
 
     });
