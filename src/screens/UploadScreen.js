@@ -8,6 +8,10 @@ import {FinishedRepairs} from "../components/FinishedRepairs";
 import {getData} from "../utils/helpers";
 import LongButton from "../components/LongButton";
 
+//List
+import ScrollViewSearchList from "../components/ScrollViewSearchList";
+import ListItemComponent from "../components/ListItemComponent";
+
 //firebase db
 import db from "../firebase/firebaseDb";
 
@@ -22,9 +26,11 @@ const UploadScreen = ({navigation}) => {
     const wifiIcon = require("../../assets/icons/internet_icon.png");
 
     const uploadToFirebase = () => {
-        db.collection('repair').doc("repairs").push(data)
+        /*db.collection('repair').doc("repairs").push(data)
             .then(() => console.log("Upload complete"))
-            .catch((err) => console.error("Error while uploading: " + err))
+            .catch((err) => console.error("Error while uploading: " + err)) *
+
+         */
     }
 
     useEffect(() => {
@@ -48,6 +54,7 @@ const UploadScreen = ({navigation}) => {
                 <FinishedRepairs dataLength={data.length}/>
                 <LongButton icon="upload" textColor="primary_teal" backgroundColor="primary_green" title="UPLOAD"
                             onPress={() => uploadToFirebase}/>
+                <ScrollViewSearchList data={data} />
             </View>
         </>
     )

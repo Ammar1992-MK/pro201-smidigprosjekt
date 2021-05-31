@@ -14,14 +14,13 @@ const ListItemComponent = ({data,icon}) => {
 
     useEffect(renderDateIcon,[])
     return (
-
             <View style={Styles.container}>
                 <View style={Styles.lampContainer}>
                     <Image style={Styles.lamp} source={data.image}/>
-                    <Text style={Styles.lampName}>{data.lampName}</Text>
+                    <Text style={Styles.lampName}>{data.lamp}</Text>
                 </View>
                 <View style={Styles.serialNumberContainer}>
-                    <Text style={Styles.serialNo}>{data.snr}</Text>
+                    <Text style={Styles.serialNo}>{data.serialNumber}</Text>
                 </View>
                 <View style={Styles.repairDate}>
                     <Image style={Styles.dateIcon} source={dateIcon}/>
@@ -33,7 +32,7 @@ const ListItemComponent = ({data,icon}) => {
         )
 }
 
-export default  ListItemComponent;
+export default ListItemComponent;
 
 const Styles = StyleSheet.create({
     container: {
@@ -98,5 +97,4 @@ const Styles = StyleSheet.create({
         fontSize : 20,
         color : '#2C2A29',
     }
-
 });

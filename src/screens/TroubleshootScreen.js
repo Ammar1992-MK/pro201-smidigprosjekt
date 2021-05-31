@@ -9,7 +9,7 @@ const TroubleshootScreen = ({navigation}) => {
             <NavigationBar title="TROUBLESHOOT" icon={true} navigation={navigation} />
             <PdfReader
                 source={{
-                    uri: 'http://www.africau.edu/images/default/sample.pdf',
+                    uri: 'http://www.africau.edu/images/default/sample.pdf'
                 }}
             />
         </>

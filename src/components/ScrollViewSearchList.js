@@ -2,7 +2,7 @@ import React from 'react'
 import {View,Text,FlatList,StyleSheet} from "react-native";
 import ListItemComponent from "./ListItemComponent";
 
-const ScrollViewSearchList = () => {
+const ScrollViewSearchList = ({data}) => {
 
     const lampImage = require('../../assets/product-images/sunbell-smart-1.png')
     const testData  = [
@@ -55,7 +55,8 @@ const ScrollViewSearchList = () => {
     return (
         <View style={Styles.container}>
             <FlatList
-                data={testData}
+                keyExtractor={(data) => data.local_id}
+                data={data}
                 renderItem = {({item}) => (
                     <ListItemComponent data={item} icon={"upload"}/>
                 )}

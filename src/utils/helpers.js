@@ -28,7 +28,7 @@ export const addNewRepair = async (valueObject) => {
         while (savedRepairs.map(e => e.local_id).includes(local_id)) {
             local_id++;
         }
-        savedRepairs.push({...valueObject, local_id: local_id});
+        savedRepairs.push({...valueObject, local_id: local_id, date: new Date().toLocaleDateString()});
 
         const jsonValue = JSON.stringify(savedRepairs)
         await AsyncStorage.setItem('repair', jsonValue)
@@ -49,6 +49,14 @@ export const getData = async () => {
     }
 }
 
+export const emptyDb = async () => {
+    try {
+        AsyncStorage.multiRemove(['repair'], () => console.log('Database cleared'))
+        await getData().then(data => console.log(data))
+    } catch (e) {
+        console.log(e.toString())
+    }
+}
 
 export const changeRepair = async (valueObject, localId) => {
     //Changes only the property provided in the valueobject on the local repair with ID 'localId'
