@@ -5,6 +5,7 @@ import * as NetInfo from "@react-native-community/netinfo";
 //Components
 import {NavigationBar} from "../components/NavigationBar/NavigationBar";
 import {FinishedRepairs} from "../components/FinishedRepairs";
+import {getData} from "../utils/helpers";
 import LongButton from "../components/LongButton";
 
 
@@ -15,12 +16,14 @@ const UploadScreen = ({navigation}) => {
 
     //NETWORK STATUS
     const [networkStatus, setNetworkStatus] = useState(false)
+    const [data, setData] = useState([]);
 
     useEffect(() => {
         //This package allows us to check the network state of the device we are using
         NetInfo.addEventListener(networkState => {
             //If the device has internet, we set the networkStatus to true. If not, it will be false.
             setNetworkStatus(networkState.isWifiEnabled);
+            getData().then(data => setData(data));
         })
     }, []);
     return (
@@ -31,7 +34,7 @@ const UploadScreen = ({navigation}) => {
                     {networkStatus ? <Image source={wifiIcon}/> : <Image source={noWifiIcon}/>}
                     <Text>Last Upload: Tue 12.05.21</Text>
                 </View>
-                <FinishedRepairs />
+                <FinishedRepairs dataLength={data.length}/>
             </View>
         </>
     )

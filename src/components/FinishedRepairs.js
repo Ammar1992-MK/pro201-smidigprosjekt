@@ -1,7 +1,7 @@
 import React from "react";
 import {Image, StyleSheet, Text, View} from "react-native";
 
-export const FinishedRepairs = () => {
+export const FinishedRepairs = ({dataLength}) => {
     const styles = StyleSheet.create({
         container: {
             justifyContent: 'center',
@@ -34,7 +34,7 @@ export const FinishedRepairs = () => {
         <View style={styles.container}>
             <View>
                 <Image source={require('../../assets/icons/folder.png')} />
-                <Text style={styles.numOfRepairs}>40</Text>
+                <Text style={styles.numOfRepairs}>{dataLength}</Text>
             </View>
             <Text style={styles.text}>Finished Repairs</Text>
         </View>
