@@ -43,7 +43,7 @@ export const getData = async () => {
     try {
         const jsonValue = await AsyncStorage.getItem('repair')
         return jsonValue ? JSON.parse(jsonValue) : []
-    } catch (e) {W
+    } catch (e) {
         // error reading value
         console.log(e.toString())
     }
