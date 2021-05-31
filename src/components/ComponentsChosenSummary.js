@@ -3,7 +3,6 @@ import React from "react";
 import {get_spare_part_by_id} from "../utils/fakeDb";
 
 const ComponentsChosenSummary = ({selectedComponentsId}) => {
-    console.log("Inndata", selectedComponentsId)
     //Selected componentsId is either a array of component IDs, or the string 'discard'
     let parts_images;
     if(!selectedComponentsId){

@@ -9,20 +9,24 @@ export const addNewRepair = async (valueObject) => {
     try {
 
         let savedRepairs = await AsyncStorage.getItem('repair');
-        if(!savedRepairs) {
+        if (!savedRepairs) {
             savedRepairs = [];
         } else {
             savedRepairs = JSON.parse(savedRepairs)
         }
 
         //TODO REMEMBER TO ADD LAMP
-        const {customerName, phoneNumber, lamp, serialNumber} = valueObject; //destructure the values from the form
-        if(!customerName || !phoneNumber){
+        const {customerName, phoneNumber, lamp, serialNumber, status} = valueObject; //destructure the values from the form
+        if (!status) {
+            //Status is not set in object, set it as 'NEW'
+            valueObject.status = "NEW"
+        }
+        if (!customerName || !phoneNumber) {
             throw new Error("Missing vital information");
         }
         let local_id = savedRepairs.length
-        while(savedRepairs.map(e => e.local_id).includes(local_id)){
-            local_id ++;
+        while (savedRepairs.map(e => e.local_id).includes(local_id)) {
+            local_id++;
         }
         savedRepairs.push({...valueObject, local_id: local_id});
 
@@ -34,12 +38,30 @@ export const addNewRepair = async (valueObject) => {
     }
 }
 
+
 export const getData = async () => {
     try {
         const jsonValue = await AsyncStorage.getItem('repair')
         return jsonValue ? JSON.parse(jsonValue) : []
-    } catch(e) {
+    } catch (e) {
         // error reading value
         console.log(e.toString())
     }
+}
+
+
+export const changeRepair = (valueObject, localId) => {
+    //Changes only the property provided in the valueobject on the local repair with ID 'localId'
+    let current_data = getData();
+    for(let el of current_data){
+        if(el.local_id === localId){
+            for(let newProperty in valueObject){
+                if(valueObject.hasOwnProperty(newProperty)){
+                    el[newProperty] = valueObject[newProperty]
+                }
+            }
+            return true;
+        }
+    }
+    return false;
 }
