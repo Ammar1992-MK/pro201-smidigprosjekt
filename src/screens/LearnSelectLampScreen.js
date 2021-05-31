@@ -23,14 +23,14 @@ const LearnSelectLampScreen = ({ navigation }) => {
 							<Text style={LearnSelectScreenStyles.text}>SUNBELL</Text>
 							<Image
 								style={LearnSelectScreenStyles.image}
-								source={require('../../assets/product-images/sunbell-smart-1.png')}
+								source={require('../../assets/product-images/sunbell1.png')}
 							/>
 						</TouchableOpacity>
 						<TouchableOpacity style={LearnSelectScreenStyles.lampContainer}>
 							<Text style={LearnSelectScreenStyles.text}>SUNTURTLE</Text>
 							<Image
 								style={LearnSelectScreenStyles.image}
-								source={require('../../assets/product-images/sunturtleh.png')}
+								source={require('../../assets/product-images/sunturtle2.png')}
 							/>
 						</TouchableOpacity>
 					</View>
@@ -39,14 +39,14 @@ const LearnSelectLampScreen = ({ navigation }) => {
 							<Text style={LearnSelectScreenStyles.text}>MOVE SMART</Text>
 							<Image
 								style={LearnSelectScreenStyles.image}
-								source={require('../../assets/product-images/movesmart.png')}
+								source={require('../../assets/product-images/movesmart3.png')}
 							/>
 						</TouchableOpacity>
 						<TouchableOpacity style={LearnSelectScreenStyles.lampContainer}>
 							<Text style={LearnSelectScreenStyles.text}>START+</Text>
 							<Image
 								style={LearnSelectScreenStyles.image}
-								source={require('../../assets/product-images/smart-plus-1.png')}
+								source={require('../../assets/product-images/start4.png')}
 							/>
 						</TouchableOpacity>
 					</View>
@@ -78,6 +78,7 @@ const LearnSelectScreenStyles = StyleSheet.create({
 	},
 	lampContainer: {
 		backgroundColor: '#fff',
+
 		alignItems: 'center',
 		borderWidth: 1,
 		borderColor: '#fff',
@@ -89,8 +90,8 @@ const LearnSelectScreenStyles = StyleSheet.create({
 		shadowOpacity: 0.8,
 		shadowRadius: 2,
 		elevation: 10,
-		marginLeft: 20,
-		marginRight: 20,
+		marginLeft: 40,
+		marginRight: 40,
 	},
 	text: {
 		backgroundColor: '#174A5B',
