@@ -1,21 +1,31 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import {Text, View, StyleSheet, Image} from "react-native";
 
-const SearchListItemComponent = ({data}) => {
+const ListItemComponent = ({data,icon}) => {
+    const[dateIcon, setDateIcon] = useState();
 
+    const renderDateIcon = () => {
+        if(icon === 'search'){
+            setDateIcon(require('../../assets/icons/date.png'))
+        } else if (icon === 'upload'){
+            setDateIcon(require('../../assets/icons/date_finished.png'))
+        }
+    }
+
+    useEffect(renderDateIcon,[])
     return (
 
             <View style={Styles.container}>
                 <View style={Styles.lampContainer}>
-                    <Image style={Styles.lamp} source={require('../../assets/product-images/sunbell-smart-1.png')}/>
-                    <Text style={Styles.lampName}>Sunbell Smart</Text>
+                    <Image style={Styles.lamp} source={data.image}/>
+                    <Text style={Styles.lampName}>{data.lampName}</Text>
                 </View>
                 <View style={Styles.serialNumberContainer}>
-                    <Text style={Styles.serialNo}>XXX-XXX-XXX</Text>
+                    <Text style={Styles.serialNo}>{data.snr}</Text>
                 </View>
                 <View style={Styles.repairDate}>
-                    <Image style={Styles.dateIcon} source={require('../../assets/icons/date.png')}/>
-                    <Text style={Styles.dateText}>05.11.21</Text>
+                    <Image style={Styles.dateIcon} source={dateIcon}/>
+                    <Text style={Styles.dateText}>{data.date}</Text>
                 </View>
                 <View></View>
             </View>
@@ -23,7 +33,7 @@ const SearchListItemComponent = ({data}) => {
         )
 }
 
-export default  SearchListItemComponent;
+export default  ListItemComponent;
 
 const Styles = StyleSheet.create({
     container: {
@@ -31,11 +41,11 @@ const Styles = StyleSheet.create({
         height: 120,
         display : 'flex',
         flexDirection : 'row',
-        marginTop: 64,
         borderRadius: 5,
         justifyContent: "space-between",
         alignItems: 'flex-end',
-        marginLeft : 15,
+        backgroundColor : '#fff',
+        marginTop : 10,
     },
     lampContainer:{
         width : '33%',

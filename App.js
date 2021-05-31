@@ -21,7 +21,8 @@ import LearnHomeScreen from "./src/screens/LearnHomeScreen";
 import LearnSelectLampScreen from "./src/screens/LearnSelectLampScreen";
 import TroubleshootScreen from "./src/screens/TroubleshootScreen";
 import LearnVideoPlayerScreen from "./src/screens/LearnVideoPlayerScreen";
-import SearchListItemComponent from "./src/components/SearchListItemComponent";
+import ListItemComponent from "./src/components/ListItemComponent";
+import ScrollViewSearchList from "./src/components/ScrollViewSearchList";
 
 const App = () => {
 
