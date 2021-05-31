@@ -27,6 +27,7 @@ import LearnVideoPlayerScreen from "./src/screens/LearnVideoPlayerScreen";
 import ListItemComponent from "./src/components/ListItemComponent";
 import ScrollViewSearchList from "./src/components/ScrollViewSearchList";
 import SearchRepairScreen from "./src/screens/SearchRepairScreen";
+import LampVideosScreen from "./src/screens/LampVideosScreen";
 
 const App = () => {
 
@@ -117,6 +118,13 @@ const App = () => {
                 <Stack.Screen
                     name="TroubleshootScreen"
                     component={TroubleshootScreen}
+                    options={{headerShown: false}}
+                />
+
+                {/* LAMP VIDEOS SCREEN */}
+                <Stack.Screen
+                    name="LampVideosScreen"
+                    component={LampVideosScreen}
                     options={{headerShown: false}}
                 />
             </Stack.Navigator>

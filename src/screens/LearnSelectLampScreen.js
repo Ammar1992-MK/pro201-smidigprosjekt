@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState, useEffect} from 'react';
 import {
 	View,
 	StyleSheet,
@@ -12,52 +12,63 @@ import { NavigationBar } from '../components/NavigationBar/NavigationBar';
 import CardSmall from '../components/Cards/CardSmall';
 import { BackButton } from '../components/BackButton';
 
-const LearnSelectLampScreen = ({ navigation }) => {
-	return (
-		<>
-			<NavigationBar navigation={navigation} />
-			<View style={LearnSelectScreenStyles.container}>
-				<View style={LearnSelectScreenStyles.boxContainer}>
-					<View style={LearnSelectScreenStyles.rows}>
-						<TouchableOpacity style={LearnSelectScreenStyles.lampContainer}>
-							<Text style={LearnSelectScreenStyles.text}>SUNBELL</Text>
-							<Image
-								style={LearnSelectScreenStyles.image}
-								source={require('../../assets/product-images/sunbell1.png')}
-							/>
-						</TouchableOpacity>
-						<TouchableOpacity style={LearnSelectScreenStyles.lampContainer}>
-							<Text style={LearnSelectScreenStyles.text}>SUNTURTLE</Text>
-							<Image
-								style={LearnSelectScreenStyles.image}
-								source={require('../../assets/product-images/sunturtle2.png')}
-							/>
-						</TouchableOpacity>
-					</View>
-					<View style={LearnSelectScreenStyles.rows}>
-						<TouchableOpacity style={LearnSelectScreenStyles.lampContainer}>
-							<Text style={LearnSelectScreenStyles.text}>MOVE SMART</Text>
-							<Image
-								style={LearnSelectScreenStyles.image}
-								source={require('../../assets/product-images/movesmart3.png')}
-							/>
-						</TouchableOpacity>
-						<TouchableOpacity style={LearnSelectScreenStyles.lampContainer}>
-							<Text style={LearnSelectScreenStyles.text}>START+</Text>
-							<Image
-								style={LearnSelectScreenStyles.image}
-								source={require('../../assets/product-images/start4.png')}
-							/>
-						</TouchableOpacity>
-					</View>
-				</View>
-				<View style={LearnSelectScreenStyles.backButton}>
-					<BackButton />
-				</View>
-			</View>
-		</>
-	);
-};
+const LearnSelectLampScreen = ({navigation, route}) => {
+
+    return (
+        <>
+            <NavigationBar navigation={navigation}/>
+            <View style={LearnSelectScreenStyles.container}>
+            <View style={LearnSelectScreenStyles.boxContainer}>
+                <View style={LearnSelectScreenStyles.rows}>
+                    <TouchableOpacity
+                        style={LearnSelectScreenStyles.lampContainer}
+                        onPress={() => {
+                            navigation.navigate('LampVideosScreen', {lamp: "SunBell Smart"});
+                        }}>
+                        <Text style={LearnSelectScreenStyles.text}>SUNBELL</Text>
+                        <Image
+                            style={LearnSelectScreenStyles.image}
+                            source={require("../../assets/product-images/sunbell1.png")}
+                        />
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={LearnSelectScreenStyles.lampContainer}
+                        onPress={() => navigation.navigate('LampVideosScreen', {lamp: "SunTurtle"})}>
+                        <Text style={LearnSelectScreenStyles.text}>SUNTURTLE</Text>
+                        <Image
+                            style={LearnSelectScreenStyles.image}
+                            source={require("../../assets/product-images/sunturtle2.png")}
+                        />
+                    </TouchableOpacity>
+                </View>
+                <View style={LearnSelectScreenStyles.rows}>
+                    <TouchableOpacity
+                        style={LearnSelectScreenStyles.lampContainer}
+                        onPress={() => navigation.navigate('LampVideosScreen', {lamp: "Move Smart"})}>
+                        <Text style={LearnSelectScreenStyles.text}>MOVE SMART</Text>
+                        <Image
+                            style={LearnSelectScreenStyles.image}
+                            source={require("../../assets/product-images/movesmart3.png")}
+                        />
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={LearnSelectScreenStyles.lampContainer}
+                        onPress={() => navigation.navigate('LampVideosScreen', {lamp: "Start+"})}>
+                        <Text style={LearnSelectScreenStyles.text}>START+</Text>
+                        <Image
+                            style={LearnSelectScreenStyles.image}
+                            source={require("../../assets/product-images/start4.png")}
+                        />
+                    </TouchableOpacity>
+                </View>
+            </View>
+                <View style={LearnSelectScreenStyles.backButton}>
+                    <BackButton/>
+                </View>
+            </View>
+            </>
+    )};
+
 
 const LearnSelectScreenStyles = StyleSheet.create({
 	container: {
