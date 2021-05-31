@@ -101,6 +101,7 @@ const App = () => {
                     component={LearnHomeScreen}
                     options={{headerShown: false}}
                 />
+                {/* LEARN SELECT LAMP SCREEN */}
                 <Stack.Screen
                     name="LearnSelectLampScreen"
                     component={LearnSelectLampScreen}
