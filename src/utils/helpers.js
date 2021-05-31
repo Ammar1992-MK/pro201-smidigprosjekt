@@ -24,11 +24,11 @@ export const addNewRepair = async (valueObject) => {
         if (!customerName || !phoneNumber) {
             throw new Error("Missing vital information");
         }
-        let local_id = savedRepairs.length
-        while (savedRepairs.map(e => e.local_id).includes(local_id)) {
-            local_id++;
+        let key = savedRepairs.length
+        while (savedRepairs.map(e => parseInt(e.key)).includes(key)) {
+            key++;
         }
-        savedRepairs.push({...valueObject, local_id: local_id, date: new Date().toLocaleDateString()});
+        savedRepairs.push({...valueObject, key: key.toString(), date: new Date().toLocaleDateString()});
 
         const jsonValue = JSON.stringify(savedRepairs)
         await AsyncStorage.setItem('repair', jsonValue)

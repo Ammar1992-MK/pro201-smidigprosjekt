@@ -29,7 +29,7 @@ const StartRepairSummaryScreen = ({navigation, route}) => {
 
     console.log(selectedPartId)
 
-    const  getParts = () => {
+    const getParts = () => {
         if (userData.selectedPartId) {
             spareParts.map((el, index,) => {
                 userData.selectedPartId.map((id) => {
