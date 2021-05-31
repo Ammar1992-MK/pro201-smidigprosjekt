@@ -35,12 +35,11 @@ export default SelectedLampSummary;
 const SelectedLampSummaryStyles = StyleSheet.create({
     container: {
         width: '90%',
-        height: 210,
+        height: 160,
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-between',
         marginLeft: 40,
-        marginTop: 40,
+        marginTop: 20,
         borderColor: 'rgba(195, 220, 147, 0.35)',
         borderWidth: 4,
         borderRadius: 18,
@@ -66,7 +65,7 @@ const SelectedLampSummaryStyles = StyleSheet.create({
     },
 
     lampImageContainer: {
-        width: '28%',
+        width: '20%',
         height: '84%',
         display : 'flex',
         alignItems: 'center',
@@ -75,17 +74,19 @@ const SelectedLampSummaryStyles = StyleSheet.create({
         borderRadius: 28,
         borderColor: 'rgba(195, 220, 147, 0.15)',
         borderWidth: 3,
-        borderStyle: 'solid'
+        borderStyle: 'solid',
+        marginLeft: 50
     },
 
     selectedLampImage: {
-        width: '40%',
-        height: '100%',
+        width: '75%',
+        height: '75%',
     },
 
     selectedLampInfoContainer: {
         width: '47%',
-        height: '84%'
+        height: '84%',
+        marginLeft: 50
     },
 
     selectedLampName: {
