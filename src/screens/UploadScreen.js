@@ -22,7 +22,7 @@ const UploadScreen = ({navigation}) => {
     const wifiIcon = require("../../assets/icons/internet_icon.png");
 
     const uploadToFirebase = () => {
-        db.collection('repair').push(data)
+        db.collection('repair').doc("repairs").push(data)
             .then(() => console.log("Upload complete"))
             .catch((err) => console.error("Error while uploading: " + err))
     }
@@ -47,7 +47,7 @@ const UploadScreen = ({navigation}) => {
                 </View>
                 <FinishedRepairs dataLength={data.length}/>
                 <LongButton icon="upload" textColor="primary_teal" backgroundColor="primary_green" title="UPLOAD"
-                            onPress={uploadToFirebase()}/>
+                            onPress={() => uploadToFirebase}/>
             </View>
         </>
     )
