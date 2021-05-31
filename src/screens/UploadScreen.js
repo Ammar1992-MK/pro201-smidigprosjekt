@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {View, Image, StyleSheet, Text, ScrollView} from "react-native";
+import {View, Image, StyleSheet, Text, Alert} from "react-native";
 import * as NetInfo from "@react-native-community/netinfo";
 
 //Components
@@ -52,9 +52,14 @@ const UploadScreen = ({navigation}) => {
                     <Text>Last Upload: Tue 12.05.21</Text>
                 </View>
                 <FinishedRepairs dataLength={data.length}/>
-                <LongButton icon="upload" textColor="primary_teal" backgroundColor="primary_green" title="UPLOAD"
-                            onPress={() => uploadToFirebase}/>
-                <ScrollViewSearchList data={data} />
+                {networkStatus ?
+                    <LongButton icon="upload" textColor="primary_teal" backgroundColor="primary_green" title="UPLOAD"
+                                onPress={() => uploadToFirebase}/> :
+                    <LongButton icon="upload" textColor="disabled" backgroundColor="disabled" title="UPLOAD"
+                                onPress={() => Alert.alert("No Internet", "You need internet to upload your files")} />}
+
+
+                <ScrollViewSearchList data={data}/>
             </View>
         </>
     )

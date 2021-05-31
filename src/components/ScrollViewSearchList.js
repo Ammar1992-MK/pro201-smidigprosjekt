@@ -23,5 +23,6 @@ const Styles = StyleSheet.create({
         height: 400,
         flexDirection: 'column',
         alignItems: 'center',
+        marginTop: 10
     },
 });

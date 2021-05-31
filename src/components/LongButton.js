@@ -36,7 +36,11 @@ const LongButton = (props) => {
     case "primary_teal":
       textColor = "#174A5B";
       break;
+    case "disabled":
+      textColor = "#174A5B45";
+      break;
   }
+
   switch (props.backgroundColor) {
     case "primary_green":
       backgroundColor = "#B7D381";
@@ -46,6 +50,9 @@ const LongButton = (props) => {
       break;
     case "red":
       backgroundColor = "#CB333B";
+      break;
+    case "disabled":
+      backgroundColor = "#E6E7E8";
       break;
   }
 
@@ -76,6 +83,7 @@ const LongButtonStyles = StyleSheet.create({
     position: 'relative',
     backgroundColor: "#B7D381",
     marginTop: 24,
+    elevation: 10
   },
   imageContainer: {
     marginLeft: 30,
