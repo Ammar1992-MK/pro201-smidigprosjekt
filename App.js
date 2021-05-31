@@ -110,12 +110,6 @@ const App = () => {
                     component={TroubleshootScreen}
                     options={{headerShown: false}}
                 />
-
-                <Stack.Screen
-                    name="SearchScreen"
-                    component={SearchRepairScreen}
-                    options={{headerShown: false}}
-                />
             </Stack.Navigator>
         </NavigationContainer>
     );

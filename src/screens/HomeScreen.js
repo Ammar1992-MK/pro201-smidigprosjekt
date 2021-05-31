@@ -36,7 +36,7 @@ const HomeScreen = ({ navigation }) => {
 				onPress={() => navigation.navigate('CustomerFormScreen')}
 			/>
 			<HomeScreenButton icon={'search'} title={'SEARCH'} onPress={() => navigation.navigate('LearnVideoPlayerScreen')} />
-			<HomeScreenButton icon={'upload'} title={'UPLOAD'} onPress={() => navigation.navigate('SearchScreen')}/>
+			<HomeScreenButton icon={'upload'} title={'UPLOAD'}/>
 			<HomeScreenButton
 				icon={'school'}
 				title={'LEARN'}
