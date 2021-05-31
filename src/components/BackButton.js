@@ -33,9 +33,7 @@ export const BackButton = ({ onPress, differentButton }) => {
           </View>
         </TouchableOpacity>
     );
-
   }
-
 };
 
 const BackButtonStyles = StyleSheet.create({

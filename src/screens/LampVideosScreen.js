@@ -36,7 +36,7 @@ const LampVideosScreen = ({navigation, route}) => {
                             />
                         </View>
                     </TouchableOpacity>
-                    <TouchableOpacity style={LampVideosScreenStyles.videoContainer}>
+                    <TouchableOpacity style={LampVideosScreenStyles.videoContainer} onPress={() => navigation.navigate('LearnVideoPlayerScreen')}>
                         <Text style={LampVideosScreenStyles.text}>BATTERY</Text>
                         <View style={LampVideosScreenStyles.cardRow}>
                             <Image

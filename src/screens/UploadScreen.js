@@ -26,7 +26,7 @@ const UploadScreen = ({navigation}) => {
     const wifiIcon = require("../../assets/icons/internet_icon.png");
 
     const uploadToFirebase = () => {
-        /*db.collection('repair').doc("repairs").push(data)
+        /*db.collection('upload').doc("repairs").push(data)
             .then(() => console.log("Upload complete"))
             .catch((err) => console.error("Error while uploading: " + err)) *
 
@@ -57,7 +57,6 @@ const UploadScreen = ({navigation}) => {
                                 onPress={() => uploadToFirebase}/> :
                     <LongButton icon="upload" textColor="disabled" backgroundColor="disabled" title="UPLOAD"
                                 onPress={() => Alert.alert("No Internet", "You need internet to upload your files")} />}
-
 
                 <ScrollViewSearchList data={data}/>
             </View>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, Image, Dimensions, StyleSheet, ScrollView} from "react-native";
 import {NavigationBar} from "../components/NavigationBar/NavigationBar";
 import PdfReader from "rn-pdf-reader-js";
@@ -9,7 +9,7 @@ const TroubleshootScreen = ({navigation}) => {
             <NavigationBar title="TROUBLESHOOT" icon={true} navigation={navigation} />
             <PdfReader
                 source={{
-                    uri: 'http://www.africau.edu/images/default/sample.pdf'
+                    uri: "https://firebasestorage.googleapis.com/v0/b/smidig-prosjekt-38d3e.appspot.com/o/troubleshootguide.pdf?alt=media&token=ba0a1edc-24d0-4974-9f99-190702a0561d"
                 }}
             />
         </>
