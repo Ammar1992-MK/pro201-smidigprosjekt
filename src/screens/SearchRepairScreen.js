@@ -17,12 +17,10 @@ const SearchRepairScreen = ({navigation}) => {
 
     const searchButton = () => {
         if(searchTerm.length >= 1 ){
-            console.log('disabled')
           return  <TouchableOpacity style={[Styles.searchButton,{backgroundColor: '#C3DC93'}]} disabled={false}>
                 <Text style={Styles.searchText}>SEARCH</Text>
             </TouchableOpacity>
         } else if(searchTerm.length < 4){
-            console.log('enabled')
             return <TouchableOpacity style={[Styles.searchButton, {backgroundColor: 'lightgrey'}]} disabled={true}>
                 <Text style={Styles.searchText}>SEARCH</Text>
             </TouchableOpacity>
@@ -31,7 +29,7 @@ const SearchRepairScreen = ({navigation}) => {
 
     const fetchReadyRepairs = () =>{
         data.map((el) => {
-            if(el.status === 'NEW'){
+            if(el.status === 'NEW' && readyData.length === 0){
 
                 setReadyData((readyData) => [...readyData, el]);
             }
