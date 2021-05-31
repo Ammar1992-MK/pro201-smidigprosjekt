@@ -90,6 +90,12 @@ const App = () => {
                     component={StartRepairSummaryScreen}
                     options={{headerShown: false}}
                 />
+                {/* SEARCH SCREEN */}
+                <Stack.Screen
+                    name="SearchRepairScreen"
+                    component={SearchRepairScreen}
+                    options={{headerShown: false}}
+                />
                 {/* UPLOAD SCREEN */}
                 <Stack.Screen
                     name="UploadScreen"
@@ -102,6 +108,7 @@ const App = () => {
                     component={LearnHomeScreen}
                     options={{headerShown: false}}
                 />
+                {/* LEARN SELECT LAMP SCREEN */}
                 <Stack.Screen
                     name="LearnSelectLampScreen"
                     component={LearnSelectLampScreen}

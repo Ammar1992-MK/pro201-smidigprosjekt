@@ -5,6 +5,7 @@ const LongButton = (props) => {
   const upload = require("../../assets/icons/file_upload.png");
   const learn = require("../../assets/icons/learn_white.png");
   const save = require("../../assets/icons/save.png");
+  const saveUpload = require("../../assets/icons/save_upload.png");
   const repair = require("../../assets/icons/wrench_grren_bg.png");
   const whiteRepair = require("../../assets/icons/wrench_white.png");
 
@@ -21,6 +22,9 @@ const LongButton = (props) => {
       break;
     case "save":
       icon = save;
+      break;
+    case "save_upload":
+      icon = saveUpload;
       break;
     case "repair":
       icon = repair;
@@ -82,23 +86,25 @@ const LongButtonStyles = StyleSheet.create({
     borderRadius: 8,
     position: 'relative',
     backgroundColor: "#B7D381",
-    marginTop: 24,
+    marginTop: 16,
+    position: 'relative',
     elevation: 10
   },
   imageContainer: {
     marginLeft: 30,
-    position: 'absolute'
+    position: 'absolute',
+    top: 17
   },
   icon: {
-    width: 56,
-    height: 56
+    height: 56,
   },
   textContainer: {
-    width: "100%",
-  },
+    width: "50%",
+    marginLeft: 200
+    },
   title: {
     width: "100%",
-    textAlign: 'center',
+    textAlign: 'left',
     fontFamily: 'ArialBold',
     fontSize: 24,
     letterSpacing: 1,
