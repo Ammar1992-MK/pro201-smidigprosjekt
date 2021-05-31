@@ -26,6 +26,7 @@ import TroubleshootScreen from "./src/screens/TroubleshootScreen";
 import LearnVideoPlayerScreen from "./src/screens/LearnVideoPlayerScreen";
 import ListItemComponent from "./src/components/ListItemComponent";
 import ScrollViewSearchList from "./src/components/ScrollViewSearchList";
+import SearchRepairScreen from "./src/screens/SearchRepairScreen";
 
 const App = () => {
 
