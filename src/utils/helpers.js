@@ -43,23 +43,25 @@ export const getData = async () => {
     try {
         const jsonValue = await AsyncStorage.getItem('repair')
         return jsonValue ? JSON.parse(jsonValue) : []
-    } catch (e) {
+    } catch (e) {W
         // error reading value
         console.log(e.toString())
     }
 }
 
 
-export const changeRepair = (valueObject, localId) => {
+export const changeRepair = async (valueObject, localId) => {
     //Changes only the property provided in the valueobject on the local repair with ID 'localId'
     let current_data = getData();
-    for(let el of current_data){
-        if(el.local_id === localId){
-            for(let newProperty in valueObject){
-                if(valueObject.hasOwnProperty(newProperty)){
+    for (let el of current_data) {
+        if (el.local_id === localId) {
+            for (let newProperty in valueObject) {
+                if (valueObject.hasOwnProperty(newProperty)) {
                     el[newProperty] = valueObject[newProperty]
                 }
             }
+            const dataJson = JSON.stringify(current_data)
+            await AsyncStorage.setItem('repair', dataJson)
             return true;
         }
     }
