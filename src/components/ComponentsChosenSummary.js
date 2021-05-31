@@ -3,7 +3,7 @@ import React from "react";
 import {get_spare_part_by_id} from "../utils/fakeDb";
 
 const ComponentsChosenSummary = ({selectedComponentsId}) => {
-    //Selected componentsId is either a array of component IDs, or the string 'discard'
+    //Selected componentsId is either an array of component IDs, or the string 'discard'
     let parts_images;
     if(!selectedComponentsId){
         //Hvis noe galt har skjedd får den ikke inn noe via selectedComponentsId variablen, tetter fallgruve.
@@ -19,58 +19,86 @@ const ComponentsChosenSummary = ({selectedComponentsId}) => {
             if(!image){
                 throw new Error("No pic no screen homie")
             }
-            return <View key={index} style={style.comp_container}><Image source={image} style={style.image} /></View>
+            return <View key={index} style={style.lampImageContainer}>
+                <Image source={image} style={style.selectedLampImage} />
+                <Image source={require('../../assets/icons/wrench_grren_bg.png')} style={style.repairIcon} />
+                </View>
         })
     }
 
     return (
         <View style={style.container}>
-            <View style={style.indexCont}>
-                <Text style={style.indexText}>2</Text>
-            </View>
-            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                {parts_images}
-            </ScrollView>
+                <View style={style.indexContainer}>
+                    <Text style={style.indexText}>2</Text>
+                </View>
+                {/* <View style={style.lampImageContainer}> */}
+                    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} contentContainerStyle={style.componentsContainer}>
+                        {parts_images}
+                    </ScrollView>
+                {/* </View> */}
         </View>
     )
 }
 
 const style = StyleSheet.create({
-    indexCont: {
-        width: 100,
+    container: {
+        flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center'
+        width: '90%',
+        height: 160,
+        marginLeft: 40,
+        marginTop: 12,
+        borderColor: 'rgba(195, 220, 147, 0.35)',
+        borderWidth: 4,
+        borderRadius: 18,
+        backgroundColor: '#F3F8E9'
     },
+    indexContainer: {
+        width: 42,
+        height: 42,
+        alignItems: 'center',
+        justifyContent: 'center',
+        lineHeight: 1,
+        backgroundColor: '#C3DC93',
+        borderRadius: 40 / 2,
+        marginLeft: 30
+    },
+
     indexText: {
         color: '#174A5B',
         fontSize: 28,
         fontFamily: 'Arial',
         fontWeight: '700'
     },
-    container: {
-        display: 'flex',
-        flexDirection: 'row',
-        width: '90%',
-        height: 210,
-        padding: 25,
-        marginLeft: 40,
-        marginTop: 40,
-        borderColor: 'rgba(195, 220, 147, 0.35)',
-        borderWidth: 4,
-        borderRadius: 18,
-        backgroundColor: '#F3F8E9'
+    componentsContainer: {
+        width: '100%',
+        height: '94%',
+        alignItems: 'center',
+        marginLeft: 40
     },
-    comp_container: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'flex-start',
-        width: 200,
-        height: '100%'
+    lampImageContainer: {
+        width: '23%',
+        height: '100%',
+        display : 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#fff',
+        borderRadius: 28,
+        borderColor: 'rgba(195, 220, 147, 0.15)',
+        borderWidth: 3,
+        borderStyle: 'solid',
+        marginLeft: 12,
+        overflow: 'hidden',
+        position: 'relative'
     },
-    image: {
-        width: "95%",
-        height: "100%",
-        borderRadius: 20
+    selectedLampImage: {
+        width : '90%',
+        height : '90%'
+    },
+    repairIcon: {
+        position: 'absolute',
+        bottom: 0,
+        right: 0
     }
 })
 

@@ -63,15 +63,23 @@ const StartRepairSummaryScreen = ({navigation, route}) => {
                 <SelectedLampSummary index={'1'} lamp={userData.selectedLamp} sparePart={false} data={userData}/>
                 <ComponentsChosenSummary selectedComponentsId={selectedPartId} />
                 <View style={styles.saveContainer}>
-                    <Text style={styles.saveContainerTitle}>SAVE REPAIR</Text>
-                    {networkStatus ? <Image source={wifiIcon} style={styles.wifiIcon}/> :
-                        <Image source={noWifiIcon} style={styles.wifiIcon}/>}
+                    <View style={styles.saveContainerHeader}>
+                        <View style={styles.indexContainer}>
+                            <Text style={styles.indexText}>3</Text>
+                        </View>
+                        <Text style={styles.saveContainerTitle}>SAVE REPAIR</Text>
+                        { networkStatus ? 
+                            <Image source={wifiIcon} style={styles.wifiIcon}/> :
+                            <Image source={noWifiIcon} style={styles.wifiIcon}/>
+                        }
+                    </View>
+                        
                     <LongButton icon="save" textColor="primary_teal" backgroundColor="primary_green" title="SAVE"
                                 onPress={async () => {
                                     await addNewRepair(testData);
                                     navigation.navigate('HomeScreen');
                                 }}/>
-                    <LongButton icon="save" textColor="primary_teal" backgroundColor="primary_green"
+                    <LongButton icon="save_upload" textColor="primary_teal" backgroundColor="primary_green"
                                 title="SAVE + UPLOAD"
                                 onPress={async () => {
                                     //WE NEED TO ADD THE UPLOAD FUNCTIONALITY HERE
@@ -90,26 +98,50 @@ const styles = StyleSheet.create({
         height: '100%'
     },
     saveContainer: {
-        position: 'relative',
-        marginTop: 20,
-        padding: 20,
-        backgroundColor: '#FFFFFF',
-        width: '90%',
-        justifyContent: 'center',
+        flexDirection: 'column',
         alignItems: 'center',
-        alignSelf: 'center',
-        borderRadius: 10,
-        elevation: 5,
+        width: '90%',
+        height: 330,
+        marginLeft: 40,
+        marginTop: 12,
+        borderRadius: 18,
+        backgroundColor: '#ffffff',
+        borderColor: 'transparent',
+        borderWidth: 4,
+    },
+    saveContainerHeader: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        width: '100%',
+        marginTop: 20
     },
     saveContainerTitle: {
-        fontSize: 30,
-        fontWeight: 'bold'
+        fontSize: 24,
+        fontFamily: 'ArialBold',
+        color: '#174A5B',
+        marginLeft: 22
+    },
+    indexContainer: {
+        width: 50,
+        height: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
+        lineHeight: 1,
+        borderRadius: 50 / 2,
+        marginLeft: 30,
+        backgroundColor: '#ffffff',
+        borderColor: '#C3DC93',
+        borderWidth: 4,
+    },
+    indexText: {
+        color: '#174A5B',
+        fontSize: 28,
+        fontFamily: 'Arial',
+        fontWeight: '700'
     },
     wifiIcon: {
-        position: 'absolute',
-        top: 0,
-        right: 0,
-        margin: 20
+        marginLeft: 'auto',
+        marginRight: 30
     }
 })
 
