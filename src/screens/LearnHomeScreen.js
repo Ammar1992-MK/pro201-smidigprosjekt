@@ -2,15 +2,15 @@ import React, {useState} from 'react';
 import {View, Text, StyleSheet,} from "react-native";
 
 import {NavigationBar} from "../components/NavigationBar/NavigationBar";
-import { HomeScreenButton } from '../components/HomeScreenButton';
+import {LearnHomeButton} from "../components/LearnHomeButton";
 
 const LearnHomeScreen = ({navigation}) => {
     return (
         <>
             <NavigationBar icon={true} title="LEARN" navigation={navigation}/>
             <View style={LearnHomeScreenStyles.container}>
-                <HomeScreenButton  icon={'search'} title={'TROUBLESHOOT GUIDE'} onPress={() => navigation.navigate('TroubleshootScreen')} />
-                <HomeScreenButton icon={'search'} title={'CHANGE PART VIDEOS'} onPress={() => navigation.navigate('LearnSelectLampScreen')} />
+                <LearnHomeButton  icon={'guide'} title={'TROUBLESHOOT GUIDE'} onPress={() => navigation.navigate('TroubleshootScreen')} />
+                <LearnHomeButton icon={'videos'} title={'CHANGE PART VIDEOS'} onPress={() => navigation.navigate('LearnSelectLampScreen')} />
             </View>
         </>
     );
