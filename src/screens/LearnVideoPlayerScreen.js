@@ -4,19 +4,16 @@ import VideoPlayer from "expo-video-player"
 
 import {
     View,
-    Text,
     StyleSheet,
-    ScrollView,
 } from "react-native";
 
 import {NavigationBar} from "../components/NavigationBar/NavigationBar";
 
 const LearnVideoPlayerScreen = ({navigation}) => {
 
-
     return (
         <>
-            <NavigationBar navigation={navigation}/>
+            <NavigationBar icon={true} title="CHANGE PART" navigation={navigation}/>
             <View>
                 <VideoPlayer videoProps={{
                     shouldPlay: true,
@@ -25,10 +22,9 @@ const LearnVideoPlayerScreen = ({navigation}) => {
                         uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4',
                     },
                 }}
-                    inFullscreen={true}
+                    inFullscreen={false}
                 />
                 <View>
-                    <Text>Hey</Text>
                 </View>
             </View>
         </>

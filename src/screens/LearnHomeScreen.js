@@ -7,7 +7,7 @@ import { HomeScreenButton } from '../components/HomeScreenButton';
 const LearnHomeScreen = ({navigation}) => {
     return (
         <>
-            <NavigationBar navigation={navigation}/>
+            <NavigationBar icon={true} title="LEARN" navigation={navigation}/>
             <View style={LearnHomeScreenStyles.container}>
                 <HomeScreenButton  icon={'search'} title={'TROUBLESHOOT GUIDE'} onPress={() => navigation.navigate('TroubleshootScreen')} />
                 <HomeScreenButton icon={'search'} title={'CHANGE PART VIDEOS'} />

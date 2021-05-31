@@ -47,29 +47,10 @@ const CustomerFormSummaryScreen = ({navigation, route}) => {
         setUserData({customerName, phoneNumber, serialNumber, lamp})
     }, [])
 
-    const styles = StyleSheet.create({
-        container: {
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center'
-        },
-        summaryContainer: {
-            flexDirection: 'row',
-            marginBottom: 30
-        },
-        inputFields: {
-            flexDirection: 'column',
-            width: "50%",
-        },
-        buttonContainer: {
-            height: "100%",
-            alignItems: 'center',
-        }
-    });
 
     return (
         <>
-            <NavigationBar navigation={navigation}/>
+            <NavigationBar title="NEW REPAIR" navigation={navigation}/>
             <View styles={styles.container}>
                 <View style={styles.summaryContainer}>
                     <CardSmall lampName={lamp}/>
@@ -96,5 +77,24 @@ const CustomerFormSummaryScreen = ({navigation, route}) => {
         </>
     );
 }
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    summaryContainer: {
+        flexDirection: 'row',
+        marginBottom: 30
+    },
+    inputFields: {
+        flexDirection: 'column',
+        width: "50%",
+    },
+    buttonContainer: {
+        height: "100%",
+        alignItems: 'center',
+    }
+});
 
 export default CustomerFormSummaryScreen

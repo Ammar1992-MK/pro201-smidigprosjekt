@@ -71,7 +71,7 @@ export default function CustomerFormScreen({navigation}) {
 
     return (
         <>
-            <NavigationBar navigation={navigation}/>
+            <NavigationBar title="NEW REPAIR" navigation={navigation}/>
             <ScrollView style={styles.container}>
                 <Text style={styles.inputHeaders}>Customer Name</Text>
                 {customerInputField()}
