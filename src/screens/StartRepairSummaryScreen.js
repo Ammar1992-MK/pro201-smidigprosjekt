@@ -29,7 +29,7 @@ const StartRepairSummaryScreen = ({navigation, route}) => {
 
     console.log(selectedPartId)
 
-    const  getParts = () => {
+    const getParts = () => {
         if (userData.selectedPartId) {
             spareParts.map((el, index,) => {
                 userData.selectedPartId.map((id) => {
@@ -58,7 +58,7 @@ const StartRepairSummaryScreen = ({navigation, route}) => {
 
     return (
         <>
-            <NavigationBar navigation={navigation}/>
+            <NavigationBar title="LEARN" navigation={navigation}/>
             <View style={styles.container}>
                 <SelectedLampSummary index={'1'} lamp={userData.selectedLamp} sparePart={false} data={userData}/>
                 <ComponentsChosenSummary selectedComponentsId={selectedPartId} />

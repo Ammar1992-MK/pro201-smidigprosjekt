@@ -19,7 +19,7 @@ const LearnSelectLampScreen = ({ navigation }) => {
 			<View style={LearnSelectScreenStyles.container}>
 				<View style={LearnSelectScreenStyles.boxContainer}>
 					<View style={LearnSelectScreenStyles.rows}>
-						<TouchableOpacity style={LearnSelectScreenStyles.lampContainer}>
+						<TouchableOpacity style={LearnSelectScreenStyles.lampContainer} onPress={() => navigation.navigate('LearnVideoPlayerScreen')}>
 							<Text style={LearnSelectScreenStyles.text}>SUNBELL</Text>
 							<Image
 								style={LearnSelectScreenStyles.image}
@@ -52,7 +52,7 @@ const LearnSelectLampScreen = ({ navigation }) => {
 					</View>
 				</View>
 				<View style={LearnSelectScreenStyles.backButton}>
-					<BackButton />
+					<BackButton onPress={() => navigation.navigate('LearnHomeScreen')}/>
 				</View>
 			</View>
 		</>

@@ -8,19 +8,20 @@ const CardSmall = ({ lampName, image }) => {
   const SunbellSmart = require("../../../assets/product-images/sunbell-smart-1.png");
   const Lamp3 = require("../../../assets/product-images/smart-plus-1.png");
   const SunTurtle = require("../../../assets/product-images/sunturtle.png");
+
   let lamp;
 
   switch (lampName) {
-    case "smartPlus":
+    case "Smart Plus":
       lamp = SmartPlus;
       break;
-    case "sunbellSmart":
+    case "Sunbell Smart":
       lamp = SunbellSmart;
       break;
     case "lamp3":
       lamp = Lamp3;
       break;
-    case "sunTurtle":
+    case "Sun Turtle":
       lamp = SunTurtle;
       break;
   }
