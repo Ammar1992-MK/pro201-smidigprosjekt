@@ -16,7 +16,11 @@ import StartRepairScreen from "./src/screens/StartRepairScreen";
 import SelectPartsScreen from "./src/screens/SelectPartsScreen";
 import StartRepairSummaryScreen from "./src/screens/StartRepairSummaryScreen";
 
+//LEARN
 import LearnHomeScreen from "./src/screens/LearnHomeScreen";
+import LearnSelectLampScreen from "./src/screens/LearnSelectLampScreen";
+import TroubleshootScreen from "./src/screens/TroubleshootScreen";
+import LearnVideoPlayerScreen from "./src/screens/LearnVideoPlayerScreen";
 
 const App = () => {
 
@@ -79,9 +83,28 @@ const App = () => {
                     component={StartRepairSummaryScreen}
                     options={{headerShown: false}}
                 />
+                {/* LEARN HOME SCREEN */}
                 <Stack.Screen
                     name="LearnHomeScreen"
                     component={LearnHomeScreen}
+                    options={{headerShown: false}}
+                />
+                <Stack.Screen
+                    name="LearnSelectLampScreen"
+                    component={LearnSelectLampScreen}
+                    options={{headerShown: false}}
+                />
+                {/* LEARN HOME SCREEN */}
+                <Stack.Screen
+                    name="LearnVideoPlayerScreen"
+                    component={LearnVideoPlayerScreen}
+                    options={{headerShown: false}}
+                />
+
+                {/* TROUBLESHOOT SCREEN */}
+                <Stack.Screen
+                    name="TroubleshootScreen"
+                    component={TroubleshootScreen}
                     options={{headerShown: false}}
                 />
             </Stack.Navigator>

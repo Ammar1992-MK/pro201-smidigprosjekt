@@ -98,7 +98,6 @@ const styles = StyleSheet.create({
         width : '50%',
         justifyContent :'space-evenly'
     },
-
     stepIndex:{
        width : 50,
         height : 50,
@@ -110,7 +109,6 @@ const styles = StyleSheet.create({
         borderWidth : 5,
         borderRadius : 50,
     },
-
     scrollHeaderTitle: {
        color :'#174A5B',
         fontWeight :'bold',
