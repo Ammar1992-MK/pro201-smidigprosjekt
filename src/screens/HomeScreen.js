@@ -14,7 +14,7 @@ import { UserMenu } from '../components/UserMenu/UserMenu';
 import { UserButton } from '../components/UserMenu/UserButton';
 
 //Helpers
-import { getData } from '../utils/helpers';
+import { getData, emptyDb } from '../utils/helpers';
 
 const HomeScreen = ({ navigation }) => {
 	//Boolean to toggle the view which contains the user
@@ -36,11 +36,12 @@ const HomeScreen = ({ navigation }) => {
 				onPress={() => navigation.navigate('CustomerFormScreen')}
 			/>
 			<HomeScreenButton icon={'search'} title={'SEARCH'} onPress={() => navigation.navigate('LearnVideoPlayerScreen')} />
-			<HomeScreenButton icon={'upload'} title={'UPLOAD'}/>
+			<HomeScreenButton icon={'upload'} title={'UPLOAD'} onPress={() => navigation.navigate('UploadScreen')} />
 			<HomeScreenButton
 				icon={'school'}
 				title={'LEARN'}
 				onPress={() => navigation.navigate('LearnHomeScreen')} />
+				<Button title="Empty Database" onPress={async () => await emptyDb()} />
 		</View>
 	);
 };

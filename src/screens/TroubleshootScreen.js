@@ -6,10 +6,10 @@ import PdfReader from "rn-pdf-reader-js";
 const TroubleshootScreen = ({navigation}) => {
     return (
         <>
-            <NavigationBar navigation={navigation} />
+            <NavigationBar title="TROUBLESHOOT" icon={true} navigation={navigation} />
             <PdfReader
                 source={{
-                    uri: 'http://www.africau.edu/images/default/sample.pdf',
+                    uri: 'http://www.africau.edu/images/default/sample.pdf'
                 }}
             />
         </>

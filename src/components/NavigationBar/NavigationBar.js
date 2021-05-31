@@ -1,10 +1,11 @@
 import * as React from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View, Image } from "react-native";
 
 //Components
 import { NavigationHomeButton } from "./NavigationHomeButton";
 
-export const NavigationBar = ({ navigation }) => {
+export const NavigationBar = ({ navigation, title, icon }) => {
+
   return (
     <View style={NavigationBarStyles.container}>
       <View style={NavigationBarStyles.iconContainer}>
@@ -14,7 +15,8 @@ export const NavigationBar = ({ navigation }) => {
         />
       </View>
       <View style={NavigationBarStyles.titleContainer}>
-        <Text style={NavigationBarStyles.title}>NEW REPAIR</Text>
+        <Text style={NavigationBarStyles.title}>{title}</Text>
+          {icon ? <Image  source={require('../../../assets/icons/learn_white.png')} /> : null }
       </View>
     </View>
   )
@@ -46,6 +48,6 @@ const NavigationBarStyles = StyleSheet.create({
     titleContainer: {
         flex: 7,
         alignItems: 'center',
-        paddingRight: '13%'
+        paddingRight: '13%',
     }
 })

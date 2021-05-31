@@ -16,6 +16,9 @@ import StartRepairScreen from "./src/screens/StartRepairScreen";
 import SelectPartsScreen from "./src/screens/SelectPartsScreen";
 import StartRepairSummaryScreen from "./src/screens/StartRepairSummaryScreen";
 
+//UPLOAD
+import UploadScreen from "./src/screens/UploadScreen";
+
 //LEARN
 import LearnHomeScreen from "./src/screens/LearnHomeScreen";
 import LearnSelectLampScreen from "./src/screens/LearnSelectLampScreen";
@@ -86,6 +89,12 @@ const App = () => {
                     component={StartRepairSummaryScreen}
                     options={{headerShown: false}}
                 />
+                {/* UPLOAD SCREEN */}
+                <Stack.Screen
+                    name="UploadScreen"
+                    component={UploadScreen}
+                    options={{headerShown: false}}
+                />
                 {/* LEARN HOME SCREEN */}
                 <Stack.Screen
                     name="LearnHomeScreen"
@@ -97,7 +106,7 @@ const App = () => {
                     component={LearnSelectLampScreen}
                     options={{headerShown: false}}
                 />
-                {/* LEARN HOME SCREEN */}
+                {/* LEARN VIDEO PLAYER SCREEN */}
                 <Stack.Screen
                     name="LearnVideoPlayerScreen"
                     component={LearnVideoPlayerScreen}

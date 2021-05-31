@@ -45,7 +45,7 @@ const SelectPartsScreen = ({navigation, route}) => {
 
     return (
         <View style={styles.container}>
-            <NavigationBar navigation={navigation}/>
+            <NavigationBar title="NEW REPAIR" navigation={navigation}/>
             <SelectedLampSummary  index={"1"} lamp={selectedLamp} data={userData}/>
             {/*Missing onPress to navigate to LEARN*/}
             <LongButton title={"CHANGE PART GUIDE"} backgroundColor={'primary_teal'} icon={'learn'}

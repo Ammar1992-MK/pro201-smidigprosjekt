@@ -3,6 +3,7 @@ import {Text, View, StyleSheet, Image} from "react-native";
 
 const ListItemComponent = ({data,icon}) => {
     const[dateIcon, setDateIcon] = useState();
+    const [lampImage, setLampImage] = useState();
 
     const renderDateIcon = () => {
         if(icon === 'search'){
@@ -12,16 +13,33 @@ const ListItemComponent = ({data,icon}) => {
         }
     }
 
-    useEffect(renderDateIcon,[])
-    return (
+    const renderImage = () => {
+        switch (data.lamp) {
+            case "Sunbell Smart":
+                setLampImage(require('../../assets/product-images/sunbell-smart-1.png'));
+                break;
+            case "Smart Plus":
+                setLampImage(require('../../assets/product-images/smart-plus-1.png'));
+                break;
+            case "Sun Turtle":
+                setLampImage(require('../../assets/product-images/sunturtle.png'));
+                break;
+        }
+    }
 
+
+    useEffect(() => {
+        renderDateIcon();
+        renderImage();
+    },[])
+    return (
             <View style={Styles.container}>
                 <View style={Styles.lampContainer}>
-                    <Image style={Styles.lamp} source={data.image}/>
-                    <Text style={Styles.lampName}>{data.lampName}</Text>
+                    <Image style={Styles.lamp} source={lampImage}/>
+                    <Text style={Styles.lampName}>{data.lamp}</Text>
                 </View>
                 <View style={Styles.serialNumberContainer}>
-                    <Text style={Styles.serialNo}>{data.snr}</Text>
+                    <Text style={Styles.serialNo}>{data.serialNumber}</Text>
                 </View>
                 <View style={Styles.repairDate}>
                     <Image style={Styles.dateIcon} source={dateIcon}/>
@@ -33,31 +51,27 @@ const ListItemComponent = ({data,icon}) => {
         )
 }
 
-export default  ListItemComponent;
+export default ListItemComponent;
 
 const Styles = StyleSheet.create({
     container: {
         width: "96%",
-        height: 120,
         display : 'flex',
         flexDirection : 'row',
         borderRadius: 5,
         justifyContent: "space-between",
-        alignItems: 'flex-end',
+        alignItems: 'center',
         backgroundColor : '#fff',
         marginTop : 10,
     },
     lampContainer:{
         width : '33%',
-        height : '100%',
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-evenly'
     },
     lamp:{
-        width : '20%',
-        height : '80%',
     },
     lampName : {
       marginTop: 45,
@@ -81,7 +95,6 @@ const Styles = StyleSheet.create({
     },
     repairDate : {
         width : '33%',
-        height : '60%',
         display : 'flex',
         flexDirection : 'row',
         alignItems :'center',
@@ -90,7 +103,6 @@ const Styles = StyleSheet.create({
     },
     dateIcon:{
         width : '10%',
-        height :'40%',
         marginRight : 15,
     },
     dateText:{
@@ -98,5 +110,4 @@ const Styles = StyleSheet.create({
         fontSize : 20,
         color : '#2C2A29',
     }
-
 });
