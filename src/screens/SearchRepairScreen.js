@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import {View,Text,TextInput,StyleSheet,Image,TouchableOpacity, ScrollView} from "react-native";
+import {View,Text,TextInput,StyleSheet,Image,TouchableOpacity} from "react-native";
 import {NavigationBar} from "../components/NavigationBar/NavigationBar";
 
 //firebase db
@@ -36,12 +36,13 @@ const SearchRepairScreen = ({navigation}) => {
 
     useEffect(() => {
         getData().then(data => setData(data))
+        fetchReadyRepairs()
     },[]);
 
     return (
         <>
             <NavigationBar navigation={navigation}/>
-            <ScrollView style={Styles.container} contentContainerStyle={{alignItems: 'center' }} >
+            <View  style= {Styles.container} >
                 <View style={Styles.searchContainer}>
                     <View style={Styles.searchTitleContainer}>
                         <Text style={Styles.searchTitle}>Search repair</Text>
@@ -68,7 +69,7 @@ const SearchRepairScreen = ({navigation}) => {
                     </TouchableOpacity>
                 </View>
                 <ScrollViewSearchList data={readyData}/>
-            </ScrollView>
+            </View>
         </>
 
     )
@@ -81,7 +82,8 @@ export default SearchRepairScreen;
             backgroundColor: "#F3F8E9",
             flex: 1,
             flexDirection: "column",
-            height :'100%'
+            alignItems  : 'center',
+            height :'100%',
         },
         searchContainer:{
           width : '80%',
