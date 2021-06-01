@@ -27,7 +27,8 @@ export const NavigationHomeButton = ({ navigation }) => {
   const NavigationHomeButtonStyles = StyleSheet.create({
     icon: {
       width: 64,
-      height: 64
+      height: 64,
+      marginTop: 8
     },
     title: {
       fontFamily: 'ArialBold',
@@ -35,7 +36,8 @@ export const NavigationHomeButton = ({ navigation }) => {
       letterSpacing: 0.5,
       color: '#fff',
       fontSize: 18,
-      textAlign: 'center'
+      textAlign: 'center',
+      marginTop: -6
     }
 })
 
