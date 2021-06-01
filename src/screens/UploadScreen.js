@@ -5,7 +5,7 @@ import * as NetInfo from "@react-native-community/netinfo";
 //Components
 import {NavigationBar} from "../components/NavigationBar/NavigationBar";
 import {FinishedRepairs} from "../components/FinishedRepairs";
-import {getData} from "../utils/helpers";
+import {getData, uploadRepairs} from "../utils/helpers";
 import LongButton from "../components/LongButton";
 
 //List
@@ -24,14 +24,6 @@ const UploadScreen = ({navigation}) => {
     //WIFI ICONS
     const noWifiIcon = require("../../assets/icons/no_internet_icon.png");
     const wifiIcon = require("../../assets/icons/internet_icon.png");
-
-    const uploadToFirebase = () => {
-        /*db.collection('upload').doc("repairs").push(data)
-            .then(() => console.log("Upload complete"))
-            .catch((err) => console.error("Error while uploading: " + err)) *
-
-         */
-    }
 
     useEffect(() => {
         //This package allows us to check the network state of the device we are using
@@ -55,8 +47,9 @@ const UploadScreen = ({navigation}) => {
                 {networkStatus ?
                     <LongButton icon="upload" textColor="primary_teal" backgroundColor="primary_green" title="UPLOAD"
                                 onPress={() => {
-                                    Alert.alert("Uploading", "We are uploading....")
-                                    setTimeout(() => navigation.navigate('HomeScreen'), 3000)
+                                    uploadRepairs().then(()=>{
+                                        setData([])
+                                    })
                                 }
                                 }/> :
                     <LongButton icon="upload" textColor="disabled" backgroundColor="disabled" title="UPLOAD"

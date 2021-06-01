@@ -1,4 +1,5 @@
 import {AsyncStorage} from "react-native";
+import db from "../firebase/firebaseDb";
 /*
 *
 * Repair: [{customerName, phoneNumber, lamp, serialNumber, chosenPart: [] || "DISCARD"}, {}]
@@ -74,4 +75,17 @@ export const changeRepair = async (valueObject, localId) => {
         }
     }
     return false;
+}
+
+export const uploadRepairs = async () => {
+    //Uploads the local repairs to the DB, then deletes.
+    const ref = db.firestore()
+    let batch = ref.batch()
+    const local_repairs = await getData();
+    local_repairs.forEach((el) => {
+        const id = ref.collection('repairs').doc()
+        batch.set(id, el);
+    })
+    await batch.commit();
+    await emptyDb()
 }
