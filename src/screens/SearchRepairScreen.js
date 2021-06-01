@@ -53,11 +53,6 @@ const SearchRepairScreen = ({navigation}) => {
                     </View>
                 </View>
                 <View style={Styles.buttonsContainer}>
-                    <TouchableOpacity style={Styles.scanButton}>
-                        <Text style={Styles.scanText}>SCAN</Text>
-
-                        <Image style={Styles.scanIcon} source={require('../../assets/icons/qr_code_scanner.png')}/>
-                    </TouchableOpacity>
                     {searchButton()}
                 </View>
 
@@ -140,8 +135,8 @@ export default SearchRepairScreen;
             marginLeft : 20,
         },
         searchButton:{
-            width : '50%',
-            height : '55%',
+            width : '80%',
+            height : '50%',
             display : 'flex',
             flexDirection : 'row',
             alignItems :'center',
