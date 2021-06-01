@@ -10,13 +10,23 @@ import {getData} from "../utils/helpers";
 const SearchRepairScreen = ({navigation}) => {
 
     const [readyData, setReadyData] = useState([]);
-    const [finishedData, setFinishedData] = useState([]);
     const [data, setData] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
 
+    const handleSearch = () => {
+        let result = [];
+        readyData.map((el) => {
+            const {serialNumber, lamp} = el;
+            if(searchTerm === serialNumber || searchTerm ===  lamp){
+                result.push(el);
+            }
+        })
+        setReadyData(result);
+    }
+
     const searchButton = () => {
         if(searchTerm.length >= 1 ){
-          return  <TouchableOpacity style={[Styles.searchButton,{backgroundColor: '#C3DC93'}]} disabled={false}>
+          return  <TouchableOpacity style={[Styles.searchButton,{backgroundColor: '#C3DC93'}]} disabled={false} onPress={() => handleSearch()}>
                 <Text style={Styles.searchText}>SEARCH</Text>
             </TouchableOpacity>
         } else if(searchTerm.length < 4){
@@ -28,7 +38,7 @@ const SearchRepairScreen = ({navigation}) => {
 
     const fetchReadyRepairs = () =>{
         data.map((el) => {
-            if(el.status === 'NEW' && readyData.length === 0){
+            if(el.status === 'NEW' && !readyData.includes(el)){
                 setReadyData((readyData) => [...readyData, el]);
             }
         })
@@ -36,7 +46,6 @@ const SearchRepairScreen = ({navigation}) => {
 
     useEffect(() => {
         getData().then(data => setData(data))
-        fetchReadyRepairs()
     },[]);
 
     return (
