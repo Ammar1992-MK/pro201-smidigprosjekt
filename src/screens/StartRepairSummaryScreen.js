@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, StyleSheet, Image, Alert} from "react-native";
 import * as NetInfo from "@react-native-community/netinfo";
+import {BackButton} from "../components/BackButton";
+import {DoneButton} from "../components/DoneButton";
 
 //COMPONENTS
 import {NavigationBar} from "../components/NavigationBar/NavigationBar";
@@ -77,16 +79,30 @@ const StartRepairSummaryScreen = ({navigation, route}) => {
                     <LongButton icon="save" textColor="primary_teal" backgroundColor="primary_green" title="SAVE"
                                 onPress={async () => {
                                     await addNewRepair(testData);
-                                    navigation.navigate('HomeScreen');
+                                    //navigation.navigate('HomeScreen');
                                 }}/>
-                    <LongButton icon="save_upload" textColor="primary_teal" backgroundColor="primary_green"
+                    { networkStatus ? 
+                            <LongButton icon="save_upload" textColor="primary_teal" backgroundColor="primary_green"
                                 title="SAVE + UPLOAD"
                                 onPress={async () => {
                                     //WE NEED TO ADD THE UPLOAD FUNCTIONALITY HERE
-                                    await addNewRepair(testData);
-                                    navigation.navigate('HomeScreen');
-                                }}/>
+                                   // await addNewRepair(testData);
+                                    //navigation.navigate('HomeScreen');
+                            }}/> 
+                            :
+                            <LongButton icon="save_upload_disabled" textColor="disabled" backgroundColor="disabled"
+                                title="SAVE + UPLOAD"
+                                onPress={async () => {
+                                    //WE NEED TO ADD THE UPLOAD FUNCTIONALITY HERE
+                                    //await addNewRepair(testData);
+                                    //navigation.navigate('HomeScreen');
+                            }}/>
+                    }
                 </View>
+                <View style={styles.navigateButtons}>
+					<BackButton onPress={() => navigation.navigate('HomeScreen')}/>
+					<DoneButton onPress={() => navigation.navigate('HomeScreen')} differentButton={true}/>
+				</View>
             </View>
         </>
     );
@@ -142,6 +158,14 @@ const styles = StyleSheet.create({
     wifiIcon: {
         marginLeft: 'auto',
         marginRight: 30
+    },
+    navigateButtons: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        width: '90%',
+        marginLeft: 40,
+        marginRight: 40
     }
 })
 
