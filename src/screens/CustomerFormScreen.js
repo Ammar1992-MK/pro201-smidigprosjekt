@@ -90,14 +90,16 @@ export default function CustomerFormScreen({navigation}) {
                         onChangeText={text => setSerialNumber(text)}
 
                     />
+                    {/*
                     <TouchableOpacity>
                         <View style={styles.qrButton}>
                             <Image source={require("../../assets/icons/qr_code_scanner.png")}/>
                         </View>
                     </TouchableOpacity>
+                    */}
                 </View>
                 <View style={styles.navButtons}>
-                    <BackButton/>
+                    <BackButton onPress={() => navigation.navigate('HomeScreen')}/>
                     <NextButton onPress={() => {
 
                         navigation.navigate('CustomerFormSummaryScreen', {

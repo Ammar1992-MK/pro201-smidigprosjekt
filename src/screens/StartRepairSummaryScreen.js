@@ -21,6 +21,7 @@ const StartRepairSummaryScreen = ({navigation, route}) => {
 
     //NETWORK STATUS
     const [networkStatus, setNetworkStatus] = useState(false)
+    const [savedStatus, setSavedStatus] = useState(true);
 
     //SELECTED PARTS
     const {data} = route.params;
@@ -77,7 +78,8 @@ const StartRepairSummaryScreen = ({navigation, route}) => {
                     </View>
                         
                     <LongButton icon="save" textColor="primary_teal" backgroundColor="primary_green" title="SAVE"
-                                onPress={async () => {
+                                onPress={ async () => {
+                                    setSavedStatus(!savedStatus)
                                     await addNewRepair(testData);
                                     //navigation.navigate('HomeScreen');
                                 }}/>
@@ -101,7 +103,7 @@ const StartRepairSummaryScreen = ({navigation, route}) => {
                 </View>
                 <View style={styles.navigateButtons}>
 					<BackButton onPress={() => navigation.navigate('HomeScreen')}/>
-					<DoneButton onPress={() => navigation.navigate('HomeScreen')} differentButton={true}/>
+					<DoneButton onPress={() => navigation.navigate('HomeScreen')} differentButton={savedStatus}/>
 				</View>
             </View>
         </>

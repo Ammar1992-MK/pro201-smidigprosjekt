@@ -42,7 +42,9 @@ const HomeScreen = ({navigation}) => {
                 icon={'school'}
                 title={'LEARN'}
                 onPress={() => navigation.navigate('LearnHomeScreen')}/>
+            {/*
             <Button title="Empty Database" onPress={async () => await emptyDb()}/>
+            */}
         </View>
     );
 };
