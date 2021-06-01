@@ -8,7 +8,7 @@ import {DoneButton} from "../components/DoneButton";
 import {NavigationBar} from "../components/NavigationBar/NavigationBar";
 import SelectedLampSummary from "../components/SelectedLampSummary";
 import LongButton from "../components/LongButton";
-import {addNewRepair} from "../utils/helpers";
+import {addNewRepair, uploadRepairs} from "../utils/helpers";
 import {spareParts} from "../utils/fakeDb";
 import ComponentsChosenSummary from "../components/ComponentsChosenSummary";
 
@@ -86,19 +86,15 @@ const StartRepairSummaryScreen = ({navigation, route}) => {
                     { networkStatus ? 
                             <LongButton icon="save_upload" textColor="primary_teal" backgroundColor="primary_green"
                                 title="SAVE + UPLOAD"
-                                onPress={async () => {
-                                    //WE NEED TO ADD THE UPLOAD FUNCTIONALITY HERE
-                                   // await addNewRepair(testData);
-                                    //navigation.navigate('HomeScreen');
+                                onPress={() => {
+                                    uploadRepairs().then(()=>{
+                                        navigation.navigate('HomeScreen')
+                                    });
                             }}/> 
                             :
                             <LongButton icon="save_upload_disabled" textColor="disabled" backgroundColor="disabled"
                                 title="SAVE + UPLOAD"
-                                onPress={async () => {
-                                    //WE NEED TO ADD THE UPLOAD FUNCTIONALITY HERE
-                                    //await addNewRepair(testData);
-                                    //navigation.navigate('HomeScreen');
-                            }}/>
+                                />
                     }
                 </View>
                 <View style={styles.navigateButtons}>
