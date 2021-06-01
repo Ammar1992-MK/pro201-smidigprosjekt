@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import {View,Text,TextInput,StyleSheet,Image,TouchableOpacity} from "react-native";
+import {View,Text,TextInput,StyleSheet,Image,TouchableOpacity, ScrollView} from "react-native";
 import {NavigationBar} from "../components/NavigationBar/NavigationBar";
 
 //firebase db
@@ -13,7 +13,6 @@ const SearchRepairScreen = ({navigation}) => {
     const [finishedData, setFinishedData] = useState([]);
     const [data, setData] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
-    const[searchDisable, setSearchDisable] = useState(true);
 
     const searchButton = () => {
         if(searchTerm.length >= 1 ){
@@ -30,7 +29,6 @@ const SearchRepairScreen = ({navigation}) => {
     const fetchReadyRepairs = () =>{
         data.map((el) => {
             if(el.status === 'NEW' && readyData.length === 0){
-
                 setReadyData((readyData) => [...readyData, el]);
             }
         })
@@ -41,35 +39,38 @@ const SearchRepairScreen = ({navigation}) => {
     },[]);
 
     return (
-        <View style={Styles.container}>
+        <>
             <NavigationBar navigation={navigation}/>
-            <View style={Styles.searchContainer}>
-                <View style={Styles.searchTitleContainer}>
-                    <Text style={Styles.searchTitle}>Search repair</Text>
+            <ScrollView style={Styles.container} contentContainerStyle={{alignItems: 'center' }} >
+                <View style={Styles.searchContainer}>
+                    <View style={Styles.searchTitleContainer}>
+                        <Text style={Styles.searchTitle}>Search repair</Text>
+                    </View>
+                    <View style={Styles.searchInputContainer}>
+                        <TextInput style={Styles.input} onChangeText={searchTerm => setSearchTerm(searchTerm)}/>
+                        <Image style={Styles.searchIcon} source={require('../../assets/icons/search.png')}/>
+                    </View>
                 </View>
-                <View style={Styles.searchInputContainer}>
-                    <TextInput style={Styles.input} onChangeText={searchTerm => setSearchTerm(searchTerm)}/>
-                    <Image style={Styles.searchIcon} source={require('../../assets/icons/search.png')}/>
+                <View style={Styles.buttonsContainer}>
+                    <TouchableOpacity style={Styles.scanButton}>
+                        <Text style={Styles.scanText}>SCAN</Text>
+                        <Image style={Styles.scanIcon} source={require('../../assets/icons/qr_code_scanner.png')}/>
+                    </TouchableOpacity>
+                    {searchButton()}
                 </View>
-            </View>
-            <View style={Styles.buttonsContainer}>
-                <TouchableOpacity style={Styles.scanButton}>
-                    <Text style={Styles.scanText}>SCAN</Text>
-                    <Image style={Styles.scanIcon} source={require('../../assets/icons/qr_code_scanner.png')}/>
-                </TouchableOpacity>
-                {searchButton()}
-            </View>
 
-            <View style={Styles.fetchButtonsContainer}>
-                <TouchableOpacity style={Styles.readyButton}onPress={() => fetchReadyRepairs()} >
-                    <Text style={Styles.readyText}>READY</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={Styles.finishedButton} >
-                    <Text style={Styles.finishedText}>FINISHED</Text>
-                </TouchableOpacity>
-            </View>
-             <ScrollViewSearchList data={readyData}/>
-        </View>
+                <View style={Styles.fetchButtonsContainer}>
+                    <TouchableOpacity style={Styles.readyButton}onPress={() => fetchReadyRepairs()} >
+                        <Text style={Styles.readyText}>READY</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={Styles.finishedButton} >
+                        <Text style={Styles.finishedText}>FINISHED</Text>
+                    </TouchableOpacity>
+                </View>
+                <ScrollViewSearchList data={readyData}/>
+            </ScrollView>
+        </>
+
     )
 }
 
@@ -80,12 +81,11 @@ export default SearchRepairScreen;
             backgroundColor: "#F3F8E9",
             flex: 1,
             flexDirection: "column",
-            alignItems: "center",
             height :'100%'
         },
         searchContainer:{
           width : '80%',
-          height : '15%',
+          height : '25%',
             display : 'flex',
             flexDirection : 'column',
             alignItems :'center',
@@ -128,7 +128,7 @@ export default SearchRepairScreen;
         scanButton:{
           backgroundColor : '#174A5B',
             width : '25%',
-            height : '35%',
+            height : '55%',
             display:'flex',
             flexDirection : 'row',
             alignItems : 'center',
@@ -138,7 +138,7 @@ export default SearchRepairScreen;
         },
         searchButton:{
             width : '50%',
-            height : '35%',
+            height : '55%',
             display : 'flex',
             flexDirection : 'row',
             alignItems :'center',
@@ -171,7 +171,7 @@ export default SearchRepairScreen;
         },
         fetchButtonsContainer:{
             width : '100%',
-            height :'7%',
+            height :'15%',
             display : 'flex',
             flexDirection : 'row',
             alignItems :'center',
