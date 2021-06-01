@@ -63,7 +63,7 @@ const LearnSelectLampScreen = ({navigation, route}) => {
                 </View>
             </View>
                 <View style={LearnSelectScreenStyles.backButton}>
-                    <BackButton/>
+                    <BackButton onPress={() => navigation.navigate('LearnHomeScreen')}/>
                 </View>
             </View>
             </>
