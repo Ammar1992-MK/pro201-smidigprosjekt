@@ -71,7 +71,7 @@ const SelectedLampSummaryStyles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#fff',
-        borderRadius: 28,
+        borderRadius: 18,
         borderColor: 'rgba(195, 220, 147, 0.15)',
         borderWidth: 3,
         borderStyle: 'solid',
