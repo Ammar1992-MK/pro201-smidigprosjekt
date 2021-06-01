@@ -14,7 +14,7 @@ const LampVideosScreen = ({navigation, route}) => {
 
     return (
         <>
-            <NavigationBar></NavigationBar>
+            <NavigationBar navigation={navigation}/>
             <View style={LampVideosScreenStyles.alphaContainer}>
                 <View style={LampVideosScreenStyles.container}>
                     <View style={LampVideosScreenStyles.VideoLampCard}>

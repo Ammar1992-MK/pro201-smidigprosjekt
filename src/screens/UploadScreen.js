@@ -54,7 +54,11 @@ const UploadScreen = ({navigation}) => {
                 <FinishedRepairs dataLength={data.length}/>
                 {networkStatus ?
                     <LongButton icon="upload" textColor="primary_teal" backgroundColor="primary_green" title="UPLOAD"
-                                onPress={() => uploadToFirebase}/> :
+                                onPress={() => {
+                                    Alert.alert("Uploading", "We are uploading....")
+                                    setTimeout(() => navigation.navigate('HomeScreen'), 3000)
+                                }
+                                }/> :
                     <LongButton icon="upload" textColor="disabled" backgroundColor="disabled" title="UPLOAD"
                                 onPress={() => Alert.alert("No Internet", "You need internet to upload your files")} />}
 

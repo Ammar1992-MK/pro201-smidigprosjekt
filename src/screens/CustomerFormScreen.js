@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, TextInput, ScrollView, TouchableOpacity, Image, KeyboardAvoidingView} from "react-native";
+import {View, Text, StyleSheet, TextInput, ScrollView, TouchableOpacity, Image} from "react-native";
 import {NextButton} from "../components/NextButton";
 import {BackButton} from "../components/BackButton";
 import {NavigationBar} from "../components/NavigationBar/NavigationBar";
