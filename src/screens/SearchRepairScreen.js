@@ -55,6 +55,7 @@ const SearchRepairScreen = ({navigation}) => {
                 <View style={Styles.buttonsContainer}>
                     <TouchableOpacity style={Styles.scanButton}>
                         <Text style={Styles.scanText}>SCAN</Text>
+
                         <Image style={Styles.scanIcon} source={require('../../assets/icons/qr_code_scanner.png')}/>
                     </TouchableOpacity>
                     {searchButton()}
