@@ -11,7 +11,7 @@ const SearchRepairScreen = ({navigation}) => {
     const [readyData, setReadyData] = useState([]);
     const [data, setData] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
-    const [isReady, setIsReady] = useState();
+    const [isReady, setIsReady] = useState(true);
     const[isFinished, setIsFinished] = useState();
 
     const handleToggleButton = (button) => {
@@ -51,18 +51,18 @@ const SearchRepairScreen = ({navigation}) => {
         }
     }
 
-    const fetchReadyRepairs = (button) =>{
+    const fetchReadyRepairs = () =>{
         data.map((el) => {
             if(el.status === 'NEW' && !readyData.includes(el)){
                 setReadyData((readyData) => [...readyData, el]);
             }
         })
 
-        handleToggleButton(button);
+        return <ScrollViewSearchList data={readyData} icon={'search'}/>
     }
 
     useEffect(() => {
-        getData().then(data => setData(data))
+        getData().then(data => setData(data));
     },[]);
 
     return (
@@ -83,14 +83,14 @@ const SearchRepairScreen = ({navigation}) => {
                 </View>
 
                 <View style={Styles.fetchButtonsContainer}>
-                    <TouchableOpacity style={[Styles.readyButton, isReady ? {backgroundColor: '#174A5B'} : {backgroundColor: '#fff'}]}onPress={() => fetchReadyRepairs('ready')} >
+                    <TouchableOpacity style={[Styles.readyButton, isReady ? {backgroundColor: '#174A5B'} : {backgroundColor: '#fff'}]} onPress={() => handleToggleButton('ready')} >
                         <Text style={[Styles.readyText, isReady ? {color: '#fff'} : {color: '#174A5B'}]}>READY</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={[Styles.finishedButton, isFinished ? {backgroundColor: '#174A5B'} : {backgroundColor: '#fff'}]} onPress={() => fetchReadyRepairs('finished')}>
+                    <TouchableOpacity style={[Styles.finishedButton, isFinished ? {backgroundColor: '#174A5B'} : {backgroundColor: '#fff'}]} onPress={() => handleToggleButton('finished')}>
                         <Text style={[Styles.finishedText, isFinished ? {color: '#fff'} : {color: '#174A5B'} ]}>FINISHED</Text>
                     </TouchableOpacity>
                 </View>
-                <ScrollViewSearchList data={readyData} icon={'search'}/>
+                {fetchReadyRepairs()}
             </View>
         </>
 
@@ -109,20 +109,21 @@ export default SearchRepairScreen;
         },
         searchContainer:{
           width : '80%',
-          height : '25%',
+          height : '18%',
             display : 'flex',
             flexDirection : 'column',
             alignItems :'center',
-            justifyContent :'center'
+            justifyContent :'center',
         },
         searchTitleContainer:{
             width : '30%',
-            height : '20%',
+            height : 1,
             marginRight : '50%',
         },
         searchTitle:{
             fontSize : 20,
             color : '#174A5B',
+            marginLeft: 15,
 
         },
         searchInputContainer : {
@@ -133,7 +134,7 @@ export default SearchRepairScreen;
             alignItems: 'center',
             justifyContent : 'space-evenly',
             backgroundColor: '#fff',
-            marginTop : 40,
+            marginTop : 25,
             borderWidth : 1,
             borderColor : '#174A5B',
             borderStyle : 'solid',
@@ -149,20 +150,9 @@ export default SearchRepairScreen;
             height : '100%',
             fontSize: 43,
         },
-        scanButton:{
-          backgroundColor : '#174A5B',
-            width : '25%',
-            height : '55%',
-            display:'flex',
-            flexDirection : 'row',
-            alignItems : 'center',
-            justifyContent : 'space-evenly',
-            borderRadius: 10,
-            marginLeft : 20,
-        },
         searchButton:{
             width : '80%',
-            height : '50%',
+            height : '40%',
             display : 'flex',
             flexDirection : 'row',
             alignItems :'center',
@@ -173,7 +163,7 @@ export default SearchRepairScreen;
         },
         buttonsContainer:{
             width : '80%',
-            height: '20%',
+            height: '18%',
             display : 'flex',
             flexDirection : 'row',
             alignItems :'center',
@@ -183,15 +173,6 @@ export default SearchRepairScreen;
             color : '#174A5B',
             fontFamily:'ArialBold',
             fontSize : 25,
-        },
-        scanText : {
-            color : '#fff',
-            fontFamily:'ArialBold',
-            fontSize : 25,
-        },
-        scanIcon:{
-            width : '30%',
-            height :'70%',
         },
         fetchButtonsContainer:{
             width : '100%',
