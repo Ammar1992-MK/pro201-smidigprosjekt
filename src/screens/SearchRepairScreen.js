@@ -12,6 +12,18 @@ const SearchRepairScreen = ({navigation}) => {
     const [readyData, setReadyData] = useState([]);
     const [data, setData] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
+    const [isReady, setIsReady] = useState();
+    const[isFinished, setIsFinished] = useState();
+
+    const handleToggleButton = (button) => {
+        if(button === 'ready'){
+            setIsReady(true);
+            setIsFinished(false);
+        } else {
+            setIsFinished(true);
+            setIsReady(false);
+        }
+    }
 
     const handleSearch = () => {
         let result = [];
@@ -36,12 +48,14 @@ const SearchRepairScreen = ({navigation}) => {
         }
     }
 
-    const fetchReadyRepairs = () =>{
+    const fetchReadyRepairs = (button) =>{
         data.map((el) => {
             if(el.status === 'NEW' && !readyData.includes(el)){
                 setReadyData((readyData) => [...readyData, el]);
             }
         })
+
+        handleToggleButton(button);
     }
 
     useEffect(() => {
@@ -66,14 +80,14 @@ const SearchRepairScreen = ({navigation}) => {
                 </View>
 
                 <View style={Styles.fetchButtonsContainer}>
-                    <TouchableOpacity style={Styles.readyButton}onPress={() => fetchReadyRepairs()} >
-                        <Text style={Styles.readyText}>READY</Text>
+                    <TouchableOpacity style={[Styles.readyButton, isReady ? {backgroundColor: '#174A5B'} : {backgroundColor: '#fff'}]}onPress={() => fetchReadyRepairs('ready')} >
+                        <Text style={[Styles.readyText, isReady ? {color: '#fff'} : {color: '#174A5B'}]}>READY</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={Styles.finishedButton} >
-                        <Text style={Styles.finishedText}>FINISHED</Text>
+                    <TouchableOpacity style={[Styles.finishedButton, isFinished ? {backgroundColor: '#174A5B'} : {backgroundColor: '#fff'}]} onPress={() => fetchReadyRepairs('finished')}>
+                        <Text style={[Styles.finishedText, isFinished ? {color: '#fff'} : {color: '#174A5B'} ]}>FINISHED</Text>
                     </TouchableOpacity>
                 </View>
-                <ScrollViewSearchList data={readyData}/>
+                <ScrollViewSearchList data={readyData} icon={'search'}/>
             </View>
         </>
 

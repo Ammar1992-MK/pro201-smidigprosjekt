@@ -55,7 +55,7 @@ const UploadScreen = ({navigation}) => {
                     <LongButton icon="upload" textColor="disabled" backgroundColor="disabled" title="UPLOAD"
                                 onPress={() => Alert.alert("No Internet", "You need internet to upload your files")} />}
 
-                <ScrollViewSearchList data={data}/>
+                <ScrollViewSearchList data={data} icon={'upload'}/>
             </View>
         </>
     )
