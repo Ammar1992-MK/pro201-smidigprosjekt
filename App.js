@@ -16,6 +16,10 @@ import StartRepairScreen from "./src/screens/StartRepairScreen";
 import SelectPartsScreen from "./src/screens/SelectPartsScreen";
 import StartRepairSummaryScreen from "./src/screens/StartRepairSummaryScreen";
 
+import { LogBox } from 'react-native';
+// noinspection JSCheckFunctionSignatures
+LogBox.ignoreLogs(['Setting a timer']);
+
 //UPLOAD
 import UploadScreen from "./src/screens/UploadScreen";
 

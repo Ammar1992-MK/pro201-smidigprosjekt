@@ -4,10 +4,27 @@ import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
 //Components
 import { BrightTitle } from '../components/BrightTitle';
 import { LoginButton } from '../components/LoginButton';
+import db from '../firebase/firebaseDb'
 
 export default function LoginScreen({ navigation }) {
 	const [userId, setUserId] = useState('');
 	const [password, setPassword] = useState('');
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+	if(isLoggedIn){
+		navigation.navigate('HomeScreen')
+	}
+
+	const handleLogIn = () => {
+		//Logger inn jævlig usikkert, avhengig av nett per nå
+		const ref = db.firestore().collection("users")
+		console.log("kjør")
+		ref.where("username", "==", userId).where("password", "==", password).get().then(snapshot => {
+			if(!snapshot.empty){
+				setIsLoggedIn(true)
+			}
+		})
+	}
 
 	return (
 		<View style={LoginScreenStyles.container}>
@@ -27,7 +44,7 @@ export default function LoginScreen({ navigation }) {
 					value={password}
 					placeholder="Enter password"
 				/>
-				<LoginButton onPress={() => navigation.navigate('HomeScreen')} />
+				<LoginButton onPress={handleLogIn} />
 			</View>
 		</View>
 	);
