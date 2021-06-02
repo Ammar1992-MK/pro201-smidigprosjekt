@@ -11,10 +11,10 @@ import {spareParts} from "../utils/fakeDb";
 
 
 const SelectPartsScreen = ({navigation, route}) => {
-    const [userData, setUserData] = useState({});
+    const [userDataFormat, setUserData] = useState({});
     const[selectedPartId, setSelectedPartId] = useState([]);
 
-   const {lampName, serialNumber, selectedLamp} = route.params;
+   const {lampName, serialNumber, selectedLamp, userData} = route.params;
 
     useEffect(() => {
     setUserData({lampName, serialNumber, selectedLamp})
@@ -46,7 +46,7 @@ const SelectPartsScreen = ({navigation, route}) => {
     return (
         <View style={styles.container}>
             <NavigationBar title="NEW REPAIR" navigation={navigation}/>
-            <SelectedLampSummary  index={"1"} lamp={selectedLamp} data={userData}/>
+            <SelectedLampSummary  index={"1"} lamp={selectedLamp} data={userDataFormat}/>
             {/*Missing onPress to navigate to LEARN*/}
             <LongButton title={"CHANGE PART GUIDE"} backgroundColor={'primary_teal'} icon={'learn'}
                         textColor={'white'}/>

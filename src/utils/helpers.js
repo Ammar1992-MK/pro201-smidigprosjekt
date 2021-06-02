@@ -8,7 +8,7 @@ import db from "../firebase/firebaseDb";
 
 export const addNewRepair = async (valueObject) => {
     try {
-
+        console.log(valueObject)
         let savedRepairs = await AsyncStorage.getItem('repair');
         if (!savedRepairs) {
             savedRepairs = [];

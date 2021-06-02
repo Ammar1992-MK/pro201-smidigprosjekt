@@ -58,10 +58,6 @@ const StartRepairSummaryScreen = ({ navigation, route }) => {
 		getParts();
 	}, []);
 
-	const testData = {
-		serialNumber: '69 69 69',
-	};
-
 	return (
 		<>
 			<NavigationBar title="LEARN" navigation={navigation} />
@@ -93,7 +89,7 @@ const StartRepairSummaryScreen = ({ navigation, route }) => {
 						title="SAVE"
 						onPress={async () => {
 							setSavedStatus(!savedStatus);
-							await addNewRepair(testData);
+							await addNewRepair({...data, status: "DONE"});
 							//navigation.navigate('HomeScreen');
 						}}
 					/>
