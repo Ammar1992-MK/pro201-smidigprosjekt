@@ -79,7 +79,7 @@ const CustomerFormSummaryScreen = ({ navigation, route }) => {
 							title={'Phone Number'}
 						/>
 						<FilledInputField
-							textInput={userData.serialNumber}
+							textInput={userData.serialNumber ? userData.serialNumber : 'N/A'}
 							title={'Serial Number'}
 						/>
 						<FilledInputField
