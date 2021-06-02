@@ -1,9 +1,8 @@
 import React,{useState,useEffect} from 'react'
 import {View,Text,TextInput,StyleSheet,Image,TouchableOpacity} from "react-native";
-import {NavigationBar} from "../components/NavigationBar/NavigationBar";
 
-//firebase db
-import db from "../firebase/firebaseDb";
+
+import {NavigationBar} from "../components/NavigationBar/NavigationBar";
 import ScrollViewSearchList from "../components/ScrollViewSearchList";
 import {getData} from "../utils/helpers";
 
@@ -31,9 +30,13 @@ const SearchRepairScreen = ({navigation}) => {
             const {serialNumber, lamp} = el;
             if(searchTerm === serialNumber || searchTerm ===  lamp){
                 result.push(el);
+            } else {
+                fetchReadyRepairs('ready');
+                alert('no results found');
             }
         })
         setReadyData(result);
+        setSearchTerm(' ');
     }
 
     const searchButton = () => {
