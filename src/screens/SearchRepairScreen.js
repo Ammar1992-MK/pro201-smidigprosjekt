@@ -7,59 +7,24 @@ import ScrollViewSearchList from "../components/ScrollViewSearchList";
 import {getData} from "../utils/helpers";
 
 const SearchRepairScreen = ({navigation}) => {
-
-    const [readyData, setReadyData] = useState([]);
     const [data, setData] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
-    const [isReady, setIsReady] = useState(true);
-    const[isFinished, setIsFinished] = useState();
+    const [selectedToggle, setSelectedToggle] = useState("ready");
 
-    const handleToggleButton = (button) => {
-        if(button === 'ready'){
-            setIsReady(true);
-            setIsFinished(false);
-        } else {
-            setIsFinished(true);
-            setIsReady(false);
+    const readyData = data.filter((el) => {
+        //Filterer ut alle som ikke stemmer med søket eller har status som tilsvarer toggle (nå Ready eller finished).
+        let search_status_input;
+        switch(selectedToggle){
+            case "ready": search_status_input = "NEW"; break;
+            case "finished": search_status_input = "DONE"; break;
         }
-    }
-
-    const handleSearch = () => {
-        let result = [];
-        readyData.map((el) => {
+        if(el.status === search_status_input){
             const {serialNumber, lamp} = el;
-            if(searchTerm === serialNumber || searchTerm ===  lamp){
-                result.push(el);
-            } else {
-                fetchReadyRepairs('ready');
-                alert('no results found');
+            if((serialNumber.toString().includes(searchTerm) || lamp.toString().includes(searchTerm)) || searchTerm === ""){
+                return el
             }
-        })
-        setReadyData(result);
-        setSearchTerm(' ');
-    }
-
-    const searchButton = () => {
-        if(searchTerm.length >= 1 ){
-          return  <TouchableOpacity style={[Styles.searchButton,{backgroundColor: '#C3DC93'}]} disabled={false} onPress={() => handleSearch()}>
-                <Text style={Styles.searchText}>SEARCH</Text>
-            </TouchableOpacity>
-        } else if(searchTerm.length < 4){
-            return <TouchableOpacity style={[Styles.searchButton, {backgroundColor: 'lightgrey'}]} disabled={true}>
-                <Text style={Styles.searchText}>SEARCH</Text>
-            </TouchableOpacity>
         }
-    }
-
-    const fetchReadyRepairs = () =>{
-        data.map((el) => {
-            if(el.status === 'NEW' && !readyData.includes(el)){
-                setReadyData((readyData) => [...readyData, el]);
-            }
-        })
-
-        return <ScrollViewSearchList data={readyData} icon={'search'}/>
-    }
+    })
 
     useEffect(() => {
         getData().then(data => setData(data));
@@ -78,19 +43,26 @@ const SearchRepairScreen = ({navigation}) => {
                         <Image style={Styles.searchIcon} source={require('../../assets/icons/search.png')}/>
                     </View>
                 </View>
-                <View style={Styles.buttonsContainer}>
-                    {searchButton()}
-                </View>
+                {
+                    /*
+                    Tenker det er bedre at det bare automatisk refresher når man skriver inn noe nytt?
+                    <View style={Styles.buttonsContainer}>
+                        <TouchableOpacity style={[Styles.searchButton, {backgroundColor: 'lightgrey'}]} disabled={true}>
+                            <Text style={Styles.searchText}>SEARCH</Text>
+                        </TouchableOpacity>
+                    </View>
+                     */
+                }
 
                 <View style={Styles.fetchButtonsContainer}>
-                    <TouchableOpacity style={[Styles.readyButton, isReady ? {backgroundColor: '#174A5B'} : {backgroundColor: '#fff'}]} onPress={() => handleToggleButton('ready')} >
-                        <Text style={[Styles.readyText, isReady ? {color: '#fff'} : {color: '#174A5B'}]}>READY</Text>
+                    <TouchableOpacity style={[Styles.readyButton, selectedToggle === "ready" ? {backgroundColor: '#174A5B'} : {backgroundColor: '#fff'}]} onPress={() => setSelectedToggle('ready')} >
+                        <Text style={[Styles.readyText, selectedToggle === "ready" ? {color: '#fff'} : {color: '#174A5B'}]}>READY</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={[Styles.finishedButton, isFinished ? {backgroundColor: '#174A5B'} : {backgroundColor: '#fff'}]} onPress={() => handleToggleButton('finished')}>
-                        <Text style={[Styles.finishedText, isFinished ? {color: '#fff'} : {color: '#174A5B'} ]}>FINISHED</Text>
+                    <TouchableOpacity style={[Styles.finishedButton, selectedToggle === "finished" ? {backgroundColor: '#174A5B'} : {backgroundColor: '#fff'}]} onPress={() => setSelectedToggle('finished')}>
+                        <Text style={[Styles.finishedText, selectedToggle === "finished" ? {color: '#fff'} : {color: '#174A5B'} ]}>FINISHED</Text>
                     </TouchableOpacity>
                 </View>
-                {fetchReadyRepairs()}
+                <ScrollViewSearchList data={readyData} icon={'search'}/>
             </View>
         </>
 
