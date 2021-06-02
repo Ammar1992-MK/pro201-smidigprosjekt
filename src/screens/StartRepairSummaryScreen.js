@@ -13,13 +13,15 @@ import { spareParts } from '../utils/fakeDb';
 import ComponentsChosenSummary from '../components/ComponentsChosenSummary';
 
 const StartRepairSummaryScreen = ({ navigation, route }) => {
-	//WIFI ICONS
-	const noWifiIcon = require('../../assets/icons/no_wifi.png');
-	const wifiIcon = require('../../assets/icons/wifi_grey.png');
+    //WIFI ICONS
+    const noWifiIcon = require("../../assets/icons/wifi_off_red.png");
+    const wifiIcon = require("../../assets/icons/wifi_primary.png");
 
 	//NETWORK STATUS
 	const [networkStatus, setNetworkStatus] = useState(false);
-	const [savedStatus, setSavedStatus] = useState(true);
+	
+    //SAVED STATUS
+    const [savedStatus, setSavedStatus] = useState(true);
 
 	//SELECTED PARTS
 	const { data } = route.params;

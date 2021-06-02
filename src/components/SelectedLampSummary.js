@@ -91,33 +91,35 @@ const SelectedLampSummaryStyles = StyleSheet.create({
 
     selectedLampName: {
         color: '#174A5B',
-        fontSize: 24,
-        fontFamily: 'ArialBold'
-
+        fontSize: 20,
+        fontFamily: 'ArialBold',
+        lineHeight: 24,
+        marginVertical: 4,
+        letterSpacing: 0.5
     },
     selectedLampRepairId: {
         color: '#174A5B',
-        fontSize: 20,
-        fontFamily: 'Arial',
-        lineHeight: 30
+        fontSize: 16,
+        fontFamily: 'Arial'
     },
     selectedLampRepairIdText: {
         color: '#174A5B',
-        fontSize: 30,
+        fontSize: 24,
         fontFamily: 'ArialBold',
-        lineHeight: 38
+        lineHeight: 24,
+        marginBottom: 4
     },
     selectedLampSerialNo: {
         color: '#174A5B',
-        fontSize: 20,
-        fontFamily: 'Arial',
-        lineHeight: 28
+        fontSize: 16,
+        fontFamily: 'Arial'
     },
     selectedLampSerialNoText: {
         color: '#174A5B',
-        fontSize: 30,
+        fontSize: 24,
         fontFamily: 'ArialBold',
-        lineHeight: 38
+        lineHeight: 24,
+        marginBottom: 4
 
     },
     greenWrench : {
