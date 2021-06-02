@@ -97,8 +97,8 @@ const style = StyleSheet.create({
     },
     repairIcon: {
         position: 'absolute',
-        bottom: 0,
-        right: 0
+        bottom: 3,
+        right: 3
     }
 })
 

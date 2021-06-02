@@ -16,11 +16,13 @@ import ComponentsChosenSummary from "../components/ComponentsChosenSummary";
 const StartRepairSummaryScreen = ({navigation, route}) => {
 
     //WIFI ICONS
-    const noWifiIcon = require("../../assets/icons/no_wifi.png");
-    const wifiIcon = require("../../assets/icons/wifi_grey.png");
+    const noWifiIcon = require("../../assets/icons/wifi_off_red.png");
+    const wifiIcon = require("../../assets/icons/wifi_primary.png");
 
     //NETWORK STATUS
     const [networkStatus, setNetworkStatus] = useState(false)
+
+    //SAVED STATUS
     const [savedStatus, setSavedStatus] = useState(true);
 
     //SELECTED PARTS
@@ -98,7 +100,7 @@ const StartRepairSummaryScreen = ({navigation, route}) => {
                     }
                 </View>
                 <View style={styles.navigateButtons}>
-					<BackButton onPress={() => navigation.navigate('HomeScreen')}/>
+					<BackButton onPress={() => navigation.navigate('SelectPartsScreen')}/>
 					<DoneButton onPress={() => navigation.navigate('HomeScreen')} differentButton={savedStatus}/>
 				</View>
             </View>
