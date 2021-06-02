@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
 
 //Components
@@ -11,14 +11,16 @@ export default function LoginScreen({ navigation }) {
 	const [password, setPassword] = useState('');
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-	if(isLoggedIn){
-		navigation.navigate('HomeScreen')
-	}
+	useEffect(()=>{
+		if(isLoggedIn){
+			navigation.navigate('HomeScreen')
+		}
+	}, [isLoggedIn])
+
 
 	const handleLogIn = () => {
 		//Logger inn jævlig usikkert, avhengig av nett per nå
 		const ref = db.firestore().collection("users")
-		console.log("kjør")
 		ref.where("username", "==", userId).where("password", "==", password).get().then(snapshot => {
 			if(!snapshot.empty){
 				setIsLoggedIn(true)
