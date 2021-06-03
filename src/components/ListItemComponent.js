@@ -94,6 +94,7 @@ const Styles = StyleSheet.create({
         fontFamily : 'Arial',
         fontSize : 20,
         color : '#2C2A29',
+        marginLeft : 30,
     },
     repairDate : {
         width : '33%',
@@ -101,10 +102,11 @@ const Styles = StyleSheet.create({
         flexDirection : 'row',
         alignItems :'center',
         justifyContent : 'center',
-        marginRight : 30,
+        marginRight : 40,
+        marginTop : 45,
     },
     dateIcon:{
-        width : '10%',
+        width : '15%',
         marginRight : 15,
     },
     dateText:{
