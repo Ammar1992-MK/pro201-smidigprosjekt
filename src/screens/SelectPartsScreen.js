@@ -39,20 +39,24 @@ const SelectPartsScreen = ({ navigation, route }) => {
   };
   const spare_parts_div = (item) => {
     const { id, image } = item;
-    const is_selected = selectedPartId.includes(id) ? "Valgt" : "Ikke valgt";
+    const is_selected = selectedPartId.includes(id) ? <View style={styles.checkMark}><Image style={styles.checkMarkIcon} source={require('../../assets/icons/done_teal.png')}/></View> : <Text></Text>;
     return (
       <TouchableOpacity
         key={id}
         style={styles.partImageContainer}
         onPress={() => toggle_selected(id)}
       >
-        <Text>{is_selected}</Text>
+          {is_selected}
         <View style={styles.partImageView}>
           <Image style={styles.partImage} source={image} />
         </View>
       </TouchableOpacity>
     );
   };
+
+  {/*
+
+  */}
 
   return (
     <View style={styles.container}>
@@ -99,12 +103,6 @@ const SelectPartsScreen = ({ navigation, route }) => {
 
 export default SelectPartsScreen;
 
-{
-  /*
-<Image style={styles.partImage} source={image}/>
-                    <Image style={addedIcon ? {display : 'flex'} : {display: 'none'}} source={require('../../assets/icons/done_teal.png')}/>
-*/
-}
 
 const styles = StyleSheet.create({
   container: {
@@ -152,12 +150,32 @@ const styles = StyleSheet.create({
     fontSize: 30,
   },
   partImageContainer: {
-    width: "50%",
-    marginHorizontal: 10,
+    width: "45%",
+    height : '100%',
+    marginHorizontal: 17,
     alignSelf: "center",
   },
 
   partImageView: {
     width: "100%",
+    marginBottom : 20,
   },
+
+  checkMark:{
+    width :'100%',
+    height : '90%',
+    opacity : 0.7,
+    zIndex : 2,
+    position : 'absolute',
+    display:'flex',
+    flexDirection : 'row',
+    alignItems :'center',
+    justifyContent :'center',
+    backgroundColor: '#99a2b1',
+    borderRadius: 10,
+  },
+  checkMarkIcon:{
+    width : '70%',
+    height : '70%',
+  }
 });
