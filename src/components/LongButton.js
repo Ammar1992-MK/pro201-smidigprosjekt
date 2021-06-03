@@ -88,28 +88,27 @@ const LongButtonStyles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     borderRadius: 8,
-    position: 'relative',
+    position: "relative",
     backgroundColor: "#B7D381",
     marginTop: 16,
-    position: 'relative',
-    elevation: 1
+    elevation: 1,
   },
   imageContainer: {
     marginLeft: 30,
-    position: 'absolute',
-    top: 17
+    position: "absolute",
+    top: 17,
   },
   icon: {
     height: 56,
   },
   textContainer: {
     width: "50%",
-    marginLeft: 200
-    },
+    marginLeft: 200,
+  },
   title: {
     width: "100%",
-    textAlign: 'left',
-    fontFamily: 'ArialBold',
+    textAlign: "left",
+    fontFamily: "ArialBold",
     fontSize: 24,
     letterSpacing: 1,
   },

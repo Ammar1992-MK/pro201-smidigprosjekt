@@ -1,78 +1,78 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
-	View,
-	TouchableOpacity,
-	Button,
-	StyleSheet,
-	Image,
-} from 'react-native';
+  View,
+  TouchableOpacity,
+  Button,
+  StyleSheet,
+  Image,
+} from "react-native";
 
 //Components
-import { HomeScreenButton } from '../components/HomeScreenButton';
-import { BrightTitle } from '../components/BrightTitle';
-import { UserMenu } from '../components/UserMenu/UserMenu';
-import { UserButton } from '../components/UserMenu/UserButton';
+import { HomeScreenButton } from "../components/HomeScreenButton";
+import { BrightTitle } from "../components/BrightTitle";
+import { UserMenu } from "../components/UserMenu/UserMenu";
+import { UserButton } from "../components/UserMenu/UserButton";
 
 //Helpers
-import { getData, emptyDb } from '../utils/helpers';
+import { getData, emptyDb } from "../utils/helpers";
 
 const HomeScreen = ({ navigation }) => {
-	//Boolean to toggle the view which contains the user
-	const [showUserMenu, setShowUserMenu] = useState(false);
+  //Boolean to toggle the view which contains the user
+  const [showUserMenu, setShowUserMenu] = useState(false);
 
-	//Checking our data when loading the HomeScreen, just for testing purposes
-	getData().then((data) => console.log(data));
+  //Checking our data when loading the HomeScreen, just for testing purposes
+  getData().then((data) => console.log(data));
 
-	return (
-		<View style={HomeScreenStyles.container}>
-			<UserButton setShowUserMenu={setShowUserMenu} />
-			<BrightTitle />
-			{showUserMenu ? (
-				<UserMenu navigation={navigation} setShowUserMenu={setShowUserMenu} />
-			) : null}
-			<HomeScreenButton
-				icon={'add'}
-				title={'ADD NEW'}
-				onPress={() => navigation.navigate('CustomerFormScreen')}
-			/>
-			<HomeScreenButton
-				icon={'search'}
-				title={'SEARCH'}
-				onPress={() => navigation.navigate('SearchRepairScreen')}
-			/>
-			<HomeScreenButton
-				icon={'upload'}
-				title={'UPLOAD'}
-				onPress={() => navigation.navigate('UploadScreen')}
-			/>
-			<HomeScreenButton
-				icon={'school'}
-				title={'REPAIR GUIDE'}
-				onPress={() => navigation.navigate('LearnHomeScreen')}
-			/>
-			{/*
+  return (
+    <View style={HomeScreenStyles.container}>
+      <UserButton setShowUserMenu={setShowUserMenu} />
+      <BrightTitle />
+      {showUserMenu ? (
+        <UserMenu navigation={navigation} setShowUserMenu={setShowUserMenu} />
+      ) : null}
+      <HomeScreenButton
+        icon={"add"}
+        title={"ADD NEW"}
+        onPress={() => navigation.navigate("CustomerFormScreen")}
+      />
+      <HomeScreenButton
+        icon={"search"}
+        title={"SEARCH"}
+        onPress={() => navigation.navigate("SearchRepairScreen")}
+      />
+      <HomeScreenButton
+        icon={"upload"}
+        title={"UPLOAD"}
+        onPress={() => navigation.navigate("UploadScreen")}
+      />
+      <HomeScreenButton
+        icon={"school"}
+        title={"REPAIR GUIDE"}
+        onPress={() => navigation.navigate("LearnHomeScreen")}
+      />
+      {/*
             <Button title="Empty Database" onPress={async () => await emptyDb()}/>
             */}
-		</View>
-	);
+    </View>
+  );
 };
 
 const HomeScreenStyles = StyleSheet.create({
-	container: {
-		backgroundColor: '#174A5B',
-		flex: 1,
-		flexDirection: 'column',
-		justifyContent: 'center',
-		alignItems: 'center',
-		fontFamily: 'ArialBold',
-	},
-	userButton: {
-		position: 'absolute',
-		top: 0,
-		left: 0,
-		right: 0,
-		bottom: 0,
-	},
+  container: {
+    backgroundColor: "#174A5B",
+    flex: 1,
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    fontFamily: "ArialBold",
+  },
+  userButton: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+  },
 });
 
 export default HomeScreen;

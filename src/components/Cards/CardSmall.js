@@ -2,8 +2,6 @@ import * as React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 
 const CardSmall = ({ lampName, image }) => {
-
-
   const SmartPlus = require("../../../assets/product-images/smart-plus-1.png");
   const SunbellSmart = require("../../../assets/product-images/sunbell-smart-1.png");
   const Lamp3 = require("../../../assets/product-images/smart-plus-1.png");
@@ -26,14 +24,10 @@ const CardSmall = ({ lampName, image }) => {
       break;
   }
 
-
   return (
     <View style={CardSmallStyles.container}>
       <Text style={CardSmallStyles.text}>{lampName || "LAMP NAME"}</Text>
-      <Image
-        style={CardSmallStyles.image}
-        source={lamp}
-      />
+      <Image style={CardSmallStyles.image} source={lamp} />
       {/* We need to dynamically change the pictures here? */}
     </View>
   );

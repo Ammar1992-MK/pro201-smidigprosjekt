@@ -1,39 +1,35 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 
-import {lamps} from '../utils/fakeDb'
+import { lamps } from "../utils/fakeDb";
 import { NavigationBar } from "../components/NavigationBar/NavigationBar";
 import LongButton from "../components/LongButton";
 
-const StartRepairScreen = ({ navigation, route}) => {
+const StartRepairScreen = ({ navigation, route }) => {
   const [userData, setUserData] = useState({});
   const [selectedLamp, setSelectedLamp] = useState();
-  const {data} = route.params;
+  const { data } = route.params;
 
   const handleSelectedLamp = () => {
     lamps.map((el) => {
-      const{name, image} = el;
-      if(name === data.lamp){
-        setSelectedLamp(image)
+      const { name, image } = el;
+      if (name === data.lamp) {
+        setSelectedLamp(image);
       }
-    })
-  }
+    });
+  };
 
   useEffect(() => {
     setUserData(data);
     handleSelectedLamp();
-  }, [])
+  }, []);
 
   return (
-
     <View style={StartRepairScreenStyles.container}>
-      <NavigationBar title="NEW REPAIR" navigation={navigation}/>
+      <NavigationBar title="NEW REPAIR" navigation={navigation} />
       <View style={StartRepairScreenStyles.lampContainer}>
         <View style={StartRepairScreenStyles.lampImageContainer}>
-          <Image
-            style={StartRepairScreenStyles.image}
-            source={selectedLamp}
-          />
+          <Image style={StartRepairScreenStyles.image} source={selectedLamp} />
         </View>
         <View style={StartRepairScreenStyles.lampInfoContainer}>
           <View style={StartRepairScreenStyles.lampInfo}>
@@ -41,29 +37,57 @@ const StartRepairScreen = ({ navigation, route}) => {
             <Text style={StartRepairScreenStyles.data}>FR2324</Text>
 
             <Text style={StartRepairScreenStyles.text}>SNR</Text>
-            <Text style={StartRepairScreenStyles.data}>{userData.serialNumber}</Text>
+            <Text style={StartRepairScreenStyles.data}>
+              {userData.serialNumber}
+            </Text>
           </View>
 
           <View style={StartRepairScreenStyles.userData}>
             <View>
               <Text style={StartRepairScreenStyles.text}>PHONE</Text>
-              <Text style={StartRepairScreenStyles.data}>{userData.phoneNumber}</Text>
+              <Text style={StartRepairScreenStyles.data}>
+                {userData.phoneNumber}
+              </Text>
             </View>
             <View>
               <Text style={StartRepairScreenStyles.text}>NAME</Text>
-              <Text style={StartRepairScreenStyles.data}>{userData.customerName}</Text>
+              <Text style={StartRepairScreenStyles.data}>
+                {userData.customerName}
+              </Text>
             </View>
           </View>
         </View>
       </View>
-        <LongButton  title={"REPAIR"} icon={"repair"} textColor={"primary_teal"} backgroundColor={"primary_green"} onPress={() => navigation.navigate("SelectPartsScreen",{
-          selectedLamp : selectedLamp,
-          lampName : userData.lamp,
-          serialNumber : userData.serialNumber,
-          userData
-        })}/>
-        <LongButton  title={"CAN NOT REPAIR"}  textColor={"white"} backgroundColor={"red"} onPress={ () => navigation.navigate("StartRepairSummaryScreen", {data: {...userData, selectedPartId: "DISCARD"}})}/>
-        <LongButton  title={"TROUBLESHOOT GUIDE"} icon={"learn"} textColor={"white"} backgroundColor={"primary_teal"}/>
+      <LongButton
+        title={"REPAIR"}
+        icon={"repair"}
+        textColor={"primary_teal"}
+        backgroundColor={"primary_green"}
+        onPress={() =>
+          navigation.navigate("SelectPartsScreen", {
+            selectedLamp: selectedLamp,
+            lampName: userData.lamp,
+            serialNumber: userData.serialNumber,
+            userData,
+          })
+        }
+      />
+      <LongButton
+        title={"CAN NOT REPAIR"}
+        textColor={"white"}
+        backgroundColor={"red"}
+        onPress={() =>
+          navigation.navigate("StartRepairSummaryScreen", {
+            data: { ...userData, selectedPartId: "DISCARD" },
+          })
+        }
+      />
+      <LongButton
+        title={"TROUBLESHOOT GUIDE"}
+        icon={"learn"}
+        textColor={"white"}
+        backgroundColor={"primary_teal"}
+      />
     </View>
   );
 };
@@ -132,13 +156,13 @@ const StartRepairScreenStyles = StyleSheet.create({
     width: "60%",
     height: "100%",
   },
-  buttonsContainer : {
-    display : 'flex',
-    flexDirection : "column",
-    alignItems : 'center',
-    justifyContent : "space-around",
-    width : '100%',
-    height : '30%',
-    backgroundColor : "blue"
+  buttonsContainer: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-around",
+    width: "100%",
+    height: "30%",
+    backgroundColor: "blue",
   },
 });

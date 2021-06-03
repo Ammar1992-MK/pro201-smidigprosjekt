@@ -1,91 +1,95 @@
-import {AsyncStorage} from "react-native";
+import { AsyncStorage } from "react-native";
 import db from "../firebase/firebaseDb";
 /*
-*
-* Repair: [{customerName, phoneNumber, lamp, serialNumber, chosenPart: [] || "DISCARD"}, {}]
-*
-* */
+ *
+ * Repair: [{customerName, phoneNumber, lamp, serialNumber, chosenPart: [] || "DISCARD"}, {}]
+ *
+ * */
 
 export const addNewRepair = async (valueObject) => {
-    try {
-        console.log(valueObject)
-        let savedRepairs = await AsyncStorage.getItem('repair');
-        if (!savedRepairs) {
-            savedRepairs = [];
-        } else {
-            savedRepairs = JSON.parse(savedRepairs)
-        }
-
-        //TODO REMEMBER TO ADD LAMP
-        const {customerName, phoneNumber, lamp, serialNumber, status} = valueObject; //destructure the values from the form
-        if (!status) {
-            //Status is not set in object, set it as 'NEW'
-            valueObject.status = "NEW"
-        }
-        if (!customerName || !phoneNumber) {
-            throw new Error("Missing vital information");
-        }
-        let key = savedRepairs.length
-        while (savedRepairs.map(e => parseInt(e.key)).includes(key)) {
-            key++;
-        }
-        savedRepairs.push({...valueObject, key: key.toString(), date: new Date().toLocaleDateString()});
-
-        const jsonValue = JSON.stringify(savedRepairs)
-        await AsyncStorage.setItem('repair', jsonValue)
-    } catch (e) {
-        // saving error
-        console.log(e.toString());
+  try {
+    console.log(valueObject);
+    let savedRepairs = await AsyncStorage.getItem("repair");
+    if (!savedRepairs) {
+      savedRepairs = [];
+    } else {
+      savedRepairs = JSON.parse(savedRepairs);
     }
-}
 
+    //TODO REMEMBER TO ADD LAMP
+    const { customerName, phoneNumber, lamp, serialNumber, status } =
+      valueObject; //destructure the values from the form
+    if (!status) {
+      //Status is not set in object, set it as 'NEW'
+      valueObject.status = "NEW";
+    }
+    if (!customerName || !phoneNumber) {
+      throw new Error("Missing vital information");
+    }
+    let key = savedRepairs.length;
+    while (savedRepairs.map((e) => parseInt(e.key)).includes(key)) {
+      key++;
+    }
+    savedRepairs.push({
+      ...valueObject,
+      key: key.toString(),
+      date: new Date().toLocaleDateString(),
+    });
+
+    const jsonValue = JSON.stringify(savedRepairs);
+    await AsyncStorage.setItem("repair", jsonValue);
+  } catch (e) {
+    // saving error
+    console.log(e.toString());
+  }
+};
 
 export const getData = async () => {
-    try {
-        const jsonValue = await AsyncStorage.getItem('repair')
-        return jsonValue ? JSON.parse(jsonValue) : []
-    } catch (e) {
-        // error reading value
-        console.log(e.toString())
-    }
-}
+  try {
+    const jsonValue = await AsyncStorage.getItem("repair");
+    return jsonValue ? JSON.parse(jsonValue) : [];
+  } catch (e) {
+    // error reading value
+    console.log(e.toString());
+  }
+};
 
 export const emptyDb = async () => {
-    try {
-        AsyncStorage.multiRemove(['repair'], () => console.log('Database cleared'))
-        await getData().then(data => console.log(data))
-    } catch (e) {
-        console.log(e.toString())
-    }
-}
+  try {
+    AsyncStorage.multiRemove(["repair"], () => console.log("Database cleared"));
+    await getData().then((data) => console.log(data));
+  } catch (e) {
+    console.log(e.toString());
+  }
+};
 
 export const changeRepair = async (valueObject, localId) => {
-    //Changes only the property provided in the valueobject on the local repair with ID 'localId'
-    let current_data = getData();
-    for (let el of current_data) {
-        if (el.local_id === localId) {
-            for (let newProperty in valueObject) {
-                if (valueObject.hasOwnProperty(newProperty)) {
-                    el[newProperty] = valueObject[newProperty]
-                }
-            }
-            const dataJson = JSON.stringify(current_data)
-            await AsyncStorage.setItem('repair', dataJson)
-            return true;
+  //Changes only the property provided in the valueobject on the local repair with ID 'localId'
+  let current_data = getData();
+  for (let el of current_data) {
+    if (el.local_id === localId) {
+      for (let newProperty in valueObject) {
+        if (valueObject.hasOwnProperty(newProperty)) {
+          el[newProperty] = valueObject[newProperty];
         }
+      }
+      const dataJson = JSON.stringify(current_data);
+      await AsyncStorage.setItem("repair", dataJson);
+      return true;
     }
-    return false;
-}
+  }
+  return false;
+};
 
 export const uploadRepairs = async () => {
-    //Uploads the local repairs to the DB, then deletes.
-    const ref = db.firestore()
-    let batch = ref.batch()
-    const local_repairs = await getData();
-    local_repairs.forEach((el) => {
-        const id = ref.collection('repairs').doc()
-        batch.set(id, el);
-    })
-    await batch.commit();
-    await emptyDb()
-}
+  //Uploads the local repairs to the DB, then deletes.
+  const ref = db.firestore();
+  let batch = ref.batch();
+  const local_repairs = await getData();
+  local_repairs.forEach((el) => {
+    const id = ref.collection("repairs").doc();
+    batch.set(id, el);
+  });
+  await batch.commit();
+  await emptyDb();
+};

@@ -29,14 +29,14 @@ const LoginButtonStyles = StyleSheet.create({
     marginVertical: 48,
     justifyContent: "center",
     alignItems: "center",
-    borderColor: '#B7D381',
+    borderColor: "#B7D381",
     borderWidth: 4,
-    borderStyle: 'solid'
+    borderStyle: "solid",
   },
   text: {
     fontSize: 24,
     color: "#174A5B",
-    fontFamily: 'ArialBold',
+    fontFamily: "ArialBold",
     letterSpacing: 1,
   },
 });
