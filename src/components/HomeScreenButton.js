@@ -5,7 +5,7 @@ export const HomeScreenButton = (props) => {
 	const add = require('../../assets/icons/add.png');
 	const search = require('../../assets/icons/search.png');
 	const upload = require('../../assets/icons/file_upload.png');
-	const school = require('../../assets/icons/school.png');
+	const school = require('../../assets/icons/repair_guide.png');
 	let icon;
 
 	switch (props.icon) {
