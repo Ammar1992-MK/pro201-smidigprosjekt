@@ -17,7 +17,7 @@ export default ScrollViewSearchList;
 const Styles = StyleSheet.create({
   container: {
     width: "95%",
-    height: 550,
+    height: 400,
     flexDirection: "column",
     alignItems: "center",
     marginTop: 10,
