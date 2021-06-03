@@ -34,7 +34,7 @@ const SearchRepairScreen = ({navigation}) => {
     return (
         <>
             <NavigationBar navigation={navigation}/>
-            <View  style= {Styles.container} >
+              <View  style= {Styles.container} >
                 <View style={Styles.searchContainer}>
                     <View style={Styles.searchTitleContainer}>
                         <Text style={Styles.searchTitle}>Search repair</Text>
@@ -66,7 +66,6 @@ const SearchRepairScreen = ({navigation}) => {
                 <ScrollViewSearchList data={readyData} icon={'search'}/>
             </View>
         </>
-
     )
 }
 

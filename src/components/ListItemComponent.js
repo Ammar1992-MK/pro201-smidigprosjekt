@@ -65,28 +65,30 @@ const Styles = StyleSheet.create({
         marginTop : 10,
     },
     lampContainer:{
-        width : '33%',
+        width : '30%',
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-evenly'
+        justifyContent: 'space-between',
     },
     lamp:{
+        width : '60%',
     },
     lampName : {
       marginTop: 45,
+        marginLeft : 45,
         fontFamily : 'Arial',
         fontSize : 20,
         color : '#2C2A29',
     },
     serialNumberContainer:{
-        width : '33%',
+        width : '35%',
         display : 'flex',
         flexDirection :'row',
         alignItems :'center',
         justifyContent :'center',
-        marginBottom : 21,
-        marginLeft : 25,
+        marginTop : 45,
+        marginLeft : 40,
     },
     serialNo:{
         fontFamily : 'Arial',
@@ -99,7 +101,7 @@ const Styles = StyleSheet.create({
         flexDirection : 'row',
         alignItems :'center',
         justifyContent : 'center',
-        marginLeft : 40,
+        marginRight : 30,
     },
     dateIcon:{
         width : '10%',
