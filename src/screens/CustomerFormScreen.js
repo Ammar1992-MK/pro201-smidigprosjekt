@@ -19,7 +19,8 @@ export default function CustomerFormScreen({ navigation }) {
 	const [customerName, setCustomerName] = useState('');
 	const [phoneNumber, setPhoneNumber] = useState('');
 	const [serialNumber, setSerialNumber] = useState('');
-	const [lampName, setLampName] = useState();
+	const [lampName, setLampName] = useState('');
+	const [selectedLampName, setSelectedLampName] = useState();
 
 	//CSS STATES FOR INPUT FIELDS
 	const phoneNumberInputField = () => {
@@ -72,13 +73,22 @@ export default function CustomerFormScreen({ navigation }) {
 		}
 	};
 
-
+	const toggle_selected = (el_name) => {
+		if (selectedLampName === el_name) {
+			setSelectedLampName(' ');
+		} else {
+			setSelectedLampName(el_name);
+		}
+		setLampName(el_name)
+	};
 
 	const lamps_div = lamps.map((el, i) => {
 		const { name, image } = el;
+		const is_selected = selectedLampName === name ? <View style={styles.checkMark}><Image style={styles.checkMarkIcon} source={require('../../assets/icons/done_teal.png')}/></View> : <Text>not selected</Text>;
 		return (
-			<TouchableOpacity onPress={() => setLampName(name)} key={i}>
+			<TouchableOpacity onPress={() => toggle_selected(name)} key={i}>
 				<CarouselCard img={image} />
+				{is_selected}
 			</TouchableOpacity>
 		);
 	});
@@ -182,4 +192,20 @@ const styles = StyleSheet.create({
 		borderColor: '#CB333B',
 		borderRadius: 10,
 	},
+	checkMark:{
+		width :'100%',
+		height : '90%',
+		opacity : 0.7,
+		position : 'absolute',
+		display:'flex',
+		flexDirection : 'row',
+		alignItems :'center',
+		justifyContent :'center',
+		backgroundColor: '#99a2b1',
+		borderRadius: 15,
+	},
+	checkMarkIcon:{
+		width : '70%',
+		height : '70%',
+	}
 });
