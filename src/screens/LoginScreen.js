@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { View, Text, StyleSheet, TextInput, Button, TouchableOpacity, Image } from 'react-native';
 
+
 //Components
 import { BrightTitle } from '../components/BrightTitle';
 import { LoginButton } from '../components/LoginButton';
@@ -11,6 +12,7 @@ export default function LoginScreen({ navigation }) {
 	const [password, setPassword] = useState('');
 	const[secureText, setSecureText] = useState(true);
   const[eyeIcon, setEyeIcon] = useState(require('../../assets/icons/eye_closed.png'));
+
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 	useEffect(()=>{

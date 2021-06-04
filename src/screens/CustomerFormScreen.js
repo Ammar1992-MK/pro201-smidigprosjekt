@@ -98,7 +98,6 @@ export default function CustomerFormScreen({ navigation }) {
                     <TextInput
                         style={styles.input}
                         onChangeText={text => setSerialNumber(text)}
-
                     />
                     {/*
                     <TouchableOpacity>
@@ -139,7 +138,7 @@ const styles = StyleSheet.create({
 	input: {
 		width: '65%',
 		backgroundColor: '#ffffff',
-		fontSize: 28,
+		fontSize: 43,
 		borderWidth: 3,
 		borderColor: '#828384',
 		borderRadius: 10,
@@ -180,7 +179,7 @@ const styles = StyleSheet.create({
 		width: '65%',
 		backgroundColor: '#ffffff',
 		borderColor: '#00966C',
-		fontSize: 28,
+		fontSize: 43,
 		borderWidth: 4,
 		borderRadius: 10,
 		padding: 7,
@@ -189,14 +188,13 @@ const styles = StyleSheet.create({
 	inputError: {
 		width: '65%',
 		backgroundColor: '#ffffff',
-		fontSize: 28,
+		fontSize: 43,
 		borderWidth: 4,
 		borderColor: '#CB333B',
 		borderRadius: 10,
 		padding: 7,
  		paddingLeft: 14,
 	},
-
 	checkMark:{
  		width :'100%',
  		height : '90%',

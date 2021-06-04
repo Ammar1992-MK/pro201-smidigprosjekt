@@ -25,9 +25,7 @@ const SelectPartsScreen = ({navigation, route}) => {
     const [userDataFormat, setUserData] = useState({});
     const[selectedPartId, setSelectedPartId] = useState([]);
 
-  useEffect(() => {
-    setUserData({ lampName, serialNumber, selectedLamp });
-  }, []);
+   const {lampName, serialNumber, selectedLamp, userData} = route.params;
 
   const toggle_selected = (el_id) => {
     if (selectedPartId.includes(el_id)) {
