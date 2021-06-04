@@ -24,16 +24,29 @@ const SelectPartsScreen = ({ navigation, route }) => {
 
   let is_selected;
 
+  //CHOSEN PART
+    const [chosenPart, setChosenPart] = useState(false);
+
+    //CHANGE STEP IN NAVIGATIONBAR
+    let navbarStep = 2;
+    if (chosenPart) {
+        navbarStep = 2.5;
+    } else {
+        navbarStep = 2;
+    }
+
   useEffect(() => {
     setUserData({ lampName, serialNumber, selectedLamp });
   }, []);
 
   const toggle_selected = (el_id) => {
     if (selectedPartId.includes(el_id)) {
+      setChosenPart(false);
       let prev_selected = selectedPartId.slice();
       prev_selected.splice(prev_selected.indexOf(el_id), 1);
       setSelectedPartId(prev_selected);
     } else {
+      setChosenPart(true);
       setSelectedPartId([...selectedPartId, el_id]);
     }
   };
@@ -60,7 +73,7 @@ const SelectPartsScreen = ({ navigation, route }) => {
 
   return (
     <View style={styles.container}>
-      <NavigationBar title="NEW REPAIR" navigation={navigation} />
+      <NavigationBar title="NEW REPAIR" navigation={navigation} progressbar={true} step={navbarStep}/>
       <SelectedLampSummary
         index={"1"}
         lamp={selectedLamp}

@@ -22,8 +22,8 @@ export const NavigationHomeButton = ({ navigation }) => {
         <HomeImage />
       </TouchableOpacity>
     </View>
-  );
-};
+  )
+}
 
 const NavigationHomeButtonStyles = StyleSheet.create({
   icon: {
