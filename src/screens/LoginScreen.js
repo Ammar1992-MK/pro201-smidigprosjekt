@@ -9,12 +9,10 @@ import db from "../firebase/firebaseDb";
 export default function LoginScreen({ navigation }) {
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
-  const[secureText, setSecureText] = useState(true);
-  const[eyeIcon, setEyeIcon] = useState();
+  const[secureText, setSecureText] = useState();
+  const[eyeIcon, setEyeIcon] = useState(require('../../assets/icons/eye_open.png'));
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  useEffect(() => {
-  }, [isLoggedIn]);
 
   const handlePasswordVisibility = () => {
     if(secureText){
@@ -26,14 +24,16 @@ export default function LoginScreen({ navigation }) {
     }
   }
 
-  {/*
-  */}
+  useEffect(() => {
+    if(isLoggedIn){
+      navigation.navigate('HomeScreen');
+    }
+  }, [isLoggedIn]);
 
   const handleLogIn = () => {
     //Logger inn jævlig usikkert, avhengig av nett per nå
     const ref = db.firestore().collection("users");
-    ref
-        .where("username", "==", userId)
+        ref.where("username", "==", userId)
         .where("password", "==", password)
         .get()
         .then((snapshot) => {
@@ -66,7 +66,7 @@ export default function LoginScreen({ navigation }) {
                   placeholder="Enter password"
                   secureTextEntry={secureText}
               />
-              <TouchableOpacity style={LoginScreenStyles.eyeIconContainer} onPress={() => handlePasswordVisibility()}>
+              <TouchableOpacity style={LoginScreenStyles.eyeIconContainer} onPress={()=>handlePasswordVisibility()}>
                 <Image style={LoginScreenStyles.eyeIcon} source={eyeIcon}/>
               </TouchableOpacity>
             </View>
