@@ -69,7 +69,12 @@ const CustomerFormSummaryScreen = ({ navigation, route }) => {
 
 	return (
 		<>
-			<NavigationBar navigation={navigation} />
+			<NavigationBar
+				title="NEW REPAIR"
+				navigation={navigation}
+				progressbar={true}
+				step={1.5}
+			/>
 			<View styles={styles.container}>
 				<View style={styles.summaryContainer}>
 					<CardSmall lampName={lamp} />

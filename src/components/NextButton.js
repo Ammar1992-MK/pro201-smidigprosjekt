@@ -29,13 +29,13 @@ const NextButtonStyles = StyleSheet.create({
     marginTop: 24,
     borderRadius: 14,
     justifyContent: "center",
-    alignItems: "flex-end",
+    alignItems: 'flex-end',
     backgroundColor: "#B7D381",
     marginLeft: "auto",
     marginRight: 50,
-    borderColor: "#B7D381",
+    borderColor: '#B7D381',
     borderWidth: 3,
-    borderStyle: "solid",
+    borderStyle: 'solid'
   },
   innerContainer: {
     width: "70%",
@@ -47,8 +47,8 @@ const NextButtonStyles = StyleSheet.create({
   title: {
     color: "#174A5B",
     fontSize: 28,
-    fontFamily: "ArialBold",
-    letterSpacing: 0.5,
+    fontFamily: 'ArialBold',
+    letterSpacing: 0.5
   },
 
   image: {

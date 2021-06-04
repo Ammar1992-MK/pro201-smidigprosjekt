@@ -1,30 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React,{useState, useEffect} from 'react';
 
-import {
-  Text,
-  View,
-  StyleSheet,
-  FlatList,
-  Image,
-  TouchableOpacity,
-} from "react-native";
+import {Text,View, StyleSheet,ScrollView,Image,TouchableOpacity, FlatList} from "react-native";
 
 //COMPONENTS
 import SelectedLampSummary from "../components/SelectedLampSummary";
-import { NavigationBar } from "../components/NavigationBar/NavigationBar";
+import {NavigationBar} from '../components/NavigationBar/NavigationBar'
 import LongButton from "../components/LongButton";
-import { NextButton } from "../components/NextButton";
-import { spareParts } from "../utils/fakeDb";
+import {NextButton} from "../components/NextButton";
+import {spareParts} from "../utils/fakeDb";
 
-const SelectPartsScreen = ({ navigation, route }) => {
-  const [userDataFormat, setUserData] = useState({});
-  const [selectedPartId, setSelectedPartId] = useState([]);
-
-  const { lampName, serialNumber, selectedLamp, userData } = route.params;
-
-  let is_selected;
-
-  //CHOSEN PART
+const SelectPartsScreen = ({navigation, route}) => {
+    //CHOSEN PART
     const [chosenPart, setChosenPart] = useState(false);
 
     //CHANGE STEP IN NAVIGATIONBAR
@@ -34,6 +20,10 @@ const SelectPartsScreen = ({ navigation, route }) => {
     } else {
         navbarStep = 2;
     }
+
+    const {lampName, serialNumber, selectedLamp, userData} = route.params;
+    const [userDataFormat, setUserData] = useState({});
+    const[selectedPartId, setSelectedPartId] = useState([]);
 
   useEffect(() => {
     setUserData({ lampName, serialNumber, selectedLamp });
@@ -49,7 +39,8 @@ const SelectPartsScreen = ({ navigation, route }) => {
       setChosenPart(true);
       setSelectedPartId([...selectedPartId, el_id]);
     }
-  };
+  }
+
   const spare_parts_div = (item) => {
     const { id, image } = item;
     const is_selected = selectedPartId.includes(id) ? <View style={styles.checkMark}><Image style={styles.checkMarkIcon} source={require('../../assets/icons/done_teal.png')}/></View> : <Text></Text>;
@@ -67,11 +58,7 @@ const SelectPartsScreen = ({ navigation, route }) => {
     );
   };
 
-  {/*
-
-  */}
-
-  return (
+    return (
     <View style={styles.container}>
       <NavigationBar title="NEW REPAIR" navigation={navigation} progressbar={true} step={navbarStep}/>
       <SelectedLampSummary
@@ -112,10 +99,9 @@ const SelectPartsScreen = ({ navigation, route }) => {
       />
     </View>
   );
-};
+}
 
 export default SelectPartsScreen;
-
 
 const styles = StyleSheet.create({
   container: {
@@ -173,8 +159,7 @@ const styles = StyleSheet.create({
     width: "100%",
     marginBottom : 20,
   },
-
-  checkMark:{
+  checkMark: {
     width :'100%',
     height : '90%',
     opacity : 0.7,
@@ -187,7 +172,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#99a2b1',
     borderRadius: 10,
   },
-  checkMarkIcon:{
+  checkMarkIcon:  {
     width : '70%',
     height : '70%',
   }

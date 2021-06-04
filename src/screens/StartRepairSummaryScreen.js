@@ -70,7 +70,7 @@ const StartRepairSummaryScreen = ({ navigation, route }) => {
 
 	return (
 		<>
-			<NavigationBar title="LEARN" navigation={navigation} progressbar={true} step={navbarStep}/>
+			<NavigationBar title="NEW REPAIR" navigation={navigation}  progressbar={true} step={navbarStep}/>
 			<View style={styles.container}>
 				<SelectedLampSummary
 					index={'1'}

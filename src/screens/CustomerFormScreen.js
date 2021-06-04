@@ -1,18 +1,10 @@
-import React, { useState } from 'react';
-import {
-	View,
-	Text,
-	StyleSheet,
-	TextInput,
-	ScrollView,
-	TouchableOpacity,
-	Image,
-} from 'react-native';
-import { NextButton } from '../components/NextButton';
-import { BackButton } from '../components/BackButton';
-import { NavigationBar } from '../components/NavigationBar/NavigationBar';
-import CarouselCard from '../components/CarouselCard';
-import { lamps } from '../utils/fakeDb';
+import React, {useState} from 'react';
+import {View, Text, StyleSheet, TextInput, ScrollView, TouchableOpacity, Image} from "react-native";
+import {NextButton} from "../components/NextButton";
+import {BackButton} from "../components/BackButton";
+import {NavigationBar} from "../components/NavigationBar/NavigationBar";
+import CarouselCard from "../components/CarouselCard";
+import {lamps} from "../utils/fakeDb";
 
 export default function CustomerFormScreen({ navigation }) {
 	const [userData, setUserData] = useState({});
@@ -21,57 +13,6 @@ export default function CustomerFormScreen({ navigation }) {
 	const [serialNumber, setSerialNumber] = useState('');
 	const [lampName, setLampName] = useState('');
 	const [selectedLampName, setSelectedLampName] = useState();
-
-	//CSS STATES FOR INPUT FIELDS
-	const phoneNumberInputField = () => {
-		if (phoneNumber.length == 0) {
-			return (
-				<TextInput
-					style={styles.input}
-					onChangeText={(text) => setPhoneNumber(text)}
-				/>
-			);
-		} else if (phoneNumber.length <= 7) {
-			return (
-				<TextInput
-					style={styles.inputError}
-					onChangeText={(text) => setPhoneNumber(text)}
-				/>
-			);
-		} else {
-			return (
-				<TextInput
-					style={styles.inputSuccess}
-					onChangeText={(text) => setPhoneNumber(text)}
-				/>
-			);
-		}
-	};
-
-	const customerInputField = () => {
-		if (customerName.length == 0) {
-			return (
-				<TextInput
-					style={styles.input}
-					onChangeText={(text) => setCustomerName(text)}
-				/>
-			);
-		} else if (customerName.length <= 2) {
-			return (
-				<TextInput
-					style={styles.inputError}
-					onChangeText={(text) => setCustomerName(text)}
-				/>
-			);
-		} else {
-			return (
-				<TextInput
-					style={styles.inputSuccess}
-					onChangeText={(text) => setCustomerName(text)}
-				/>
-			);
-		}
-	};
 
 	const toggle_selected = (el_name) => {
  		if (selectedLampName === el_name) {
@@ -93,53 +34,99 @@ export default function CustomerFormScreen({ navigation }) {
 		);
 	});
 
-	return (
-		<>
-			<NavigationBar title="NEW REPAIR" navigation={navigation} />
-			<ScrollView style={styles.container}>
-				<Text style={styles.inputHeaders}>Customer Name</Text>
-				{customerInputField()}
+    //CSS STATES FOR INPUT FIELDS
+    const phoneNumberInputField = () => {
+        if (phoneNumber.length == 0) {
+            return (
+                <TextInput
+                    style={styles.input}
+                    onChangeText={text => setPhoneNumber(text)}/>
+            )
+        } else if (phoneNumber.length <= 7) {
+            return (
+                <TextInput
+                    style={styles.inputError}
+                    onChangeText={text => setPhoneNumber(text)}/>
+            )
+        } else {
+            return (
+                <TextInput
+                    style={styles.inputSuccess}
+                    onChangeText={text => setPhoneNumber(text)}/>
+            )
+        }
+    }
 
-				<Text style={styles.inputHeaders}>Customer Phone Number</Text>
-				{phoneNumberInputField()}
+    const customerInputField = () => {
+        if (customerName.length == 0) {
+            return (
+                <TextInput
+                    style={styles.input}
+                    onChangeText={text => setCustomerName(text)}/>
+            )
+        } else if (customerName.length <= 2) {
+            return (
+                <TextInput
+                    style={styles.inputError}
+                    onChangeText={text => setCustomerName(text)}/>
+            )
+        } else {
+            return (
+                <TextInput
+                    style={styles.inputSuccess}
+                    onChangeText={text => setCustomerName(text)}/>
+            )
+        }
+    }
 
-				<Text style={styles.inputHeaders}>Choose Lamp</Text>
-				<ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-					{lamps_div}
-				</ScrollView>
-				<Text style={styles.inputHeaders}>Enter Serial Number</Text>
-				<View style={styles.serialInputContainer}>
-					<TextInput
-						style={styles.input}
-						onChangeText={(text) => setSerialNumber(text)}
-					/>
-					{/*
+    return (
+        <>
+            <NavigationBar title="NEW REPAIR" navigation={navigation}/>
+            <ScrollView style={styles.container}>
+                <Text style={styles.inputHeaders}>Customer Name</Text>
+                {customerInputField()}
+
+                <Text style={styles.inputHeaders}>Customer Phone Number</Text>
+                {phoneNumberInputField()}
+
+                <Text style={styles.inputHeaders}>Choose Lamp</Text>
+                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                    {lamps_div}
+                </ScrollView>
+                <Text style={styles.inputHeaders}>Enter Serial Number</Text>
+                <View style={styles.serialInputContainer}>
+                    <TextInput
+                        style={styles.input}
+                        onChangeText={text => setSerialNumber(text)}
+
+                    />
+                    {/*
                     <TouchableOpacity>
                         <View style={styles.qrButton}>
                             <Image source={require("../../assets/icons/qr_code_scanner.png")}/>
                         </View>
                     </TouchableOpacity>
                     */}
-				</View>
-				<View style={styles.navButtons}>
-					<BackButton onPress={() => navigation.navigate('HomeScreen')} />
-					<NextButton
-						onPress={() => {
-							navigation.navigate('CustomerFormSummaryScreen', {
-								customerName: customerName,
-								phoneNumber: phoneNumber,
-								serialNumber: serialNumber,
-								lamp: lampName,
-							});
-						}}
-					/>
-				</View>
-			</ScrollView>
-		</>
-	);
-}
+                </View>
+                <View style={styles.navButtons}>
+                    <BackButton onPress={() => navigation.navigate('HomeScreen')}/>
+                    <NextButton onPress={() => {
+
+                        navigation.navigate('CustomerFormSummaryScreen', {
+                            customerName: customerName,
+                            phoneNumber: phoneNumber,
+                            serialNumber: serialNumber,
+                            lamp: lampName
+                        });
+                    }}/>
+                </View>
+            </ScrollView>
+            </>
+    );
+};
 
 const styles = StyleSheet.create({
+
 	container: {
 		backgroundColor: '#F3F8E9',
 		flex: 1,
@@ -157,7 +144,7 @@ const styles = StyleSheet.create({
 		borderColor: '#828384',
 		borderRadius: 10,
 		padding: 7,
-		paddingLeft: 14,
+ 		paddingLeft: 14,
 	},
 	inputHeaders: {
 		color: '#174A5B',
@@ -178,6 +165,17 @@ const styles = StyleSheet.create({
 		justifyContent: 'space-evenly',
 		alignContent: 'center',
 	},
+	InputHeaders: {
+		color: '#174A5B',
+		width: '65%',
+ 		backgroundColor: '#ffffff',
+ 		borderColor: '#00966C',
+ 		fontSize: 28,
+ 		borderWidth: 4,
+ 		borderRadius: 10,
+ 		padding: 7,
+ 		paddingLeft: 14,
+},
 	inputSuccess: {
 		width: '65%',
 		backgroundColor: '#ffffff',
@@ -186,7 +184,7 @@ const styles = StyleSheet.create({
 		borderWidth: 4,
 		borderRadius: 10,
 		padding: 7,
-		paddingLeft: 14,
+ 		paddingLeft: 14,
 	},
 	inputError: {
 		width: '65%',
@@ -196,8 +194,9 @@ const styles = StyleSheet.create({
 		borderColor: '#CB333B',
 		borderRadius: 10,
 		padding: 7,
-		paddingLeft: 14,
+ 		paddingLeft: 14,
 	},
+
 	checkMark:{
  		width :'100%',
  		height : '90%',

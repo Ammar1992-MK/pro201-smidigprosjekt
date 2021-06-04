@@ -6,11 +6,10 @@ export const NavigationHomeButton = ({ navigation }) => {
     return (
       <View>
         <TouchableOpacity onPress={() => navigation.navigate("HomeScreen")}>
-          <Image
-            style={NavigationHomeButtonStyles.icon}
+          <Image style={NavigationHomeButtonStyles.icon}
             source={require("../../../assets/icons/house.png")}
           />
-          <Text style={NavigationHomeButtonStyles.title}>Home</Text>
+        <Text style={NavigationHomeButtonStyles.title}>Home</Text>
         </TouchableOpacity>
       </View>
     );
@@ -25,19 +24,20 @@ export const NavigationHomeButton = ({ navigation }) => {
   )
 }
 
-const NavigationHomeButtonStyles = StyleSheet.create({
-  icon: {
-    width: 64,
-    height: 64,
-    marginTop: 8,
-  },
-  title: {
-    fontFamily: "ArialBold",
-    textTransform: "uppercase",
-    letterSpacing: 0.5,
-    color: "#fff",
-    fontSize: 18,
-    textAlign: "center",
-    marginTop: -6,
-  },
-});
+  const NavigationHomeButtonStyles = StyleSheet.create({
+    icon: {
+      width: 64,
+      height: 64,
+      marginTop: 8
+    },
+    title: {
+      fontFamily: 'ArialBold',
+      textTransform: 'uppercase',
+      letterSpacing: 0.5,
+      color: '#fff',
+      fontSize: 18,
+      textAlign: 'center',
+      marginTop: -6
+    }
+})
+
