@@ -27,7 +27,7 @@ const StartRepairScreen = ({ navigation, route}) => {
   return (
 
     <View style={StartRepairScreenStyles.container}>
-      <NavigationBar title="NEW REPAIR" navigation={navigation}/>
+      <NavigationBar title="NEW REPAIR" navigation={navigation}  progressbar={true} step={1.5}/>
       <View style={StartRepairScreenStyles.lampContainer}>
         <View style={StartRepairScreenStyles.lampImageContainer}>
           <Image

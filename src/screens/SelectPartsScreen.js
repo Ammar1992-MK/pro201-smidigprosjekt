@@ -9,8 +9,18 @@ import LongButton from "../components/LongButton";
 import {NextButton} from "../components/NextButton";
 import {spareParts} from "../utils/fakeDb";
 
-
 const SelectPartsScreen = ({navigation, route}) => {
+    //CHOSEN PART
+    const [chosenPart, setChosenPart] = useState(false);
+
+    //CHANGE STEP IN NAVIGATIONBAR
+    let navbarStep = 2;
+    if (chosenPart) {
+        navbarStep = 2.5;
+    } else {
+        navbarStep = 2;
+    }
+
     const [userDataFormat, setUserData] = useState({});
     const[selectedPartId, setSelectedPartId] = useState([]);
 
@@ -45,7 +55,7 @@ const SelectPartsScreen = ({navigation, route}) => {
 
     return (
         <View style={styles.container}>
-            <NavigationBar title="NEW REPAIR" navigation={navigation}/>
+            <NavigationBar title="NEW REPAIR" navigation={navigation}  progressbar={true} step={navbarStep}/>
             <SelectedLampSummary  index={"1"} lamp={selectedLamp} data={userDataFormat}/>
             {/*Missing onPress to navigate to LEARN*/}
             <LongButton title={"CHANGE PART GUIDE"} backgroundColor={'primary_teal'} icon={'learn'}
