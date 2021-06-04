@@ -14,14 +14,6 @@ export default function CustomerFormScreen({ navigation }) {
 	const [lampName, setLampName] = useState('');
 	const [selectedLampName, setSelectedLampName] = useState();
 
-export default function CustomerFormScreen({navigation}) {
-
-    const [userData, setUserData] = useState({});
-    const [customerName, setCustomerName] = useState("");
-    const [phoneNumber, setPhoneNumber] = useState("");
-    const [serialNumber, setSerialNumber] = useState("");
-    const [lampName, setLampName] = useState();
-
 	const toggle_selected = (el_name) => {
 		if (selectedLampName === el_name) {
 			setSelectedLampName(' ');
