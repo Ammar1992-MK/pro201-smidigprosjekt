@@ -72,6 +72,8 @@ export default function CustomerFormScreen({ navigation }) {
 		}
 	};
 
+
+
 	const lamps_div = lamps.map((el, i) => {
 		const { name, image } = el;
 		return (
