@@ -89,10 +89,6 @@ export default function CustomerFormScreen({ navigation }) {
                 <Text style={styles.inputHeaders}>Customer Phone Number</Text>
                 {phoneNumberInputField()}
 
-                <Text style={styles.inputHeaders}>Choose Lamp</Text>
-                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                    {lamps_div}
-                </ScrollView>
                 <Text style={styles.inputHeaders}>Enter Serial Number</Text>
                 <View style={styles.serialInputContainer}>
                     <TextInput
@@ -107,6 +103,11 @@ export default function CustomerFormScreen({ navigation }) {
                     </TouchableOpacity>
                     */}
                 </View>
+
+                <Text style={styles.inputHeaders}>Choose Lamp</Text>
+                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={styles.lampList}>
+                    {lamps_div}
+                </ScrollView>
                 <View style={styles.navButtons}>
                     <BackButton onPress={() => navigation.navigate('HomeScreen')}/>
                     <NextButton onPress={() => {
@@ -138,17 +139,18 @@ const styles = StyleSheet.create({
 	input: {
 		width: '65%',
 		backgroundColor: '#ffffff',
-		fontSize: 43,
+		fontSize: 28,
 		borderWidth: 3,
-		borderColor: '#828384',
+		borderColor: '#C5D2D6',
 		borderRadius: 10,
-		padding: 7,
- 		paddingLeft: 14,
+		paddingHorizontal: 20,
+ 		paddingVertical: 10,
 	},
 	inputHeaders: {
 		color: '#174A5B',
-		marginTop: '5%',
-		fontSize: 34,
+		marginTop: 20,
+		fontSize: 28,
+		marginBottom: 4
 	},
 	qrButton: {
 		width: 60,
@@ -163,6 +165,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		justifyContent: 'space-evenly',
 		alignContent: 'center',
+		marginTop: 48
 	},
 	InputHeaders: {
 		color: '#174A5B',
@@ -172,28 +175,28 @@ const styles = StyleSheet.create({
  		fontSize: 28,
  		borderWidth: 4,
  		borderRadius: 10,
- 		padding: 7,
- 		paddingLeft: 14,
+		paddingHorizontal: 20,
+ 		paddingVertical: 10,
 },
 	inputSuccess: {
 		width: '65%',
 		backgroundColor: '#ffffff',
 		borderColor: '#00966C',
-		fontSize: 43,
+		fontSize: 28,
 		borderWidth: 4,
 		borderRadius: 10,
-		padding: 7,
- 		paddingLeft: 14,
+		paddingHorizontal: 20,
+ 		paddingVertical: 10,
 	},
 	inputError: {
 		width: '65%',
 		backgroundColor: '#ffffff',
-		fontSize: 43,
+		fontSize: 28,
 		borderWidth: 4,
 		borderColor: '#CB333B',
 		borderRadius: 10,
-		padding: 7,
- 		paddingLeft: 14,
+		paddingHorizontal: 20,
+ 		paddingVertical: 10,
 	},
 	checkMark:{
  		width :'100%',
