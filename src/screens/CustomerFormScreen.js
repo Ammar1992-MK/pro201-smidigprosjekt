@@ -6,6 +6,13 @@ import {NavigationBar} from "../components/NavigationBar/NavigationBar";
 import CarouselCard from "../components/CarouselCard";
 import {lamps} from "../utils/fakeDb";
 
+export default function CustomerFormScreen({ navigation }) {
+	const [userData, setUserData] = useState({});
+	const [customerName, setCustomerName] = useState('');
+	const [phoneNumber, setPhoneNumber] = useState('');
+	const [serialNumber, setSerialNumber] = useState('');
+	const [lampName, setLampName] = useState('');
+	const [selectedLampName, setSelectedLampName] = useState();
 
 export default function CustomerFormScreen({navigation}) {
 
@@ -14,6 +21,26 @@ export default function CustomerFormScreen({navigation}) {
     const [phoneNumber, setPhoneNumber] = useState("");
     const [serialNumber, setSerialNumber] = useState("");
     const [lampName, setLampName] = useState();
+
+	const toggle_selected = (el_name) => {
+		if (selectedLampName === el_name) {
+			setSelectedLampName(' ');
+		} else {
+			setSelectedLampName(el_name);
+		}
+		setLampName(el_name)
+	};
+
+	const lamps_div = lamps.map((el, i) => {
+		const { name, image } = el;
+		const is_selected = selectedLampName === name ? <View style={styles.checkMark}><Image style={styles.checkMarkIcon} source={require('../../assets/icons/done_teal.png')}/></View> : <Text>not selected</Text>;
+		return (
+			<TouchableOpacity onPress={() => toggle_selected(name)} key={i}>
+				<CarouselCard img={image} />
+				{is_selected}
+			</TouchableOpacity>
+		);
+	});
 
     //CSS STATES FOR INPUT FIELDS
     const phoneNumberInputField = () => {
@@ -59,15 +86,6 @@ export default function CustomerFormScreen({navigation}) {
             )
         }
     }
-
-    const lamps_div = lamps.map((el, i) => {
-        const {name, image} = el;
-        return (
-            <TouchableOpacity onPress={() => setLampName(name)} key={i}>
-                <CarouselCard img={image} />
-            </TouchableOpacity>
-        )
-    })
 
     return (
         <>
@@ -116,56 +134,73 @@ export default function CustomerFormScreen({navigation}) {
 };
 
 const styles = StyleSheet.create({
-            container: {
-            backgroundColor: '#F3F8E9',
-            flex: 1,
-            paddingLeft: '8%',
-            height: '100%',
-        },
-            serialInputContainer: {
-            flexDirection: 'row',
-        },
-            input: {
-            width: '65%',
-            backgroundColor: '#ffffff',
-            fontSize: 43,
-            borderWidth: 3,
-            borderColor: '#828384',
-            borderRadius: 10,
-        },
-            inputHeaders: {
-            color: '#174A5B',
-            marginTop: '5%',
-            fontSize: 34,
-        },
-            qrButton: {
-            width: 60,
-            height: 60,
-            backgroundColor: '#174A5B',
-            justifyContent: 'center',
-            alignContent: 'center',
-            borderRadius: 7,
-        },
-            navButtons: {
-            flex: 1,
-            flexDirection: 'row',
-            justifyContent: 'space-evenly',
-            alignContent: 'center'
-        },
-            inputSuccess: {
-            width: '65%',
-            backgroundColor: '#ffffff',
-            borderColor: '#00966C',
-            fontSize: 43,
-            borderWidth: 3,
-            borderRadius: 10,
-        },
-            inputError: {
-            width: '65%',
-            backgroundColor: '#ffffff',
-            fontSize: 43,
-            borderWidth: 3,
-            borderColor: '#CB333B',
-            borderRadius: 10,
-        },
-        })
+
+	container: {
+		backgroundColor: '#F3F8E9',
+		flex: 1,
+		paddingLeft: '8%',
+		height: '100%',
+	},
+	serialInputContainer: {
+		flexDirection: 'row',
+	},
+	input: {
+		width: '65%',
+		backgroundColor: '#ffffff',
+		fontSize: 43,
+		borderWidth: 3,
+		borderColor: '#828384',
+		borderRadius: 10,
+	},
+	inputHeaders: {
+		color: '#174A5B',
+		marginTop: '5%',
+		fontSize: 34,
+	},
+	qrButton: {
+		width: 60,
+		height: 60,
+		backgroundColor: '#174A5B',
+		justifyContent: 'center',
+		alignContent: 'center',
+		borderRadius: 7,
+	},
+	navButtons: {
+		flex: 1,
+		flexDirection: 'row',
+		justifyContent: 'space-evenly',
+		alignContent: 'center',
+	},
+	inputSuccess: {
+		width: '65%',
+		backgroundColor: '#ffffff',
+		borderColor: '#00966C',
+		fontSize: 43,
+		borderWidth: 4,
+		borderRadius: 10,
+	},
+	inputError: {
+		width: '65%',
+		backgroundColor: '#ffffff',
+		fontSize: 43,
+		borderWidth: 4,
+		borderColor: '#CB333B',
+		borderRadius: 10,
+	},
+	checkMark:{
+		width :'100%',
+		height : '90%',
+		opacity : 0.7,
+		position : 'absolute',
+		display:'flex',
+		flexDirection : 'row',
+		alignItems :'center',
+		justifyContent :'center',
+		backgroundColor: '#99a2b1',
+		borderRadius: 15,
+	},
+	checkMarkIcon:{
+		width : '70%',
+		height : '70%',
+	}
+});
