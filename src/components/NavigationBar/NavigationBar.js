@@ -3,8 +3,9 @@ import { StyleSheet, Text, View, Image } from "react-native";
 
 //Components
 import { NavigationHomeButton } from "./NavigationHomeButton";
+import { NavigationProgressbar } from "./NavigationProgressbar";
 
-export const NavigationBar = ({ navigation, title, icon }) => {
+export const NavigationBar = ({ navigation, title, icon, step, progressbar}) => {
 
   return (
     <View style={NavigationBarStyles.container}>
@@ -14,9 +15,17 @@ export const NavigationBar = ({ navigation, title, icon }) => {
           navigation={navigation}
         />
       </View>
+
       <View style={NavigationBarStyles.titleContainer}>
-        <Text style={NavigationBarStyles.title}>{title}</Text>
-          {icon ? <Image  source={require('../../../assets/icons/learn_white.png')} /> : null }
+      {/* En ternary for om progressbar er true eller ikke også en egen progressbar komponent*/}
+      {progressbar ? (
+        <NavigationProgressbar step={step}/>
+      ):(
+        <View>
+          <Text style={NavigationBarStyles.title}>{title}</Text>
+            {icon ? <Image  source={require('../../../assets/icons/learn_white.png')} /> : null }
+        </View>
+      )}
       </View>
     </View>
   )
