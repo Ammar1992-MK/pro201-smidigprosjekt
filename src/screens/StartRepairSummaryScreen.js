@@ -27,7 +27,7 @@ const StartRepairSummaryScreen = ({ navigation, route }) => {
 
  	//CHANGE STEP IN NAVIGATIONBAR
  	let navbarStep = 3;
- 	if (!savedStatus) {
+ 	if (savedStatus) {
  		navbarStep = 3.5;
  	} else {
  		navbarStep = 3;
@@ -82,6 +82,17 @@ const StartRepairSummaryScreen = ({ navigation, route }) => {
 
 				{/* Change content in step 3 based on saveStatus*/}
 				{savedStatus ? (
+					<View style={styles.savedSummaryContainer}>
+						<View style={styles.indexContainerSaved}>
+							<Text style={styles.indexText}>3</Text>
+						</View>
+						<Image source={savedIcon} style={styles.savedIcon} />
+						<View style={styles.savedTextContainer}>
+							<Text style={styles.smallSavedText}>Save Repair</Text>
+							<Text style={styles.greenSavedText}>Saved Successfully!</Text>
+						</View>
+				</View>
+				) : (
 				<View style={styles.unsavedSummaryContainer}>
 					<View style={styles.unsavedSummaryContainerHeader}>
 						<View style={styles.indexContainer}>
@@ -101,7 +112,7 @@ const StartRepairSummaryScreen = ({ navigation, route }) => {
 						backgroundColor="primary_green"
 						title="SAVE"
 						onPress={async () => {
-							setSavedStatus(!savedStatus);
+							setSavedStatus(true);
 							await addNewRepair({...data, status: "DONE"});
 							//navigation.navigate('HomeScreen');
 						}}
@@ -127,30 +138,19 @@ const StartRepairSummaryScreen = ({ navigation, route }) => {
 						/>
 					)}
 				</View>
-					):(
-				<View style={styles.savedSummaryContainer}>
-						<View style={styles.indexContainerSaved}>
-							<Text style={styles.indexText}>3</Text>
-						</View>
-						<Image source={savedIcon} style={styles.savedIcon} />
-						<View style={styles.savedTextContainer}>
-							<Text style={styles.smallSavedText}>Save Repair</Text>
-							<Text style={styles.greenSavedText}>Saved Successfully!</Text>
-						</View>
-				</View>
 					)}
 					
-					{savedStatus ? null :(
+					{savedStatus ? (
 						<View style={styles.successContainer}>
 							<Image source={successIcon} style={styles.successIcon}/>
 							<Text style={styles.successText}>Repair registered</Text>
 						</View>
-					)}
+					) : null }
 				<View style={styles.navigateButtons}>
 					<BackButton onPress={() => navigation.navigate('SelectPartsScreen')} />
 					<DoneButton
 						onPress={() => navigation.navigate('HomeScreen')}
-						differentButton={savedStatus}
+						differentButton={!savedStatus}
 					/>
 				</View>
 			</View>

@@ -81,7 +81,7 @@ export default function CustomerFormScreen({ navigation }) {
 
     return (
         <>
-            <NavigationBar title="NEW REPAIR" navigation={navigation}/>
+            <NavigationBar title="NEW REPAIR" navigation={navigation} progressbar={true} step={1}/>
             <ScrollView style={styles.container}>
                 <Text style={styles.inputHeaders}>Customer Name</Text>
                 {customerInputField()}
