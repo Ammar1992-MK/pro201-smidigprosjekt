@@ -657,4 +657,3 @@ export const NavigationProgressbar = ({ navigation, step }) => {
       zIndex: -1
     }
 })
-

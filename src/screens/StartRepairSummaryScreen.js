@@ -22,16 +22,16 @@ const StartRepairSummaryScreen = ({ navigation, route }) => {
 	//NETWORK STATUS
 	const [networkStatus, setNetworkStatus] = useState(false);
 	
-  //SAVED STATUS
-  const [savedStatus, setSavedStatus] = useState(true);
+	//SAVED STATUS
+  const [savedStatus, setSavedStatus] = useState(false);
 
-	//CHANGE STEP IN NAVIGATIONBAR
-	let navbarStep = 3;
-	if (!savedStatus) {
-		navbarStep = 3.5;
-	} else {
-		navbarStep = 3;
-	}
+ 	//CHANGE STEP IN NAVIGATIONBAR
+ 	let navbarStep = 3;
+ 	if (!savedStatus) {
+ 		navbarStep = 3.5;
+ 	} else {
+ 		navbarStep = 3;
+ 	}
 
 	//SELECTED PARTS
 	const { data } = route.params;

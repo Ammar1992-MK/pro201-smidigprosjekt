@@ -28,35 +28,35 @@ export const NavigationBar = ({ navigation, title, icon, step, progressbar}) => 
       )}
       </View>
     </View>
-  );
-};
+  )
+}
 
 const NavigationBarStyles = StyleSheet.create({
-  container: {
-    flexDirection: "row",
-    width: "100%",
-    height: 120,
-    backgroundColor: "#174A5B",
-    alignItems: "center",
-    zIndex: 99,
-  },
-  title: {
-    fontSize: 32,
-    fontFamily: "ArialBold",
-    letterSpacing: 2,
-    color: "#fff",
-    textTransform: "uppercase",
-  },
-  button: {},
-  iconContainer: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    paddingLeft: "5%",
-  },
-  titleContainer: {
-    flex: 7,
-    alignItems: "center",
-    paddingRight: "13%",
-  },
-});
+    container: {
+        flexDirection: 'row',
+        width: '100%',
+        height: 120,
+        backgroundColor: '#174A5B',
+        alignItems: 'center',
+        zIndex: 99,
+    },
+    title: {
+        fontSize: 32,
+        fontFamily: 'ArialBold',
+        letterSpacing: 2,
+        color: '#fff',
+        textTransform: "uppercase"
+    },
+    button: {},
+    iconContainer: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingLeft: '5%'
+    },
+    titleContainer: {
+        flex: 7,
+        alignItems: 'center',
+        paddingRight: '13%',
+    }
+})
