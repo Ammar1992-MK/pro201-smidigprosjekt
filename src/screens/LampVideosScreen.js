@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {View, StyleSheet, TouchableOpacity, ScrollView, Text, Image} from "react-native";
 
 import {NavigationBar} from "../components/NavigationBar/NavigationBar";
-import CardSmall from "../components/Cards/CardSmall";
+import {lamps} from "../utils/fakeDb";
 
 const LampVideosScreen = ({navigation, route}) => {
     const [clickedLamp, setClickedLamp] = useState({});
@@ -12,32 +12,19 @@ const LampVideosScreen = ({navigation, route}) => {
         setClickedLamp(lamp)
     })
 
-    const SmartPlus = require("../../assets/product-images/startplusIcon.png");
-    const SunbellSmart = require("../../assets/product-images/sunbellIcon.png");
-    const MoveSmart = require("../../assets/product-images/movesmartIcon.png");
-    const SunTurtle = require("../../assets/product-images/sunturtleIcon.png");
-
+    const lamps_div = lamps.map((el, i) => {
+        const {name, image} = el;
+        console.log(name);
+        if (name === clickedLamp.lamp) {
+            lampImage = image;
+        }
+    });
     let lampImage;
-
-    switch (clickedLamp.lamp) {
-        case "Start+":
-            lampImage = SmartPlus;
-            break;
-        case "SunBell Smart":
-            lampImage = SunbellSmart;
-            break;
-        case "Move Smart":
-            lampImage = MoveSmart;
-            break;
-        case "SunTurtle":
-            lampImage = SunTurtle;
-            break;
-    }
 
 
     return (
         <>
-            <NavigationBar navigation={navigation}/>
+            <NavigationBar icon={true} title="CHANGE PART" navigation={navigation}/>
             <View style={LampVideosScreenStyles.alphaContainer}>
                 <View style={LampVideosScreenStyles.container}>
                     <View style={LampVideosScreenStyles.VideoLampCard}>

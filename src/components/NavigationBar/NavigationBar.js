@@ -21,7 +21,7 @@ export const NavigationBar = ({ navigation, title, icon, step, progressbar}) => 
       {progressbar ? (
         <NavigationProgressbar step={step}/>
       ):(
-        <View>
+        <View style={NavigationBarStyles.titleRow}>
           <Text style={NavigationBarStyles.title}>{title}</Text>
             {icon ? <Image  source={require('../../../assets/icons/learn_white.png')} /> : null }
         </View>
@@ -58,5 +58,10 @@ const NavigationBarStyles = StyleSheet.create({
         flex: 7,
         alignItems: 'center',
         paddingRight: '13%',
+    },
+    titleRow: {
+        flexDirection: "row",
+        justifyContent: "space-evenly",
+        alignItems: "center",
     }
 })

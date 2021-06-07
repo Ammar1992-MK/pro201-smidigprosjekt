@@ -16,14 +16,14 @@ const LearnSelectLampScreen = ({navigation, route}) => {
 
     return (
         <>
-            <NavigationBar navigation={navigation}/>
+            <NavigationBar icon={true} title="LEARN" navigation={navigation}/>
             <View style={LearnSelectScreenStyles.container}>
             <View style={LearnSelectScreenStyles.boxContainer}>
                 <View style={LearnSelectScreenStyles.rows}>
                     <TouchableOpacity
                         style={LearnSelectScreenStyles.lampContainer}
                         onPress={() => {
-                            navigation.navigate('LampVideosScreen', {lamp: "SunBell Smart"});
+                            navigation.navigate('LampVideosScreen', {lamp: "Sunbell Smart"});
                         }}>
                         <Text style={LearnSelectScreenStyles.text}>SUNBELL</Text>
                         <Image
