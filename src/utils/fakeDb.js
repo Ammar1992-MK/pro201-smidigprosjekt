@@ -39,7 +39,7 @@ export const lamps = [
     },
     {
         name: "Move Smart",
-        image: require("../../assets/product-images/movesmart.png")
+        image: require("../../assets/product-images/movesmartIcon.png")
     }
 ]
 
