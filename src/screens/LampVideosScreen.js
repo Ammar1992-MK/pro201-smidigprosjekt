@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {View, StyleSheet, TouchableOpacity, ScrollView, Text, Image} from "react-native";
 
 import {NavigationBar} from "../components/NavigationBar/NavigationBar";
-import {lamps} from "../utils/fakeDb";
+import {lampsIcon} from "../utils/fakeDb";
 
 const LampVideosScreen = ({navigation, route}) => {
     const [clickedLamp, setClickedLamp] = useState({});
@@ -12,7 +12,7 @@ const LampVideosScreen = ({navigation, route}) => {
         setClickedLamp(lamp)
     })
 
-    const lamps_div = lamps.map((el, i) => {
+    const lamps_div = lampsIcon.map((el, i) => {
         const {name, image} = el;
         console.log(name);
         if (name === clickedLamp.lamp) {
