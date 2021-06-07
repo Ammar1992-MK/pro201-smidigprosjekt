@@ -6,7 +6,7 @@ const CardSmall = ({ lampName, image }) => {
 
   const SmartPlus = require("../../../assets/product-images/smart-plus-1.png");
   const SunbellSmart = require("../../../assets/product-images/sunbell-smart-1.png");
-  const Lamp3 = require("../../../assets/product-images/smart-plus-1.png");
+  const MoveSmart = require("../../../assets/product-images/movesmart.png");
   const SunTurtle = require("../../../assets/product-images/sunturtle.png");
 
   let lamp;
@@ -18,8 +18,8 @@ const CardSmall = ({ lampName, image }) => {
     case "Sunbell Smart":
       lamp = SunbellSmart;
       break;
-    case "lamp3":
-      lamp = Lamp3;
+    case "Move Smart":
+      lamp = MoveSmart;
       break;
     case "Sun Turtle":
       lamp = SunTurtle;

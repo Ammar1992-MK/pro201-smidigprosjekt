@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {View, StyleSheet, TouchableOpacity, ScrollView, Text, Image} from "react-native";
 
 import {NavigationBar} from "../components/NavigationBar/NavigationBar";
+import CardSmall from "../components/Cards/CardSmall";
 
 const LampVideosScreen = ({navigation, route}) => {
     const [clickedLamp, setClickedLamp] = useState({});
@@ -10,6 +11,28 @@ const LampVideosScreen = ({navigation, route}) => {
     useEffect(() => {
         setClickedLamp(lamp)
     })
+
+    const SmartPlus = require("../../assets/product-images/startplusIcon.png");
+    const SunbellSmart = require("../../assets/product-images/sunbellIcon.png");
+    const MoveSmart = require("../../assets/product-images/movesmartIcon.png");
+    const SunTurtle = require("../../assets/product-images/sunturtleIcon.png");
+
+    let lampImage;
+
+    switch (clickedLamp.lamp) {
+        case "Start+":
+            lampImage = SmartPlus;
+            break;
+        case "SunBell Smart":
+            lampImage = SunbellSmart;
+            break;
+        case "Move Smart":
+            lampImage = MoveSmart;
+            break;
+        case "SunTurtle":
+            lampImage = SunTurtle;
+            break;
+    }
 
 
     return (
@@ -20,6 +43,9 @@ const LampVideosScreen = ({navigation, route}) => {
                     <View style={LampVideosScreenStyles.VideoLampCard}>
                         <Text style={LampVideosScreenStyles.header}>HOW TO REPAIR</Text>
                         <Text style={LampVideosScreenStyles.lampName}>{clickedLamp.lamp}</Text>
+                    </View>
+                    <View style={LampVideosScreenStyles.lampImage}>
+                        <Image style={LampVideosScreenStyles.lampIcon} source={lampImage} />
                     </View>
                 </View>
                 <ScrollView>
@@ -141,8 +167,23 @@ const LampVideosScreenStyles = StyleSheet.create({
         flex: 1,
         resizeMode: "contain",
     },
-
-
+    lampImage: {
+        transform: [{ scale: 0.51 }],
+        backgroundColor: "#FFFFFF",
+        borderRadius: 100,
+        height: 210,
+        width: 210,
+        borderWidth: 3,
+        borderColor: "#C3DC93",
+        justifyContent: "center",
+        alignContent: "center",
+        bottom: "6%",
+        left: "10%"
+    },
+    lampIcon: {
+        transform: [{ scale: 0.95 }],
+        right: "15%",
+    },
     videoContainer: {
         backgroundColor: '#fff',
         alignItems: 'center',
