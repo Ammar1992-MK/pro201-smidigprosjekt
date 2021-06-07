@@ -62,7 +62,7 @@ export const NavigationProgressbar = ({ navigation, step }) => {
       alignItems: 'center',
       flexDirection: 'row',
       marginLeft: 64,
-      marginTop: 4
+      marginTop: 24
     },
     stepContainer: {
       alignItems: 'center',
