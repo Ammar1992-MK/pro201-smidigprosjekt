@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 
 export const LearnHomeButton = (props) => {
-	const guide = require('../../assets/icons/help-bubble.png');
+	const guide = require('../../assets/icons/help-book.png');
 	const videos = require('../../assets/icons/play-button.png');
 	let icon;
 
