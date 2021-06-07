@@ -22,17 +22,20 @@ export default function CustomerFormScreen({navigation}) {
         }
         setLampName(el_name)
     };
-
+    
     const lamps_div = lamps.map((el, i) => {
+        let is_selected = false;
         const {name, image} = el;
-        const is_selected = selectedLampName === name ?
-            <View style={styles.checkMark}><Image style={styles.checkMarkIcon}
-                                                  source={require('../../assets/icons/done_teal.png')}/></View> :
-            <Text>not selected</Text>;
+        if(selectedLampName === name){
+            is_selected = true;
+        }
+                    {/* <View style={styles.checkMark}>
+                <Image style={styles.checkMarkIcon}
+                        source={require('../../assets/icons/done_teal.png')}/>
+            </View> */}             
         return (
             <TouchableOpacity onPress={() => toggle_selected(name)} key={i}>
-                <CarouselCard img={image}/>
-                {is_selected}
+                <CarouselCard img={image} selected={is_selected}/>
             </TouchableOpacity>
         );
     });
@@ -167,17 +170,18 @@ const styles = StyleSheet.create({
     checkMark: {
         width: '100%',
         height: '90%',
-        opacity: 0.7,
+        opacity: 1,
         position: 'absolute',
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#99a2b1',
         borderRadius: 15,
+        zIndex: 100,
     },
     checkMarkIcon: {
         width: '70%',
         height: '70%',
+        zIndex: 200
     }
 });

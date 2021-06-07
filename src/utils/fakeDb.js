@@ -27,15 +27,15 @@ export const spareParts = [
 export const lamps = [
     {
         name: "Smart Plus",
-        image: require("../../assets/product-images/smart-plus-1.png")
+        image: require("../../assets/product-images/startplusIcon.png")
     },
     {
         name: "Sunbell Smart",
-        image: require("../../assets/product-images/sunbell-smart-1.png")
+        image: require("../../assets/product-images/sunbellIcon.png")
     },
     {
         name: "Sun Turtle",
-        image: require("../../assets/product-images/sunturtle.png")
+        image: require("../../assets/product-images/sunturtleIcon.png")
     },
     {
         name: "Move Smart",
