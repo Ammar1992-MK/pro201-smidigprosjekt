@@ -36,6 +36,10 @@ export const lamps = [
     {
         name: "Sun Turtle",
         image: require("../../assets/product-images/sunturtle.png")
+    },
+    {
+        name: "Move Smart",
+        image: require("../../assets/product-images/movesmart.png")
     }
 ]
 
