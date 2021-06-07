@@ -119,7 +119,8 @@ const styles = StyleSheet.create({
         color: '#174A5B',
         marginTop: 20,
         fontSize: 28,
-        marginBottom: 4
+        marginBottom: 4,
+        fontFamily: 'Arial'
     },
     qrButton: {
         width: 60,

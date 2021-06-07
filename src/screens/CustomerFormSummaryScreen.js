@@ -12,17 +12,20 @@ const FilledInputField = ({ title, textInput }) => {
 	const styles = StyleSheet.create({
 		input: {
 			backgroundColor: '#ffffff',
-			fontSize: 30,
+			fontSize: 28,
 			borderWidth: 3,
 			borderColor: '#00966C',
 			borderRadius: 10,
+      paddingHorizontal: 20,
+      paddingVertical: 10,
 			color: '#2C2A29',
-			paddingLeft: 10,
 		},
 		inputHeaders: {
-			color: '#174A5B',
-			marginTop: '5%',
-			fontSize: 34,
+			  color: '#174A5B',
+        marginTop: 20,
+        fontSize: 28,
+        marginBottom: 4,
+				fontFamily: 'Arial',
 		},
 	});
 
@@ -46,26 +49,6 @@ const CustomerFormSummaryScreen = ({ navigation, route }) => {
 	useEffect(() => {
 		setUserData({ customerName, phoneNumber, serialNumber, lamp });
 	}, []);
-
-	const styles = StyleSheet.create({
-		container: {
-			flex: 1,
-			justifyContent: 'center',
-			alignItems: 'center',
-		},
-		summaryContainer: {
-			flexDirection: 'row',
-			marginBottom: 30,
-		},
-		inputFields: {
-			flexDirection: 'column',
-			width: '50%',
-		},
-		buttonContainer: {
-			height: '100%',
-			alignItems: 'center',
-		},
-	});
 
 	return (
 		<>
@@ -120,5 +103,29 @@ const CustomerFormSummaryScreen = ({ navigation, route }) => {
 		</>
 	);
 };
+
+	const styles = StyleSheet.create({
+		container: {
+			flex: 1,
+			justifyContent: 'center',
+			alignItems: 'center'
+		},
+		summaryContainer: {
+			backgroundColor: '#F3F8E9',
+			flexDirection: 'row',
+			paddingBottom: 30,
+			paddingTop: 16
+		},
+		inputFields: {
+			flexDirection: 'column',
+			width: '50%',
+		},
+		buttonContainer: {
+			backgroundColor: '#F3F8E9',
+			height: '100%',
+			alignItems: 'center',
+			marginTop: 16
+		}
+	});
 
 export default CustomerFormSummaryScreen;

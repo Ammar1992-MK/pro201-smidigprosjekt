@@ -42,28 +42,27 @@ const CardSmall = ({ lampName, image }) => {
 const CardSmallStyles = StyleSheet.create({
   container: {
     backgroundColor: "#fff",
-    marginTop: 30,
     alignItems: "center",
-    borderWidth: 1,
-    borderColor: "#fff",
-    borderRadius: 6,
+    borderRadius: 8,
     width: "33%",
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.8,
-    shadowRadius: 2,
     elevation: 10,
-    margin: 20,
+    marginTop: 64,
+    marginBottom: 0,
+    marginLeft: 74,
+    marginRight: 16,
+    overflow: 'hidden'
   },
   text: {
     backgroundColor: "#174A5B",
     color: "#fff",
     fontSize: 25,
     textAlign: "center",
-    paddingHorizontal: 20,
+    paddingVertical: 4,
     borderTopLeftRadius: 6,
     borderTopRightRadius: 6,
     alignSelf: "stretch",
+    textTransform: 'uppercase',
+    fontFamily: 'ArialBold'
   },
   image: {
     justifyContent: "center",

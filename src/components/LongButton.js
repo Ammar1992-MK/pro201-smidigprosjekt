@@ -90,7 +90,7 @@ const LongButtonStyles = StyleSheet.create({
     borderRadius: 8,
     position: 'relative',
     backgroundColor: "#B7D381",
-    marginTop: 16,
+    marginTop: 24,
     position: 'relative',
     elevation: 1
   },

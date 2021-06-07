@@ -26,32 +26,32 @@ const StartRepairScreen = ({ navigation, route}) => {
 
   return (
 
-    <View style={StartRepairScreenStyles.container}>
+    <View style={styles.container}>
       <NavigationBar title="NEW REPAIR" navigation={navigation}  progressbar={true} step={1.5}/>
-      <View style={StartRepairScreenStyles.lampContainer}>
-        <View style={StartRepairScreenStyles.lampImageContainer}>
+      <View style={styles.lampContainer}>
+        <View style={styles.lampImageContainer}>
           <Image
-            style={StartRepairScreenStyles.image}
+            style={styles.image}
             source={selectedLamp}
           />
         </View>
-        <View style={StartRepairScreenStyles.lampInfoContainer}>
-          <View style={StartRepairScreenStyles.lampInfo}>
-            <Text style={StartRepairScreenStyles.text}>REPAIR ID</Text>
-            <Text style={StartRepairScreenStyles.data}>FR2324</Text>
+        <View style={styles.lampInfoContainer}>
+          <View style={styles.lampInfo}>
+            <Text style={styles.text}>REPAIR ID</Text>
+            <Text style={styles.data}>FR2324</Text>
 
-            <Text style={StartRepairScreenStyles.text}>SNR</Text>
-            <Text style={StartRepairScreenStyles.data}>{userData.serialNumber}</Text>
+            <Text style={styles.text}>SNR</Text>
+            <Text style={styles.data}>{userData.serialNumber}</Text>
           </View>
 
-          <View style={StartRepairScreenStyles.userData}>
+          <View style={styles.userData}>
             <View>
-              <Text style={StartRepairScreenStyles.text}>PHONE</Text>
-              <Text style={StartRepairScreenStyles.data}>{userData.phoneNumber}</Text>
+              <Text style={styles.text}>PHONE</Text>
+              <Text style={styles.data}>{userData.phoneNumber}</Text>
             </View>
             <View>
-              <Text style={StartRepairScreenStyles.text}>NAME</Text>
-              <Text style={StartRepairScreenStyles.data}>{userData.customerName}</Text>
+              <Text style={styles.text}>NAME</Text>
+              <Text style={styles.data}>{userData.customerName}</Text>
             </View>
           </View>
         </View>
@@ -70,7 +70,7 @@ const StartRepairScreen = ({ navigation, route}) => {
 
 export default StartRepairScreen;
 
-const StartRepairScreenStyles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     backgroundColor: "#F3F8E9",
     flex: 1,
@@ -79,6 +79,7 @@ const StartRepairScreenStyles = StyleSheet.create({
   },
   lampContainer: {
     margin: 30,
+    marginLeft: 100,
     width: "90%",
     height: "40%",
     display: "flex",
