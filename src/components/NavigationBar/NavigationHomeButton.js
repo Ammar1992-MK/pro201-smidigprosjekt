@@ -28,7 +28,7 @@ export const NavigationHomeButton = ({ navigation }) => {
     icon: {
       width: 64,
       height: 64,
-      marginTop: 8
+      marginTop: 16
     },
     title: {
       fontFamily: 'ArialBold',

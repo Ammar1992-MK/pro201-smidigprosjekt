@@ -35,7 +35,7 @@ const NavigationBarStyles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         width: '100%',
-        height: 120,
+        height: 134,
         backgroundColor: '#174A5B',
         alignItems: 'center',
         zIndex: 99,
