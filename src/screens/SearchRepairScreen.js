@@ -63,7 +63,7 @@ const SearchRepairScreen = ({navigation}) => {
                         <Text style={[Styles.finishedText, selectedToggle === "finished" ? {color: '#fff'} : {color: '#174A5B'} ]}>FINISHED</Text>
                     </TouchableOpacity>
                 </View>
-                <ScrollViewSearchList data={readyData} icon={'search'}/>
+                <ScrollViewSearchList data={readyData} icon={'search'} navigation={navigation}/>
             </View>
         </>
     )
