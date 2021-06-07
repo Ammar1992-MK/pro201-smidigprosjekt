@@ -68,6 +68,7 @@ const SelectPartsScreen = ({navigation, route}) => {
         backgroundColor={"primary_teal"}
         icon={"learn"}
         textColor={"white"}
+        onPress={() => navigation.navigate('TroubleshootScreen')}
       />
       <View style={styles.scrollHeader}>
         <View style={styles.stepIndex}>

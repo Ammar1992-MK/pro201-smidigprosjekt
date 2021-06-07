@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react'
-import {Text, View, StyleSheet, Image} from "react-native";
+import {Text, View, StyleSheet, Image,TouchableOpacity} from "react-native";
 
-const ListItemComponent = ({data,icon}) => {
+const ListItemComponent = ({data,icon,navigation}) => {
     const[dateIcon, setDateIcon] = useState();
     const [lampImage, setLampImage] = useState();
 
@@ -27,26 +27,37 @@ const ListItemComponent = ({data,icon}) => {
         }
     }
 
+    const handleNavigation = () => {
+
+        if(navigation && data.status === "NEW"){
+            navigation.navigate("StartRepairScreen", {data : data})
+        } else {
+            return 0;
+        }
+    }
+
 
     useEffect(() => {
         renderDateIcon();
         renderImage();
     },[])
     return (
-            <View style={Styles.container}>
-                <View style={Styles.lampContainer}>
-                    <Image style={Styles.lamp} source={lampImage}/>
-                    <Text style={Styles.lampName}>{data.lamp}</Text>
-                </View>
-                <View style={Styles.serialNumberContainer}>
-                    <Text style={Styles.serialNo}>{data.serialNumber}</Text>
-                </View>
-                <View style={Styles.repairDate}>
-                    <Image style={Styles.dateIcon} source={dateIcon}/>
-                    <Text style={Styles.dateText}>{data.date}</Text>
-                </View>
-                <View></View>
-            </View>
+           <TouchableOpacity onPress={ () => handleNavigation()}>
+               <View style={Styles.container}>
+                   <View style={Styles.lampContainer}>
+                       <Image style={Styles.lamp} source={lampImage}/>
+                       <Text style={Styles.lampName}>{data.lamp}</Text>
+                   </View>
+                   <View style={Styles.serialNumberContainer}>
+                       <Text style={Styles.serialNo}>{data.serialNumber}</Text>
+                   </View>
+                   <View style={Styles.repairDate}>
+                       <Image style={Styles.dateIcon} source={dateIcon}/>
+                       <Text style={Styles.dateText}>{data.date}</Text>
+                   </View>
+                   <View></View>
+               </View>
+           </TouchableOpacity>
 
         )
 }

@@ -2,14 +2,14 @@ import React from 'react'
 import {View, Text, FlatList, StyleSheet} from "react-native";
 import ListItemComponent from "./ListItemComponent";
 
-const ScrollViewSearchList = ({data,icon}) => {
+const ScrollViewSearchList = ({data,icon,navigation}) => {
 
     return (
         <View style={Styles.container}>
             <FlatList
                 data={data}
                 renderItem={({item}) => (
-                    <ListItemComponent data={item} icon={icon}/>
+                    <ListItemComponent data={item} icon={icon} navigation={navigation}/>
                 )}
             />
         </View>
