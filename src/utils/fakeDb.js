@@ -39,6 +39,12 @@ export const lamps = [
     }
 ]
 
+export const lampsIcon = [
+    {
+        name: "Smart "
+    }
+]
+
 export const get_spare_part_by_id = (id) => {
     for(let el of spareParts){
         if(el.id === id){
