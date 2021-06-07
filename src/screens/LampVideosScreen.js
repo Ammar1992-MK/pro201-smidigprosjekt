@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {View, StyleSheet, TouchableOpacity, ScrollView, Text, Image} from "react-native";
 
 import {NavigationBar} from "../components/NavigationBar/NavigationBar";
-import {lamps} from "../utils/fakeDb";
+import {lampsIcon} from "../utils/fakeDb";
 
 const LampVideosScreen = ({navigation, route}) => {
     const [clickedLamp, setClickedLamp] = useState({});
@@ -12,9 +12,8 @@ const LampVideosScreen = ({navigation, route}) => {
         setClickedLamp(lamp)
     })
 
-    const lamps_div = lamps.map((el, i) => {
+    const lamps_div = lampsIcon.map((el, i) => {
         const {name, image} = el;
-        console.log(name);
         if (name === clickedLamp.lamp) {
             lampImage = image;
         }
@@ -38,7 +37,7 @@ const LampVideosScreen = ({navigation, route}) => {
                 <ScrollView>
                     <TouchableOpacity
                         style={LampVideosScreenStyles.videoContainer}
-                        onPress={() => navigation.navigate('LearnVideoPlayerScreen')}
+                        onPress={() => navigation.navigate('LearnVideoPlayerScreen', {name: "Circuit Card", id: 2})}
                     >
                         <Text style={LampVideosScreenStyles.text}>CIRCUIT CARD</Text>
                         <View style={LampVideosScreenStyles.cardRow}>
@@ -54,8 +53,7 @@ const LampVideosScreen = ({navigation, route}) => {
                     </TouchableOpacity>
                     <TouchableOpacity
                         style={LampVideosScreenStyles.videoContainer}
-                        onPress={() => navigation.navigate('LearnVideoPlayerScreen')}
-                    >
+                        onPress={() => navigation.navigate('LearnVideoPlayerScreen', {name: "Battery", id: 1 })}>
                         <Text style={LampVideosScreenStyles.text}>BATTERY</Text>
                         <View style={LampVideosScreenStyles.cardRow}>
                             <Image
@@ -70,8 +68,7 @@ const LampVideosScreen = ({navigation, route}) => {
                     </TouchableOpacity>
                     <TouchableOpacity
                         style={LampVideosScreenStyles.videoContainer}
-                        onPress={() => navigation.navigate('LearnVideoPlayerScreen')}
-                    >
+                        onPress={() => navigation.navigate('LearnVideoPlayerScreen', {name: "Light", id: 4 })}>
                         <Text style={LampVideosScreenStyles.text}>LIGHT</Text>
                         <View style={LampVideosScreenStyles.cardRow}>
                             <Image
@@ -86,8 +83,7 @@ const LampVideosScreen = ({navigation, route}) => {
                     </TouchableOpacity>
                     <TouchableOpacity
                         style={LampVideosScreenStyles.videoContainer}
-                        onPress={() => navigation.navigate('LearnVideoPlayerScreen')}
-                    >
+                        onPress={() => navigation.navigate('LearnVideoPlayerScreen', {name: "Motor", id: 3})}>
                         <Text style={LampVideosScreenStyles.text}>MOTOR</Text>
                         <View style={LampVideosScreenStyles.cardRow}>
                             <Image

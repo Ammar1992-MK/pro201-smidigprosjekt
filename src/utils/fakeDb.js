@@ -36,12 +36,29 @@ export const lamps = [
     {
         name: "Sun Turtle",
         image: require("../../assets/product-images/sunturtleIcon.png")
+    },
+    {
+        name: "Move Smart",
+        image: require("../../assets/product-images/movesmart.png")
     }
 ]
 
 export const lampsIcon = [
     {
-        name: "Smart "
+        name: "SunBell Smart",
+        image: require("../../assets/product-images/sunbellIcon.png")
+    },
+    {
+        name: "SunTurtle",
+        image: require("../../assets/product-images/sunturtleIcon.png")
+    },
+    {
+        name: "Move Smart",
+        image: require("../../assets/product-images/movesmartIcon.png")
+    },
+    {
+        name: "Start+",
+        image: require("../../assets/product-images/startplusIcon.png")
     }
 ]
 

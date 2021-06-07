@@ -23,7 +23,7 @@ const LearnSelectLampScreen = ({navigation, route}) => {
                     <TouchableOpacity
                         style={LearnSelectScreenStyles.lampContainer}
                         onPress={() => {
-                            navigation.navigate('LampVideosScreen', {lamp: "Sunbell Smart"});
+                            navigation.navigate('LampVideosScreen', {lamp: "SunBell Smart"});
                         }}>
                         <Text style={LearnSelectScreenStyles.text}>SUNBELL</Text>
                         <Image

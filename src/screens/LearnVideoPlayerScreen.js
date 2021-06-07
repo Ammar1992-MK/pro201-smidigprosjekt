@@ -1,4 +1,4 @@
-import React, {useState, useRef} from "react";
+import React, {useState, useRef, useEffect} from "react";
 import {Video, AVPlaybackStatus} from "expo-av";
 import VideoPlayer from "expo-video-player";
 
@@ -12,10 +12,28 @@ import {
 
 import {NavigationBar} from "../components/NavigationBar/NavigationBar";
 import {BackButton} from "../components/BackButton";
+import {spareParts} from "../utils/fakeDb";
 
-const LearnVideoPlayerScreen = ({navigation}) => {
+const LearnVideoPlayerScreen = ({navigation, route}) => {
     const video = useRef(null);
     const [status, setStatus] = useState();
+    const [parts, setParts] = useState({});
+
+    const { name, id } = route.params;
+
+    useEffect(() => {
+        setParts({ name, id });
+    }, []);
+
+    const parts_div = spareParts.map((el, i) => {
+        const {id, image} = el;
+        if (id === parts.id) {
+            partImage = image;
+        }
+    });
+    let partImage;
+
+
     return (
         <>
             <NavigationBar icon={true} title="CHANGE PART" navigation={navigation}/>
@@ -37,16 +55,16 @@ const LearnVideoPlayerScreen = ({navigation}) => {
                 <View style={styles.bottomContainer}>
                     <View style={styles.bottomLeftContainer}>
                         <Text style={styles.titleTop}>HOW TO CHANGE</Text>
-                        <Text style={styles.titleMain}>Battery</Text>
+                        <Text style={styles.titleMain}>{parts.name}</Text>
                         <Text style={styles.videoDescription}>In this video you will be able to learn{"\n"}and
                             understand how to
-                            change the{"\n"}battery on your
+                            change the{"\n"}{parts.name} on your
                             Sunbell Smart lamp. {"\n"}We will cover the whole process from start to finish.
                         </Text>
                     </View>
                     <View style={styles.bottomRightContainer}>
                         <Image style={styles.sparePartImage}
-                               source={require('../../assets/product-images/battery.png')}/>
+                               source={partImage}/>
                     </View>
                 </View>
             </View>
