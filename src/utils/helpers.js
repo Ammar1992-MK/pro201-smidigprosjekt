@@ -42,7 +42,7 @@ export const addNewRepair = async (valueObject) => {
 }
 
 export const deleteRepair = async (valueObj) => {
-    //Jævla dritt kode, kaos å finne alle steder hvor vi har brukt 'navigation'
+    //Ikke så bra, kaos å finne alle steder hvor vi har brukt 'navigation'
     let current_repairs = await AsyncStorage.getItem('repair');
     current_repairs = JSON.parse(current_repairs)
     const {customerName, phoneNumber, serialNumber} = valueObj;
