@@ -94,7 +94,6 @@ const CustomerFormSummaryScreen = ({ navigation, route }) => {
 						backgroundColor="primary_teal"
 						title="START REPAIR"
 						onPress={async () => {
-							await addNewRepair(userData);
 							navigation.navigate('StartRepairScreen', { data: userData });
 						}}
 					/>

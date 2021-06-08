@@ -58,7 +58,6 @@ const ListItemComponent = ({data,icon,navigation}) => {
                    <View></View>
                </View>
            </TouchableOpacity>
-
         )
 }
 
