@@ -20,10 +20,11 @@ const SearchRepairScreen = ({navigation}) => {
             case "finished": search_status_input = "DONE"; break;
         }
         if(el.status === search_status_input){
+            const search_format = searchTerm.toLowerCase()
             const {serialNumber, lamp, customerName} = el;
-            const serial_num_match = serialNumber ? serialNumber.toString().includes(searchTerm) : true;
-            const lamp_match = lamp ? lamp.toString().includes(searchTerm) : true;
-            const customerName_match = customerName ? customerName.toString().includes(searchTerm) : true;
+            const serial_num_match = serialNumber ? serialNumber.toString().toLowerCase().includes(search_format) : false;
+            const lamp_match = lamp ? lamp.toString().toLowerCase().includes(search_format.toLowerCase()) : false;
+            const customerName_match = customerName ? customerName.toString().toLowerCase().includes(search_format) : false;
             if(searchTerm === ""){
                 return el
             }else if(serial_num_match || lamp_match || customerName_match){
