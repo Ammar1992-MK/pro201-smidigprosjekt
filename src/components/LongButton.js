@@ -3,12 +3,14 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 
 const LongButton = (props) => {
   const upload = require("../../assets/icons/file_upload.png");
-  const learn = require("../../assets/icons/learn_white.png");
+  const learn = require("../../assets/icons/repair_guide_white.png");
   const save = require("../../assets/icons/save.png");
   const saveUpload = require("../../assets/icons/save_upload.png");
   const saveUploadDisabled = require("../../assets/icons/save_upload_disabled.png");
-  const repair = require("../../assets/icons/wrench_grren_bg.png");
+  const repair = require("../../assets/icons/wrench_primary.png");
   const whiteRepair = require("../../assets/icons/wrench_white.png");
+  const canNotRepair = require("../../assets/icons/can_not_repair.png");
+  const saveWhite = require("../../assets/icons/save_white.png");
 
   let icon;
   let textColor;
@@ -24,6 +26,9 @@ const LongButton = (props) => {
     case "save":
       icon = save;
       break;
+    case "saveWhite":
+      icon = saveWhite;
+      break;
     case "save_upload":
       icon = saveUpload;
       break;
@@ -35,6 +40,9 @@ const LongButton = (props) => {
       break;
     case "whiteRepair":
       icon = whiteRepair;
+      break;
+    case "canNotRepair":
+      icon = canNotRepair;
       break;
   }
   switch (props.textColor) {
@@ -97,14 +105,17 @@ const LongButtonStyles = StyleSheet.create({
   imageContainer: {
     marginLeft: 30,
     position: 'absolute',
-    top: 17
+    width: '100%'
   },
   icon: {
-    height: 56,
+    height: 60,
+    maxWidth: 140,
+    transform: [{ scale: 0.8 }],
+    overflow: 'visible'
   },
   textContainer: {
     width: "50%",
-    marginLeft: 200
+    marginLeft: 230
     },
   title: {
     width: "100%",

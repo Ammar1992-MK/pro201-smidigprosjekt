@@ -2,34 +2,6 @@ import React from "react";
 import {Image, StyleSheet, Text, View} from "react-native";
 
 export const FinishedRepairs = ({dataLength}) => {
-    const styles = StyleSheet.create({
-        container: {
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginTop: 50
-        },
-        folderContainer: {
-            position: 'relative',
-        },
-        numOfRepairs: {
-            borderWidth: 2,
-            borderRadius: 100,
-            borderColor: '#fff',
-            position: 'absolute',
-            bottom: 0,
-            right: 0,
-            fontSize: 30,
-            padding: 5,
-            margin: 5,
-            color: '#fff',
-            textAlign: 'center'
-        },
-        text: {
-            fontSize: 20,
-            color: '#174A5B'
-        }
-    });
-
     return(
         <View style={styles.container}>
             <View>
@@ -39,5 +11,36 @@ export const FinishedRepairs = ({dataLength}) => {
             <Text style={styles.text}>Finished Repairs</Text>
         </View>
     )
-
 }
+
+const styles = StyleSheet.create({
+    container: {
+        alignItems: 'center',
+        marginTop: 80
+    },
+    folderContainer: {
+        position: 'relative',
+    },
+    numOfRepairs: {
+        borderWidth: 3,
+        borderRadius: 50,
+        borderColor: '#fff',
+        position: 'absolute',
+        bottom: -15,
+        right: -15,
+        fontSize: 32,
+        fontFamily: 'ArialBold',
+        paddingHorizontal: 18,
+        paddingTop: 6,
+        color: '#fff',
+        textAlign: 'center',
+        backgroundColor: '#174A5B',
+        lineHeight: 34
+    },
+    text: {
+        fontSize: 22,
+        color: '#174A5B',
+        fontFamily: 'Arial',
+        marginTop: 14
+    }
+});

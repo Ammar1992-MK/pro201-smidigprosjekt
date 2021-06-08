@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, TextInput, ScrollView, TouchableOpacity, Image} from "react-native";
+import {View, Text, StyleSheet, TextInput, ScrollView, TouchableOpacity, Image, SafeAreaView} from "react-native";
 import {NextButton} from "../components/NextButton";
 import {BackButton} from "../components/BackButton";
 import {NavigationBar} from "../components/NavigationBar/NavigationBar";
 import CarouselCard from "../components/CarouselCard";
 import {lamps} from "../utils/fakeDb";
+import { size } from 'lodash';
 
 export default function CustomerFormScreen({navigation}) {
     const [userData, setUserData] = useState({});
@@ -29,10 +30,7 @@ export default function CustomerFormScreen({navigation}) {
         if(selectedLampName === name){
             is_selected = true;
         }
-                    {/* <View style={styles.checkMark}>
-                <Image style={styles.checkMarkIcon}
-                        source={require('../../assets/icons/done_teal.png')}/>
-            </View> */}             
+            
         return (
             <TouchableOpacity onPress={() => toggle_selected(name)} key={i}>
                 <CarouselCard img={image} selected={is_selected}/>
@@ -47,36 +45,30 @@ export default function CustomerFormScreen({navigation}) {
     return (
         <>
             <NavigationBar title="NEW REPAIR" navigation={navigation} progressbar={true} step={1}/>
-            <ScrollView style={styles.container}>
-                <Text style={styles.inputHeaders}>Customer Name</Text>
-                <TextInput
-                    style={customer_input_vali_style}
-                    onChangeText={text => setCustomerName(text)}/>
-
-                <Text style={styles.inputHeaders}>Customer Phone Number</Text>
-                <TextInput
-                    style={phone_input_vali_style}
-                    onChangeText={text => setPhoneNumber(text)}/>
-
-                <Text style={styles.inputHeaders}>Enter Serial Number</Text>
-                <View style={styles.serialInputContainer}>
+            <View style={styles.container}>
+                <View style={styles.inputContainer}>
+                    <Text style={styles.inputHeaders}>Customer Name <Text style={styles.optionalText}>(Optional)</Text></Text>
                     <TextInput
-                        style={styles.input}
-                        onChangeText={text => setSerialNumber(text)}
-                    />
-                    {/*
-                    <TouchableOpacity>
-                        <View style={styles.qrButton}>
-                            <Image source={require("../../assets/icons/qr_code_scanner.png")}/>
-                        </View>
-                    </TouchableOpacity>
-                    */}
-                </View>
+                        style={customer_input_vali_style}
+                        onChangeText={text => setCustomerName(text)}/>
 
-                <Text style={styles.inputHeaders}>Choose Lamp</Text>
-                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={styles.lampList}>
-                    {lamps_div}
-                </ScrollView>
+                    <Text style={styles.inputHeaders}>Customer Phone Number  <Text style={styles.optionalText}>(Optional)</Text></Text>
+                    <TextInput
+                        style={phone_input_vali_style}
+                        onChangeText={text => setPhoneNumber(text)}/>
+
+                    <Text style={styles.inputHeaders}>Enter Serial Number <Text style={styles.optionalText}>(Optional)</Text></Text>
+                    <View style={styles.serialInputContainer}>
+                        <TextInput
+                            style={styles.input}
+                            onChangeText={text => setSerialNumber(text)}
+                        />
+                    </View>
+                    <Text style={styles.inputHeaders}>Choose Lamp</Text>
+                    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={styles.lampList}>
+                        {lamps_div}
+                    </ScrollView>
+                </View>
                 <View style={styles.navButtons}>
                     <BackButton onPress={() => navigation.navigate('HomeScreen')}/>
                     <NextButton onPress={() => {
@@ -89,7 +81,7 @@ export default function CustomerFormScreen({navigation}) {
                         });
                     }}/>
                 </View>
-            </ScrollView>
+            </View>
         </>
     );
 };
@@ -97,16 +89,21 @@ export default function CustomerFormScreen({navigation}) {
 const styles = StyleSheet.create({
 
     container: {
-        backgroundColor: '#F3F8E9',
-        flex: 1,
-        paddingLeft: '8%',
+        backgroundColor: '#B7D38135',
         height: '100%',
+        width: '100%',
+        alignItems: 'center'
+    },
+    inputContainer: {
+        width: '85%',
+        alignItems: 'flex-start',
+        marginTop: 40
     },
     serialInputContainer: {
         flexDirection: 'row',
     },
     input: {
-        width: '65%',
+        width: '70%',
         backgroundColor: '#ffffff',
         fontSize: 28,
         borderWidth: 3,
@@ -114,6 +111,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         paddingHorizontal: 20,
         paddingVertical: 10,
+        fontFamily: 'Arial'
     },
     inputHeaders: {
         color: '#174A5B',
@@ -122,20 +120,21 @@ const styles = StyleSheet.create({
         marginBottom: 4,
         fontFamily: 'Arial'
     },
-    qrButton: {
-        width: 60,
-        height: 60,
-        backgroundColor: '#174A5B',
-        justifyContent: 'center',
-        alignContent: 'center',
-        borderRadius: 7,
+    optionalText: {
+        fontSize: 20,
+        color: '#174A5B95',
+        fontFamily: 'Arial',
+    },
+    lampList: {
+        overflow: 'visible'
     },
     navButtons: {
-        flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-evenly',
         alignContent: 'center',
-        marginTop: 48
+        marginTop: 48,
+        width: '90%',
+        bottom: 20
     },
     InputHeaders: {
         color: '#174A5B',
@@ -167,22 +166,5 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         paddingHorizontal: 20,
         paddingVertical: 10,
-    },
-    checkMark: {
-        width: '100%',
-        height: '90%',
-        opacity: 1,
-        position: 'absolute',
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: 15,
-        zIndex: 100,
-    },
-    checkMarkIcon: {
-        width: '70%',
-        height: '70%',
-        zIndex: 200
     }
 });

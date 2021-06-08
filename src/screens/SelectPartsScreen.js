@@ -7,11 +7,10 @@ import SelectedLampSummary from "../components/SelectedLampSummary";
 import {NavigationBar} from '../components/NavigationBar/NavigationBar'
 import LongButton from "../components/LongButton";
 import {NextButton} from "../components/NextButton";
+import {BackButton} from "../components/BackButton";
 import {spareParts} from "../utils/fakeDb";
 
 const SelectPartsScreen = ({navigation, route}) => {
-    //CHOSEN PART
-    const [chosenPart, setChosenPart] = useState(false);
 
     //CHANGE STEP IN NAVIGATIONBAR
     let navbarStep = 2;
@@ -21,48 +20,62 @@ const SelectPartsScreen = ({navigation, route}) => {
         navbarStep = 2;
     }
 
-    const {lampName, serialNumber, selectedLamp, userData} = route.params;
-    const [userDataFormat, setUserData] = useState({});
+    //CHOSEN PART
+    const [chosenPart, setChosenPart] = useState(false);
+
+    //CHOSEN PARTS ID
     const[selectedPartId, setSelectedPartId] = useState([]);
 
-  const toggle_selected = (el_id) => {
-    if (selectedPartId.includes(el_id)) {
-      setChosenPart(false);
-      let prev_selected = selectedPartId.slice();
-      prev_selected.splice(prev_selected.indexOf(el_id), 1);
-      setSelectedPartId(prev_selected);
-    } else {
-      setChosenPart(true);
-      setSelectedPartId([...selectedPartId, el_id]);
-    }
-  }
+    //CHOSEN LAMP AND USER DATA
+    const [userData, setUserData] = useState({});
+    const {lampName, serialNumber, selectedLamp} = route.params;
+    useEffect(() => {
+		setUserData({ lampName, serialNumber, selectedLamp, userData });
+	  }, []);
 
+    //CHECKS SELECTED PART ID
+    const toggle_selected = (el_id) => {
+      if (selectedPartId.includes(el_id)) {
+        setChosenPart(false);
+        let prev_selected = selectedPartId.slice();
+        prev_selected.splice(prev_selected.indexOf(el_id), 1);
+        setSelectedPartId(prev_selected);
+      } else {
+        setChosenPart(true);
+        setSelectedPartId([...selectedPartId, el_id]);
+      }
+    }
+
+  //RENDERS PARTS AND CHECKS IF SELECTED
   const spare_parts_div = (item) => {
-    const { id, image } = item;
-    const is_selected = selectedPartId.includes(id) ? <View style={styles.checkMark}><Image style={styles.checkMarkIcon} source={require('../../assets/icons/done_teal.png')}/></View> : <Text></Text>;
+    const { id, image, name } = item;
+    const is_selected = selectedPartId.includes(id) ? 
+    <View style={styles.checkMark}>
+      <Image style={styles.checkMarkIcon} source={require('../../assets/icons/success_icon.png')}/>
+    </View> 
+    : null
+
     return (
       <TouchableOpacity
         key={id}
         style={styles.partImageContainer}
         onPress={() => toggle_selected(id)}
       >
-          {is_selected}
-        <View style={styles.partImageView}>
-          <Image style={styles.partImage} source={image} />
-        </View>
+        {is_selected}
+        <Image style={styles.partImage} source={image} />
+        <Text style={styles.partText}>{name}</Text>
       </TouchableOpacity>
     );
   };
 
-    return (
+  return (
+
     <View style={styles.container}>
-      <NavigationBar title="NEW REPAIR" navigation={navigation} progressbar={true} step={navbarStep}/>
+      <NavigationBar navigation={navigation} progressbar={true} step={navbarStep}/>
       <SelectedLampSummary
-        index={"1"}
         lamp={selectedLamp}
-        data={userDataFormat}
+        data={userData}
       />
-      {/*Missing onPress to navigate to LEARN*/}
       <LongButton
         title={"CHANGE PART GUIDE"}
         backgroundColor={"primary_teal"}
@@ -70,30 +83,36 @@ const SelectPartsScreen = ({navigation, route}) => {
         textColor={"white"}
         onPress={() => navigation.navigate('TroubleshootScreen')}
       />
-      <View style={styles.scrollHeader}>
-        <View style={styles.stepIndex}>
-          <Text style={styles.stepIndexTitle}>2</Text>
+      <View style={styles.selectPartsContainer}>
+        <View style={styles.selectsPartsContainerHeader}>
+          <View style={styles.indexContainer}>
+            <Text style={styles.indexText}>2</Text>
+          </View>
+          <Text style={styles.selectsPartsContainerTitle}>SELECT PART</Text>
+          <Image
+            style={styles.repairIcon}
+            source={require("../../assets/icons/wrench_primary.png")}
+          />
         </View>
-        <Text style={styles.scrollHeaderTitle}>SELECT PART</Text>
-        <Image
-          style={styles.repairIcon}
-          source={require("../../assets/icons/wrench_grren_bg.png")}
-        />
+        <FlatList
+          style={styles.partsContainer}
+          numColumns={3}
+          data={spareParts}
+          horizontal={false}
+          renderItem={({ item }) => spare_parts_div(item)}
+        ></FlatList>
       </View>
-      <FlatList
-        style={styles.scrollContainer}
-        numColumns={2}
-        data={spareParts}
-        horizontal={false}
-        renderItem={({ item }) => spare_parts_div(item)}
-      ></FlatList>
-      <NextButton
-        onPress={() =>
-          navigation.navigate("StartRepairSummaryScreen", {
-            data: { ...userData, selectedPartId },
-          })
-        }
-      />
+      
+      <View style={styles.navigateButtons}>
+        <BackButton onPress={() => navigation.navigate('StartRepairScreen')} />
+        <NextButton
+          onPress={() =>
+            navigation.navigate("StartRepairSummaryScreen", {
+              data: { ...userData, selectedPartId },
+            })
+          }
+        />
+			</View>
     </View>
   );
 }
@@ -102,75 +121,113 @@ export default SelectPartsScreen;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#F3F8E9",
+    backgroundColor: "#B7D38135",
     flex: 1,
     flexDirection: "column",
     alignItems: "center",
   },
-  scrollContainer: {
-    width: "80%",
-    height: "100%",
-    marginTop: 20,
-    marginRight: 10,
+  selectPartsContainer: {
+    flexDirection: 'column',
+		alignItems: 'center',
+		width: '82%',
+		height: 390,
+		marginTop: 20,
+		borderRadius: 18,
+		backgroundColor: '#ffffff',
+		borderColor: 'transparent',
+		borderWidth: 4,
   },
-
-  partImage: {
-    width: "100%",
+  selectsPartsContainerHeader: {
+    flexDirection: 'row',
+		alignItems: 'center',
+		width: '100%',
+		marginTop: 20,
   },
-  scrollHeader: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    width: "50%",
-    justifyContent: "space-evenly",
+  selectsPartsContainerTitle: {
+    fontSize: 24,
+		fontFamily: 'ArialBold',
+		color: '#174A5B',
+		marginLeft: 22,
   },
-  stepIndex: {
-    width: 50,
-    height: 50,
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    borderColor: "#C3DC93",
-    borderWidth: 5,
-    borderRadius: 50,
+  indexContainer: {
+		width: 50,
+		height: 50,
+		alignItems: 'center',
+		justifyContent: 'center',
+		lineHeight: 1,
+		borderRadius: 50 / 2,
+		marginLeft: 26,
+		backgroundColor: '#ffffff',
+		borderColor: '#C3DC93',
+		borderWidth: 4,
+	},
+  indexText: {
+		color: '#174A5B',
+		fontSize: 28,
+		fontFamily: 'Arial',
+		fontWeight: '700',
+	},
+  repairIcon: {
+    marginLeft: 8,
+    transform: [{ scale: 0.75 }],
   },
-  scrollHeaderTitle: {
-    color: "#174A5B",
-    fontWeight: "bold",
-    fontSize: 30,
-  },
-  stepIndexTitle: {
-    color: "#174A5B",
-    fontWeight: "bold",
-    fontSize: 30,
+  partsContainer: {
+    width: "95%",
+    marginBottom: 30,
+    marginTop: 8
   },
   partImageContainer: {
-    width: "45%",
-    height : '100%',
-    marginHorizontal: 17,
-    alignSelf: "center",
+    height: 175,
+    flex: 1/3,
+    margin: 4,
+    borderWidth: 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderColor: 'rgba(23, 74, 91, 0.02)',
+    borderRadius: 12,
+    elevation: 5,
+    backgroundColor: '#fff',
   },
-
-  partImageView: {
-    width: "100%",
-    marginBottom : 20,
+  partImage: {
+    width: '100%',
+    transform: [{ scale: 0.65 }],
+    overflow: 'hidden'
+  },
+  partText: {
+    fontFamily: 'ArialBold',
+    fontSize: 20,
+		color: '#174A5B',
+    zIndex: 2,
+    bottom: 0,
+    position: 'absolute',
+    textTransform: 'uppercase'
   },
   checkMark: {
     width :'100%',
-    height : '90%',
-    opacity : 0.7,
-    zIndex : 2,
+    height : '100%',
+    zIndex : 3,
     position : 'absolute',
-    display:'flex',
-    flexDirection : 'row',
     alignItems :'center',
     justifyContent :'center',
-    backgroundColor: '#99a2b1',
-    borderRadius: 10,
+    backgroundColor: 'rgba(42, 42, 42, 0.5)',
+    borderRadius: 12,
   },
   checkMarkIcon:  {
-    width : '70%',
-    height : '70%',
-  }
+    width : '60%',
+    height : '60%',
+  },
+  navigateButtons: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'space-between',
+		width: '100%',
+		marginLeft: 40,
+		marginRight: 40,
+    paddingHorizontal: '5%',
+    paddingTop: 0,
+    paddingBottom: 20,
+		position: 'absolute',
+		bottom: 0,
+    backgroundColor: 'rgba(243, 248, 233, 0.9)'
+	},
 });

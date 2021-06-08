@@ -21,10 +21,8 @@ export const LearnHomeButton = (props) => {
 			onPress={props.onPress}
 		>
 			<View style={LearnHomeButtonStyle.button}>
-				<View style={LearnHomeButtonStyle.innerContainer}>
 					<Image style={LearnHomeButtonStyle.icon} source={icon} />
 					<Text style={LearnHomeButtonStyle.title}>{props.title}</Text>
-				</View>
 			</View>
 		</TouchableOpacity>
 	);
@@ -33,31 +31,29 @@ export const LearnHomeButton = (props) => {
 const LearnHomeButtonStyle = StyleSheet.create({
 	container: {
 		width: '73%',
-		height: '13.5%',
-		margin: 70,
+		marginTop: 60
 	},
 	button: {
-		width: '100%',
+		flexDirection: 'row',
+		alignItems: 'center',
 		height: 180,
 		justifyContent: 'center',
 		backgroundColor: '#B7D381',
-		borderRadius: 8,
-		elevation: 6,
-	},
-	innerContainer: {
-		flexDirection: 'row',
-		alignItems: 'center',
-		width: '80%',
-		marginLeft: '10%',
+		borderWidth: 5,
+		borderColor: '#AACF63',
+		borderRadius: 12,
+		elevation: 9,
 	},
 	title: {
 		fontFamily: 'ArialBold',
-		fontSize: 27,
+		fontSize: 28,
 		color: '#174A5B',
 		marginLeft: 40,
+		width: '65%'
 	},
 	icon: {
-		width: 64,
-		height: 64,
+		width: 70,
+		height: 70,
+    transform: [{ scale: 0.85 }],
 	},
 });

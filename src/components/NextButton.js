@@ -32,7 +32,6 @@ const NextButtonStyles = StyleSheet.create({
     alignItems: 'flex-end',
     backgroundColor: "#B7D381",
     marginLeft: "auto",
-    marginRight: 50,
     borderColor: '#B7D381',
     borderWidth: 3,
     borderStyle: 'solid'

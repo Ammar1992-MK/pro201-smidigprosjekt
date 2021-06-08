@@ -8,22 +8,21 @@ import { NavigationProgressbar } from "./NavigationProgressbar";
 export const NavigationBar = ({ navigation, title, icon, step, progressbar}) => {
 
   return (
-    <View style={NavigationBarStyles.container}>
-      <View style={NavigationBarStyles.iconContainer}>
+    <View style={styles.container}>
+      <View style={styles.iconContainer}>
         <NavigationHomeButton
-          style={NavigationBarStyles.button}
+          style={styles.button}
           navigation={navigation}
         />
       </View>
 
-      <View style={NavigationBarStyles.titleContainer}>
-      {/* En ternary for om progressbar er true eller ikke også en egen progressbar komponent*/}
+      <View style={styles.titleContainer}>
       {progressbar ? (
         <NavigationProgressbar step={step}/>
       ):(
-        <View style={NavigationBarStyles.titleRow}>
-          <Text style={NavigationBarStyles.title}>{title}</Text>
-            {icon ? <Image  source={require('../../../assets/icons/learn_white.png')} /> : null }
+        <View style={styles.titleRow}>
+          <Text style={styles.title}>{title}</Text>
+            {icon ? <Image source={require('../../../assets/icons/repair_guide_white.png')} style={styles.titleIcon} /> : null }
         </View>
       )}
       </View>
@@ -31,7 +30,7 @@ export const NavigationBar = ({ navigation, title, icon, step, progressbar}) => 
   )
 }
 
-const NavigationBarStyles = StyleSheet.create({
+const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         width: '100%',
@@ -39,16 +38,16 @@ const NavigationBarStyles = StyleSheet.create({
         backgroundColor: '#174A5B',
         alignItems: 'center',
         zIndex: 99,
+        paddingLeft: '5%'
     },
     title: {
         fontSize: 32,
         fontFamily: 'ArialBold',
         letterSpacing: 2,
         color: '#fff',
-        textTransform: "uppercase"
+        textTransform: "uppercase",
     },
-    button: {},
-    iconContainer: {
+    homeIconContainer: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
@@ -57,11 +56,14 @@ const NavigationBarStyles = StyleSheet.create({
     titleContainer: {
         flex: 7,
         alignItems: 'center',
-        paddingRight: '13%',
+        paddingRight: '10%',
     },
     titleRow: {
         flexDirection: "row",
         justifyContent: "space-evenly",
         alignItems: "center",
+    },
+    titleIcon: {
+        transform: [{ scale: 0.75 }],
     }
 })

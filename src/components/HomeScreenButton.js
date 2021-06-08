@@ -67,5 +67,6 @@ const HomeScreenButtonStyle = StyleSheet.create({
 	icon: {
 		width: 76,
 		height: 64,
+    transform: [{ scale: 0.9 }],
 	},
 });

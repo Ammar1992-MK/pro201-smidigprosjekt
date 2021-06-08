@@ -202,6 +202,7 @@ export const NavigationProgressbar = ({ navigation, step }) => {
     },
     step1Text: {
         color: '#C3DC93',
+        opacity: 1,
         fontSize: 17,
         fontFamily: 'ArialBold',
         textTransform: 'uppercase',
@@ -299,7 +300,8 @@ export const NavigationProgressbar = ({ navigation, step }) => {
         borderRadius: 52 / 2,
     },
     step1Text: {
-        color: '#C3DC93',
+        color: '#fff',
+        opacity: 0.8,
         fontSize: 17,
         fontFamily: 'ArialBold',
         textTransform: 'uppercase',
@@ -310,8 +312,8 @@ export const NavigationProgressbar = ({ navigation, step }) => {
         paddingTop: 3
     },
     step2Text: {
-        color: '#fff',
-        opacity: 0.8,
+        color: '#C3DC93',
+        opacity: 1,
         fontSize: 17,
         fontFamily: 'ArialBold',
         textTransform: 'uppercase',
@@ -395,7 +397,8 @@ export const NavigationProgressbar = ({ navigation, step }) => {
         borderRadius: 52 / 2,
     },
     step1Text: {
-        color: '#C3DC93',
+        color: '#fff',
+        opacity: 0.8,
         fontSize: 17,
         fontFamily: 'ArialBold',
         textTransform: 'uppercase',
@@ -406,8 +409,8 @@ export const NavigationProgressbar = ({ navigation, step }) => {
         paddingTop: 3
     },
     step2Text: {
-        color: '#fff',
-        opacity: 0.8,
+        color: '#C3DC93',
+        opacity: 1,
         fontSize: 17,
         fontFamily: 'ArialBold',
         textTransform: 'uppercase',
@@ -493,7 +496,8 @@ export const NavigationProgressbar = ({ navigation, step }) => {
       borderWidth: 6,
     },
     step1Text: {
-        color: '#C3DC93',
+        color: '#fff',
+        opacity: 0.8,
         fontSize: 17,
         fontFamily: 'ArialBold',
         textTransform: 'uppercase',
@@ -516,8 +520,8 @@ export const NavigationProgressbar = ({ navigation, step }) => {
         paddingTop: 3
     },
     step3Text: {
-        color: '#fff',
-        opacity: 0.8,
+        color: '#C3DC93',
+        opacity: 1,
         fontSize: 17,
         fontFamily: 'ArialBold',
         textTransform: 'uppercase',
@@ -590,8 +594,9 @@ export const NavigationProgressbar = ({ navigation, step }) => {
       marginBottom: 3
     },
     step1Text: {
-        color: '#C3DC93',
+        color: '#fff',
         fontSize: 17,
+        opacity: 0.8,
         fontFamily: 'ArialBold',
         textTransform: 'uppercase',
         marginTop: 4,
@@ -613,8 +618,8 @@ export const NavigationProgressbar = ({ navigation, step }) => {
         paddingTop: 3
     },
     step3Text: {
-        color: '#fff',
-        opacity: 0.8,
+        color: '#C3DC93',
+        opacity: 1,
         fontSize: 17,
         fontFamily: 'ArialBold',
         textTransform: 'uppercase',

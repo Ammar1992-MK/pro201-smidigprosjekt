@@ -13,11 +13,11 @@ import { spareParts } from '../utils/fakeDb';
 import ComponentsChosenSummary from '../components/ComponentsChosenSummary';
 
 const StartRepairSummaryScreen = ({ navigation, route }) => {
-    //ICONS
-    const noWifiIcon = require("../../assets/icons/wifi_off_red.png");
-    const wifiIcon = require("../../assets/icons/wifi_primary.png");
-    const savedIcon = require("../../assets/icons/save_big.png");
-    const successIcon = require("../../assets/icons/done_green_bg.png");
+	//ICONS
+	const noWifiIcon = require("../../assets/icons/wifi_off_red.png");
+	const wifiIcon = require("../../assets/icons/wifi_primary.png");
+	const savedIcon = require("../../assets/icons/save_big.png");
+	const successIcon = require("../../assets/icons/done_green_bg.png");
 
 	//NETWORK STATUS
 	const [networkStatus, setNetworkStatus] = useState(false);
@@ -140,14 +140,14 @@ const StartRepairSummaryScreen = ({ navigation, route }) => {
 				</View>
 					)}
 					
-					{savedStatus ? (
-						<View style={styles.successContainer}>
-							<Image source={successIcon} style={styles.successIcon}/>
-							<Text style={styles.successText}>Repair registered</Text>
-						</View>
-					) : null }
+				{savedStatus ? (
+					<View style={styles.successContainer}>
+						<Image source={successIcon} style={styles.successIcon}/>
+						<Text style={styles.successText}>Repair registered</Text>
+					</View>
+				) : null }
 				<View style={styles.navigateButtons}>
-					<BackButton onPress={() => navigation.navigate('SelectPartsScreen')} />
+					<BackButton onPress={() => navigation.navigate('SelectPartsScreen')}/>
 					<DoneButton
 						onPress={() => navigation.navigate('HomeScreen')}
 						differentButton={!savedStatus}
@@ -162,14 +162,14 @@ const styles = StyleSheet.create({
 	container: {
 		backgroundColor: '#B7D38135',
 		height: '100%',
-		position: 'relative'
+		position: 'relative',
+		alignItems: 'center'
 	},
 	unsavedSummaryContainer: {
 		flexDirection: 'column',
 		alignItems: 'center',
-		width: '90%',
+		width: '84%',
 		height: 330,
-		marginLeft: 40,
 		marginTop: 12,
 		borderRadius: 18,
 		backgroundColor: '#ffffff',
@@ -214,33 +214,36 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'space-between',
-		width: '90%',
+		width: '100%',
 		marginLeft: 40,
 		marginRight: 40,
+    paddingHorizontal: '5%',
+    paddingTop: 0,
+    paddingBottom: 20,
 		position: 'absolute',
-		bottom: 140
+		bottom: 140,
+    backgroundColor: 'rgba(243, 248, 233, 0.9)'
 	},
 	savedSummaryContainer: {
-        width: '90%',
-        height: 130,
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginLeft: 40,
-        marginTop: 12,
-        borderColor: 'rgba(195, 220, 147, 0.35)',
-        borderWidth: 4,
-        borderRadius: 18,
-        backgroundColor: '#F3F8E9'
+		width: '84%',
+		height: 130,
+		flexDirection: 'row',
+		alignItems: 'center',
+		marginTop: 12,
+		borderColor: 'rgba(195, 220, 147, 0.35)',
+		borderWidth: 4,
+		borderRadius: 18,
+		backgroundColor: '#F3F8E9'
 	},
 	indexContainerSaved: {
-		    width: 42,
-        height: 42,
-        alignItems: 'center',
-        justifyContent: 'center',
-        lineHeight: 1,
-        backgroundColor: '#C3DC93',
-        borderRadius: 40 / 2,
-        marginLeft: 30
+		width: 42,
+		height: 42,
+		alignItems: 'center',
+		justifyContent: 'center',
+		lineHeight: 1,
+		backgroundColor: '#C3DC93',
+		borderRadius: 40 / 2,
+		marginLeft: 30
 	},
 	savedIcon: {
 		marginLeft: 90
@@ -251,7 +254,7 @@ const styles = StyleSheet.create({
 	smallSavedText: {
 		fontFamily: 'Arial',
 		color: '#174A5B',
-		fontSize: 18
+		fontSize: 20
 	},
 		greenSavedText: {
 		fontFamily: 'ArialBold',
