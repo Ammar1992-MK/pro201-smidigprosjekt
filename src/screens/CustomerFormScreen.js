@@ -56,8 +56,9 @@ export default function CustomerFormScreen({navigation}) {
 
                     <Text style={styles.inputHeaders}>Customer Phone Number  <Text style={styles.optionalText}>(Optional)</Text></Text>
                     <TextInput
-                        style={styles.input}
-                        onChangeText={text => setSerialNumber(text)}
+                        style={phone_input_vali_style}
+                        onChangeText={text => setPhoneNumber(text)}
+                        />
                     <Text style={styles.inputHeaders}>Enter Serial Number <Text style={styles.optionalText}>(Optional)</Text></Text>
                     <View style={styles.serialInputContainer}>
                         <TextInput

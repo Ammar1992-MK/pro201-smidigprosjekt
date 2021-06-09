@@ -91,7 +91,7 @@ const CustomerFormSummaryScreen = ({ navigation, route }) => {
 						backgroundColor="primary_teal"
 						title="SAVE"
 						onPress={async () => {
-						navigation.navigate('StartRepairScreen', { data: userData });
+						navigation.navigate('HomeScreen', { data: userData });
 						}}
 					/>
 				</View>
