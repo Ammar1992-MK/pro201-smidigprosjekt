@@ -13,13 +13,6 @@ export default function LoginScreen({ navigation }) {
 	const[secureText, setSecureText] = useState(true);
   const[eyeIcon, setEyeIcon] = useState(require('../../assets/icons/eye_closed.png'));
 
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-	useEffect(()=>{
-		if(isLoggedIn){
-			navigation.navigate('HomeScreen')
-		}
-	}, [isLoggedIn])
 
   const handlePasswordVisibility = () => {
 		if(secureText){
@@ -36,7 +29,7 @@ export default function LoginScreen({ navigation }) {
 		const ref = db.firestore().collection("users")
 		ref.where("username", "==", userId).where("password", "==", password).get().then(snapshot => {
 			if(!snapshot.empty){
-				setIsLoggedIn(true)
+				navigation.navigate('HomeScreen')
 			}
 		})
 	}

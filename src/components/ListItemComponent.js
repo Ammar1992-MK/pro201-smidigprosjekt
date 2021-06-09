@@ -27,8 +27,8 @@ const ListItemComponent = ({data,icon,navigation}) => {
         }
     }
 
+    //Navigate and sending data from the clicked list-item to startRepair
     const handleNavigation = () => {
-
         if(navigation && data.status === "NEW"){
             navigation.navigate("StartRepairScreen", {data : data})
         } else {
@@ -53,6 +53,7 @@ const ListItemComponent = ({data,icon,navigation}) => {
                 </View>
             </View>
         </TouchableOpacity>
+
         )
 }
 

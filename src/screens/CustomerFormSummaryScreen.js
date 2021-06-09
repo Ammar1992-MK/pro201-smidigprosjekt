@@ -91,8 +91,7 @@ const CustomerFormSummaryScreen = ({ navigation, route }) => {
 						backgroundColor="primary_teal"
 						title="SAVE"
 						onPress={async () => {
-							await addNewRepair(userData); //add the form values to async storage
-							navigation.navigate('HomeScreen'); // navigate to home screen
+						navigation.navigate('StartRepairScreen', { data: userData });
 						}}
 					/>
 				</View>

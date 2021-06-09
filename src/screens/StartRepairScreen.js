@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 
 import {lamps} from '../utils/fakeDb'
+//COMPONENTS
 import { NavigationBar } from "../components/NavigationBar/NavigationBar";
 import LongButton from "../components/LongButton";
 

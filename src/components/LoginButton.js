@@ -1,11 +1,9 @@
 import * as React from "react";
 import {
   View,
-  Button,
   StyleSheet,
   TouchableOpacity,
   Text,
-  Image,
 } from "react-native";
 
 export const LoginButton = ({ onPress }) => {

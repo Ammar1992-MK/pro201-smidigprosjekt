@@ -8,17 +8,17 @@ const ComponentsChosenSummary = ({selectedComponentsId}) => {
     let parts_images;
     if(!selectedComponentsId){
 
-        //Hvis noe galt har skjedd får den ikke inn noe via selectedComponentsId variablen, tetter fallgruve.
-        parts_images = <Text>Fikk ingenting av forrige skjerm</Text>
+        //If something went wrong, part_images will get text instead of an image.
+        parts_images = <Text>Error</Text>
 
     } else if (selectedComponentsId === "DISCARD"){
-        //TODO Legge til bilde av en søppelkasse eller noe, for å vise at den skal kastes.
 
        parts_images = 
             <View style={styles.discardImageContainer}>
                 <Image style={styles.discardImage} source={require('../../assets/icons/trash_red_bg.png')} />
             </View>
     } else {
+
         parts_images = selectedComponentsId.map((compId, index) => {
             let component = get_spare_part_by_id(compId)
             const {image} = component

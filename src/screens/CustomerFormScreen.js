@@ -15,6 +15,7 @@ export default function CustomerFormScreen({navigation}) {
     const [lampName, setLampName] = useState('');
     const [selectedLampName, setSelectedLampName] = useState();
 
+    //Detect which lamp has been selected
     const toggle_selected = (el_name) => {
         if (selectedLampName === el_name) {
             setSelectedLampName(' ');
@@ -25,12 +26,13 @@ export default function CustomerFormScreen({navigation}) {
     };
     
     const lamps_div = lamps.map((el, i) => {
+        //Show which lamp has been selected
         let is_selected = false;
         const {name, image} = el;
         if(selectedLampName === name){
             is_selected = true;
-        }
-            
+        }         
+
         return (
             <TouchableOpacity onPress={() => toggle_selected(name)} key={i}>
                 <CarouselCard img={image} selected={is_selected}/>
@@ -54,9 +56,8 @@ export default function CustomerFormScreen({navigation}) {
 
                     <Text style={styles.inputHeaders}>Customer Phone Number  <Text style={styles.optionalText}>(Optional)</Text></Text>
                     <TextInput
-                        style={phone_input_vali_style}
-                        onChangeText={text => setPhoneNumber(text)}/>
-
+                        style={styles.input}
+                        onChangeText={text => setSerialNumber(text)}
                     <Text style={styles.inputHeaders}>Enter Serial Number <Text style={styles.optionalText}>(Optional)</Text></Text>
                     <View style={styles.serialInputContainer}>
                         <TextInput

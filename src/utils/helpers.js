@@ -9,6 +9,8 @@ import db from "../firebase/firebaseDb";
 export const addNewRepair = async (valueObject) => {
     try {
         console.log(valueObject)
+        // Sletter elementet hvis det allerede finnes.
+        await deleteRepair(valueObject)
         let savedRepairs = await AsyncStorage.getItem('repair');
         if (!savedRepairs) {
             savedRepairs = [];
@@ -39,6 +41,18 @@ export const addNewRepair = async (valueObject) => {
     }
 }
 
+export const deleteRepair = async (valueObj) => {
+    //Ikke så bra, kaos å finne alle steder hvor vi har brukt 'navigation'
+    let current_repairs = await AsyncStorage.getItem('repair');
+    current_repairs = JSON.parse(current_repairs)
+    const {customerName, phoneNumber, serialNumber} = valueObj;
+    current_repairs.forEach(el => {
+        if(customerName === el.customerName && phoneNumber === el.phoneNumber && serialNumber === el.serialNumber){
+            current_repairs.splice(current_repairs.indexOf(el), 1)
+        }
+    })
+    await AsyncStorage.setItem('repair', JSON.stringify(current_repairs))
+}
 
 export const getData = async () => {
     try {

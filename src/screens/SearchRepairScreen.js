@@ -1,8 +1,7 @@
 import { size } from 'lodash';
 import React,{useState,useEffect} from 'react'
 import {View,Text,TextInput,StyleSheet,Image,TouchableOpacity} from "react-native";
-
-
+//Components
 import {NavigationBar} from "../components/NavigationBar/NavigationBar";
 import ScrollViewSearchList from "../components/ScrollViewSearchList";
 import {getData} from "../utils/helpers";
@@ -12,7 +11,6 @@ const SearchRepairScreen = ({navigation}) => {
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedToggle, setSelectedToggle] = useState("ready");
 
-    console.log("Data", data)
     const readyData = data.filter((el) => {
         //Filterer ut alle som ikke stemmer med søket eller har status som tilsvarer toggle (nå Ready eller finished).
         let search_status_input;
@@ -21,8 +19,14 @@ const SearchRepairScreen = ({navigation}) => {
             case "finished": search_status_input = "DONE"; break;
         }
         if(el.status === search_status_input){
-            const {serialNumber, lamp} = el;
-            if((serialNumber.toString().includes(searchTerm) || lamp.toString().includes(searchTerm)) || searchTerm === ""){
+            const search_format = searchTerm.toLowerCase()
+            const {serialNumber, lamp, customerName} = el;
+            const serial_num_match = serialNumber ? serialNumber.toString().toLowerCase().includes(search_format) : false;
+            const lamp_match = lamp ? lamp.toString().toLowerCase().includes(search_format.toLowerCase()) : false;
+            const customerName_match = customerName ? customerName.toString().toLowerCase().includes(search_format) : false;
+            if(searchTerm === ""){
+                return el
+            }else if(serial_num_match || lamp_match || customerName_match){
                 return el
             }
         }
@@ -45,7 +49,6 @@ const SearchRepairScreen = ({navigation}) => {
                         <Image style={styles.searchIcon} source={require('../../assets/icons/search.png')}/>
                     </View>
                 </View>
-
                 <View style={styles.fetchButtonsContainer}>
                     <TouchableOpacity style={[styles.readyButton, selectedToggle === "ready" ? {backgroundColor: '#174A5B'} : {backgroundColor: '#fff'}]} onPress={() => setSelectedToggle('ready')} >
                         <Text style={[styles.readyText, selectedToggle === "ready" ? {color: '#fff'} : {color: '#174A5B'}]}>READY</Text>
