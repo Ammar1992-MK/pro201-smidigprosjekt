@@ -44,7 +44,11 @@ export const addNewRepair = async (valueObject) => {
 export const deleteRepair = async (valueObj) => {
     //Ikke så bra, kaos å finne alle steder hvor vi har brukt 'navigation'
     let current_repairs = await AsyncStorage.getItem('repair');
-    current_repairs = JSON.parse(current_repairs)
+    if(!current_repairs){
+        current_repairs = [];
+    } else {
+    current_repairs = JSON.parse(current_repairs);
+    }
     const {customerName, phoneNumber, serialNumber} = valueObj;
     current_repairs.forEach(el => {
         if(customerName === el.customerName && phoneNumber === el.phoneNumber && serialNumber === el.serialNumber){
