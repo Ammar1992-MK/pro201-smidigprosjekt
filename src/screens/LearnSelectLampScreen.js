@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 
 import { NavigationBar } from '../components/NavigationBar/NavigationBar';
-import CardSmall from '../components/Cards/CardSmall';
 import { BackButton } from '../components/BackButton';
 
 const LearnSelectLampScreen = ({navigation, route}) => {

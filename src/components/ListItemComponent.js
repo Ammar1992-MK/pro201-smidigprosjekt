@@ -28,7 +28,6 @@ const ListItemComponent = ({data,icon,navigation}) => {
     }
 
     const handleNavigation = () => {
-
         if(navigation && data.status === "NEW"){
             navigation.navigate("StartRepairScreen", {data : data})
         } else {

@@ -25,6 +25,7 @@ const SelectPartsScreen = ({navigation, route}) => {
     const [userDataFormat, setUserData] = useState({});
     const[selectedPartId, setSelectedPartId] = useState([]);
 
+    //Save Selected-parts In An Array
   const toggle_selected = (el_id) => {
     if (selectedPartId.includes(el_id)) {
       setChosenPart(false);
@@ -39,6 +40,7 @@ const SelectPartsScreen = ({navigation, route}) => {
 
   const spare_parts_div = (item) => {
     const { id, image } = item;
+    //Show which spare-part Has Been selected
     const is_selected = selectedPartId.includes(id) ? <View style={styles.checkMark}><Image style={styles.checkMarkIcon} source={require('../../assets/icons/done_teal.png')}/></View> : <Text></Text>;
     return (
       <TouchableOpacity
@@ -62,7 +64,6 @@ const SelectPartsScreen = ({navigation, route}) => {
         lamp={selectedLamp}
         data={userDataFormat}
       />
-      {/*Missing onPress to navigate to LEARN*/}
       <LongButton
         title={"CHANGE PART GUIDE"}
         backgroundColor={"primary_teal"}
@@ -90,6 +91,7 @@ const SelectPartsScreen = ({navigation, route}) => {
       <NextButton
         onPress={() =>
           navigation.navigate("StartRepairSummaryScreen", {
+            //Sending Data To The Next Screen
             data: { ...userData, selectedPartId },
           })
         }
