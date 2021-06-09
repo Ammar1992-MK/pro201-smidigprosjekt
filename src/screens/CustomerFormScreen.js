@@ -14,6 +14,7 @@ export default function CustomerFormScreen({navigation}) {
     const [lampName, setLampName] = useState('');
     const [selectedLampName, setSelectedLampName] = useState();
 
+    //Detect which lamp has been selected
     const toggle_selected = (el_name) => {
         if (selectedLampName === el_name) {
             setSelectedLampName(' ');
@@ -24,15 +25,12 @@ export default function CustomerFormScreen({navigation}) {
     };
     
     const lamps_div = lamps.map((el, i) => {
+        //Show which lamp has been selected
         let is_selected = false;
         const {name, image} = el;
         if(selectedLampName === name){
             is_selected = true;
         }
-                    {/* <View style={styles.checkMark}>
-                <Image style={styles.checkMarkIcon}
-                        source={require('../../assets/icons/done_teal.png')}/>
-            </View> */}             
         return (
             <TouchableOpacity onPress={() => toggle_selected(name)} key={i}>
                 <CarouselCard img={image} selected={is_selected}/>
@@ -64,13 +62,6 @@ export default function CustomerFormScreen({navigation}) {
                         style={styles.input}
                         onChangeText={text => setSerialNumber(text)}
                     />
-                    {/*
-                    <TouchableOpacity>
-                        <View style={styles.qrButton}>
-                            <Image source={require("../../assets/icons/qr_code_scanner.png")}/>
-                        </View>
-                    </TouchableOpacity>
-                    */}
                 </View>
 
                 <Text style={styles.inputHeaders}>Choose Lamp</Text>
