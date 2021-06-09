@@ -7,7 +7,7 @@ import {LearnHomeButton} from "../components/LearnHomeButton";
 const LearnHomeScreen = ({navigation}) => {
     return (
         <>
-            <NavigationBar icon={true} title="LEARN" navigation={navigation}/>
+            <NavigationBar icon={true} title="REPAIR GUIDE" navigation={navigation}/>
             <View style={LearnHomeScreenStyles.container}>
                 <LearnHomeButton  icon={'guide'} title={'TROUBLESHOOT GUIDE'} onPress={() => navigation.navigate('TroubleshootScreen')} />
                 <LearnHomeButton icon={'videos'} title={'CHANGE PART VIDEOS'} onPress={() => navigation.navigate('LearnSelectLampScreen')} />
@@ -28,7 +28,6 @@ const LearnHomeScreenStyles = StyleSheet.create({
     button: {
         height: '80%',
     },
-
 });
 
 export default LearnHomeScreen;

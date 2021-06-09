@@ -4,6 +4,7 @@ import { View, Text, StyleSheet, TextInput, Alert } from 'react-native';
 import { NavigationBar } from '../components/NavigationBar/NavigationBar';
 import CardSmall from '../components/Cards/CardSmall';
 import LongButton from '../components/LongButton';
+import {BackButton} from '../components/BackButton';
 
 //Async Storage
 import { addNewRepair } from '../utils/helpers';
@@ -36,11 +37,8 @@ const FilledInputField = ({ title, textInput }) => {
 		</View>
 	);
 };
-//textInput er "objektet" med all informasjonen som brukeren fylte inn i formen på forrige skjerm
-//Tenkte at vi kan gi disse verdiene til <FilledInputField />, også gjøre det umulige å redigere på de
-//Vi må vel sjekke etter internett her
-// Hvis bruker velger å trykke på start repair må de sendes videre til neste skjerm, hvis de trykker save må vi lagre informasjonen lokalt
 
+//COLLECTS USERDATA FROM  PREVIOUS SCREEN
 const CustomerFormSummaryScreen = ({ navigation, route }) => {
 	const [userData, setUserData] = useState({});
 
@@ -63,41 +61,43 @@ const CustomerFormSummaryScreen = ({ navigation, route }) => {
 					<CardSmall lampName={lamp} />
 					<View style={styles.inputFields}>
 						<FilledInputField
-							textInput={userData.phoneNumber}
+							textInput={userData.phoneNumber ? userData.phoneNumber : ' -'}
 							title={'Phone Number'}
 						/>
 						<FilledInputField
-							textInput={userData.serialNumber ? userData.serialNumber : 'N/A'}
+							textInput={userData.serialNumber ? userData.serialNumber : ' -'}
 							title={'Serial Number'}
 						/>
 						<FilledInputField
-							textInput={userData.customerName}
+							textInput={userData.customerName ? userData.customerName : ' -'}
 							title={'Name'}
 						/>
 					</View>
 				</View>
 				<View style={styles.buttonContainer}>
 					<LongButton
-						icon="save"
+						icon="repair"
 						textColor="primary_teal"
 						backgroundColor="primary_green"
-						title="SAVE"
-						onPress={async () => {
-							await addNewRepair(userData); //add the form values to async storage
-							navigation.navigate('HomeScreen'); // navigate to home screen
-						}}
-					/>
-					{/* We need to supply the information received into this component, so it will show on the next screen*/}
-					<LongButton
-						icon="whiteRepair"
-						textColor="white"
-						backgroundColor="primary_teal"
 						title="START REPAIR"
 						onPress={async () => {
+							await addNewRepair(userData);
 							navigation.navigate('StartRepairScreen', { data: userData });
 						}}
 					/>
+					<LongButton
+						icon="saveWhite"
+						textColor="white"
+						backgroundColor="primary_teal"
+						title="SAVE"
+						onPress={async () => {
+						navigation.navigate('StartRepairScreen', { data: userData });
+						}}
+					/>
 				</View>
+				<View style={styles.navButtons}>
+          <BackButton onPress={() =>  navigation.navigate('CustomerFormScreen')} buttonStyle={"outlined"}/>
+        </View>
 			</View>
 		</>
 	);
@@ -106,24 +106,32 @@ const CustomerFormSummaryScreen = ({ navigation, route }) => {
 	const styles = StyleSheet.create({
 		container: {
 			flex: 1,
-			justifyContent: 'center',
 			alignItems: 'center'
 		},
 		summaryContainer: {
-			backgroundColor: '#F3F8E9',
+			backgroundColor: '#B7D38135',
 			flexDirection: 'row',
 			paddingBottom: 30,
-			paddingTop: 16
+			paddingTop: 16,
 		},
 		inputFields: {
 			flexDirection: 'column',
-			width: '50%',
+			width: '45%',
+			marginLeft: 10
 		},
 		buttonContainer: {
-			backgroundColor: '#F3F8E9',
-			height: '100%',
+			backgroundColor: '#B7D38135',
 			alignItems: 'center',
-			marginTop: 16
+			height: '50%'
+		},
+		navButtons: {
+			flexDirection: 'row',
+			justifyContent: 'flex-start',
+			alignContent: 'center',
+			width: '90%',
+			position: 'absolute',
+			bottom: 90,
+			marginLeft: '5%',
 		}
 	});
 

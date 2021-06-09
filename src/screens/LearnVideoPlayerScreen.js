@@ -33,12 +33,11 @@ const LearnVideoPlayerScreen = ({navigation, route}) => {
     });
     let partImage;
 
-
     return (
         <>
             <NavigationBar icon={true} title="CHANGE PART" navigation={navigation}/>
             <View style={styles.container}>
-                <View style={styles.videoContainer}>
+                <View>
                     <Video
                         ref={video}
                         style={styles.videoStyle}
@@ -56,21 +55,21 @@ const LearnVideoPlayerScreen = ({navigation, route}) => {
                     <View style={styles.bottomLeftContainer}>
                         <Text style={styles.titleTop}>HOW TO CHANGE</Text>
                         <Text style={styles.titleMain}>{parts.name}</Text>
-                        <Text style={styles.videoDescription}>In this video you will be able to learn{"\n"}and
-                            understand how to
-                            change the{"\n"}{parts.name} on your
-                            Sunbell Smart lamp. {"\n"}We will cover the whole process from start to finish.
+                        <Text style={styles.videoDescription}>In this video you will be able to learn and
+                            understand how to change the {parts.name} on your
+                            Sunbell Smart lamp. We will cover the whole process from start to finish.
                         </Text>
                     </View>
                     <View style={styles.bottomRightContainer}>
-                        <Image style={styles.sparePartImage}
-                               source={partImage}/>
+                        <View style={styles.sparePartImageContainer}>
+                            <Image style={styles.sparePartImage}
+                                source={partImage}/>
+                        </View>
                     </View>
                 </View>
             </View>
-            <View style={styles.buttonContainer}>
-                <BackButton differentButton={true} onPress={() => navigation.navigate('LearnSelectLampScreen')}/>
-
+            <View style={styles.navigateButtons}>
+                <BackButton onPress={() => navigation.navigate('LampVideosScreen')} buttonStyle="outlined"/>
             </View>
         </>
     );
@@ -79,7 +78,7 @@ const LearnVideoPlayerScreen = ({navigation, route}) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#ecf0f1',
+        backgroundColor: '#F3F8E9',
         alignItems: 'center',
     },
     videoStyle: {
@@ -88,44 +87,68 @@ const styles = StyleSheet.create({
         height: 432,
     },
     bottomContainer: {
-        borderColor: '#C3DC9335',
-        borderRadius: 30,
+        borderColor: 'rgba(195, 220, 147, 0.35)',
+        borderRadius: 24,
         borderWidth: 3,
-        padding: 20,
+        paddingHorizontal: 40,
+        paddingVertical: 20,
         flexDirection: 'row',
         width: '90%',
         marginTop: 20
     },
     bottomLeftContainer: {
-        flex: 1,
+        flex: 1.25,
     },
     bottomRightContainer: {
-        flex: 1,
+        flex: 0.75,
         justifyContent: 'center',
         alignItems: 'center'
     },
     titleTop: {
-        fontSize: 24,
-        color: '#174A5B'
+        fontSize: 20,
+        color: '#174A5B',
+        fontFamily: 'Arial'
     },
     titleMain: {
-        fontSize: 60,
-        fontWeight: 'bold',
+        fontSize: 48,
         color: '#174A5B',
+        fontFamily: 'ArialBold',
+        lineHeight: 64
     },
     videoDescription: {
-        fontSize: 20
+        fontSize: 19,
+        lineHeight: 28
+    },
+    sparePartImageContainer: {
+        height: 200,
+        width: 200,
+        borderRadius: 200/2,
+        borderWidth: 2,
+        borderColor: 'rgba(195, 220, 147, 0.35)',
+        alignItems: 'center',
+        justifyContent: 'center',
+        overflow: 'hidden',
+        backgroundColor: '#fff'
     },
     sparePartImage: {
-        height: 150,
-        width: 200,
-        borderRadius: 100,
-        borderColor: '#C3DC9335',
+        transform: [{ scale: 0.7 }],
     },
     buttonContainer: {
         marginLeft: 10,
         marginBottom: 10
-    }
+    },
+        navigateButtons: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'space-between',
+		width: '100%',
+        paddingHorizontal: '5%',
+        paddingTop: 0,
+        paddingBottom: 20,
+		position: 'absolute',
+		bottom: 0,
+        backgroundColor: 'rgba(243, 248, 233, 0.9)'
+	},
 });
 
 

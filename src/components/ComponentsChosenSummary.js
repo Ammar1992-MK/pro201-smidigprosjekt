@@ -3,48 +3,54 @@ import React from "react";
 import {get_spare_part_by_id} from "../utils/fakeDb";
 
 const ComponentsChosenSummary = ({selectedComponentsId}) => {
+
     //Selected componentsId is either an array of component IDs, or the string 'discard'
     let parts_images;
     if(!selectedComponentsId){
+
         //If something went wrong, part_images will get text instead of an image.
-        parts_images = <Text>Fikk ingenting av forrige skjerm</Text>
-    }
-    else if(selectedComponentsId === "DISCARD"){
-        parts_images = <Image source={require('../../assets/icons/trash_red_bg.png')}/>
-    }else {
+        parts_images = <Text>Error</Text>
+
+    } else if (selectedComponentsId === "DISCARD"){
+
+       parts_images = 
+            <View style={styles.discardImageContainer}>
+                <Image style={styles.discardImage} source={require('../../assets/icons/trash_red_bg.png')} />
+            </View>
+    } else {
+
         parts_images = selectedComponentsId.map((compId, index) => {
             let component = get_spare_part_by_id(compId)
             const {image} = component
             if(!image){
-                throw new Error("No pic no screen homie")
+                throw new Error("Error")
             }
-            return <View key={index} style={style.lampImageContainer}>
-                <Image source={image} style={style.selectedLampImage} />
-                <Image source={require('../../assets/icons/wrench_grren_bg.png')} style={style.repairIcon} />
+            return <View key={index} style={styles.componentImageContainer}>
+                    <Image source={image} style={styles.selectedLampImage} />
+                    <Image source={require('../../assets/icons/wrench_grren_bg.png')} style={styles.repairIcon} />
                 </View>
         })
     }
 
     return (
-        <View style={style.container}>
-                <View style={style.indexContainer}>
-                    <Text style={style.indexText}>2</Text>
-                </View>
-                    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} contentContainerStyle={style.componentsContainer}>
-                        {parts_images}
-                    </ScrollView>
-                {/* </View> */}
+
+        <View style={styles.container}>
+            <View style={styles.indexContainer}>
+                <Text style={styles.indexText}>2</Text>
+            </View>
+            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} contentContainerStyle={styles.componentsContainer}>
+                {parts_images}
+            </ScrollView>
         </View>
     )
 }
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         alignItems: 'center',
-        width: '90%',
+        width: '82%',
         height: 160,
-        marginLeft: 40,
         marginTop: 12,
         borderColor: 'rgba(195, 220, 147, 0.35)',
         borderWidth: 4,
@@ -61,7 +67,6 @@ const style = StyleSheet.create({
         borderRadius: 40 / 2,
         marginLeft: 30
     },
-
     indexText: {
         color: '#174A5B',
         fontSize: 28,
@@ -74,10 +79,8 @@ const style = StyleSheet.create({
         alignItems: 'center',
         marginLeft: 40
     },
-    lampImageContainer: {
+    componentImageContainer: {
         width: '23%',
-        height: '100%',
-        display : 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#fff',
@@ -97,7 +100,13 @@ const style = StyleSheet.create({
         position: 'absolute',
         bottom: 3,
         right: 3
-    }
+    },
+    discardImageContainer: {
+        width: '23%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginLeft: 12,
+    },
 })
 
 export default ComponentsChosenSummary

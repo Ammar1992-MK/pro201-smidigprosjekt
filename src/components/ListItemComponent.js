@@ -36,92 +36,71 @@ const ListItemComponent = ({data,icon,navigation}) => {
         }
     }
 
-
     useEffect(() => {
         renderDateIcon();
         renderImage();
     },[])
+
     return (
-           <TouchableOpacity onPress={ () => handleNavigation()}>
-               <View style={Styles.container}>
-                   <View style={Styles.lampContainer}>
-                       <Image style={Styles.lamp} source={lampImage}/>
-                       <Text style={Styles.lampName}>{data.lamp}</Text>
-                   </View>
-                   <View style={Styles.serialNumberContainer}>
-                       <Text style={Styles.serialNo}>{data.serialNumber}</Text>
-                   </View>
-                   <View style={Styles.repairDate}>
-                       <Image style={Styles.dateIcon} source={dateIcon}/>
-                       <Text style={Styles.dateText}>{data.date}</Text>
-                   </View>
-                   <View></View>
-               </View>
-           </TouchableOpacity>
+        <TouchableOpacity onPress={ () => handleNavigation()}>
+            <View style={styles.container}>
+                <Image style={styles.lamp} source={lampImage}/>
+                <Text style={styles.lampName}>{data.lamp}</Text>
+                <Text style={styles.serialNo}>{data.serialNumber}</Text>
+                <View style={styles.repairDate}>
+                    <Image style={styles.dateIcon} source={dateIcon}/>
+                    <Text style={styles.dateText}>{data.date}</Text>
+                </View>
+            </View>
+        </TouchableOpacity>
+
         )
 }
 
 export default ListItemComponent;
 
-const Styles = StyleSheet.create({
+const styles = StyleSheet.create({
     container: {
-        width: "96%",
-        display : 'flex',
         flexDirection : 'row',
-        borderRadius: 5,
-        justifyContent: "space-between",
+        borderRadius: 12,
         alignItems: 'center',
+        justifyContent: 'space-around',
         backgroundColor : '#fff',
-        marginTop : 10,
-    },
-    lampContainer:{
-        width : '30%',
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
+        marginTop : 4,
+        height:  110,
+        marginHorizontal: '1%',
+        borderColor: 'rgba(23, 74, 91, 0.1)',
+        borderWidth: 3,
     },
     lamp:{
-        width : '60%',
+        transform: [{ scale: 0.45 }],
+        width: '20%'
     },
     lampName : {
-      marginTop: 45,
-        marginLeft : 45,
         fontFamily : 'Arial',
-        fontSize : 20,
+        fontSize : 22,
         color : '#2C2A29',
-    },
-    serialNumberContainer:{
-        width : '35%',
-        display : 'flex',
-        flexDirection :'row',
-        alignItems :'center',
-        justifyContent :'center',
-        marginTop : 45,
-        marginLeft : 40,
+        width: '25%'
     },
     serialNo:{
         fontFamily : 'Arial',
-        fontSize : 20,
+        fontSize : 22,
         color : '#2C2A29',
-        marginLeft : 30,
+        width: '25%'
     },
     repairDate : {
-        width : '33%',
-        display : 'flex',
         flexDirection : 'row',
         alignItems :'center',
         justifyContent : 'center',
-        marginRight : 40,
-        marginTop : 45,
+        width: '25%'
     },
     dateIcon:{
-        width : '15%',
         marginRight : 15,
+        transform: [{ scale: 0.9 }],
     },
     dateText:{
         fontFamily : 'Arial',
-        fontSize : 20,
+        fontSize : 22,
         color : '#2C2A29',
     }
 });

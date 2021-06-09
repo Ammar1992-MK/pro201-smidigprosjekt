@@ -15,71 +15,67 @@ const LearnSelectLampScreen = ({navigation, route}) => {
 
     return (
         <>
-            <NavigationBar icon={true} title="LEARN" navigation={navigation}/>
-            <View style={LearnSelectScreenStyles.container}>
-            <View style={LearnSelectScreenStyles.boxContainer}>
-                <View style={LearnSelectScreenStyles.rows}>
+            <NavigationBar icon={true} title="REPAIR GUIDE" navigation={navigation}/>
+            <View style={styles.container}>
+            <View style={styles.boxContainer}>
+                <View style={styles.rows}>
                     <TouchableOpacity
-                        style={LearnSelectScreenStyles.lampContainer}
+                        style={styles.lampContainer}
                         onPress={() => {
                             navigation.navigate('LampVideosScreen', {lamp: "SunBell Smart"});
                         }}>
-                        <Text style={LearnSelectScreenStyles.text}>SUNBELL</Text>
+                        <Text style={styles.text}>SUNBELL</Text>
                         <Image
-                            style={LearnSelectScreenStyles.image}
+                            style={styles.image}
                             source={require("../../assets/product-images/sunbell1.png")}
                         />
                     </TouchableOpacity>
                     <TouchableOpacity
-                        style={LearnSelectScreenStyles.lampContainer}
+                        style={styles.lampContainer}
                         onPress={() => navigation.navigate('LampVideosScreen', {lamp: "SunTurtle"})}>
-                        <Text style={LearnSelectScreenStyles.text}>SUNTURTLE</Text>
+                        <Text style={styles.text}>SUNTURTLE</Text>
                         <Image
-                            style={LearnSelectScreenStyles.image}
+                            style={styles.image}
                             source={require("../../assets/product-images/sunturtle2.png")}
                         />
                     </TouchableOpacity>
                 </View>
-                <View style={LearnSelectScreenStyles.rows}>
+                <View style={styles.rows}>
                     <TouchableOpacity
-                        style={LearnSelectScreenStyles.lampContainer}
+                        style={styles.lampContainer}
                         onPress={() => navigation.navigate('LampVideosScreen', {lamp: "Move Smart"})}>
-                        <Text style={LearnSelectScreenStyles.text}>MOVE SMART</Text>
+                        <Text style={styles.text}>MOVE SMART</Text>
                         <Image
-                            style={LearnSelectScreenStyles.image}
+                            style={styles.image}
                             source={require("../../assets/product-images/movesmart3.png")}
                         />
                     </TouchableOpacity>
                     <TouchableOpacity
-                        style={LearnSelectScreenStyles.lampContainer}
+                        style={styles.lampContainer}
                         onPress={() => navigation.navigate('LampVideosScreen', {lamp: "Start+"})}>
-                        <Text style={LearnSelectScreenStyles.text}>START+</Text>
+                        <Text style={styles.text}>START+</Text>
                         <Image
-                            style={LearnSelectScreenStyles.image}
+                            style={styles.image}
                             source={require("../../assets/product-images/start4.png")}
                         />
                     </TouchableOpacity>
                 </View>
             </View>
-                <View style={LearnSelectScreenStyles.backButton}>
-                    <BackButton onPress={() => navigation.navigate('LearnHomeScreen')}/>
+                <View style={styles.backButton}>
+                    <BackButton onPress={() => navigation.navigate('LearnHomeScreen')} buttonStyle="outlined"/>
                 </View>
             </View>
             </>
     )};
 
 
-const LearnSelectScreenStyles = StyleSheet.create({
+const styles = StyleSheet.create({
 	container: {
 		backgroundColor: '#F3F8E9',
-
 		flex: 1,
-		fontFamily: 'ArialBold',
+		paddingTop: 20
 	},
 	boxContainer: {
-		backgroundColor: '#F3F8E9',
-
-		flexDirection: 'column',
 		alignItems: 'center',
 		paddingTop: '3%',
 	},
@@ -92,7 +88,7 @@ const LearnSelectScreenStyles = StyleSheet.create({
 		alignItems: 'center',
 		borderWidth: 1,
 		borderColor: '#fff',
-		borderRadius: 15,
+		borderRadius: 12,
 		width: '35%',
 		height: '83%',
 		shadowColor: '#000',
@@ -107,13 +103,13 @@ const LearnSelectScreenStyles = StyleSheet.create({
 		backgroundColor: '#174A5B',
 		color: '#fff',
 		fontSize: 25,
-		textAlignVertical: 'bottom',
 		textAlign: 'center',
 		height: '17%',
-		paddingHorizontal: 20,
-		borderTopLeftRadius: 15,
-		borderTopRightRadius: 15,
+    paddingVertical: 4,
+		borderTopLeftRadius: 12,
+		borderTopRightRadius: 12,
 		alignSelf: 'stretch',
+		fontFamily: 'ArialBold'
 	},
 	image: {
 		justifyContent: 'center',
@@ -125,8 +121,8 @@ const LearnSelectScreenStyles = StyleSheet.create({
 	backButton: {
 		justifyContent: 'flex-start',
 		alignContent: 'center',
-		marginLeft: 20,
-		bottom: '5%',
+		marginLeft: 40,
+		bottom: -10
 	},
 });
 

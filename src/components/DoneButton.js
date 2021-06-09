@@ -46,7 +46,6 @@ const DoneButtonStyles = StyleSheet.create({
     justifyContent: "center",
     alignItems: 'flex-end',
     backgroundColor: "#174A5B",
-    marginLeft: "auto",
     marginTop: 24
   },
   innerContainer: {

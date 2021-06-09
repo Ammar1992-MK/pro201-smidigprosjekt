@@ -8,35 +8,47 @@ import {
   Image,
 } from "react-native";
 
-export const BackButton = ({ onPress, differentButton }) => {
-  if(differentButton){
+export const BackButton = ({ onPress, buttonStyle }) => {
+  if(buttonStyle  === "disabled"){
     return(
-        <TouchableOpacity style={BackButtonSecondStyles.container} onPress={onPress}>
-          <View style={BackButtonSecondStyles.innerContainer}>
+        <TouchableOpacity style={stylesDisabled.container} onPress={onPress}>
+          <View style={stylesDisabled.innerContainer}>
             <Image
-                style={BackButtonSecondStyles.image}
+                style={stylesDisabled.image}
                 source={require("../../assets/icons/arrow_backward_blue.png")}
             />
-            <Text style={BackButtonSecondStyles.title}>BACK</Text>
+            <Text style={stylesDisabled.title}>BACK</Text>
           </View>
         </TouchableOpacity>
     )
-  } else {
+  } else if(buttonStyle === "outlined"){
     return (
-        <TouchableOpacity style={BackButtonStyles.container} onPress={onPress}>
-          <View style={BackButtonStyles.innerContainer}>
+        <TouchableOpacity style={stylesOutlined.container} onPress={onPress}>
+          <View style={stylesOutlined.innerContainer}>
             <Image
-                style={BackButtonStyles.image}
-                source={require("../../assets/icons/arrow_back.png")}
+                style={stylesOutlined.image}
+                source={require("../../assets/icons/arrow_backward_blue.png")}
             />
-            <Text style={BackButtonStyles.title}>BACK</Text>
+            <Text style={stylesOutlined.title}>BACK</Text>
           </View>
         </TouchableOpacity>
     );
+  } else {
+    return (
+        <TouchableOpacity style={styles.container} onPress={onPress}>
+          <View style={styles.innerContainer}>
+            <Image
+                style={styles.image}
+                source={require("../../assets/icons/arrow_back.png")}
+            />
+            <Text style={styles.title}>BACK</Text>
+          </View>
+        </TouchableOpacity>
+    )
   }
 };
 
-const BackButtonStyles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     width: "33%",
     height: 90,
@@ -44,7 +56,6 @@ const BackButtonStyles = StyleSheet.create({
     justifyContent: "center",
     alignItems: 'flex-start',
     backgroundColor: "#174A5B",
-    marginRight: "auto",
     marginTop: 24
   },
   innerContainer: {
@@ -65,7 +76,8 @@ const BackButtonStyles = StyleSheet.create({
     height: 56,
   },
 });
-const BackButtonSecondStyles = StyleSheet.create({
+
+const stylesDisabled = StyleSheet.create({
   container: {
     width: "33%",
     height: 90,
@@ -93,5 +105,36 @@ const BackButtonSecondStyles = StyleSheet.create({
   image: {
     width: 56,
     height: 56,
+  }
+})
+
+const stylesOutlined = StyleSheet.create({
+  container: {
+    width: "33%",
+    height: 90,
+    borderRadius: 14,
+    borderWidth: 4,
+    borderColor: '#174A5B',
+    justifyContent: "center",
+    alignItems: 'flex-start',
+    marginRight: "auto",
+    marginTop: 24
   },
+  innerContainer: {
+    width: "70%",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    marginLeft: 8
+  },
+  title: {
+    color: "#174A5B",
+    fontSize: 28,
+    fontFamily: 'ArialBold',
+    letterSpacing: 0.5
+  },
+  image: {
+    width: 56,
+    height: 56,
+  }
 })

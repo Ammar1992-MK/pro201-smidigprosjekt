@@ -8,18 +8,22 @@ export const spareParts = [
     {
         id: 1,
         image: require('../../assets/product-images/battery.png'),
+        name: "Battery"
     },
     {
         id: 2,
-        image: require('../../assets/product-images/circuit_card.png')
+        image: require('../../assets/product-images/circuit_card.png'),
+        name: "Circuit Card"
     },
     {
         id: 3,
-        image: require('../../assets/product-images/cogs.png')
+        image: require('../../assets/product-images/cogs.png'),
+        name: "Cogs"
     },
     {
         id: 4,
-        image: require('../../assets/product-images/light_bulb.png')
+        image: require('../../assets/product-images/light_bulb.png'),
+        name: "Light Bulb"
     }
 ]
 

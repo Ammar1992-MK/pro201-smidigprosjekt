@@ -28,10 +28,10 @@ const CardSmall = ({ lampName, image }) => {
 
 
   return (
-    <View style={CardSmallStyles.container}>
-      <Text style={CardSmallStyles.text}>{lampName || "LAMP NAME"}</Text>
+    <View style={styles.container}>
+      <Text style={styles.text}>{lampName || "LAMP NAME"}</Text>
       <Image
-        style={CardSmallStyles.image}
+        style={styles.image}
         source={lamp}
       />
       {/* We need to dynamically change the pictures here? */}
@@ -39,7 +39,7 @@ const CardSmall = ({ lampName, image }) => {
   );
 };
 
-const CardSmallStyles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     backgroundColor: "#fff",
     alignItems: "center",
@@ -58,8 +58,8 @@ const CardSmallStyles = StyleSheet.create({
     fontSize: 25,
     textAlign: "center",
     paddingVertical: 4,
-    borderTopLeftRadius: 6,
-    borderTopRightRadius: 6,
+    borderTopLeftRadius: 12,
+    borderTopRightRadius: 12,
     alignSelf: "stretch",
     textTransform: 'uppercase',
     fontFamily: 'ArialBold'

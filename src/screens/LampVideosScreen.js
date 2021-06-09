@@ -3,6 +3,7 @@ import {View, StyleSheet, TouchableOpacity, ScrollView, Text, Image} from "react
 
 import {NavigationBar} from "../components/NavigationBar/NavigationBar";
 import {lampsIcon} from "../utils/fakeDb";
+import {BackButton} from "../components/BackButton";
 
 const LampVideosScreen = ({navigation, route}) => {
     const [clickedLamp, setClickedLamp] = useState({});
@@ -20,200 +21,192 @@ const LampVideosScreen = ({navigation, route}) => {
     });
     let lampImage;
 
-
     return (
         <>
-            <NavigationBar icon={true} title="CHANGE PART" navigation={navigation}/>
-            <View style={LampVideosScreenStyles.alphaContainer}>
-                <View style={LampVideosScreenStyles.container}>
-                    <View style={LampVideosScreenStyles.VideoLampCard}>
-                        <Text style={LampVideosScreenStyles.header}>HOW TO REPAIR</Text>
-                        <Text style={LampVideosScreenStyles.lampName}>{clickedLamp.lamp}</Text>
+        <NavigationBar icon={true} title="CHANGE PART" navigation={navigation}/>
+        <View style={styles.container}>
+            <ScrollView>
+                <View style={styles.lampContainer}>
+                    <View style={styles.lampTextContainer}>
+                        <Text style={styles.header}>HOW TO REPAIR</Text>
+                        <Text style={styles.lampName}>{clickedLamp.lamp}</Text>
                     </View>
-                    <View style={LampVideosScreenStyles.lampImage}>
-                        <Image style={LampVideosScreenStyles.lampIcon} source={lampImage} />
+                    <View style={styles.lampImage}>
+                        <Image style={styles.lampIcon} source={lampImage} />
                     </View>
                 </View>
-                <ScrollView>
                     <TouchableOpacity
-                        style={LampVideosScreenStyles.videoContainer}
+                        style={styles.videoContainer}
                         onPress={() => navigation.navigate('LearnVideoPlayerScreen', {name: "Circuit Card", id: 2})}
                     >
-                        <Text style={LampVideosScreenStyles.text}>CIRCUIT CARD</Text>
-                        <View style={LampVideosScreenStyles.cardRow}>
+                        <Text style={styles.text}>CIRCUIT CARD</Text>
+                        <View style={styles.cardRow}>
                         <Image
-                            style={LampVideosScreenStyles.partImage}
+                            style={styles.partImage}
                             source={require("../../assets/product-images/circuit_card.png")}
                         />
                             <Image
-                                style={LampVideosScreenStyles.videoImage}
+                                style={styles.videoImage}
                                 source={require("../../assets/video-images/circuit_card-movie.png")}
                             />
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity
-                        style={LampVideosScreenStyles.videoContainer}
+                        style={styles.videoContainer}
                         onPress={() => navigation.navigate('LearnVideoPlayerScreen', {name: "Battery", id: 1 })}>
-                        <Text style={LampVideosScreenStyles.text}>BATTERY</Text>
-                        <View style={LampVideosScreenStyles.cardRow}>
+                        <Text style={styles.text}>BATTERY</Text>
+                        <View style={styles.cardRow}>
                             <Image
-                                style={LampVideosScreenStyles.partImage}
+                                style={styles.partImage}
                                 source={require("../../assets/product-images/battery.png")}
                             />
                             <Image
-                                style={LampVideosScreenStyles.videoImage}
+                                style={styles.videoImage}
                                 source={require("../../assets/video-images/circuit_card-movie.png")}
                             />
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity
-                        style={LampVideosScreenStyles.videoContainer}
+                        style={styles.videoContainer}
                         onPress={() => navigation.navigate('LearnVideoPlayerScreen', {name: "Light", id: 4 })}>
-                        <Text style={LampVideosScreenStyles.text}>LIGHT</Text>
-                        <View style={LampVideosScreenStyles.cardRow}>
+                        <Text style={styles.text}>LIGHT BULB</Text>
+                        <View style={styles.cardRow}>
                             <Image
-                                style={LampVideosScreenStyles.partImage}
+                                style={styles.partImage}
                                 source={require("../../assets/product-images/light_bulb.png")}
                             />
                             <Image
-                                style={LampVideosScreenStyles.videoImage}
+                                style={styles.videoImage}
                                 source={require("../../assets/video-images/circuit_card-movie.png")}
                             />
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity
-                        style={LampVideosScreenStyles.videoContainer}
+                        style={[styles.videoContainer, styles.lastContainer]}
                         onPress={() => navigation.navigate('LearnVideoPlayerScreen', {name: "Motor", id: 3})}>
-                        <Text style={LampVideosScreenStyles.text}>MOTOR</Text>
-                        <View style={LampVideosScreenStyles.cardRow}>
+                        <Text style={styles.text}>COGS</Text>
+                        <View style={styles.cardRow}>
                             <Image
-                                style={LampVideosScreenStyles.partImage}
+                                style={styles.partImage}
                                 source={require("../../assets/product-images/cogs.png")}
                             />
                             <Image
-                                style={LampVideosScreenStyles.videoImage}
+                                style={styles.videoImage}
                                 source={require("../../assets/video-images/circuit_card-movie.png")}
                             />
                         </View>
                     </TouchableOpacity>
                 </ScrollView>
+            <View style={styles.navigateButtons}>
+                <BackButton onPress={() => navigation.navigate('LearnSelectLampScreen')} buttonStyle="outlined"/>
             </View>
-
+        </View>
         </>
     );
 }
 
-const LampVideosScreenStyles = StyleSheet.create({
-    alphaContainer: {
+const styles = StyleSheet.create({
+    container: {
         backgroundColor: '#F3F8E9',
         flex: 1,
         fontFamily: 'ArialBold',
     },
-    container: {
+    lampContainer: {
         flexDirection: "row",
-        borderWidth: 3,
-        borderColor: "#C3DC93",
-        margin: 30,
-        height: "15%",
-        borderRadius: 10,
-        justifyContent: "space-evenly",
-        alignContent: "center"
+        borderWidth: 4,
+        borderColor: 'rgba(195, 220, 147, 0.35)',
+        margin: 38,
+        padding: 12,
+        borderRadius: 18,
+        justifyContent: "space-between",
+        alignItems: 'center'
     },
-    VideoLampCard: {
+    lampTextContainer: {
         marginLeft: 30,
-        flex: 1,
+        fontFamily: 'Arial'
     },
     header: {
         color: "#174A5B",
         fontSize: 20,
         marginTop: 10,
-        fontWeight: "normal"
+        fontFamily: 'ArialBold'
     },
     lampName: {
         fontFamily: 'ArialBold',
-        fontWeight: "bold",
         color: "#174A5B",
         fontSize: 50,
-
-    },
-    Image: {
-        borderRadius: 1000,
-        transform: [{ scale: 0.55 }],
-        backgroundColor: "#ffffff",
-        width: "27%",
-        height: "150%",
-        justifyContent: "center",
-        alignContent: "center",
-        bottom: "4%"
-    },
-    Images: {
-        flex: 1,
-        resizeMode: "contain",
+        lineHeight: 64
     },
     lampImage: {
-        transform: [{ scale: 0.51 }],
-        backgroundColor: "#FFFFFF",
-        borderRadius: 100,
-        height: 210,
-        width: 210,
-        borderWidth: 3,
-        borderColor: "#C3DC93",
+        backgroundColor: "#fff",
+        borderRadius: 130/2,
+        height: 130,
+        width: 130,
+        borderWidth: 2,
+        borderColor: 'rgba(195, 220, 147, 0.35)',
         justifyContent: "center",
-        alignContent: "center",
-        bottom: "6%",
-        left: "10%"
+        alignItems: 'center',
+        marginRight: 30,
     },
     lampIcon: {
-        transform: [{ scale: 0.95 }],
-        right: "15%",
+        transform: [{ scale: 0.55 }],
     },
     videoContainer: {
         backgroundColor: '#fff',
-        alignItems: 'center',
-        borderWidth: 1,
         borderColor: '#fff',
         borderRadius: 15,
         width: '90%',
-        height: 250,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.8,
-        shadowRadius: 2,
-        elevation: 10,
+        height: 290,
+        elevation: 9,
         marginLeft: 40,
         marginRight: 40,
-        marginBottom: 10,
+        marginBottom: 20,
     },
     text: {
-        backgroundColor: '#174A5B',
-        color: '#fff',
+        backgroundColor: "#174A5B",
+        color: "#fff",
         fontSize: 25,
-        textAlignVertical: 'bottom',
-        textAlign: 'center',
-        height: '17%',
-        paddingHorizontal: 20,
+        paddingVertical: 6,
         borderTopLeftRadius: 15,
+        paddingLeft: 20,
         borderTopRightRadius: 15,
-        alignSelf: 'stretch',
+        textTransform: 'uppercase',
+        fontFamily: 'ArialBold',
     },
     partImage: {
         justifyContent: 'center',
         alignItems: 'center',
         resizeMode: 'cover',
-        marginTop: 20,
-        marginBottom: 10,
         flex: 0.75,
-        height: 175,
+        transform: [{ scale: 0.8 }],
     },
     videoImage: {
         flex: 1,
-        borderRadius: 20,
-        height: "85%",
-        margin: 20,
+        borderRadius: 18,
+        transform: [{ scale: 0.85 }],
+        height: "95%",
+        marginBottom: 10,
     },
     cardRow: {
         flexDirection: "row",
         alignContent: "center"
+    },
+    navigateButtons: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'space-between',
+		width: '100%',
+		marginLeft: 40,
+		marginRight: 40,
+        paddingHorizontal: '5%',
+        paddingTop: 0,
+        paddingBottom: 20,
+		position: 'absolute',
+		bottom: 0,
+        backgroundColor: 'rgba(243, 248, 233, 0.9)'
+	},
+    lastContainer: {
+        marginBottom: 200
     }
 });
 
