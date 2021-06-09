@@ -1,7 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import {View,Text,TextInput,StyleSheet,Image,TouchableOpacity} from "react-native";
-
-
+//Components
 import {NavigationBar} from "../components/NavigationBar/NavigationBar";
 import ScrollViewSearchList from "../components/ScrollViewSearchList";
 import {getData} from "../utils/helpers";
@@ -11,7 +10,6 @@ const SearchRepairScreen = ({navigation}) => {
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedToggle, setSelectedToggle] = useState("ready");
 
-    console.log("Data", data)
     const readyData = data.filter((el) => {
         //Filterer ut alle som ikke stemmer med søket eller har status som tilsvarer toggle (nå Ready eller finished).
         let search_status_input;
@@ -50,17 +48,6 @@ const SearchRepairScreen = ({navigation}) => {
                         <Image style={Styles.searchIcon} source={require('../../assets/icons/search.png')}/>
                     </View>
                 </View>
-                {
-                    /*
-                    Tenker det er bedre at det bare automatisk refresher når man skriver inn noe nytt?
-                    <View style={Styles.buttonsContainer}>
-                        <TouchableOpacity style={[Styles.searchButton, {backgroundColor: 'lightgrey'}]} disabled={true}>
-                            <Text style={Styles.searchText}>SEARCH</Text>
-                        </TouchableOpacity>
-                    </View>
-                     */
-                }
-
                 <View style={Styles.fetchButtonsContainer}>
                     <TouchableOpacity style={[Styles.readyButton, selectedToggle === "ready" ? {backgroundColor: '#174A5B'} : {backgroundColor: '#fff'}]} onPress={() => setSelectedToggle('ready')} >
                         <Text style={[Styles.readyText, selectedToggle === "ready" ? {color: '#fff'} : {color: '#174A5B'}]}>READY</Text>
