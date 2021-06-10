@@ -50,9 +50,6 @@ const HomeScreen = ({ navigation }) => {
 				title={'REPAIR GUIDE'}
 				onPress={() => navigation.navigate('LearnHomeScreen')}
 			/>
-			{/*
-            <Button title="Empty Database" onPress={async () => await emptyDb()}/>
-            */}
 		</View>
 	);
 };

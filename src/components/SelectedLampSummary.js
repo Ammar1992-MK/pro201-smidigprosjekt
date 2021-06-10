@@ -10,11 +10,11 @@ const SelectedLampSummary = ({lamp,data}) => {
                     <Text style={styles.indexText}>1</Text>
                 </View>
                 <View style={styles.lampImageContainer}>
-                    {lamp && <Image style={styles.selectedLampImage} source={lamp}/>}
+                     <Image style={styles.selectedLampImage} source={lamp}/>
                 </View>
                 <View style={styles.selectedLampInfoContainer}>
                     <View>
-                        <Text style={styles.selectedLampName}>{data.lampName ? data.lampName : 'No lamp chosen'}</Text>
+                        <Text style={styles.selectedLampName}>{data.lamp ? data.lamp : 'No lamp chosen'}</Text>
                     </View>
                         <View>
                         <Text style={styles.selectedLampSerialNo}>SNR</Text>

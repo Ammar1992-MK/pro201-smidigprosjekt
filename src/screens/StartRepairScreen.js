@@ -22,6 +22,7 @@ const StartRepairScreen = ({ navigation, route}) => {
   useEffect(() => {
     setUserData(data);
     handleSelectedLamp();
+    console.log(userData)
   }, [])
 
   return (

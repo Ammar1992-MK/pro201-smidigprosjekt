@@ -66,6 +66,7 @@ const StartRepairSummaryScreen = ({ navigation, route }) => {
 		});
 		setUserData(data);
 		getParts();
+		console.log(userData)
 	}, []);
 
 	return (

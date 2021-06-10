@@ -104,7 +104,7 @@ const SelectPartsScreen = ({navigation, route}) => {
         <NextButton
           onPress={() =>
             navigation.navigate("StartRepairSummaryScreen", {
-              data: { ...userData, selectedPartId },
+              data: { ...userData, selectedPartId,selectedLamp },
             })
           }
         />
