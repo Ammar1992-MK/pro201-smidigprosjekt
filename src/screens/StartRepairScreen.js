@@ -57,7 +57,7 @@ const StartRepairScreen = ({ navigation, route}) => {
           serialNumber : userData.serialNumber,
           userData
         })}/>
-        <LongButton  title={"CAN NOT REPAIR"}  icon={"canNotRepair"} textColor={"white"} backgroundColor={"red"} onPress={ () => navigation.navigate("StartRepairSummaryScreen", {data: {...userData, selectedPartId: "DISCARD"}})}/>
+        <LongButton  title={"CAN NOT REPAIR"}  icon={"canNotRepair"} textColor={"white"} backgroundColor={"red"} onPress={ () => navigation.navigate("StartRepairSummaryScreen", {data: {...userData, selectedPartId: "DISCARD", selectedLamp}})}/>
         <LongButton  title={"TROUBLESHOOT GUIDE"} icon={"learn"} textColor={"white"} backgroundColor={"primary_teal"} onPress={() => navigation.navigate("TroubleshootScreen")}/>
     </View>
   );
