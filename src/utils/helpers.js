@@ -65,10 +65,8 @@ export const getData = async () => {
 
 export const emptyDb = async () => {
     //Removes repairs that are marked DONE
-    console.log("Starter sletting")
     const repairsNow = await getData();
     const only_done = repairsNow.filter((el)=>{return el.status !== "DONE"})
-    console.log("only done", only_done)
     await AsyncStorage.setItem('repair', JSON.stringify(only_done))
 }
 
