@@ -65,7 +65,7 @@ const UploadScreen = ({navigation}) => {
                         <View style={styles.dateContainer}>
                             <Text style={styles.dateText}>Last Upload: </Text>
                             <Image source={calenderIcon} style={styles.dateIcon}/>
-                            <Text style={styles.dateText}>Tue 12.05.21</Text>
+                            <Text style={styles.dateText}>{new Date().toLocaleDateString()}</Text>
                         </View>
                     </View>
                 </View>
