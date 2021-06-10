@@ -31,7 +31,14 @@ const UploadScreen = ({navigation}) => {
         NetInfo.addEventListener(networkState => {
             //If the device has internet, we set the networkStatus to true. If not, it will be false.
             setNetworkStatus(networkState.isWifiEnabled);
-            getData().then(data => setData(data)); //set the local data from AsyncStorage to our state
+            getData().then(data => {
+                console.log("All data", data)
+                const only_done = data.filter(el => {
+                    return el.status === "DONE"
+                })
+                console.log("Only done", only_done)
+                setData(only_done)
+            }); //set the local data from AsyncStorage to our state
         })
     }, []);
 

@@ -18,13 +18,10 @@ export const addNewRepair = async (valueObject) => {
             savedRepairs = JSON.parse(savedRepairs)
         }
 
-        const {customerName, phoneNumber, lamp, serialNumber, status} = valueObject; //destructure the values from the form
+        const {status} = valueObject; //destructure the values from the form
         if (!status) {
             //Status is not set in object, set it as 'NEW'
             valueObject.status = "NEW"
-        }
-        if (!customerName || !phoneNumber) {
-            throw new Error("Missing vital information");
         }
         let key = savedRepairs.length
         while (savedRepairs.map(e => parseInt(e.key)).includes(key)) {
@@ -67,12 +64,12 @@ export const getData = async () => {
 }
 
 export const emptyDb = async () => {
-    try {
-        AsyncStorage.multiRemove(['repair'], () => console.log('Database cleared'))
-        await getData().then(data => console.log(data))
-    } catch (e) {
-        console.log(e.toString())
-    }
+    //Removes repairs that are marked DONE
+    console.log("Starter sletting")
+    const repairsNow = await getData();
+    const only_done = repairsNow.filter((el)=>{return el.status !== "DONE"})
+    console.log("only done", only_done)
+    await AsyncStorage.setItem('repair', JSON.stringify(only_done))
 }
 
 export const changeRepair = async (valueObject, localId) => {
@@ -99,8 +96,10 @@ export const uploadRepairs = async () => {
     let batch = ref.batch()
     const local_repairs = await getData();
     local_repairs.forEach((el) => {
-        const id = ref.collection('repairs').doc()
-        batch.set(id, el);
+        if(el.status === "DONE"){
+            const id = ref.collection('repairs').doc()
+            batch.set(id, el);
+        }
     })
     await batch.commit();
     await emptyDb()
