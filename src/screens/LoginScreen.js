@@ -25,7 +25,6 @@ export default function LoginScreen({ navigation }) {
 	}
 
 	const handleLogIn = () => {
-		//Logger inn jævlig usikkert, avhengig av nett per nå
 		const ref = db.firestore().collection("users")
 		ref.where("username", "==", userId).where("password", "==", password).get().then(snapshot => {
 			if(!snapshot.empty){

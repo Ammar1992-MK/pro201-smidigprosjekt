@@ -12,7 +12,7 @@ const SearchRepairScreen = ({navigation}) => {
     const [selectedToggle, setSelectedToggle] = useState("ready");
 
     const readyData = data.filter((el) => {
-        //Filterer ut alle som ikke stemmer med søket eller har status som tilsvarer toggle (nå Ready eller finished).
+        //Filters all data that does not comply with search  term or has status equivalent to toggle(Ready or finished)
         let search_status_input;
         switch(selectedToggle){
             case "ready": search_status_input = "NEW"; break;

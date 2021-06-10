@@ -4,10 +4,10 @@ import { View, Text, StyleSheet, Image } from "react-native";
 const CardSmall = ({ lampName, image }) => {
 
 
-  const SmartPlus = require("../../../assets/product-images/smart-plus-1.png");
-  const SunbellSmart = require("../../../assets/product-images/sunbell-smart-1.png");
-  const MoveSmart = require("../../../assets/product-images/movesmart.png");
-  const SunTurtle = require("../../../assets/product-images/sunturtle.png");
+  const SmartPlus = require("../../../assets/product-images/startplusIcon.png");
+  const SunbellSmart = require("../../../assets/product-images/sunbellIcon.png");
+  const MoveSmart = require("../../../assets/product-images/movesmartIcon.png");
+  const SunTurtle = require("../../../assets/product-images/sunturtleIcon.png");
 
   let lamp;
 
@@ -34,7 +34,6 @@ const CardSmall = ({ lampName, image }) => {
         style={styles.image}
         source={lamp}
       />
-      {/* We need to dynamically change the pictures here? */}
     </View>
   );
 };

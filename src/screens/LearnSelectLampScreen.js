@@ -27,7 +27,7 @@ const LearnSelectLampScreen = ({navigation, route}) => {
                         <Text style={styles.text}>SUNBELL</Text>
                         <Image
                             style={styles.image}
-                            source={require("../../assets/product-images/sunbell1.png")}
+                            source={require("../../assets/product-images/sunbellIcon.png")}
                         />
                     </TouchableOpacity>
                     <TouchableOpacity
@@ -36,7 +36,7 @@ const LearnSelectLampScreen = ({navigation, route}) => {
                         <Text style={styles.text}>SUNTURTLE</Text>
                         <Image
                             style={styles.image}
-                            source={require("../../assets/product-images/sunturtle2.png")}
+                            source={require("../../assets/product-images/sunturtleIcon.png")}
                         />
                     </TouchableOpacity>
                 </View>
@@ -47,7 +47,7 @@ const LearnSelectLampScreen = ({navigation, route}) => {
                         <Text style={styles.text}>MOVE SMART</Text>
                         <Image
                             style={styles.image}
-                            source={require("../../assets/product-images/movesmart3.png")}
+                            source={require("../../assets/product-images/movesmartIcon.png")}
                         />
                     </TouchableOpacity>
                     <TouchableOpacity
@@ -56,7 +56,7 @@ const LearnSelectLampScreen = ({navigation, route}) => {
                         <Text style={styles.text}>START+</Text>
                         <Image
                             style={styles.image}
-                            source={require("../../assets/product-images/start4.png")}
+                            source={require("../../assets/product-images/startplusIcon.png")}
                         />
                     </TouchableOpacity>
                 </View>

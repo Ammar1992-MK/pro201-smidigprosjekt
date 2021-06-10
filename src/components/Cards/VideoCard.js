@@ -18,6 +18,6 @@ const VideoCard = () => {
             />
         </View>
     </TouchableOpacity>
-});
+)};
 
 export default VideoCard;

@@ -39,7 +39,7 @@ export const BackButton = ({ onPress, buttonStyle }) => {
           <View style={styles.innerContainer}>
             <Image
                 style={styles.image}
-                source={require("../../assets/icons/arrow_back.png")}
+                source={require("../../assets/icons/arrow_backward_blue.png")}
             />
             <Text style={styles.title}>BACK</Text>
           </View>

@@ -115,7 +115,6 @@ const StartRepairSummaryScreen = ({ navigation, route }) => {
 						onPress={async () => {
 							setSavedStatus(true);
 							await addNewRepair({...data, status: "DONE"});
-							//navigation.navigate('HomeScreen');
 						}}
 					/>
 					{networkStatus ? (

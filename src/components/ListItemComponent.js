@@ -16,13 +16,16 @@ const ListItemComponent = ({data,icon,navigation}) => {
     const renderImage = () => {
         switch (data.lamp) {
             case "Sunbell Smart":
-                setLampImage(require('../../assets/product-images/sunbell-smart-1.png'));
+                setLampImage(require('../../assets/product-images/sunbellIcon.png'));
                 break;
             case "Smart Plus":
-                setLampImage(require('../../assets/product-images/smart-plus-1.png'));
+                setLampImage(require('../../assets/product-images/startplusIcon.png'));
                 break;
             case "Sun Turtle":
-                setLampImage(require('../../assets/product-images/sunturtle.png'));
+                setLampImage(require('../../assets/product-images/sunturtleIcon.png'));
+                break;
+            case "Move Smart":
+                setLampImage(require('../../assets/product-images/movesmartIcon.png'));
                 break;
         }
     }

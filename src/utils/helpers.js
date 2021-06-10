@@ -9,7 +9,7 @@ import db from "../firebase/firebaseDb";
 export const addNewRepair = async (valueObject) => {
     try {
         console.log(valueObject)
-        // Sletter elementet hvis det allerede finnes.
+        // Deletes the element if it already exists
         await deleteRepair(valueObject)
         let savedRepairs = await AsyncStorage.getItem('repair');
         if (!savedRepairs) {
@@ -18,7 +18,6 @@ export const addNewRepair = async (valueObject) => {
             savedRepairs = JSON.parse(savedRepairs)
         }
 
-        //TODO REMEMBER TO ADD LAMP
         const {customerName, phoneNumber, lamp, serialNumber, status} = valueObject; //destructure the values from the form
         if (!status) {
             //Status is not set in object, set it as 'NEW'
@@ -42,7 +41,6 @@ export const addNewRepair = async (valueObject) => {
 }
 
 export const deleteRepair = async (valueObj) => {
-    //Ikke så bra, kaos å finne alle steder hvor vi har brukt 'navigation'
     let current_repairs = await AsyncStorage.getItem('repair');
     if(!current_repairs){
         current_repairs = [];

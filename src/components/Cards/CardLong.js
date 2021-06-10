@@ -16,7 +16,6 @@ export const CardLong = ({ lampName, image }) => {
           source={require("../../../assets/product-images/spare_part_movie1.png")}
         />
       </View>
-      {/* We need to dynamically change the pictures here? */}
     </View>
   );
 };

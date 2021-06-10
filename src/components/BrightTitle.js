@@ -18,14 +18,14 @@ const BrightTitleStyles = StyleSheet.create({
     marginBottom: 30,
   },
   headingText: {
-    color: "#9FD18B",
+    color: "#C3DC93",
     fontSize: 72,
     fontFamily: "Montserrat",
     marginBottom: -4
   },
   lowerText: {
     fontFamily: "MontserratMedium",
-    color: "#9FD18B",
+    color: "#C3DC93",
     fontSize: 32,
   }
 });
