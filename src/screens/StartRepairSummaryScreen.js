@@ -11,6 +11,7 @@ import LongButton from '../components/LongButton';
 import { addNewRepair, uploadRepairs } from '../utils/helpers';
 import { spareParts } from '../utils/fakeDb';
 import ComponentsChosenSummary from '../components/ComponentsChosenSummary';
+import { lamps } from '../utils/fakeDb';
 
 const StartRepairSummaryScreen = ({ navigation, route }) => {
 	//ICONS
@@ -21,7 +22,7 @@ const StartRepairSummaryScreen = ({ navigation, route }) => {
 
 	//NETWORK STATUS
 	const [networkStatus, setNetworkStatus] = useState(false);
-	
+
 	//SAVED STATUS
   const [savedStatus, setSavedStatus] = useState(false);
 
@@ -57,6 +58,7 @@ const StartRepairSummaryScreen = ({ navigation, route }) => {
 			});
 		}
 	};
+
 
 	useEffect(() => {
 		//This package allows us to check the network state of the device we are using
@@ -139,7 +141,7 @@ const StartRepairSummaryScreen = ({ navigation, route }) => {
 					)}
 				</View>
 					)}
-					
+
 				{savedStatus ? (
 					<View style={styles.successContainer}>
 						<Image source={successIcon} style={styles.successIcon}/>

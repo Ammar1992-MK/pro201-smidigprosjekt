@@ -45,10 +45,10 @@ const SelectPartsScreen = ({navigation, route}) => {
   //RENDERS PARTS AND CHECKS IF SELECTED
   const spare_parts_div = (item) => {
     const { id, image, name } = item;
-    const is_selected = selectedPartId.includes(id) ? 
+    const is_selected = selectedPartId.includes(id) ?
     <View style={styles.checkMark}>
       <Image style={styles.checkMarkIcon} source={require('../../assets/icons/success_icon.png')}/>
-    </View> 
+    </View>
     : null
 
     return (
@@ -77,7 +77,7 @@ const SelectPartsScreen = ({navigation, route}) => {
         backgroundColor={"primary_teal"}
         icon={"learn"}
         textColor={"white"}
-        onPress={() => navigation.navigate('TroubleshootScreen')}
+        onPress={() => navigation.navigate('LearnSelectLampScreen')}
       />
       <View style={styles.selectPartsContainer}>
         <View style={styles.selectsPartsContainerHeader}>
@@ -98,7 +98,7 @@ const SelectPartsScreen = ({navigation, route}) => {
           renderItem={({ item }) => spare_parts_div(item)}
         ></FlatList>
       </View>
-      
+
       <View style={styles.navigateButtons}>
         <BackButton onPress={() => navigation.navigate('StartRepairScreen')} />
         <NextButton
