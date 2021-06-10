@@ -40,7 +40,9 @@ Eventuelt: `expo start --web` vil kjøre appen og vise developer tools i nettles
 ![emulator](https://user-images.githubusercontent.com/56083146/121364462-19045d00-c938-11eb-9c30-51539cbec78e.png)
 
 
-
+### Setting up android emulator
+* Vi brukte bare Android emulator på Windows under hele prosjektet. Men vi har funnet en link til en guide hvis det er nødvendig.
+[Link](https://rlogicaltech.medium.com/how-to-install-react-native-on-mac-step-by-step-guide-1ac822aedd4f)
 
 
 
