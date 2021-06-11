@@ -5,6 +5,7 @@
  * Start android emulator(om du ikke har emulator, følg stegene i 'Setting up android emulator')
 
  * Naviger til prosjektmappen i din IDE og skriv inn:    `npm install -g expo-cli`
+ * Etter du har installert expo-cli, kjør følgende kommando:    `npm install ` for å laste ned nødvendige dependencies.
 
       ![image](https://user-images.githubusercontent.com/56083146/121357529-2b7b9800-c932-11eb-897b-d127316b67cd.png)
 
